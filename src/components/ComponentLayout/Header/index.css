@@ -1,0 +1,57 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100dvw;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+  background-color: rgba(13, 10, 11, 0.3);
+  background-image: linear-gradient(#0D0A0B, rgba(13, 10, 11, 0.6), transparent);
+  transition: 500ms background-color;
+}
+.header .logo {
+  -webkit-animation: bigBurgerBlink 20000ms linear infinite;
+          animation: bigBurgerBlink 20000ms linear infinite;
+  -webkit-animation-timing-function: steps(40, start);
+          animation-timing-function: steps(40, start);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+@-webkit-keyframes bigBurgerBlink {
+  85% {
+    visibility: hidden;
+  }
+  90% {
+    visibility: visible;
+  }
+  93% {
+    visibility: hidden;
+  }
+  97% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+@keyframes bigBurgerBlink {
+  85% {
+    visibility: hidden;
+  }
+  90% {
+    visibility: visible;
+  }
+  93% {
+    visibility: hidden;
+  }
+  97% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}/*# sourceMappingURL=index.css.map */

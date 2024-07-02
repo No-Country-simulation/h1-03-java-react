@@ -1,0 +1,55 @@
+.nav{
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+
+    & ul{
+        list-style: none;
+        display: grid;
+        justify-content: end;
+        grid-auto-flow: column;
+        gap: 10%;
+        width: 100%;
+        margin: 5%;
+        overflow: hidden;
+        user-select: none;
+
+        & li{
+            cursor: pointer;
+
+            &::before {
+                content: attr(data-text);
+                color: rgb(236, 195, 46);
+                display: block;
+                position: absolute;
+                top: inherit;
+                left: inherit;
+                overflow: hidden;
+                margin: inherit;
+                padding: 0;
+                text-decoration: underline;
+                transition: 1600ms width;
+                width: 0px;
+                z-index: 1;
+            }
+
+            &:hover::before {
+                width:8rem;
+            }            
+            
+            &:active::before{
+                color:#FFF;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:768px){
+    .nav{
+        display:none;
+    }
+}

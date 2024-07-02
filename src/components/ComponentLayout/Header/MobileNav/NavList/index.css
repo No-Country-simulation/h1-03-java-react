@@ -1,0 +1,70 @@
+.nav-list-container {
+  -webkit-backdrop-filter: blur(10px) saturate(50%);
+          backdrop-filter: blur(10px) saturate(50%);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  transition: 500ms -webkit-backdrop-filter;
+  transition: 500ms backdrop-filter;
+  transition: 500ms backdrop-filter, 500ms -webkit-backdrop-filter;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+.nav-list-container .nav-list {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 500ms width;
+  width: 50%;
+  height: 100vh;
+  white-space: nowrap;
+}
+.nav-list-container .nav-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 2rem);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 10px 0 0 10px;
+  overflow: hidden;
+  position: relative;
+  text-align: start;
+  pointer-events: all;
+}
+.nav-list-container .nav-list ul li {
+  cursor: pointer;
+}
+.nav-list-container .nav-list ul li::before {
+  content: attr(data-text);
+  color: rgb(236, 195, 46);
+  display: block;
+  position: absolute;
+  top: inherit;
+  left: inherit;
+  overflow: hidden;
+  margin: inherit;
+  padding: 0;
+  text-decoration: underline;
+  transition: 1600ms width;
+  width: 0px;
+  z-index: 1;
+}
+.nav-list-container .nav-list ul li:hover::before {
+  width: 8rem;
+}
+.nav-list-container .nav-list ul li:active::before {
+  color: #FFF;
+}
+
+@media only screen and (min-width: 768px) {
+  .nav-list-container {
+    display: none;
+  }
+}/*# sourceMappingURL=index.css.map */
