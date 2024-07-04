@@ -7,7 +7,7 @@ export default function ComponentLayout({children} ) {
     return (
         <div className="componentLayout">
             <Header />
-            <section className="d-block justify-start w-screen flex-1">
+            <section className="d-block w-screen flex-1">
                 {children}
             </section>
             <Footer />

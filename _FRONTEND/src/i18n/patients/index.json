@@ -1,0 +1,28 @@
+{
+    "sp":{
+        "firstName": {"title": "Nombre" , "placeholder": "Juan"},
+        "lastName": {"title": "Apellido" , "placeholder": "Perez"},
+        "dni": {"title": "DNI" , "placeholder": "27893716, 34912353, 12564034, ..."},
+        "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
+        "telephone": {"title": "Teléfono" , "placeholder": "543492999999"},
+        "address": {"title": "Domicilio" , "placeholder": "Av. Corrientes 123"},
+        "bornDate": {"title": "Fecha de Nacimiento" , "placeholder": "01/01/1950"},
+        "bloodType": {"title": "Tipo sanguíneo" , "list": ["0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
+        "maritalStatus": {"title": "Estado civil" , "placeholder": ""},
+        "sex": {"title": "Sexo" , "placeholder": ""},
+        "medicalRecord": {"title": "Historia clínica" , "placeholder": ""}
+    },
+    "en":{
+        "firstName": {"title": "First name" , "placeholder": "John"},
+        "lastName": {"title": "Last name" , "placeholder": "Doe"},
+        "dni": {"title": "DNI" , "placeholder": "27893716, 34912353, 12564034, ..."},
+        "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
+        "telephone": {"title": "Telephone" , "placeholder": "(555) 555-1234"},
+        "address": {"title": "Address" , "placeholder": "John Smith. 999"},
+        "bornDate": {"title": "Born date" , "placeholder": "01/01/1950"},
+        "bloodType": {"title": "Blood type" , "list": ["0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
+        "maritalStatus": {"title": "Marital status" , "placeholder": ""},
+        "sex": {"title": "Sex" , "placeholder": ""},
+        "medicalRecord": {"title": "Clinical history" , "placeholder": ""}
+    }
+}

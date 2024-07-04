@@ -1,0 +1,10 @@
+{
+    "sp":{
+        "email": "Correo electrónico",
+        "password": "Contraseña"
+    },
+    "en":{
+        "email": "E-mail",
+        "password": "Password"
+    }
+}
