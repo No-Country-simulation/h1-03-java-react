@@ -1,4 +1,10 @@
-import { SETDISPLAYSPINNER, SETHEADERHEIGHT, SETISACTIVEHAMBURGERBUTTON, SETITEMSNAV } from "../types"
+import { 
+    SETDISPLAYSPINNER, 
+    SETHEADERHEIGHT, 
+    SETISACTIVEHAMBURGERBUTTON, 
+    SETITEMSNAV, 
+    SETI18N 
+} from "../types"
 
 export const setDisplaySpinner = (payload) => ({
     type: SETDISPLAYSPINNER,
@@ -17,5 +23,10 @@ export const setIsActiveHamburgerButton = (payload) => ({
 
 export const setItemsNav = (payload) => ({
     type: SETITEMSNAV,
+    payload: payload
+})
+
+export const setI18n = (payload) => ({
+    type: SETI18N,
     payload: payload
 })

@@ -1,0 +1,25 @@
+{
+    "sp": {
+        "buttonSubmit": "Enviar",
+        "radioGender": {
+            "legend": "Género",
+            "items": [
+                {"title":"Masculino", "id":"masculino"},
+                {"title":"Femenino", "id":"femenino"},
+                {"title":"Otro", "id":"Otro"}
+            ]
+        }
+    },
+    "en": {
+        "buttonSubmit": "Send",
+        "radioGender": {
+            "legend": "Gender",
+            "items": [
+                {"title":"Male", "id":"male"},
+                {"title":"Female", "id":"female"},
+                {"title":"Other", "id":"other"}
+            ]
+        }
+    }
+
+}
