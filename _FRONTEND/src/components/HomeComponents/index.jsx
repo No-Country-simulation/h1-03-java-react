@@ -8,10 +8,19 @@ import Button from '../Resources/FormElements/Button'
 import Radio from '../Resources/FormElements/Radio'
 import Select from '../Resources/FormElements/Select'
 import Table from '../Resources/Table'
-import { mockTableData } from '../Resources/Table/mockTableData'
+//import { mockTableData } from '../Resources/Table/mockTableData'
+import { useQuery } from '@tanstack/react-query'
+import { fetchTest } from '../../services'
 
 export default function HomeComponent() {
     const language = useSelector((state)=>state.i18nReducer.language)
+
+    const { data, error, isLoading, isFetching} = useQuery({
+        queryKey: ["key-test"], 
+        queryFn: fetchTest
+    })
+
+    if(error) console.log(error)
 
     const handleSubmitPatient = (e) => {
         e.preventDefault()
@@ -21,7 +30,14 @@ export default function HomeComponent() {
 
     return (
         <section className="flex flex-col bg-slate-700 py-5">
-            <Table data={mockTableData} showSelectionColumn={true} />
+            {isLoading 
+            ? (<p className="text-center">⌛ Cargando tabla..</p>)
+            : (
+            <>
+                <span className="text-center py-1">{isFetching ? '⌛ Comprobando si los datos estan actualizados' : <>&nbsp;</>}</span>
+                <Table data={data} showSelectionColumn={true} />               
+            </>
+            )}
 
             <Form handleSubmit={handleSubmitPatient}>
                 <InputLabel 
