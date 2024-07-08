@@ -1,0 +1,46 @@
+{
+    "sp": {
+        "table": {
+            "checkboxSelect": "Seleccionar fila",
+            "titleOrderColumn": "Click para ordenar por esta columna"
+        },
+        "filterInput": {
+            "placeholder": "Ingrese su consulta..",
+            "title": "Filtra resultados",
+            "deleteText": "Borrar texto"
+        },
+        "pagination": {
+            "previousButtonText": "Anterior",
+            "nextButtonText": "Siguiente",
+            "previousButtonTitle": "Página anterior",
+            "nextButtonTitle": "Página siguiente",
+            "indicatorTitle": "Número de página"
+        },
+        "pageSize": {
+            "text": "Mostrar ",
+            "title": "Selecciona la cantidad de filas a mostrar"
+        }
+    },
+    "en":{
+        "table": {
+            "checkboxSelect": "Select row",
+            "titleOrderColumn": "Click to sort it by this column"
+        },
+        "filterInput": {
+            "placeholder": "Enter your query..",
+            "title": "Filter results",
+            "deleteText": "Delete text"
+        },
+        "pagination": {
+            "previousButtonText": "Previous",
+            "nextButtonText": "Next",
+            "previousButtonTitle": "Previous page",
+            "nextButtonTitle": "Next page",
+            "indicatorTitle": "Page number"
+        },
+        "pageSize": {
+            "text": "Show ",
+            "title": "Select number of rows"
+        }
+    }
+}

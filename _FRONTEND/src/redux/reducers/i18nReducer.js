@@ -1,7 +1,7 @@
 import { SETI18N } from "../types";
 
 const initialState = {
-    language: 'en'
+    language: 'sp'
 }
 
 export default function i18nReducer(state=initialState, action ){
