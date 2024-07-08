@@ -3,13 +3,19 @@ import React from "react";
 export default function Select({ id, title, arrayOptions }) {
     
 	return (
-		<div className="text-center grid grid-flow-col gap-5 justify-center items-center">
-			<label htmlFor={id}>{title}:</label>
+		<div className="text-center flex flex-col gap-3 justify-center items-center">
+			<label
+				htmlFor={id}
+				className="text-start w-96"
+			>
+				{title}:
+			</label>
 			<select
+				className="p-3 w-96 m-0"
 				id={id}
 				name={id}
 				required
-				aria-label={`Campo de selección de ${title}`}
+				aria-label={title}
                 defaultValue=""
 			>
 				<option value="" disabled>

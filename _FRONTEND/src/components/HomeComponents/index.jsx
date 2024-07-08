@@ -7,6 +7,8 @@ import Form from '../Resources/FormElements/Form'
 import Button from '../Resources/FormElements/Button'
 import Radio from '../Resources/FormElements/Radio'
 import Select from '../Resources/FormElements/Select'
+import Table from '../Resources/Table'
+import { mockTableData } from '../Resources/Table/mockTableData'
 
 export default function HomeComponent() {
     const language = useSelector((state)=>state.i18nReducer.language)
@@ -18,7 +20,9 @@ export default function HomeComponent() {
     }
 
     return (
-        <section className=''>
+        <section className="flex flex-col bg-slate-700 py-5">
+            <Table data={mockTableData} showSelectionColumn={true} />
+
             <Form handleSubmit={handleSubmitPatient}>
                 <InputLabel 
                     type={'text'}
@@ -29,6 +33,13 @@ export default function HomeComponent() {
                 <InputLabel 
                     type={'text'}
                     id={'lastName'}
+                    placeholder={i18nPatients[language].lastName.placeholder}
+                    title={i18nPatients[language].lastName.title}
+                />
+
+                <InputLabel 
+                    type={'date'}
+                    id={'lastNam1e'}
                     placeholder={i18nPatients[language].lastName.placeholder}
                     title={i18nPatients[language].lastName.title}
                 />
@@ -46,6 +57,7 @@ export default function HomeComponent() {
 
                 <Button />
             </Form>
+            
         </section>
     )
 }

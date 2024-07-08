@@ -1,0 +1,45 @@
+$borderLineWidth: 1px;
+$borderColor: rgb(103, 103, 103);
+$backgroundColorOddRow: rgb(49, 47, 47);
+$backgroundColorEvenRow: rgb(60, 60, 60);
+$backgroundColorHeaderRow: rgb(0, 0, 0);
+$backgroundColorRowHover: rgb(141, 141, 141);
+$backgroundColorRowActive: rgb(159, 159, 159);
+$color: rgb(221, 221, 221);
+
+.table-my-style{
+    border: $borderLineWidth solid $borderColor;
+    color: $color;
+    vertical-align: middle;
+
+    & thead{
+        & th{
+            background-color: $backgroundColorHeaderRow;
+            text-align: center;
+        }
+    }
+
+    & tr{
+        &:nth-child(odd){
+            background-color: $backgroundColorOddRow;
+        }
+        &:nth-child(even){
+            background-color: $backgroundColorEvenRow;
+        }
+        &:hover{
+            background-color: $backgroundColorRowHover;
+            cursor: pointer;
+        }
+        &:active{
+            background-color: $backgroundColorRowActive;
+        }
+
+    }
+    & td{
+        padding-left: 0.3rem;
+    }
+    & td, & th{
+        border: $borderLineWidth solid $borderColor;
+    }
+    
+}
