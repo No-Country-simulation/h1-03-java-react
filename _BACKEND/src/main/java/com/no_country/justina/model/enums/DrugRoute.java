@@ -1,0 +1,21 @@
+package com.no_country.justina.model.enums;
+
+public enum DrugRoute {
+  ORAL,
+  SUBLINGUAL,
+  RECTAL,
+  INTRAVENOSA,
+  INTRAMUSCULAR,
+  SUBCUTANEA,
+  TOPICA,
+  TRANSDERMICA,
+  INHALATORIA,
+  OFTALMICA,
+  OTICA,
+  NASAL,
+  VAGINAL,
+  INTRADERMICA,
+  INTRATECAL,
+  BUCAL,
+  OTRO
+}
