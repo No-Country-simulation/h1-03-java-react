@@ -2,7 +2,7 @@ import React from "react";
 import Label from "./Label";
 import Input from "./Input";
 
-export default function InputLabel({ type, id, placeholder, title, required=true, value=null, onChange=null }) {
+export default function InputLabel({ type, id, placeholder, title, isRequired=false, autoFocus=false, value="", onChangeHandler=()=>{} }) {
 	return (
 		<div 
 			className="flex flex-col justify-center items-center gap-3 mb-3"
@@ -14,9 +14,10 @@ export default function InputLabel({ type, id, placeholder, title, required=true
 				id={id}
 				placeholder={placeholder}
 				title={title}
-				required={required}
+				isRequired={isRequired}
+				autoFocus={autoFocus}
 				value={value}
-				onChange={onChange}
+				onChangeHandler={onChangeHandler}
 			/>
 		</div>
 	);

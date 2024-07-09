@@ -18,7 +18,8 @@
         },
         "pageSize": {
             "text": "Mostrar ",
-            "title": "Selecciona la cantidad de filas a mostrar"
+            "title": "Cantidad de filas a mostrar",
+            "arraySelectOptions": ["selecciona la cantidad de filas a mostrar", "10 filas", "25 filas", "50 filas"]
         }
     },
     "en":{
@@ -40,7 +41,8 @@
         },
         "pageSize": {
             "text": "Show ",
-            "title": "Select number of rows"
+            "title": "Number of rows to show",
+            "arraySelectOptions": ["select number of rows to show", "10 rows", "25 rows", "50 rows"]
         }
     }
 }

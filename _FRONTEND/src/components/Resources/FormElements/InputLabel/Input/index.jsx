@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function Input({ type, id, placeholder, title, required, value, onChange }) {
+export default function Input({ type, id, placeholder, title, isRequired=false, autoFocus=false, value="", onChangeHandler=()=>{} }) {
 	const [pattern, setPattern] = useState("");
 
 	useEffect(() => {
@@ -13,28 +13,32 @@ export default function Input({ type, id, placeholder, title, required, value, o
 	}, [pattern]);
 
 	return (
-		<input
-			className="p-3 w-96"
-			type={type}
-			id={id}
-			name={id}
-			placeholder={placeholder}
-			required={required ? 'required' : false}
-			minLength="3"
-			maxLength="50"
-			/* min={type === "date" ? "1900/01/01" : ""}
-			max={type === "date" ? "2024/05/01" : ""} */
-			pattern={pattern}
-			title={title}
-			aria-label="Input field"
-			aria-describedby={title}
-			autoComplete="off"
-			autoCorrect="off"
-			autoCapitalize="off"
-			spellCheck="false"
-			/* autofocus */
-			value={value ? value : ''}
-			onChange={onChange ? onChange : ()=>{}}
-		/>
+		<>
+		{id && (
+			<input
+				className="p-3 w-96 rounded-lg mt-auto mb-0"
+				type={type}
+				id={id}
+				name={id}
+				placeholder={placeholder}
+				required={isRequired}
+				minLength="3"
+				maxLength="50"
+				/* min={type === "date" ? "1900/01/01" : ""}
+				max={type === "date" ? "2024/05/01" : ""} */
+				pattern={pattern}
+				title={title}
+				aria-label="Input field"
+				aria-describedby={title}
+				autoComplete="off"
+				autoCorrect="off"
+				autoCapitalize="off"
+				spellCheck="false"
+				autoFocus={autoFocus}
+				value={value}
+				onChange={(e)=>onChangeHandler(e.target.value)}
+			/>
+		)}
+		</>
 	);
 }
