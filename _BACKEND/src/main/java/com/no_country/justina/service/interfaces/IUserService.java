@@ -1,15 +1,15 @@
 package com.no_country.justina.service.interfaces;
 
-import com.no_country.justina.model.entities.User;
+import com.no_country.justina.model.entities.UserEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
 public interface IUserService {
-    User create(User user);
-    Optional<User> getUser(Long id);
-    Page<User> getAllUsers(Pageable pageable);
-    User update(User user);
+    UserEntity create(UserEntity userEntity);
+    Optional<UserEntity> getUser(Long id);
+    Page<UserEntity> getAllUsers(Pageable pageable);
+    UserEntity update(UserEntity userEntity);
     void deleteById(Long id);
 }

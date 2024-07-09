@@ -2,7 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.EmailExistsException;
 import com.no_country.justina.exception.UserIdNotFoundException;
-import com.no_country.justina.model.entities.User;
+import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.UserRepository;
 import com.no_country.justina.service.interfaces.IUserService;
 import lombok.AllArgsConstructor;
@@ -20,26 +20,26 @@ public class UserServiceImp implements IUserService {
 
     private UserRepository userRepository;
     @Override
-    public User create(User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
+    public UserEntity create(UserEntity userEntity) {
+        if (userRepository.existsByEmail(userEntity.getEmail())) {
             throw new EmailExistsException();
         }
-        return userRepository.save(user);
+        return userRepository.save(userEntity);
     }
 
     @Override
-    public Optional<User> getUser(Long id) {
+    public Optional<UserEntity> getUser(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public Page<User> getAllUsers(Pageable pageable) {
+    public Page<UserEntity> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable);
     }
 
     @Override
-    public User update(User user) {
-        return userRepository.save(user);
+    public UserEntity update(UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 
     @Override
