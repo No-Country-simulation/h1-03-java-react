@@ -8,7 +8,8 @@ const itemsNav = [
     { name: "Historia clínica", route: pathroutes.medical_records },
     { name: "Recetas", route: pathroutes.prescriptions },
     { name: "Tratamientos", route: pathroutes.treatments },
-    { name: "Login", route: pathroutes.login }
+    { name: "Signin", route: pathroutes.signin },
+    { name: "Signup", route: pathroutes.signup }
 ]
 
 export default itemsNav

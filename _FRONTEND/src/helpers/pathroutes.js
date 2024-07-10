@@ -6,7 +6,8 @@ const pathroutes = {
 	medical_records: '/historia-clinica',
 	prescriptions: '/recetas',
 	treatments: '/tratamientos',
-	login: '/login'
+	signin: '/signin',
+	signup: '/signup'
 	
 };
 

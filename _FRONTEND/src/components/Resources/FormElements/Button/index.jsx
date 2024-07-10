@@ -13,7 +13,7 @@ export default function Button({
 				<div className="text-center">
 					<button
 						type={type}
-						className="rounded-full"
+						className="rounded-full w-96"
 						title={title}
 						aria-label={title}
 						disabled={isDisabled}
