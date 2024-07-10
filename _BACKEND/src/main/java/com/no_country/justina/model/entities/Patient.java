@@ -33,7 +33,13 @@ public class Patient {
   @Convert(converter = GenreConverter.class)
   @Column(columnDefinition = "TINYINT")
   private Genre genre;
+  private boolean isEnabled;
 
   @OneToOne(mappedBy = "patient")
   private MedicalHistory medicalHistory;
+
+  @PrePersist
+  public void onCreate(){
+    this.isEnabled = true;
+  }
 }
