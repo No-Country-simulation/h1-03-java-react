@@ -1,10 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setIsActiveHamburgerButton } from "../../../../../redux/actions";
 
 export default function ItemsNav() {
     const itemsNav = useSelector((state) => state.headerReducer.itemsNav);
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+
+	const handleClick = (e) => {
+		dispatch(setIsActiveHamburgerButton(false))
+		navigate(e.route)
+	}
 
 	return (
 		<>
@@ -12,7 +19,7 @@ export default function ItemsNav() {
 				<li
 					data-text={e.name}
 					key={i}
-					onClick={() => navigate(e.route)}
+					onClick={() => handleClick(e)}
 				>
 					{e.name}
 				</li>
