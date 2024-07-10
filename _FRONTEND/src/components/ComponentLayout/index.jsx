@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import './index.css'
+import BottomMenu from "./Footer/BottomMenu";
 
 export default function ComponentLayout({children} ) {
 
@@ -11,6 +12,7 @@ export default function ComponentLayout({children} ) {
                 {children}
             </section>
             <Footer />
+            <BottomMenu />
         </div>
     )
 }

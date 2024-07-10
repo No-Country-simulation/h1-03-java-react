@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import "./index.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemsNav from "../../Nav/ItemsNav";
+import { setIsActiveHamburgerButton } from "../../../../../redux/actions";
 
 export default function NavList() {
+	const dispatch = useDispatch()
 	const headerHeight = useSelector((state) => state.headerReducer.headerHeight);
 	const isActiveHamburgerButton = useSelector(
 		(state) => state.headerReducer.isActiveHamburgerButton
@@ -32,6 +34,7 @@ export default function NavList() {
 							? "blur(10px) saturate(50%)"
 							: "initial",
 					}}
+					onClick={()=>dispatch(setIsActiveHamburgerButton(false))}
 				>
 					<nav
 						className="nav-list"
