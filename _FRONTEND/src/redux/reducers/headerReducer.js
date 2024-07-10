@@ -1,10 +1,10 @@
 import { SETHEADERHEIGHT, SETISACTIVEHAMBURGERBUTTON, SETITEMSNAV } from "../types";
-import pathroutes from "../../helpers/pathroutes";
+import itemsNav from "../../helpers/itemsNav";
 
 const initialState = {
     headerHeight: '100',
     isActiveHamburgerButton: false,
-    itemsNav: [ ...pathroutes.itemsNav],
+    itemsNav: [ ...itemsNav],
 }
 
 export default function headerReducer(state=initialState, action ){

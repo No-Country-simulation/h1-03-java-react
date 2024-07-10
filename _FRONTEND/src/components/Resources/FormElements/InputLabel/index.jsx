@@ -2,14 +2,22 @@ import React from "react";
 import Label from "./Label";
 import Input from "./Input";
 
-export default function InputLabel({ type, id, placeholder, title, isRequired=false, autoFocus=false, value="", onChangeHandler=()=>{} }) {
+export default function InputLabel({
+	type,
+	id,
+	placeholder,
+	title,
+	isRequired = false,
+	autoFocus = false,
+	value = "",
+	onChangeHandler = () => {},
+	isChecked = null
+}) {
 	return (
-		<div 
-			className="flex flex-col justify-center items-center gap-3 mb-3"
-		>
+		<div className="flex flex-col justify-center items-center gap-3 mb-3">
 			<Label id={id} title={title} />
 			<Input
-                className="bg-white"
+				className="bg-white"
 				type={type}
 				id={id}
 				placeholder={placeholder}
@@ -18,6 +26,7 @@ export default function InputLabel({ type, id, placeholder, title, isRequired=fa
 				autoFocus={autoFocus}
 				value={value}
 				onChangeHandler={onChangeHandler}
+				isChecked={isChecked}
 			/>
 		</div>
 	);
