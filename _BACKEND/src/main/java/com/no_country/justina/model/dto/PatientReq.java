@@ -1,4 +1,16 @@
 package com.no_country.justina.model.dto;
 
-public record PatientReq() {
+import com.no_country.justina.model.enums.Genre;
+import com.no_country.justina.model.enums.MaritalStatus;
+
+import java.time.LocalDate;
+
+public record PatientReq(
+        String docIdentity,
+        String phone,
+        String address,
+        LocalDate birthdate,
+        MaritalStatus maritalStatus,
+        Genre genre
+) {
 }
