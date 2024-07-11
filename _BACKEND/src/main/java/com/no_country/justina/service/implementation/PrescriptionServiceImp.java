@@ -43,7 +43,7 @@ public class PrescriptionServiceImp implements IPrescriptionService {
   }
 
   private void verifyPrescriptionExist(long id){
-    boolean existHistory = this.prescriptionRepository.existsById(id);
-    if(!existHistory) throw new EntityNotFoundException("Prescripción no encontrada, id:"+id);
+    boolean exist = this.prescriptionRepository.existsById(id);
+    if(!exist) throw new EntityNotFoundException("Prescripción no encontrada, id:"+id);
   }
 }
