@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("${api.base-url/history}")
+@RequestMapping("/api/v1/history")
 public class MedicalHistoryController {
   private final IMedicalHistoryService historyService;
 

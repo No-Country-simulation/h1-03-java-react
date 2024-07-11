@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("${api.base-url}/patient")
+@RequestMapping("/api/v1/patient")
 @RequiredArgsConstructor
 public class PatientController {
   private final IPatientService patientServ;
