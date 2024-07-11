@@ -31,8 +31,7 @@ export default function HomeComponent() {
     }
 const [val, setVal] = useState()
     return (
-        <section className="flex flex-col bg-slate-700 py-5">
-
+        <section className="flex flex-col bg-white py-5">
             <p 
                 className="cursor-pointer text-green-500 fw-bolder underline text-center"
                 onClick={()=>dispatch(setI18n(language==='en' ? 'sp' : 'en'))}
@@ -45,7 +44,7 @@ const [val, setVal] = useState()
             : (
             <>
                 <span className="text-center py-1">{isFetching ? '⌛ Comprobando si los datos estan actualizados' : <>&nbsp;</>}</span>
-                <Table data={data} showSelectionColumn={true} />               
+                <Table data={data} showSelectionColumn={true} />
             </>
             )}
 

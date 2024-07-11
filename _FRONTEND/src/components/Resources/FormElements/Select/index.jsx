@@ -4,10 +4,11 @@ export default function Select({
 	id,
 	title,
 	arrayOptions,
-	onChangeHandler = ()=>{},
+	onChangeHandler = () => {},
 	value = "",
 	displayLabel = "block",
 	isRequired = false,
+	hasLabel = true,
 }) {
 	const getNumericValueFromSelectOption = (e) => {
 		return Number(e.target.value.split(" ")[0]);
@@ -15,11 +16,16 @@ export default function Select({
 
 	return (
 		<div className="text-center flex flex-col gap-3 justify-center items-center">
-			<label htmlFor={id} className={`text-start w-96 ${displayLabel}`}>
-				{title}:
-			</label>
+			{hasLabel && (
+				<label
+					htmlFor={id}
+					className={`text-start w-96 ${displayLabel}`}
+				>
+					{title}:
+				</label>
+			)}
 			<select
-				className="p-3 w-96 m-0 rounded-lg"
+				className="p-3 w-96 m-0 rounded-full"
 				id={id}
 				name={id}
 				required={isRequired}

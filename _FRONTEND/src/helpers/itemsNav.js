@@ -9,7 +9,8 @@ const itemsNav = [
     { name: "Recetas", route: pathroutes.prescriptions },
     { name: "Tratamientos", route: pathroutes.treatments },
     { name: "Signin", route: pathroutes.signin },
-    { name: "Signup", route: pathroutes.signup }
+    { name: "Signup", route: pathroutes.signup },
+    { name: "U.P", route: pathroutes.user_profile }
 ]
 
 export default itemsNav

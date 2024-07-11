@@ -69,7 +69,7 @@ export default function Table({data, showSelectionColumn}) {
 
 	return (
 		<>
-			<div className="grid grid-cols-2 justify-items-center">
+			<div className="grid grid-rows-2 justify-start md:grid-cols-2 md:justify-items-center ">
 				<FilterInput filter={globalFilter} setFilter={setGlobalFilter} />
 				<PageSize pageSize={pageSize} setPageSize={setPageSize} />
 			</div>

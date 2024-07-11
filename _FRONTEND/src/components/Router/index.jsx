@@ -12,6 +12,7 @@ import Prescriptions from "../../pages/Prescriptions";
 import Treatments from "../../pages/Treatments";
 import Signin from "../../pages/Signin";
 import Signup from "../../pages/Signup";
+import UserProfile from "../../pages/UserProfile"
 
 export default function Router() {
   return (
@@ -25,6 +26,7 @@ export default function Router() {
       <Route path={`${pathroutes.treatments}`} element={<Treatments />} />
       <Route path={`${pathroutes.signin}`} element={<Signin />} />
       <Route path={`${pathroutes.signup}`} element={<Signup />} />
+      <Route path={`${pathroutes.user_profile}`} element={<UserProfile />} />
 
       <Route path={`${pathroutes.error401}`} element={<Error401 />} />
       <Route path="*" element={<Error404 />} />

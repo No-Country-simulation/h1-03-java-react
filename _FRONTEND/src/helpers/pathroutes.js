@@ -7,8 +7,8 @@ const pathroutes = {
 	prescriptions: '/recetas',
 	treatments: '/tratamientos',
 	signin: '/signin',
-	signup: '/signup'
-	
+	signup: '/signup',
+	user_profile: '/perfil-usuario'
 };
 
 export default pathroutes;

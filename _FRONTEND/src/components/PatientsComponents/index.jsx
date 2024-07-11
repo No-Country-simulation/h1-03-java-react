@@ -1,10 +1,17 @@
 import React from 'react'
+import NextAppointment from './NextAppointment'
+import TitleAvatar from '../Resources/Others/TitleAvatar'
+import Menu from './Menu'
+import Treatment from './Treatment'
 
-export default function PatientsMainComponent() {
+export default function UserProfileMainComponent() {    
 
     return (
-        <>
-            pacientes            
-        </>
+        <section className="grid gap-20">
+            <TitleAvatar title="HOLA USUARIO!" />
+            <Menu />
+            <NextAppointment />
+            <Treatment />
+        </section>
     )
 }
