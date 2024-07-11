@@ -9,16 +9,16 @@
     height: 100%;
     z-index:-1;
     //touch-action: none;
-    pointer-events: all;
+    pointer-events: none;
 
     & .nav-list{
         background-color: rgba(0,0,0,0.5);
         border:1px solid rgba(0,0,0,0.6);
         display: block;
         position: absolute;
-        right:0;
+        left:0;
         top:0;
-        transition: 500ms width;
+        transition: 800ms cubic-bezier(0.165, 0.84, 0.44, 1) width;
         width: 65%;
         height: 100vh;
         white-space: nowrap;

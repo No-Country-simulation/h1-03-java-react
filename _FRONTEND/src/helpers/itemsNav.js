@@ -10,7 +10,7 @@ const itemsNav = [
     { name: "Tratamientos", route: pathroutes.treatments },
     { name: "Signin", route: pathroutes.signin },
     { name: "Signup", route: pathroutes.signup },
-    { name: "U.P", route: pathroutes.user_profile }
+    { name: "Perfil", route: pathroutes.user_profile }
 ]
 
 export default itemsNav
