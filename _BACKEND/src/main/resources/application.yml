@@ -10,4 +10,4 @@ spring:
       ddl-auto: update
     show-sql: true
 api:
-  base-url:api/v1
+  base-url: api/v1
