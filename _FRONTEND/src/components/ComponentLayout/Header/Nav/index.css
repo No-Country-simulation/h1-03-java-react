@@ -35,6 +35,7 @@
   overflow: hidden;
   margin: inherit;
   padding: 0;
+  pointer-events: none;
   text-decoration: underline;
   transition: 1600ms width;
   width: 0px;
