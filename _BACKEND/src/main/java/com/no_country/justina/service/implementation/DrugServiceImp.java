@@ -42,6 +42,18 @@ public class DrugServiceImp implements IDrugService {
     this.drugRepository.deleteById(id);
   }
 
+  @Override
+  public Drug getByName(String name) {
+    return this.drugRepository.findByNameIgnoreCase(name)
+            .orElseThrow(()->new EntityNotFoundException("Medicamento no encontrado, nombre: "+name));
+  }
+
+  @Override
+  public Page<Drug> getAllLikeName(Pageable pageable, String word) {
+    if(word.length()<5) throw new IllegalArgumentException("Mínimo 4 caracteres en la palabra de búsqueda");
+    return this.drugRepository.findByNameLikeIgnoreCase(word+"%", pageable);
+  }
+
   private void verifyDrugExist(long id){
     boolean exist = this.drugRepository.existsById(id);
     if(!exist) throw new EntityNotFoundException("Medicamento no encontrado, id:"+id);

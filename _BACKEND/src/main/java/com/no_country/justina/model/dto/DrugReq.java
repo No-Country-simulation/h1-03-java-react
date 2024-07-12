@@ -1,4 +1,6 @@
 package com.no_country.justina.model.dto;
 
-public record DrugReq() {
+public record DrugReq(
+        String name
+) {
 }
