@@ -1,7 +1,21 @@
 package com.no_country.justina.model.dto;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record UserRes(Long id, String name, String lastname, String email,
-                      String password, LocalDateTime createdAt, boolean isEnabled) {
+import java.time.LocalDateTime;
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserRes {
+  private long id;
+  private String name;
+  private String lastname;
+  private String email;
+  private String password;
+  private LocalDateTime createdAt;
+  private boolean isEnable;
 }

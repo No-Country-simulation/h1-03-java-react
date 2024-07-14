@@ -1,6 +1,7 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Indication;
+import com.no_country.justina.model.enums.DrugStatus;
 import com.no_country.justina.repository.IndicationRepository;
 import com.no_country.justina.service.interfaces.IIndicationService;
 import jakarta.persistence.EntityNotFoundException;
@@ -40,6 +41,12 @@ public class IndicationServiceImp implements IIndicationService {
   public void deleteById(Long id) {
     this.verifyIndicationExist(id);
     this.indicationRepo.deleteById(id);
+  }
+
+  @Override
+  public Indication stopMedication(long id){
+    this.indicationRepo.stopIndication(id, DrugStatus.SUSPENDIDO);
+    return this.getById(id);
   }
 
   private void verifyIndicationExist(long id){

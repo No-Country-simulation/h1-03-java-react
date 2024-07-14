@@ -38,6 +38,10 @@ public class Patient {
   @OneToOne(mappedBy = "patient")
   private MedicalHistory medicalHistory;
 
+  @OneToOne
+  @JoinColumn(name = "user_id")
+  private UserEntity user;
+
   @PrePersist
   public void onCreate(){
     this.isEnabled = true;

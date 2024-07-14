@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PrescriptionRes {
+@NoArgsConstructor
+@Getter
+@Setter
+public class AppointmentReq {
 }

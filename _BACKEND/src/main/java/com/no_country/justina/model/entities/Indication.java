@@ -47,4 +47,9 @@ public class Indication {
   @ManyToOne
   @JoinColumn(name = "prescription_id", nullable = false)
   private Prescription prescription;
+
+  @PrePersist
+  public void onCreate(){
+    this.drugStatus = DrugStatus.ACTIVO;
+  }
 }

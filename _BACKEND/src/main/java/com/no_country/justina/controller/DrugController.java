@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -39,15 +38,11 @@ public class DrugController {
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   @RequestParam(defaultValue = "idDrug") String sort,
-                                  @RequestParam(defaultValue = "asc") String direction) {
-    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
+                                  @RequestParam(defaultValue = "asc") String direction,
+                                  Pageable pageable) {
     Page<Drug> searchResult = this.drugService.getAll(pageable);
-    List<DrugRes> resultDto = searchResult.getContent()
-            .stream()
-            .map(drug->this.mapper.map(drug, DrugRes.class))
-            .toList();
-    Page<DrugRes> drugDtoPage = new PageImpl<>(resultDto, pageable, searchResult.getTotalElements());
-    return ResponseEntity.ok(drugDtoPage);
+    Page<DrugRes> resultDto = searchResult.map(drug -> mapper.map(searchResult, DrugRes.class));
+    return ResponseEntity.ok(resultDto);
   }
 
   @PutMapping("/{id}")
@@ -76,15 +71,11 @@ public class DrugController {
                                         @RequestParam(defaultValue = "0") int page,
                                         @RequestParam(defaultValue = "20") int size,
                                         @RequestParam(defaultValue = "idDrug") String sort,
-                                        @RequestParam(defaultValue = "asc") String direction) {
-    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
-
-    Page<Drug> searchResult = this.drugService.getAllLikeName(pageable,name);
-    List<DrugRes> resultDto = searchResult.getContent()
-            .stream()
-            .map(drug->this.mapper.map(drug, DrugRes.class))
-            .toList();
-    Page<DrugRes> drugDtoPage = new PageImpl<>(resultDto, pageable, searchResult.getTotalElements());
-    return ResponseEntity.ok(drugDtoPage);
+                                        @RequestParam(defaultValue = "asc") String direction,
+                                        Pageable pageable
+  ) {
+    Page<Drug> searchResult = this.drugService.getAllLikeName(pageable, name);
+    var resultDto = searchResult.map(drug -> this.mapper.map(drug, DrugRes.class));
+    return ResponseEntity.ok(resultDto);
   }
 }

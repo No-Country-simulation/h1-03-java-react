@@ -9,5 +9,9 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PrescriptionRes {
+public class TreatmentRes {
+  private long idTreatment;
+  private String diagnosis;
+  private String description;
+  private long medicalHistoryId;
 }

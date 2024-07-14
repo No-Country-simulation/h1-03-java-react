@@ -1,7 +1,20 @@
 package com.no_country.justina.model.dto;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record UserReq(Long id, String name, String lastname, String email,
-                      String password, LocalDateTime createdAt, boolean isEnabled) {
+import java.time.LocalDateTime;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserReq {
+  private Long id;
+  @NotBlank private String name;
+  @NotBlank private String lastname;
+  @NotBlank private String email;
+  @NotBlank private String password;
 }
