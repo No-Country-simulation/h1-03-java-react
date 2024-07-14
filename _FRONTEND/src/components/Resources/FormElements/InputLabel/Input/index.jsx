@@ -9,7 +9,9 @@ export default function Input({
 	autoFocus = false,
 	value = "",
 	onChangeHandler = () => {},
-	isChecked = null
+	isChecked = null,
+	minLength = "3",
+	maxLength = "50"
 }) {
 	const [pattern, setPattern] = useState("");
 
@@ -34,8 +36,8 @@ export default function Input({
 					name={id}
 					placeholder={placeholder}
 					required={isRequired}
-					minLength="3"
-					maxLength="50"
+					minLength={minLength}
+					maxLength={maxLength}
 					/* min={type === "date" ? "1900/01/01" : ""}
 				max={type === "date" ? "2024/05/01" : ""} */
 					pattern={pattern}

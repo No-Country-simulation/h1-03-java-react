@@ -1,10 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import getPathRoutes from "../../helpers/pathroutes"
 import Home from "../../pages/Home"
 import Error404 from "../../pages/Error404";
 import Error401 from "../../pages/Error401";
-import getPathRoutes from "../../helpers/pathroutes"
-
 import Doctors from "../../pages/Doctors";
 import Patients from "../../pages/Patients";
 import Appointments from "../../pages/Appointments";
@@ -14,6 +13,14 @@ import Treatments from "../../pages/Treatments";
 import Signin from "../../pages/Signin";
 import Signup from "../../pages/Signup";
 import UserProfile from "../../pages/UserProfile"
+import CreatePatient from "../../pages/Patients/Crud/Create"
+import ReadPatient from "../../pages/Patients/Crud/Read"
+import UpdatePatient from "../../pages/Patients/Crud/Update"
+import DeletePatient from "../../pages/Patients/Crud/Delete"
+import CreateDoctor from "../../pages/Doctors/Crud/Create"
+import ReadDoctor from "../../pages/Doctors/Crud/Read"
+import UpdateDoctor from "../../pages/Doctors/Crud/Update"
+import DeleteDoctor from "../../pages/Doctors/Crud/Delete"
 
 export default function Router() {
 
@@ -43,6 +50,17 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'signup')}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('sp', 'user_profile')}`} element={<UserProfile />} />
 		<Route path={`${getPathRoutes('sp', 'error401')}`} element={<Error401 />} />
+
+
+
+		<Route path={'/crear-paciente'} element={<CreatePatient />} />
+		<Route path={'/actualizar-paciente'} element={<UpdatePatient />} />
+		<Route path={'/borrar-paciente'} element={<DeletePatient />} />
+		<Route path={'/leer-paciente'} element={<ReadPatient />} />
+		<Route path={'/crear-medico'} element={<CreateDoctor />} />
+		<Route path={'/actualizar-medico'} element={<UpdateDoctor />} />
+		<Route path={'/borrar-medico'} element={<DeleteDoctor />} />
+		<Route path={'/leer-medico'} element={<ReadDoctor />} />
 
 		<Route path="*" element={<Error404 />} />
 	</Routes>

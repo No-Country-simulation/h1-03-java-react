@@ -12,6 +12,8 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchTest } from "../../services";
 import { setI18n } from "../../redux/actions";
 import logo from "../../assets/svg/logo/logo.svg";
+import JustinaLaw from "./JustinaLaw";
+import NationalDayImpact from "./NationalDayImpact";
 
 export default function HomeComponent() {
 	const language = useSelector((state) => state.i18nReducer.language);
@@ -31,16 +33,17 @@ export default function HomeComponent() {
 	};
 	const [val, setVal] = useState();
 	return (
-		<section className="flex flex-col bg-white py-5">
-			<img src={logo} />
-			<p
-				className="cursor-pointer text-green-500 fw-bolder underline text-center"
-				onClick={() =>
-					dispatch(setI18n(language === "en" ? "sp" : "en"))
-				}
-			>
-				{language === "en" ? "Change LANGUAGE" : "Cambiar IDIOMA"}
-			</p>
+		<section className="flex flex-col bg-white pb-5">
+			<img
+				src={logo}
+				alt="logo"
+				className="my-5"
+				aria-label="logo"
+				title="Logo"
+			/>
+			<JustinaLaw />
+            <NationalDayImpact />
+
 
 			{isLoading ? (
 				<p className="text-center">

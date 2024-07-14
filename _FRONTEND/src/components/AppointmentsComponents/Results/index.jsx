@@ -30,6 +30,7 @@ export default function Results() {
 						title="medic avatar"
 						width={80}
 						height={80}
+						loading="lazy"
 					/>
 					<p className="bg-[#88969f] font-semibold text-white p-1 px-3 rounded-md">
 						Dr. Rios Saverio

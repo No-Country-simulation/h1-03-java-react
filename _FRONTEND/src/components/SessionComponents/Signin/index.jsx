@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import i18n from '../../../i18n/session/signin/index.json'
 import logo from '../../../assets/svg/logo/logo.svg'
+import getPathRoutes from '../../../helpers/pathroutes'
 
 export default function Signin() {
     const navigate = useNavigate()
     const language = useSelector((state)=>state.i18nReducer.language)
-
 
     return (
         <section className="grid sm:justify-center gap-5">
@@ -21,6 +21,7 @@ export default function Signin() {
                 title="Justina.io"
                 width={160}
                 height={160}
+                loading="lazy"
             />
 
             <p>{i18n[language].pageTitle}</p>
@@ -65,11 +66,8 @@ export default function Signin() {
 
             <p 
                 className="text-center"
-                role="button"
-                onClick={()=>navigate()}
                 title={i18n[language].dontHaveAccountTitle}
                 aria-label={i18n[language].dontHaveAccountTitle}
-                
             >
                 {i18n[language].dontHaveAccountText}&nbsp;
                 <span 
@@ -77,7 +75,7 @@ export default function Signin() {
                     role="button"
                     title={i18n[language].signInLinkTitle}
                     aria-label={i18n[language].signInLinkTitle}
-                    onClick={()=>navigate()}
+                    onClick={() => navigate(getPathRoutes(language, 'signup'))}
                 > 
                     {i18n[language].signInLinkText}
                 </span>

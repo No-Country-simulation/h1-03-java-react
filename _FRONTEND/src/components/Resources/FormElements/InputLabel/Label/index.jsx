@@ -5,7 +5,7 @@ export default function Label({ id, title }) {
     return (
         <label 
             htmlFor={id}
-            className="text-start"
+            className="ms-0 me-auto"
         >
             {title}
         </label>

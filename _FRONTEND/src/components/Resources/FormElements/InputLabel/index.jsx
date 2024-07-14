@@ -11,7 +11,9 @@ export default function InputLabel({
 	autoFocus = false,
 	value = "",
 	onChangeHandler = () => {},
-	isChecked = null
+	isChecked = null,
+	minLength,
+	maxLength
 }) {
 	return (
 		<div className="flex flex-col justify-center items-center gap-3 mb-3 w-fit">
@@ -27,6 +29,8 @@ export default function InputLabel({
 				value={value}
 				onChangeHandler={onChangeHandler}
 				isChecked={isChecked}
+				minLength = {minLength}
+				maxLength = {maxLength}
 			/>
 		</div>
 	);

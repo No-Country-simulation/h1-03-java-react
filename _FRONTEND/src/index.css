@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets//fonts//monserrat/Montserrat-Regular.ttf");
+  src: url("./assets//fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 :root {
   font-family: "Montserrat", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

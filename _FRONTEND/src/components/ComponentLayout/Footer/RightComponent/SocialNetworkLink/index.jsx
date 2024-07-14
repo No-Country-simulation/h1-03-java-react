@@ -9,6 +9,7 @@ export default function SocialNetworkLink({ href, src, title, width='30', height
 				aria-label={title}
 				width={width}
 				height={height}
+				loading="lazy"
 			/>
 		</a>
 	);

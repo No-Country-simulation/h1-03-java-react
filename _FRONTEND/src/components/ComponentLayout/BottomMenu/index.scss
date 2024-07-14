@@ -1,6 +1,8 @@
+@use '../../../styles/variables' as *;
+
 .bottomMenu {
 	position: fixed;
-	background-color: rgb(94, 94, 94);
+	background-color: $blue-color;
 	border: 1px solid rgb(82, 82, 82);
 	color: #fff;
 	bottom: 0;

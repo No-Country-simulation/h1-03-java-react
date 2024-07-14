@@ -7,15 +7,18 @@
         "signUpLinkText": "Iniciar sesión.",
         "signUpLinkTitle": "Click para Iniciar sesión.",
 
-        "nameTitle": "Ingrese su nombre",
-        "namePlaceholder": "NOMBRE",
+        "firstNameTitle": "Ingrese su nombre",
+        "firstNamePlaceholder": "NOMBRE",
+        "lastNameTitle": "Ingrese su apellido",
+        "lastNamePlaceholder": "APELLIDO",
         "emailTitle": "Ingrese su Correo electrónico",
         "emailPlaceholder": "CORREO ELECTRÓNICO",
         "passwordTitle": "Ingrese su Contraseña",
         "passwordPlaceholder": "CONTRASEÑA",
         "repeatPasswordTitle": "Repita su Contraseña",
-        "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA"
-
+        "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA",
+        "roleList": ["Seleccionar rol","Admin", "Paciente", "Médico"],
+        "roleTitle": "Seleccione su rol"
     },
     "en":{
         "pageTitle": "SIGN IN",
@@ -26,13 +29,17 @@
         "signUpLinkText": "Sign In.",
         "signUpLinkTitle": "Click to Sign In.",
  
-        "nameTitle": "Enter your name",
-        "namePlaceholder": "NAME",
+        "firstNameTitle": "Enter your first name",
+        "firstNamePlaceholder": "FIRST NAME",
+        "lastNameTitle": "Enter your last name",
+        "lastNamePlaceholder": "LAST NAME",
         "emailTitle": "Enter your E-mail",
         "emailPlaceholder": "E-MAIL",
         "passwordTitle": "Enter your password",
         "passwordPlaceholder": "PASSWORD",
         "repeatPasswordTitle": "Repeat your password",
-        "repeatPasswordPlaceholder": "REPEAT PASSWORD"
+        "repeatPasswordPlaceholder": "REPEAT PASSWORD",
+        "roleList": ["Select role","Admin", "Patient", "Doctor"],
+        "roleTitle": "Select your role" 
     }
 }

@@ -9,7 +9,7 @@ export default function FilterInput({ filter, setFilter }) {
     return (
         <div className="block">
             <Input
-                autoFocus={true}
+                autoFocus={false}
                 type={'text'}
                 id={'searchInput'}
                 placeholder={i18n[language].filterInput.placeholder}

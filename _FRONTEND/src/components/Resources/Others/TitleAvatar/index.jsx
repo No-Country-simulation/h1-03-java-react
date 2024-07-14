@@ -13,6 +13,7 @@ export default function TitleAvatar({title}) {
 				className="rounded-full bg-gray border absolute top-[50%] translate-y-[-50%] right-10"
 				width={50}
 				height={50}
+				loading="lazy"
 			/>
 		</p>
 	);

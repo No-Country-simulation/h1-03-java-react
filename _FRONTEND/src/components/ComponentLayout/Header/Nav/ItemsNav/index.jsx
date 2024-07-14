@@ -8,8 +8,8 @@ import "./index.css";
 import getItemsNav from "../../../../../helpers/itemsNav";
 
 export default function ItemsNav() {
-	const language = useSelector((state)=>state.i18nReducer.language)
-	const itemsNav = getItemsNav(language)
+	const language = useSelector((state) => state.i18nReducer.language);
+	const itemsNav = getItemsNav(language);
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -21,14 +21,18 @@ export default function ItemsNav() {
 
 	return (
 		<>
-			{itemsNav.map((e, i, arr) => (
+			{itemsNav.map((e, i, arr) =>
 				i === arr.length - 1 ? (
 					<div
 						className="itemNavWithAvatar"
 						key={i + "1"}
 						onClick={() => handleClick(e)}
 					>
-						<img src={`${NeutralAvatar}`} />
+						<img
+							src={`${NeutralAvatar}`}
+							alt="avatar"
+							loading="lazy"
+						/>
 						<li data-text={e.name}>{e.name}</li>
 					</div>
 				) : (
@@ -40,7 +44,7 @@ export default function ItemsNav() {
 						{e.name}
 					</li>
 				)
-			))}
+			)}
 		</>
 	);
 }

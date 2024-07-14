@@ -1,24 +1,38 @@
 import React from "react";
 import Input from "../../Resources/FormElements/InputLabel/Input";
 import Button from "../../Resources/FormElements/Button";
+import Select from "../../Resources/FormElements/Select";
 import { useSelector } from "react-redux";
 import i18n from '../../../i18n/session/signup/index.json'
+import getPathRoutes from "../../../helpers/pathroutes";
+import { useNavigate } from "react-router-dom";
  
 export default function Signup() {
 	const language = useSelector((state)=>state.i18nReducer.language)
+	const navigate = useNavigate()
 
-
+//PONER EL LANGUAGE EN EL LOCALSTORAGE!!!!!
 	return (
 		<section className="grid sm:justify-center gap-5">
 			<p>{i18n[language].pageTitle}</p>
 
 			<Input
-				id={"nameSignup"}
+				id={"firstNameSignup"}
 				type={"text"}
-				placeholder={i18n[language].namePlaceholder}
-				title={i18n[language].nameTitle}
+				placeholder={i18n[language].firstNamePlaceholder}
+				title={i18n[language].firstNameTitle}
 				isRequired={true}
 				autoFocus={true}
+				value=""
+				onChangeHandler={() => {}}
+			/>
+
+			<Input
+				id={"lastNameSignup"}
+				type={"text"}
+				placeholder={i18n[language].lastNamePlaceholder}
+				title={i18n[language].lastNameTitle}
+				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
 			/>
@@ -53,7 +67,16 @@ export default function Signup() {
 				onChangeHandler={() => {}}
 			/>
 
-            <p className="text-center">&nbsp;</p>
+			<Select 
+				id={'role'}
+				title={i18n[language].roleTitle}
+				arrayOptions={i18n[language].roleList}
+				onChangeHandler = {() => {}}
+				value = ""
+				displayLabel = "block"
+				isRequired = {true}
+				hasLabel = {false}
+			/>
 
 			<Button
 				text={i18n[language].buttonSignupText}
@@ -69,7 +92,7 @@ export default function Signup() {
 					role="button"
 					title={i18n[language].signUpLinkTitle}
 					aria-label={i18n[language].signUpLinkTitle}
-					onClick={() => navigate()}
+					onClick={() => navigate(getPathRoutes(language, 'signin'))}
 				>
 					{i18n[language].signUpLinkText}
 				</span>
