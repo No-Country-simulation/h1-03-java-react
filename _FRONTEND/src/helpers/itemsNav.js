@@ -1,16 +1,10 @@
-import pathroutes from "./pathroutes"
+import i18n from '../i18n/nav/index.json'
 
-const itemsNav = [
-    { name: "Home", route: pathroutes.home },
-    { name: "Pacientes", route: pathroutes.patients },
-    { name: "Médicos", route: pathroutes.doctors },
-    { name: "Citas", route: pathroutes.appointments },
-    { name: "Historia clínica", route: pathroutes.medical_records },
-    { name: "Recetas", route: pathroutes.prescriptions },
-    { name: "Tratamientos", route: pathroutes.treatments },
-    { name: "Signin", route: pathroutes.signin },
-    { name: "Signup", route: pathroutes.signup },
-    { name: "Perfil", route: pathroutes.user_profile }
-]
+const getItemsNav = (language) => {
 
-export default itemsNav
+    return Object.values(i18n[language]).map(
+        (e) => Object.values(e)[0]
+    )
+}
+
+export default getItemsNav

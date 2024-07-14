@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Montserrat';
+	src: url('./assets//fonts//monserrat/Montserrat-Regular.ttf');
+}
+
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Montserrat' ,Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-size: clamp(15px, 1vw, 60px);
 	font-weight: 400;
@@ -49,7 +54,7 @@ h1 {
 }
 
 button {
-	background-color: rgb(174, 174, 174);
+	background-color: #5666BF;
 	border-radius: 8px;
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;

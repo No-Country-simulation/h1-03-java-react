@@ -19,7 +19,7 @@ export default function Results() {
 	];
 
 	return (
-		<section className="bg-slate-200 rounded-md p-10">
+		<section className="bg-slate-200 rounded-md p-10 ">
 			<div className="grid grid-cols-2">
 				<div className="w-fit text-center">
 					<img

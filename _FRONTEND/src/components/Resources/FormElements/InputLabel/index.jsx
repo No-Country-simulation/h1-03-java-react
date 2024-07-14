@@ -14,7 +14,7 @@ export default function InputLabel({
 	isChecked = null
 }) {
 	return (
-		<div className="flex flex-col justify-center items-center gap-3 mb-3">
+		<div className="flex flex-col justify-center items-center gap-3 mb-3 w-fit">
 			<Label id={id} title={title} />
 			<Input
 				className="bg-white"

@@ -2,15 +2,20 @@ import React from 'react'
 import Input from '../../Resources/FormElements/InputLabel/Input'
 import Button from '../../Resources/FormElements/Button'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import i18n from '../../../i18n/session/signin/index.json'
+import logo from '../../../assets/svg/logo/logo.svg'
 
 export default function Signin() {
     const navigate = useNavigate()
+    const language = useSelector((state)=>state.i18nReducer.language)
+
 
     return (
-        <section className="grid justify-center gap-5">
+        <section className="grid sm:justify-center gap-5">
             <img
-                src=""
-                className="w-40 h-40 text-center bg-slate-400 m-auto rounded-full object-cover"
+                src={logo}
+                className="w-70 h-70 text-center m-auto bg-white"
                 aria-label="Logo"
                 alt="Logo"
                 title="Justina.io"
@@ -18,13 +23,13 @@ export default function Signin() {
                 height={160}
             />
 
-            <p>SIGN-IN</p>
+            <p>{i18n[language].pageTitle}</p>
 
             <Input
                 id={'emailSignin'}
                 type={'email'}
-                placeholder={'E-MAIL'}
-                title={'Ingrese su email'}
+                placeholder={i18n[language].emailPlaceholder}
+                title={i18n[language].emailTitle}
                 isRequired={true}
                 autoFocus={true}
                 value=''
@@ -34,8 +39,8 @@ export default function Signin() {
             <Input
                 id={'passwordSignin'}
                 type={'password'}
-                placeholder={'CONTRASEÑA'}
-                title={'Ingrese su password'}
+                placeholder={i18n[language].passwordPlaceholder}
+                title={i18n[language].passwordTitle}
                 isRequired={true}
                 value=''
                 onChangeHandler={()=>{}}
@@ -44,25 +49,37 @@ export default function Signin() {
             <p 
                 className="text-end"
                 role="button"
+                title={i18n[language].forgotPassword}
+                aria-label={i18n[language].forgotPassword}
                 onClick={()=>navigate()}
             >
-                Olvidó su contraseña?
+                {i18n[language].forgotPassword}
             </p>
 
             <Button 
-                text={'INICIAR SESIÓN'}
-                title={'Iniciar Sesión'}
+                text={i18n[language].buttonSigninText}
+                title={i18n[language].buttonSigninTitle}
                 onClickHandler={()=>{}}
+                textColor="#FFF"
             />
 
-            <p className="text-center">No tiene una cuenta?&nbsp;
+            <p 
+                className="text-center"
+                role="button"
+                onClick={()=>navigate()}
+                title={i18n[language].dontHaveAccountTitle}
+                aria-label={i18n[language].dontHaveAccountTitle}
+                
+            >
+                {i18n[language].dontHaveAccountText}&nbsp;
                 <span 
                     className="underline"
                     role="button"
-                    title="Click para registrarse"
+                    title={i18n[language].signInLinkTitle}
+                    aria-label={i18n[language].signInLinkTitle}
                     onClick={()=>navigate()}
                 > 
-                    Registrate.
+                    {i18n[language].signInLinkText}
                 </span>
             </p>
         </section>

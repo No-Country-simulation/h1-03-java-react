@@ -1,5 +1,5 @@
 .footer {
-  background-color: #787878;
+  background-color: #D98236;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -24,7 +24,7 @@
   font-size: 1.2rem;
 }
 .footer .footerContent .leftSection .leftSectionContent {
-  color: #c4c4c4;
+  color: #1D1D1D;
   font-size: 0.8rem;
   margin: 0;
 }
@@ -52,7 +52,7 @@
   width: 100%;
 }
 .footer .copyright a {
-  color: #c4c4c4;
+  color: #1D1D1D;
   cursor: pointer;
   padding-left: 1ch;
   transition: 500ms;

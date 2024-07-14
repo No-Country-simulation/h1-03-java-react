@@ -8,11 +8,9 @@ import Results from './Results'
 export default function ApointmentsMainComponent() {
 
     return (
-        <section className="grid justify-center gap-5">
+        <section className="grid m-auto sm:justify-center sm:w-[400px] gap-5">
             <TitleAvatar title="AGENDAR CITA" />
             <FilterAppointment />
-            <Results />
-            <Results />
             <Results />
         </section>
     )

@@ -2,7 +2,6 @@ import {
     SETDISPLAYSPINNER, 
     SETHEADERHEIGHT, 
     SETISACTIVEHAMBURGERBUTTON, 
-    SETITEMSNAV, 
     SETI18N 
 } from "../types"
 
@@ -18,11 +17,6 @@ export const setHeaderHeight = (payload) => ({
 
 export const setIsActiveHamburgerButton = (payload) => ({
     type: SETISACTIVEHAMBURGERBUTTON,
-    payload: payload
-})
-
-export const setItemsNav = (payload) => ({
-    type: SETITEMSNAV,
     payload: payload
 })
 

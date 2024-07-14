@@ -12,7 +12,7 @@ export default function Header() {
 			className="header"
 			style={{ 
 				height: `${headerHeightValue}px`,
-				backgroundColor: isActiveHamburgerButton ? 'rgba(0,0,0)' : ''
+				/* backgroundColor: isActiveHamburgerButton ? 'rgba(0,0,0)' : '' */
 			}}
 		>
 			{/* <a

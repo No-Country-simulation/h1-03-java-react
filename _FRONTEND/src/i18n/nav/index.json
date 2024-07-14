@@ -1,0 +1,26 @@
+{
+    "sp": [
+        {"home" :{ "name": "Inicio", "route": "/" }},
+        {"patients" :{ "name": "Pacientes", "route": "/pacientes" }},
+        {"doctors" :{ "name": "Médicos", "route": "/medicos" }},
+        {"appointments" :{ "name": "Citas", "route": "/citas" }},
+        {"medical_records" :{ "name": "Historia clínica", "route": "/historia-clinica" }},
+        {"prescriptions" :{ "name": "Recetas", "route": "/recetas" }},
+        {"treatments" :{ "name": "Tratamientos", "route": "/tratamientos" }},
+        {"signin" :{ "name": "Iniciar sesión", "route": "/iniciar-sesion" }},
+        {"signup" :{ "name": "Registrarse", "route": "/registrarse" }},
+        {"user_profile" :{ "name": "Perfil", "route": "/perfil-usuario" }}
+    ],
+    "en":[
+        {"home" :{ "name": "Home", "route": "/" }},
+        {"patients" :{ "name": "Patients", "route": "/patients" }},
+        {"doctors" :{ "name": "Medics", "route": "/medics" }},
+        {"appointments" :{ "name": "Appointments", "route": "/appointments" }},
+        {"medical_records" :{ "name": "Medical records", "route": "medical-records" }},
+        {"prescriptions" :{ "name": "Prescriptions", "route": "/prescriptions" }},
+        {"treatments" :{ "name": "Treatments", "route": "/treatments" }},
+        {"signin" :{ "name": "Signin", "route": "/signin" }},
+        {"signup" :{ "name": "Signup", "route": "/signup" }},
+        {"user_profile" :{ "name": "Profile", "route": "/user-profile" }}
+     ]
+}

@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import ItemsNav from "./ItemsNav";
 import "./index.css";
+import getItemsNav from "../../../../helpers/itemsNav";
 
 export default function Nav() {
-	const itemsNav = useSelector((state) => state.headerReducer.itemsNav);
+	const language = useSelector((state)=>state.i18nReducer.language)
+	const itemsNav = getItemsNav(language)
 
 	return (
 		<>

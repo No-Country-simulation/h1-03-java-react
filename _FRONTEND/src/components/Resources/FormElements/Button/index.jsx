@@ -14,7 +14,7 @@ export default function Button({
 				<div className="text-center">
 					<button
 						type={type}
-						className={`rounded-full w-96 text-[${textColor}]`}
+						className={`rounded-full w-full text-[${textColor}]`}
 						title={title}
 						aria-label={title}
 						disabled={isDisabled}

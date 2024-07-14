@@ -1,0 +1,38 @@
+{
+    "sp":{
+        "pageTitle": "REGISTRARSE",
+        "buttonSignupText": "ENVIAR",
+        "buttonSignupTitle": "Enviar",
+        "alreadyHaveAccount": "Ya tiene una cuenta?",
+        "signUpLinkText": "Iniciar sesión.",
+        "signUpLinkTitle": "Click para Iniciar sesión.",
+
+        "nameTitle": "Ingrese su nombre",
+        "namePlaceholder": "NOMBRE",
+        "emailTitle": "Ingrese su Correo electrónico",
+        "emailPlaceholder": "CORREO ELECTRÓNICO",
+        "passwordTitle": "Ingrese su Contraseña",
+        "passwordPlaceholder": "CONTRASEÑA",
+        "repeatPasswordTitle": "Repita su Contraseña",
+        "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA"
+
+    },
+    "en":{
+        "pageTitle": "SIGN IN",
+        "buttonSignupText": "SEND",
+        "buttonSignupTitle": "Send",
+        "forgotPassword": "Forgot your password?",
+        "alreadyHaveAccount": "Already have an account? ",
+        "signUpLinkText": "Sign In.",
+        "signUpLinkTitle": "Click to Sign In.",
+ 
+        "nameTitle": "Enter your name",
+        "namePlaceholder": "NAME",
+        "emailTitle": "Enter your E-mail",
+        "emailPlaceholder": "E-MAIL",
+        "passwordTitle": "Enter your password",
+        "passwordPlaceholder": "PASSWORD",
+        "repeatPasswordTitle": "Repeat your password",
+        "repeatPasswordPlaceholder": "REPEAT PASSWORD"
+    }
+}

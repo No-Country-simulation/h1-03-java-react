@@ -3,6 +3,7 @@ import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import ItemsNav from "../../Nav/ItemsNav";
 import { setIsActiveHamburgerButton } from "../../../../../redux/actions";
+import getItemsNav from "../../../../../helpers/itemsNav";
 
 export default function NavList() {
 	const dispatch = useDispatch()
@@ -10,7 +11,8 @@ export default function NavList() {
 	const isActiveHamburgerButton = useSelector(
 		(state) => state.headerReducer.isActiveHamburgerButton
 	);
-	const itemsNav = useSelector((state) => state.headerReducer.itemsNav);
+	const language = useSelector((state)=>state.i18nReducer.language)
+	const itemsNav = getItemsNav(language)
 
 	const scrollHandler = useRef(() => {
 		window.scrollTo(0, 0);
@@ -33,6 +35,7 @@ export default function NavList() {
 						backdropFilter: isActiveHamburgerButton
 							? "blur(10px) saturate(50%)"
 							: "initial",
+						pointerEvents: isActiveHamburgerButton ? "all" : "none",
 					}}
 					onClick={()=>dispatch(setIsActiveHamburgerButton(false))}
 				>

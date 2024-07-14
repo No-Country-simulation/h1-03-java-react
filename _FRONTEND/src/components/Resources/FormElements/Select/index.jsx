@@ -25,7 +25,7 @@ export default function Select({
 				</label>
 			)}
 			<select
-				className="p-3 w-96 m-0 rounded-full"
+				className="p-3 w-[-webkit-fill-available] m-0 rounded-full border-[rgb(174, 174, 174)]"
 				id={id}
 				name={id}
 				required={isRequired}

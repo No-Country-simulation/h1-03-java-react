@@ -1,7 +1,7 @@
-$gray-color: #c4c4c4;
+@use '../../../styles/variables' as *;
 
 .footer{
-    background-color: #787878;
+    background-color: $orange-color;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -26,7 +26,7 @@ $gray-color: #c4c4c4;
                 font-size: 1.2rem;
             }
             & .leftSectionContent{
-                color: $gray-color;
+                color: $dark-color;
                 font-size: 0.8rem;
                 margin:0;
             }
@@ -60,7 +60,7 @@ $gray-color: #c4c4c4;
         width: 100%;
 
         & a{
-            color:$gray-color;
+            color:$dark-color;
             cursor:pointer;
             padding-left: 1ch;
             transition: 500ms ;

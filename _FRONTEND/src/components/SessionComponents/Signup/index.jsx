@@ -1,17 +1,22 @@
 import React from "react";
 import Input from "../../Resources/FormElements/InputLabel/Input";
 import Button from "../../Resources/FormElements/Button";
-
+import { useSelector } from "react-redux";
+import i18n from '../../../i18n/session/signup/index.json'
+ 
 export default function Signup() {
+	const language = useSelector((state)=>state.i18nReducer.language)
+
+
 	return (
-		<section className="grid justify-center gap-5">
-			<p>SIGN-UP</p>
+		<section className="grid sm:justify-center gap-5">
+			<p>{i18n[language].pageTitle}</p>
 
 			<Input
 				id={"nameSignup"}
 				type={"text"}
-				placeholder={"NOMBRE"}
-				title={"Ingrese su nombre"}
+				placeholder={i18n[language].namePlaceholder}
+				title={i18n[language].nameTitle}
 				isRequired={true}
 				autoFocus={true}
 				value=""
@@ -21,8 +26,8 @@ export default function Signup() {
 			<Input
 				id={"emailSignup"}
 				type={"email"}
-				placeholder={"E-MAIL"}
-				title={"Ingrese su email"}
+				placeholder={i18n[language].emailPlaceholder}
+				title={i18n[language].emailTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
@@ -31,8 +36,8 @@ export default function Signup() {
 			<Input
 				id={"passwordSignup"}
 				type={"password"}
-				placeholder={"CONTRASEÑA"}
-				title={"Ingrese su contraseña"}
+				placeholder={i18n[language].passwordPlaceholder}
+				title={i18n[language].passwordTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
@@ -41,8 +46,8 @@ export default function Signup() {
             <Input
 				id={"passwordRepeatSignup"}
 				type={"password"}
-				placeholder={"REPETIR CONTRASEÑA"}
-				title={"Ingrese nuevamente su contraseña"}
+				placeholder={i18n[language].repeatPasswordPlaceholder}
+				title={i18n[language].repeatPasswordTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
@@ -51,20 +56,22 @@ export default function Signup() {
             <p className="text-center">&nbsp;</p>
 
 			<Button
-				text={"REGISTRARSE"}
-				title={"Registrarse"}
+				text={i18n[language].buttonSignupText}
+				title={i18n[language].buttonSignupTitle}
 				onClickHandler={() => {}}
+				textColor="#FFF"
 			/>
 
 			<p className="text-center">
-				Ya tiene una cuenta?&nbsp;
+				{i18n[language].alreadyHaveAccount}&nbsp;
 				<span
 					className="underline"
 					role="button"
-					title="Click para registrarse"
+					title={i18n[language].signUpLinkTitle}
+					aria-label={i18n[language].signUpLinkTitle}
 					onClick={() => navigate()}
 				>
-					Iniciar sesión.
+					{i18n[language].signUpLinkText}
 				</span>
 			</p>
 		</section>

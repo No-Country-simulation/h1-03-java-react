@@ -1,12 +1,16 @@
 import React from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setIsActiveHamburgerButton } from "../../../../../redux/actions";
 import NeutralAvatar from "../../../../../assets/svg/avatars/neutralAvatar.svg";
 import "./index.css";
+import getItemsNav from "../../../../../helpers/itemsNav";
 
 export default function ItemsNav() {
-	const itemsNav = useSelector((state) => state.headerReducer.itemsNav);
+	const language = useSelector((state)=>state.i18nReducer.language)
+	const itemsNav = getItemsNav(language)
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 

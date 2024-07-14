@@ -28,7 +28,7 @@ export default function Input({
 		<>
 			{id && (
 				<input
-					className="p-3 w-96 rounded-full mt-auto mb-0"
+					className="p-3 sm:w-[inherit] rounded-full mb-0"
 					type={type}
 					id={id}
 					name={id}
