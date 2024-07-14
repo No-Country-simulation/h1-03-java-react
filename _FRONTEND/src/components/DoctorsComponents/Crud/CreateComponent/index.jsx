@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '../../../Resources/Others/Container'
 import Form from '../../../Resources/FormElements/Form'
 import InputLabel from '../../../Resources/FormElements/InputLabel'
 import Select from '../../../Resources/FormElements/Select'
@@ -12,7 +13,7 @@ export default function CreateDoctorComponent() {
     }
 
     return (
-        <section className="grid sm:justify-center gap-5">
+        <Container>
             <p>Alta de Médico</p>
 
             <Form handleSubmit={(e)=>handleSubmit(e)}>
@@ -60,6 +61,6 @@ export default function CreateDoctorComponent() {
                 />
             </Form>
             
-        </section>
+        </Container>
     )
 }

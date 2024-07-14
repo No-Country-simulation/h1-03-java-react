@@ -1,4 +1,5 @@
 import React from "react";
+import Container from "../../Resources/Others/Container";
 import Input from "../../Resources/FormElements/InputLabel/Input";
 import Button from "../../Resources/FormElements/Button";
 import Select from "../../Resources/FormElements/Select";
@@ -13,7 +14,7 @@ export default function Signup() {
 
 //PONER EL LANGUAGE EN EL LOCALSTORAGE!!!!!
 	return (
-		<section className="grid sm:justify-center gap-5">
+		<Container>
 			<p>{i18n[language].pageTitle}</p>
 
 			<Input
@@ -97,6 +98,6 @@ export default function Signup() {
 					{i18n[language].signUpLinkText}
 				</span>
 			</p>
-		</section>
+			</Container>
 	);
 }

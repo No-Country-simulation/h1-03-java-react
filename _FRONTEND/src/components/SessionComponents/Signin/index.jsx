@@ -1,4 +1,5 @@
 import React from 'react'
+import Container from '../../Resources/Others/Container'
 import Input from '../../Resources/FormElements/InputLabel/Input'
 import Button from '../../Resources/FormElements/Button'
 import { useNavigate } from 'react-router-dom'
@@ -12,7 +13,7 @@ export default function Signin() {
     const language = useSelector((state)=>state.i18nReducer.language)
 
     return (
-        <section className="grid sm:justify-center gap-5">
+        <Container>
             <img
                 src={logo}
                 className="w-70 h-70 text-center m-auto bg-white"
@@ -80,6 +81,6 @@ export default function Signin() {
                     {i18n[language].signInLinkText}
                 </span>
             </p>
-        </section>
+        </Container>
     )
 }

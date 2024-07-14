@@ -16,7 +16,7 @@ export default function InputLabel({
 	maxLength
 }) {
 	return (
-		<div className="flex flex-col justify-center items-center gap-3 mb-3 w-fit">
+		<div className="flex flex-col justify-start items-start gap-3 mb-3 w-[inherit]">
 			<Label id={id} title={title} />
 			<Input
 				className="bg-white"

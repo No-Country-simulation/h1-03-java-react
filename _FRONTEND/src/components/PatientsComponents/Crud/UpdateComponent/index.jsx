@@ -1,12 +1,13 @@
 import React from 'react'
+import Container from '../../../Resources/Others/Container'
 
 export default function UpdatePatientComponent() {    
 
     return (
-        <section>
+        <Container>
             <p>Modificación de Paciente</p>
 
             
-        </section>
+        </Container>
     )
 }

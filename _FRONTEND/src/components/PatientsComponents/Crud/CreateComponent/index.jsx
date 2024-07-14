@@ -1,9 +1,10 @@
 import React from 'react'
+import Container from '../../../Resources/Others/Container'
 import Form from '../../../Resources/FormElements/Form'
 import InputLabel from '../../../Resources/FormElements/InputLabel'
 import Select from '../../../Resources/FormElements/Select'
 import { useSelector } from 'react-redux'
-import i18n from '../../../../i18n/patients'
+/* import i18n from '../../../../i18n/patients' */
 
 export default function CreatePatientComponent() {   
     const language = useSelector((state)=>state.i18nReducer.language)
@@ -13,7 +14,7 @@ export default function CreatePatientComponent() {
     }
 
     return (
-        <section className="grid sm:justify-center gap-5">
+        <Container>
             <p>Alta de Paciente</p>
 
             <Form handleSubmit={(e)=>handleSubmit(e)}>
@@ -61,6 +62,6 @@ export default function CreatePatientComponent() {
                 />
             </Form>
             
-        </section>
+        </Container>
     )
 }

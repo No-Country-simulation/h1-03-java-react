@@ -1,4 +1,5 @@
 import React from "react";
+import Label from "../InputLabel/Label";
 
 export default function Select({
 	id,
@@ -17,12 +18,7 @@ export default function Select({
 	return (
 		<div className="text-center flex flex-col gap-3 justify-center items-center">
 			{hasLabel && (
-				<label
-					htmlFor={id}
-					className={`text-start w-96 ${displayLabel}`}
-				>
-					{title}:
-				</label>
+				<Label id={id} title={title} />
 			)}
 			<select
 				className="p-3 w-[-webkit-fill-available] m-0 rounded-full border-[rgb(174, 174, 174)]"

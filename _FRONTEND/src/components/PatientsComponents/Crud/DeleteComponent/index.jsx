@@ -1,12 +1,13 @@
 import React from 'react'
+import Container from '../../../Resources/Others/Container'
 
 export default function DeletePatientComponent() {    
 
     return (
-        <section>
+        <Container>
             <p>Baja de Paciente</p>
 
             
-        </section>
+        </Container>
     )
 }
