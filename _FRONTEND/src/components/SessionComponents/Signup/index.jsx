@@ -12,13 +12,12 @@ export default function Signup() {
 	const language = useSelector((state)=>state.i18nReducer.language)
 	const navigate = useNavigate()
 
-//PONER EL LANGUAGE EN EL LOCALSTORAGE!!!!!
 	return (
 		<Container>
 			<p>{i18n[language].pageTitle}</p>
 
 			<Input
-				id={"firstNameSignup"}
+				id={"name"}
 				type={"text"}
 				placeholder={i18n[language].firstNamePlaceholder}
 				title={i18n[language].firstNameTitle}
@@ -26,46 +25,56 @@ export default function Signup() {
 				autoFocus={true}
 				value=""
 				onChangeHandler={() => {}}
+				maxLength="50"
+				pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
 			/>
 
 			<Input
-				id={"lastNameSignup"}
+				id={"lastname"}
 				type={"text"}
 				placeholder={i18n[language].lastNamePlaceholder}
 				title={i18n[language].lastNameTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
+				maxLength="50"
+				pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
 			/>
 
 			<Input
-				id={"emailSignup"}
+				id={"email"}
 				type={"email"}
 				placeholder={i18n[language].emailPlaceholder}
 				title={i18n[language].emailTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
+				maxLength="50"
+				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 			/>
 
 			<Input
-				id={"passwordSignup"}
+				id={"password"}
 				type={"password"}
 				placeholder={i18n[language].passwordPlaceholder}
 				title={i18n[language].passwordTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
+				maxLength="16"
+				pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" 
 			/>
 
             <Input
-				id={"passwordRepeatSignup"}
+				id={"repeatpassword"}
 				type={"password"}
 				placeholder={i18n[language].repeatPasswordPlaceholder}
 				title={i18n[language].repeatPasswordTitle}
 				isRequired={true}
 				value=""
 				onChangeHandler={() => {}}
+				maxLength="16"
+				pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" 			
 			/>
 
 			<Select 

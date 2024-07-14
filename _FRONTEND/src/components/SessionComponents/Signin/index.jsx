@@ -28,7 +28,7 @@ export default function Signin() {
             <p>{i18n[language].pageTitle}</p>
 
             <Input
-                id={'emailSignin'}
+                id={'email'}
                 type={'email'}
                 placeholder={i18n[language].emailPlaceholder}
                 title={i18n[language].emailTitle}
@@ -36,16 +36,20 @@ export default function Signin() {
                 autoFocus={true}
                 value=''
                 onChangeHandler={()=>{}}
+                maxLength="50"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             />
 
             <Input
-                id={'passwordSignin'}
+                id={'password'}
                 type={'password'}
                 placeholder={i18n[language].passwordPlaceholder}
                 title={i18n[language].passwordTitle}
                 isRequired={true}
                 value=''
                 onChangeHandler={()=>{}}
+                maxLength="16"
+                pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
             />
 
             <p 

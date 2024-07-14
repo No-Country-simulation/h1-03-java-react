@@ -19,20 +19,13 @@ export default function CreateDoctorComponent() {
             <Form handleSubmit={(e)=>handleSubmit(e)}>
                 <InputLabel 
                     type="text"
-                    id="doc_identity"
-                    placeholder="DNI"
-                    title= "Documento de Identidad"
-                    isRequired = {true}
-                    autoFocus= {true}
-                    maxLength="25"
-                />
-                <InputLabel 
-                    type="text"
                     id="phone"
                     placeholder="+54 9 3492 123456"
                     title= "Teléfono"
                     isRequired = {true}
+                    autoFocus = {true}
                     maxLength="25"
+                    pattern="(\+?[0-9]{1,24})"
                 />
                 <InputLabel 
                     type="text"
@@ -41,26 +34,17 @@ export default function CreateDoctorComponent() {
                     title= "Domicilio"
                     isRequired = {true}
                     maxLength="100"
+                    pattern="[A-Za-z0-9]{1,100}"
                 />
                 <InputLabel 
-                    type="date"
-                    id="birthdate"
-                    placeholder="Fecha de Nacimiento"
-                    title= "Fecha de Nacimiento"
+                    type="text"
+                    id="license"
+                    placeholder="Licencia"
+                    title= "Licencia"
                     isRequired = {true}
+                    maxLength="10"
                 />
-                <Select 
-                    id="marital_status"
-                    title="Estado Civil"
-                    arrayOptions={[]}
-                    onChangeHandler = {() => {}}
-                    value = ""
-                    displayLabel = "block"
-                    isRequired = {true}
-                    hasLabel = {true}
-                />
-            </Form>
-            
+            </Form>            
         </Container>
     )
 }

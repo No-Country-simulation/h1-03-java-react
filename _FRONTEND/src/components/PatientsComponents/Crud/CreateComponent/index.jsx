@@ -34,6 +34,7 @@ export default function CreatePatientComponent() {
                     title= "Teléfono"
                     isRequired = {true}
                     maxLength="25"
+                    pattern="(\+?[0-9]{1,24})"
                 />
                 <InputLabel 
                     type="text"
@@ -42,6 +43,7 @@ export default function CreatePatientComponent() {
                     title= "Domicilio"
                     isRequired = {true}
                     maxLength="100"
+                    pattern="[A-Za-z0-9]{1,100}"
                 />
                 <InputLabel 
                     type="date"

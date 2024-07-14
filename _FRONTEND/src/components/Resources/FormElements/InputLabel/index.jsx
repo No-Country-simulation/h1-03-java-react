@@ -13,7 +13,8 @@ export default function InputLabel({
 	onChangeHandler = () => {},
 	isChecked = null,
 	minLength,
-	maxLength
+	maxLength,
+	pattern = "",
 }) {
 	return (
 		<div className="flex flex-col justify-start items-start gap-3 mb-3 w-[inherit]">
@@ -31,6 +32,7 @@ export default function InputLabel({
 				isChecked={isChecked}
 				minLength = {minLength}
 				maxLength = {maxLength}
+				pattern = {pattern}
 			/>
 		</div>
 	);

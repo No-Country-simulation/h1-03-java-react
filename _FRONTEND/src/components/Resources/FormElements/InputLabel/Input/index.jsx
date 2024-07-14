@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function Input({
 	type,
@@ -11,8 +11,10 @@ export default function Input({
 	onChangeHandler = () => {},
 	isChecked = null,
 	minLength = "3",
-	maxLength = "50"
+	maxLength = "50",
+	pattern = ""
 }) {
+	/*
 	const [pattern, setPattern] = useState("");
 
 	useEffect(() => {
@@ -24,7 +26,7 @@ export default function Input({
 				"^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$"
 			);
 		if (type === "number") setPattern("[0-9]+");
-	}, [pattern]);
+	}, [pattern]); */
 
 	return (
 		<>
@@ -49,7 +51,7 @@ export default function Input({
 					autoCapitalize="off"
 					spellCheck="false"
 					autoFocus={autoFocus}
-					value={value}
+					{...value==='' ? {} : value={value}}
 					onChange={(e) => onChangeHandler(e.target.value)}
 					checked={isChecked}
 				/>
