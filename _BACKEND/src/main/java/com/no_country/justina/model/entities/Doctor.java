@@ -23,4 +23,11 @@ public class Doctor {
     @Column(length = 10)
     private String license;
 
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity userEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "specialty_id", nullable = false)
+    private Specialty specialty;
 }

@@ -23,4 +23,9 @@ public class UserEntity {
     private LocalDateTime createdAt;
     private boolean isEnabled;
 
+    @PrePersist
+    public void onCreate(){
+        this.createdAt = LocalDateTime.now();
+        this.isEnabled = true;
+    }
 }

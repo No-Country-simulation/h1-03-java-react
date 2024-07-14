@@ -17,10 +17,14 @@ public class Prescription {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long idPrescription;
-
+  @Column(updatable = false, nullable = false)
   private LocalDateTime createdAt;
-
   @ManyToOne
   @JoinColumn(name = "treatment_id")
   private Treatment treatment;
+
+  @PrePersist
+  public void onCreate(){
+    this.createdAt = LocalDateTime.now();
+  }
 }

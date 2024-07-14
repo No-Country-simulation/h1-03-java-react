@@ -10,4 +10,6 @@ public interface IIndicationService {
   Page<Indication> getAll(Pageable pageable);
   Indication update(Indication patient);
   void deleteById(Long id);
+
+  Indication stopMedication(long id);
 }

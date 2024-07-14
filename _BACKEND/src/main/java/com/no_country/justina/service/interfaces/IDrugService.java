@@ -10,4 +10,6 @@ public interface IDrugService {
   Page<Drug> getAll(Pageable pageable);
   Drug update(Drug drug);
   void deleteById(Long id);
+  Drug getByName(String name);
+  Page<Drug> getAllLikeName(Pageable pageable, String word);
 }

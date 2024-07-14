@@ -6,22 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Treatment {
+public class Shift {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idTreatment;
+  private long idShift;
 
-  private String diagnosis;
-
-  @Column(columnDefinition = "TEXT")
-  private String description;
+  private LocalDateTime startDate;
+  private LocalDateTime endDate;
+  private int appointment;
 
   @ManyToOne
-  @JoinColumn(name = "medical_history_id", nullable = false)
-  private MedicalHistory medicalHistory;
+  @JoinColumn(name = "doctor_id")
+  private Doctor doctor;
 }
