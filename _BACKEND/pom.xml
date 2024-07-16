@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.no-country</groupId>
 	<artifactId>justina</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>justina</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Justina.io project</description>
 	<url/>
 	<licenses>
 		<license/>
