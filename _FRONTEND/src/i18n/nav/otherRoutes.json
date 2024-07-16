@@ -1,0 +1,22 @@
+{
+    "sp": [
+        {"createPatient" :{ "name": "Crear paciente", "route": "/crear-paciente" }},
+        {"updatePatient" :{ "name": "Actualizar paciente", "route": "/actualizar-paciente" }},
+        {"deletePatient" :{ "name": "Borrar paciente", "route": "/borrar-paciente" }},
+        {"readPatient" :{ "name": "Leer paciente", "route": "/leer-paciente" }},
+        {"createDoctor" :{ "name": "Crear médico", "route": "/crear-medico" }},
+        {"updateDoctor" :{ "name": "Actualizar médico", "route": "/actualizar-medico" }},
+        {"deleteDoctor" :{ "name": "Borrar médico", "route": "/borrar-medico" }},
+        {"readDoctor" :{ "name": "Leer médico", "route": "/leer-medico" }}
+    ],
+    "en":[
+        {"createPatient" :{ "name": "Create patient", "route": "/create-patient" }},
+        {"updatePatient" :{ "name": "Update patient", "route": "/update-patient" }},
+        {"deletePatient" :{ "name": "Delete patient", "route": "/delete-patient" }},
+        {"readPatient" :{ "name": "Read patient", "route": "/read-patient" }},
+        {"createDoctor" :{ "name": "Create doctor", "route": "/create-doctor" }},
+        {"updateDoctor" :{ "name": "Update Doctor", "route": "/update-doctor" }},
+        {"deleteDoctor" :{ "name": "Delete doctor", "route": "/delete-doctor" }},
+        {"readDoctor" :{ "name": "Read doctor", "route": "/read-doctor" }}
+    ]
+}

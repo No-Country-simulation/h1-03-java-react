@@ -73,11 +73,15 @@
   color: #FFF;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 640px) {
   .footer {
     text-align: center;
   }
   .footer .footerContent {
     flex-direction: column;
+  }
+  .footer .footerContent .rightSection .rightSection__languages {
+    margin: 0 auto;
+    font-size: 1.2rem;
   }
 }/*# sourceMappingURL=index.css.map */

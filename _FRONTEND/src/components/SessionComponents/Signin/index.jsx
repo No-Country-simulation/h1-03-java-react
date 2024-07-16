@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import i18n from '../../../i18n/session/signin/index.json'
 import logo from '../../../assets/svg/logo/logo.svg'
 import getPathRoutes from '../../../helpers/pathroutes'
+import Form from '../../Resources/FormElements/Form'
 
 export default function Signin() {
     const navigate = useNavigate()
@@ -26,49 +27,50 @@ export default function Signin() {
             />
 
             <p>{i18n[language].pageTitle}</p>
+            <Form>
+                <Input
+                    id={'email'}
+                    type={'email'}
+                    placeholder={i18n[language].emailPlaceholder}
+                    title={i18n[language].emailTitle}
+                    isRequired={true}
+                    autoFocus={true}
+                    value=''
+                    onChangeHandler={()=>{}}
+                    maxLength="50"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                />
 
-            <Input
-                id={'email'}
-                type={'email'}
-                placeholder={i18n[language].emailPlaceholder}
-                title={i18n[language].emailTitle}
-                isRequired={true}
-                autoFocus={true}
-                value=''
-                onChangeHandler={()=>{}}
-                maxLength="50"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-            />
+                <Input
+                    id={'password'}
+                    type={'password'}
+                    placeholder={i18n[language].passwordPlaceholder}
+                    title={i18n[language].passwordTitle}
+                    isRequired={true}
+                    value=''
+                    onChangeHandler={()=>{}}
+                    maxLength="16"
+                    pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
+                />
 
-            <Input
-                id={'password'}
-                type={'password'}
-                placeholder={i18n[language].passwordPlaceholder}
-                title={i18n[language].passwordTitle}
-                isRequired={true}
-                value=''
-                onChangeHandler={()=>{}}
-                maxLength="16"
-                pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
-            />
+                <p 
+                    className="text-end sm:text-center"
+                    role="button"
+                    title={i18n[language].forgotPasswordTitle}
+                    aria-label={i18n[language].forgotPasswordTitle}
+                    onClick={()=>navigate()}
+                >
+                    {i18n[language].forgotPasswordText}
+                </p>
 
-            <p 
-                className="text-end"
-                role="button"
-                title={i18n[language].forgotPassword}
-                aria-label={i18n[language].forgotPassword}
-                onClick={()=>navigate()}
-            >
-                {i18n[language].forgotPassword}
-            </p>
-
-            <Button 
-                text={i18n[language].buttonSigninText}
-                title={i18n[language].buttonSigninTitle}
-                onClickHandler={()=>{}}
-                textColor="#FFF"
-            />
-
+                <Button 
+                    type='submit'
+                    text={i18n[language].buttonSigninText}
+                    title={i18n[language].buttonSigninTitle}
+                    onClickHandler={()=>{}}
+                    textColor="#FFF"
+                />
+            </Form>
             <p 
                 className="text-center"
                 title={i18n[language].dontHaveAccountTitle}
@@ -76,7 +78,7 @@ export default function Signin() {
             >
                 {i18n[language].dontHaveAccountText}&nbsp;
                 <span 
-                    className="underline"
+                    className="underline font-bold"
                     role="button"
                     title={i18n[language].signInLinkTitle}
                     aria-label={i18n[language].signInLinkTitle}

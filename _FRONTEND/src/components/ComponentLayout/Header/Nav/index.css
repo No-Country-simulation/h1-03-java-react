@@ -47,8 +47,8 @@
   color: #FFF;
 }
 
-@media only screen and (max-width: 768px) {
-  .nav {
-    display: none;
-  }
-}/*# sourceMappingURL=index.css.map */
+/* @media only screen and (max-width:1280px){
+    .nav{
+        display:none;
+    }
+} *//*# sourceMappingURL=index.css.map */

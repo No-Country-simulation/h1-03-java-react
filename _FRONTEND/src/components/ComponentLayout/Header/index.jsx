@@ -2,10 +2,25 @@ import "./index.css";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function Header() {
+	const [isMobileScreen, setIsMobileScreen] = useState(false);
 	const headerHeightValue = useSelector((state) => state.headerReducer.headerHeight)
 	const isActiveHamburgerButton = useSelector((state) => state.headerReducer.isActiveHamburgerButton)
+
+	const setterIsMobileState = () => {
+		window.innerWidth >= 1280
+			? setIsMobileScreen(false)
+			: setIsMobileScreen(true)
+	}
+	window.onresize = () => {
+		setterIsMobileState()		
+	}
+
+	useEffect(() => {
+		setterIsMobileState()
+	}, [])	
 
 	return (
 		<header 
@@ -28,8 +43,10 @@ export default function Header() {
 					className="logo"
 				/>
 			</a> */}
-			<Nav />
-			<MobileNav />
+			{isMobileScreen
+				? <MobileNav />
+				: <Nav />
+			}
 		</header>
 	);
 }

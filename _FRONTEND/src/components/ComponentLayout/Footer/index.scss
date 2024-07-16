@@ -39,7 +39,6 @@
             gap: 1rem;
             justify-content: center;
             
-
             & .rightSection__socialnetworks{
                 display: flex;
                 gap:10%;
@@ -88,12 +87,20 @@
     }
 }
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 640px){
     .footer{
         text-align: center;
 
-        .footerContent{
+        & .footerContent{
             flex-direction:column;
+
+            & .rightSection{
+                
+                & .rightSection__languages{
+                    margin: 0 auto;
+                    font-size: 1.2rem;
+                }
+            }
         }
     }
 }

@@ -17,11 +17,18 @@
         "passwordPlaceholder": "CONTRASEÑA",
         "repeatPasswordTitle": "Repita su Contraseña",
         "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA",
-        "roleList": ["Seleccionar rol","Admin", "Paciente", "Médico"],
-        "roleTitle": "Seleccione su rol"
+        "roleListForSelect": ["Seleccionar rol","Admin", "Paciente", "Médico"],
+        "roleTitleForSelect": "Seleccione su rol",
+        "roleList": [
+                {"title": "Paciente", "id": "paciente"},
+                {"title": "Medico", "id": "medico"}
+        ],
+        "titlePopup": "Seleccione su perfil de registro",
+        "buttonPopupText": "CONFIRMAR",
+        "buttonPopupTitle": "Confirmar"
     },
     "en":{
-        "pageTitle": "SIGN IN",
+        "pageTitle": "SIGN UP",
         "buttonSignupText": "SEND",
         "buttonSignupTitle": "Send",
         "forgotPassword": "Forgot your password?",
@@ -39,7 +46,14 @@
         "passwordPlaceholder": "PASSWORD",
         "repeatPasswordTitle": "Repeat your password",
         "repeatPasswordPlaceholder": "REPEAT PASSWORD",
-        "roleList": ["Select role","Admin", "Patient", "Doctor"],
-        "roleTitle": "Select your role" 
+        "roleListForSelect": ["Select role","Admin", "Patient", "Doctor"],
+        "roleTitleForSelect": "Select your role",
+        "roleList": [
+            {"title": "Patient", "id": "patient"},
+            {"title": "Doctor", "id": "doctor"}
+        ],
+        "titlePopup": "Select your registration profile",
+        "buttonPopupText": "CONFIRM",
+        "buttonPopupTitle": "Confirm"
     }
 }

@@ -8,7 +8,7 @@ export default function ComponentLayout({children} ) {
     return (
         <div className="componentLayout">
             <Header />
-                <section className="flex-1 m-auto py-5 w-4/5 min-h-full overflow-hidden">
+                <section className="flex-1 m-auto py-5 w-full justify-center content-start min-h-full">
                     {children}                    
                 </section>
             <Footer />

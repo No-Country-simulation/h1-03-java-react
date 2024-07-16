@@ -8,6 +8,7 @@ export default function Button({
 	isDisabled = false,
 	onClickHandler = ()=>{},
 }) {
+
 	return (
 		<>
 			{type && (

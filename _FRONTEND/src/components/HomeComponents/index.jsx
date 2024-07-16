@@ -33,7 +33,7 @@ export default function HomeComponent() {
 	};
 	const [val, setVal] = useState();
 	return (
-		<section className="flex flex-col bg-white pb-5">
+		<section className="flex flex-col bg-white pb-5 w-3/4 m-auto">
 			<img
 				src={logo}
 				alt="logo"
@@ -44,7 +44,7 @@ export default function HomeComponent() {
 			<JustinaLaw />
             <NationalDayImpact />
 
-
+			<p className="text-center m-10"><strong className="bg-red-500 text-white p-14 underline font-extrabold">DE ACA PARA ABAJO NO VA NADA</strong></p>
 			{isLoading ? (
 				<p className="text-center">
 					⌛{" "}
@@ -90,8 +90,8 @@ export default function HomeComponent() {
 				<InputLabel
 					type={"date"}
 					id={"bornDate"}
-					placeholder={i18nPatients[language].bornDate.placeholder}
-					title={i18nPatients[language].bornDate.title}
+					placeholder={i18nPatients[language].birthDate.placeholder}
+					title={i18nPatients[language].birthDate.title}
 					isRequired={true}
 					value={val}
 					onChangeHandler={setVal}

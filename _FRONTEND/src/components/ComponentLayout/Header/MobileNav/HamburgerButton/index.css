@@ -59,9 +59,9 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 768px) {
-  .hamburger-button {
-    cursor: pointer;
-    display: none;
-  }
-}/*# sourceMappingURL=index.css.map */
+/* @media only screen and (min-width: 768px){
+    .hamburger-button{
+        cursor:pointer;
+        display:none;
+    }
+} *//*# sourceMappingURL=index.css.map */

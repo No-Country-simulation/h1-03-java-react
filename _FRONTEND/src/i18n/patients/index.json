@@ -6,11 +6,13 @@
         "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
         "telephone": {"title": "Teléfono" , "placeholder": "543492999999"},
         "address": {"title": "Domicilio" , "placeholder": "Av. Corrientes 123"},
-        "bornDate": {"title": "Fecha de Nacimiento" , "placeholder": "01/01/1950"},
+        "birthDate": {"title": "Fecha de Nacimiento" , "placeholder": "01/01/1950"},
         "bloodType": {"title": "Tipo sanguíneo" , "list": ["seleccionar tipo sanguíneo", "0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
         "maritalStatus": {"title": "Estado civil" , "list": ["seleccionar estado civil", "Soltero", "Casado", "Divorciado", "Viudo"]},
         "sex": {"title": "Sexo" , "placeholder": ""},
-        "medicalRecord": {"title": "Historia clínica" , "placeholder": ""}
+        "medicalRecord": {"title": "Historia clínica" , "placeholder": ""},
+        "buttonSubmit": {"title": "Enviar", "text": "Enviar"},
+        "pageTitle": {"title": "Alta de Paciente", "text": "Alta de Paciente"}
     },
     "en":{
         "firstName": {"title": "First name" , "placeholder": "John"},
@@ -19,10 +21,12 @@
         "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
         "telephone": {"title": "Telephone" , "placeholder": "(555) 555-1234"},
         "address": {"title": "Address" , "placeholder": "John Smith. 999"},
-        "bornDate": {"title": "Born date" , "placeholder": "01/01/1950"},
+        "birthDate": {"title": "Born date" , "placeholder": "01/01/1950"},
         "bloodType": {"title": "Blood type" , "list": ["select blood type", "0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
         "maritalStatus": {"title": "Marital status" , "list": ["select marital status", "Single", "Married", "Divorced", "Widower"]},
         "sex": {"title": "Sex" , "placeholder": ""},
-        "medicalRecord": {"title": "Clinical history" , "placeholder": ""}
+        "medicalRecord": {"title": "Clinical history" , "placeholder": ""},
+        "buttonSubmit": {"title": "Send", "text": "Send"},
+        "pageTitle": {"title": "Patient Admission", "text": "Patient Admission"}
     }
 }

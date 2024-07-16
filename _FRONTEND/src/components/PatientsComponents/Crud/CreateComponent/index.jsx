@@ -1,69 +1,88 @@
-import React from 'react'
-import Container from '../../../Resources/Others/Container'
-import Form from '../../../Resources/FormElements/Form'
-import InputLabel from '../../../Resources/FormElements/InputLabel'
-import Select from '../../../Resources/FormElements/Select'
-import { useSelector } from 'react-redux'
-/* import i18n from '../../../../i18n/patients' */
+import React from "react";
+import Container from "../../../Resources/Others/Container";
+import Form from "../../../Resources/FormElements/Form";
+import InputLabel from "../../../Resources/FormElements/InputLabel";
+import Select from "../../../Resources/FormElements/Select";
+import Button from "../../../Resources/FormElements/Button";
+import { useSelector } from "react-redux";
+import i18n from "../../../../i18n/patients/index.json";
 
-export default function CreatePatientComponent() {   
-    const language = useSelector((state)=>state.i18nReducer.language)
-    
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+export default function CreatePatientComponent() {
+	const language = useSelector((state) => state.i18nReducer.language);
 
-    return (
-        <Container>
-            <p>Alta de Paciente</p>
+	const handleSubmit = (e) => {
+		e.preventDefault();
+        alert('enviado!')
+	};
 
-            <Form handleSubmit={(e)=>handleSubmit(e)}>
-                <InputLabel 
-                    type="text"
-                    id="doc_identity"
-                    placeholder="DNI"
-                    title= "Documento de Identidad"
-                    isRequired = {true}
-                    autoFocus= {true}
-                    maxLength="25"
-                />
-                <InputLabel 
-                    type="text"
-                    id="phone"
-                    placeholder="+54 9 3492 123456"
-                    title= "Teléfono"
-                    isRequired = {true}
-                    maxLength="25"
-                    pattern="(\+?[0-9]{1,24})"
-                />
-                <InputLabel 
-                    type="text"
-                    id="address"
-                    placeholder="Domicilio"
-                    title= "Domicilio"
-                    isRequired = {true}
-                    maxLength="100"
-                    pattern="[A-Za-z0-9]{1,100}"
-                />
-                <InputLabel 
-                    type="date"
-                    id="birthdate"
-                    placeholder="Fecha de Nacimiento"
-                    title= "Fecha de Nacimiento"
-                    isRequired = {true}
-                />
-                <Select 
-                    id="marital_status"
-                    title="Estado Civil"
-                    arrayOptions={[]}
-                    onChangeHandler = {() => {}}
-                    value = ""
-                    displayLabel = "block"
-                    isRequired = {true}
-                    hasLabel = {true}
-                />
-            </Form>
-            
-        </Container>
-    )
+	return (
+		<Container>
+            <p
+                aria-label={i18n[language].pageTitle.title}
+                role="heading"
+                lang={language}
+            >
+                {i18n[language].pageTitle.text}
+            </p>
+
+			<div className="flex gap-0 w-[inherit]">
+				<Form handleSubmit={handleSubmit}>
+					<InputLabel
+						type="text"
+						id="doc_identity"
+						placeholder={i18n[language].dni.placeholder}
+						title={i18n[language].dni.title}
+						isRequired={true}
+						autoFocus={true}
+						maxLength="25"
+                        pattern="[0-9]{8,25}"
+					/>
+					<InputLabel
+						type="text"
+						id="phone"
+						placeholder={i18n[language].telephone.placeholder}
+						title={i18n[language].telephone.title}
+						isRequired={true}
+						maxLength="25"
+						pattern="(\+?[0-9]{1,24})"
+					/>
+					<InputLabel
+						type="text"
+						id="address"
+						placeholder={i18n[language].address.placeholder}
+						title={i18n[language].address.title}
+						isRequired={true}
+						maxLength="100"
+						pattern="[A-Za-z0-9]{1,100}"
+					/>
+					<InputLabel
+						type="date"
+						id="birthdate"
+						placeholder={i18n[language].birthDate.placeholder}
+						title={i18n[language].birthDate.title}
+						isRequired={true}
+                        pattern="\d{2}-\d{2}-\d{4}"
+					/>
+					<Select
+						id="marital_status"
+						title={i18n[language].maritalStatus.title}
+						arrayOptions={i18n[language].maritalStatus.list}
+						onChangeHandler={() => {}}
+						value=""
+						displayLabel="block"
+						isRequired={true}
+						hasLabel={true}
+					/>
+
+                    <div className="mb-10" />
+					<Button
+						type="submit"
+						text={i18n[language].buttonSubmit.title}
+						title={i18n[language].buttonSubmit.title}
+						textColor="#FFF"
+					/>
+				</Form>
+			</div>
+		</Container>
+	);
 }
