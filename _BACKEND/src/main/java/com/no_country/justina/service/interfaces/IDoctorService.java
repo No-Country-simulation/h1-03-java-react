@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IDoctorService {
     Doctor create(Doctor doctor);
-    Optional<Doctor> getDoctor(Long id);
+    Doctor getDoctor(Long id);
     Page<Doctor> getAllDoctors(Pageable pageable);
     Doctor update(Doctor doctor);
 }

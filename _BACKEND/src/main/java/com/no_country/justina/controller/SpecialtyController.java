@@ -24,9 +24,10 @@ public class SpecialtyController {
   public ResponseEntity<?> create(@RequestBody @Valid SpecialtyReq specialtyReq) {
     Specialty newSpecialty = mapper.map(specialtyReq, Specialty.class);
     Specialty savedSpecialty = this.specialtyService.create(newSpecialty);
+
     return ResponseEntity
-            .status(HttpStatus.CREATED).body("hola");
-//            .body(mapper.map(savedIndication, SpecialtyRes.class));
+            .status(HttpStatus.CREATED)
+            .body(this.mapper.map(savedSpecialty, SpecialtyRes.class));
   }
 
   @GetMapping("/{id}")

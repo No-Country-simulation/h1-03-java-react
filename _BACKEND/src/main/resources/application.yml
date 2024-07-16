@@ -9,5 +9,9 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+logging:
+  level:
+    root: INFO
+    com.no_country.justina: DEBUG
 api:
   base-url: api/v1

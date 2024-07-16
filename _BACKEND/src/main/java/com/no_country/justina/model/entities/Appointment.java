@@ -20,6 +20,7 @@ public class Appointment {
   private long idAppointment;
 
   private LocalDateTime appointment;
+
   @Enumerated(EnumType.STRING)
   private AppointmentStatus appointmentStatus;
 

@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/doctors")
+@RequestMapping("${api.base-url}/doctors")
 public class DoctorController {
 
-    private IDoctorService doctorService;
-    private ModelMapper modelMapper;
+    private final IDoctorService doctorService;
+    private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
     public ResponseEntity<DoctorRes> getUser(@PathVariable Long id) {
@@ -36,6 +36,7 @@ public class DoctorController {
 
     @PostMapping()
     public ResponseEntity<DoctorRes> create(@RequestBody DoctorReq doctorReq) {
+        System.out.println(modelMapper.map(doctorReq, Doctor.class).getAddress());
         Doctor doctor = doctorService.create(modelMapper.map(doctorReq, Doctor.class));
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }

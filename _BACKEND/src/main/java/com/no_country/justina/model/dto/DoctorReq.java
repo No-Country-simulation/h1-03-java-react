@@ -1,4 +1,19 @@
 package com.no_country.justina.model.dto;
 
-public record DoctorReq(Long id, String phone, String address, String license) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class DoctorReq {
+  @NotBlank private String phone;
+  @NotBlank private String address;
+  @NotBlank private String license;
+  @NotNull  private long specialtyId;
 }

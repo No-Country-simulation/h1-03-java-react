@@ -1,4 +1,18 @@
 package com.no_country.justina.model.dto;
 
-public record DoctorRes(Long id, String phone, String address, String license) {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class DoctorRes {
+  private long idDoctor;
+  private String phone;
+  private String address;
+  private String license;
+  private SpecialtyRes specialty;
 }

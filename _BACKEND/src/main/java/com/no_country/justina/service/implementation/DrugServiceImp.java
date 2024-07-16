@@ -1,7 +1,6 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Drug;
-import com.no_country.justina.model.entities.Indication;
 import com.no_country.justina.repository.DrugRepository;
 import com.no_country.justina.service.interfaces.IDrugService;
 import jakarta.persistence.EntityNotFoundException;

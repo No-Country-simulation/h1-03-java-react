@@ -25,4 +25,8 @@ public class Shift {
   @ManyToOne
   @JoinColumn(name = "doctor_id")
   private Doctor doctor;
+
+  @ManyToOne
+  @JoinColumn(name = "specialty_id", nullable = false)
+  private Specialty specialty;
 }

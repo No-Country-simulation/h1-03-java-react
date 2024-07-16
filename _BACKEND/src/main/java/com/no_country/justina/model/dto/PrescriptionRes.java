@@ -8,6 +8,5 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class PrescriptionRes {
 }
