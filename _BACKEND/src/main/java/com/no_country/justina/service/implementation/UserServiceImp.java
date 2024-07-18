@@ -1,35 +1,52 @@
 package com.no_country.justina.service.implementation;
 
-import com.no_country.justina.exception.EmailExistsException;
 import com.no_country.justina.exception.UserIdNotFoundException;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.UserRepository;
+import com.no_country.justina.service.interfaces.IAdminService;
+import com.no_country.justina.service.interfaces.IDoctorService;
+import com.no_country.justina.service.interfaces.IPatientService;
 import com.no_country.justina.service.interfaces.IUserService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceImp implements IUserService {
+    private final UserRepository userRepository;
+    private final IPatientService patientService;
+    private final IDoctorService doctorService;
+    private final IAdminService adminService;
 
-    private UserRepository userRepository;
     @Override
+    @Transactional
     public UserEntity create(UserEntity userEntity) {
-        if (userRepository.existsByEmail(userEntity.getEmail())) {
-            throw new EmailExistsException();
-        }
-        return userRepository.save(userEntity);
+        var newUser = userRepository.save(userEntity);
+        switch (userEntity.getRole()){
+            case PATIENT :
+                var patient = patientService.createEmpty(newUser);
+                newUser.setPatient(patient);
+                break;
+            case DOCTOR :
+                var doctor = doctorService.createEmpty(newUser);
+                newUser.setDoctor(doctor);
+                break;
+            case ADMIN :
+                var admin = adminService.createEmpty(newUser);
+                newUser.setAdmin(admin);
+                break;
+        };
+      return newUser;
     }
 
     @Override
-    public Optional<UserEntity> getUser(Long id) {
-        return userRepository.findById(id);
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(()->new UserIdNotFoundException(id));
     }
 
     @Override
@@ -49,4 +66,5 @@ public class UserServiceImp implements IUserService {
         userDb.setEnabled(false);
         userRepository.save(userDb);
     }
+
 }

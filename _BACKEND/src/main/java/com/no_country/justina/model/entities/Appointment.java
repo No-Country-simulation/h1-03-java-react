@@ -19,7 +19,7 @@ public class Appointment {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long idAppointment;
 
-  private LocalDateTime appointment;
+  private LocalDateTime date;
 
   @Enumerated(EnumType.STRING)
   private AppointmentStatus appointmentStatus;
@@ -29,6 +29,11 @@ public class Appointment {
   private Patient patient;
 
   @ManyToOne
-  @JoinColumn(name = "doctor_id", nullable = false)
-  private Doctor doctor;
+  @JoinColumn(name = "shift_id", nullable = false)
+  private Shift shift;
+
+  @PrePersist
+  public void onCreate(){
+    this.appointmentStatus = AppointmentStatus.PENDING;
+  }
 }

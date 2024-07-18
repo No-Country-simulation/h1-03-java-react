@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.UserReq;
 import com.no_country.justina.model.dto.UserRes;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.implementation.UserServiceImp;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -15,14 +16,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/users")
+@RequestMapping("${api.base-url}/user")
 public class UserController {
-    private UserServiceImp userService;
-    private ModelMapper modelMapper;
+    private final UserServiceImp userService;
+    private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserRes> getUser(@PathVariable Long id) {
-        UserRes userReq = modelMapper.map(userService.getUser(id), UserRes.class);
+        UserRes userReq = modelMapper.map(userService.getUserById(id), UserRes.class);
         return new ResponseEntity<>(userReq, HttpStatus.OK);
     }
     @GetMapping()
@@ -34,13 +35,14 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<UserRes> create(@RequestBody UserReq userReq) {
+    public ResponseEntity<UserRes> create(@RequestBody @Valid UserReq userReq) {
         var user = userService.create(modelMapper.map(userReq, UserEntity.class));
+
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.CREATED);
     }
 
     @PutMapping()
-    public ResponseEntity<UserRes> update(@RequestBody UserReq userReq) {
+    public ResponseEntity<UserRes> update(@RequestBody @Valid UserReq userReq) {
         var user = userService.update(modelMapper.map(userReq, UserEntity.class));
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.OK);
     }

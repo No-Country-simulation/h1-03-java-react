@@ -37,8 +37,13 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
 
   @Override
   public MedicalHistory update(MedicalHistory medicalHistory) {
-      this.historyExistById(medicalHistory.getIdMedicalHistory());
-      return this.medicalHistoryRepo.save(medicalHistory);
+    this.historyExistById(medicalHistory.getIdMedicalHistory());
+    this.medicalHistoryRepo.updateAllById(
+            medicalHistory.getBloodType(),
+            medicalHistory.getJob(),
+            medicalHistory.getReligion(),
+            medicalHistory.getIdMedicalHistory());
+    return getById(medicalHistory.getIdMedicalHistory());
   }
 
   @Override
@@ -47,8 +52,8 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
     this.medicalHistoryRepo.deleteById(id);
   }
 
-  private void historyExistById(long id){
+  private void historyExistById(long id) {
     boolean existHistory = this.medicalHistoryRepo.existsById(id);
-    if(!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id"+id);
+    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id" + id);
   }
 }

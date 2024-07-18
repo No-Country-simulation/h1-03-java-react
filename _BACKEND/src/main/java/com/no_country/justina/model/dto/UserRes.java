@@ -1,5 +1,6 @@
 package com.no_country.justina.model.dto;
 
+import com.no_country.justina.model.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class UserRes {
   private String name;
   private String lastname;
   private String email;
-  private String password;
   private LocalDateTime createdAt;
-  private boolean isEnable;
+  private Role role;
+  private long idFromRole;
 }

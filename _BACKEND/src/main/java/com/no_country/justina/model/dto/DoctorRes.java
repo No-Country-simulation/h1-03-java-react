@@ -15,4 +15,5 @@ public class DoctorRes {
   private String address;
   private String license;
   private SpecialtyRes specialty;
+  private String doctor;
 }

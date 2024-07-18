@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.DoctorReq;
 import com.no_country.justina.model.dto.DoctorRes;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.service.interfaces.IDoctorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -41,9 +42,11 @@ public class DoctorController {
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }
 
-    @PutMapping()
-    public ResponseEntity<DoctorRes> update(@RequestBody DoctorReq doctorReq) {
-        var doctor = doctorService.update(modelMapper.map(doctorReq, Doctor.class));
+    @PutMapping("/{id}")
+    public ResponseEntity<DoctorRes> update(@RequestBody @Valid DoctorReq doctorReq, @PathVariable long id) {
+        var newDoctor = modelMapper.map(doctorReq, Doctor.class);
+        newDoctor.setId(id);
+        var doctor = doctorService.update(newDoctor);
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.OK);
     }
 }

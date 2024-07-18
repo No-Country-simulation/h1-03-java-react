@@ -2,8 +2,11 @@ package com.no_country.justina.controller;
 
 import com.no_country.justina.model.dto.PatientReq;
 import com.no_country.justina.model.dto.PatientRes;
+import com.no_country.justina.model.dto.PatientUpdateReq;
+import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.service.interfaces.IPatientService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -21,9 +24,10 @@ public class PatientController {
   private final ModelMapper mapper;
 
   @PostMapping
-  public ResponseEntity<?> create(@RequestBody PatientReq patientReq) {
+  public ResponseEntity<?> create(@RequestBody @Valid PatientReq patientReq) {
     Patient newPatient = mapper.map(patientReq, Patient.class);
-    Patient savedPatient = this.patientServ.create(newPatient);
+    MedicalHistory newHistory = mapper.map(patientReq, MedicalHistory.class);
+    Patient savedPatient = this.patientServ.create(newPatient, newHistory);
     return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(mapper.map(savedPatient, PatientRes.class));
@@ -44,13 +48,14 @@ public class PatientController {
     return ResponseEntity.ok(this.patientServ.getAll(pageable));
   }
   @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody PatientReq patientReq,
+  public ResponseEntity<?> updateById(@RequestBody @Valid PatientUpdateReq patientUpdateReq,
                                       @PathVariable long id){
-    var newPatient = mapper.map(patientReq, Patient.class);
+    var newPatient = mapper.map(patientUpdateReq, Patient.class);
     newPatient.setIdPatient(id);
     var patientUpdated = this.patientServ.update(newPatient);
     return ResponseEntity.ok(mapper.map(patientUpdated, PatientRes.class));
   }
+
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteById(@PathVariable long id){
     this.patientServ.deleteById(id);

@@ -26,7 +26,7 @@ public class AppointmentController {
     Appointment newAppointment = mapper.map(appointmentReq, Appointment.class);
     Appointment savedAppointment = this.appointmentService.create(newAppointment);
     return ResponseEntity
-            .status(HttpStatus.CREATED).body("hola");
+            .status(HttpStatus.CREATED).body(mapper.map(savedAppointment, AppointmentRes.class));
   }
 
   @GetMapping("/{id}")

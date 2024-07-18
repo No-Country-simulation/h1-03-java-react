@@ -1,5 +1,6 @@
 package com.no_country.justina.service.implementation;
 
+import com.no_country.justina.exception.ShiftException;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.repository.ShiftRepository;
@@ -102,6 +103,14 @@ public class ShiftServiceImp implements IShiftService {
       throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
     }
     return this.shiftRepository.findShiftsMonthBetween(start, end, pageable);
+  }
+
+  @Override
+  public void makeAppointment(long idShift){
+    var result =this.shiftRepository.updateAppointmentShift(idShift);
+    if(result == 0){
+      throw new ShiftException("Ningún registro de turnos fue actualizado.");
+    }
   }
 
   private void verifyShiftExist(long id) {

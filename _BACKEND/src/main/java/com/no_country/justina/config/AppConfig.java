@@ -1,8 +1,6 @@
 package com.no_country.justina.config;
 
-import com.no_country.justina.model.converters.ConvertDoctorReq;
-import com.no_country.justina.model.converters.ConverterShiftReq;
-import com.no_country.justina.model.converters.ConverterShiftRes;
+import com.no_country.justina.model.converters.*;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -11,16 +9,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {
-    private final ConvertDoctorReq converterDoctor;
+    private final ConvertDoctorReq converterDoctorReq;
+    private final ConvertDoctorRes converterDoctorRes;
     private final ConverterShiftReq converterShiftReq;
     private final ConverterShiftRes converterShiftRes;
+    private final ConvertAppointmentReq convertAppointmentReq;
+    private final ConvertAppointmentRes convertAppointmentRes;
+    private final ConvertPatientReq convertPatientReq;
+    private final ConvertUserRes convertUserRes;
 
     @Bean
     public ModelMapper modelMapper() {
         var modelMapper = new ModelMapper();
-        modelMapper.addConverter(converterDoctor);
+        modelMapper.addConverter(converterDoctorReq);
+        modelMapper.addConverter(converterDoctorRes);
         modelMapper.addConverter(converterShiftReq);
         modelMapper.addConverter(converterShiftRes);
+        modelMapper.addConverter(convertAppointmentReq);
+        modelMapper.addConverter(convertAppointmentRes);
+        modelMapper.addConverter(convertPatientReq);
+        modelMapper.addConverter(convertUserRes);
         return modelMapper;
     }
 }
