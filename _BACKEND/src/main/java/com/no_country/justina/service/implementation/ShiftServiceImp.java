@@ -26,6 +26,7 @@ public class ShiftServiceImp implements IShiftService {
   public Shift create(Shift shift) {
     this.verifyValidTimeShift(shift);
     this.verifyShiftHourByDay(shift);
+    this.verifyShiftIsAfterToday(shift);
     List<Shift> shiftsByDay = this.shiftRepository.findByDayAndDoctor(
             shift.getDoctor().getId(),
             shift.getStartDate().getYear(),
@@ -45,6 +46,7 @@ public class ShiftServiceImp implements IShiftService {
     orderShifts.forEach(shift->{
       this.verifyValidTimeShift(shift);
       this.verifyShiftHourByDay(shift);
+      this.verifyShiftIsAfterToday(shift);
     });
 
     Doctor doctor = orderShifts.get(1).getDoctor();
@@ -157,6 +159,11 @@ public class ShiftServiceImp implements IShiftService {
       if(current.getStartDate().isBefore(previous.getEndDate())){
         throw new IllegalArgumentException("Los turnos en el dia "+current.getStartDate()+" se superponen horarios.");
       }
+    }
+  }
+  private void verifyShiftIsAfterToday(Shift shift){
+    if(!shift.getStartDate().toLocalDate().isAfter(LocalDate.now())){
+      throw new IllegalArgumentException("No se pueden crear turnos para el mismo dia ni antes.");
     }
   }
 

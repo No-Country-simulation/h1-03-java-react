@@ -42,7 +42,7 @@ public class AppointmentController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Appointment> result = this.appointmentService.getAll(pageable);
-    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(result, AppointmentRes.class));
+    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
 

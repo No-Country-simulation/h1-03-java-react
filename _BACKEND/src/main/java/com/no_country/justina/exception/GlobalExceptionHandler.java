@@ -38,8 +38,9 @@ public class GlobalExceptionHandler {
     var error = new ErrorDetails(LocalDateTime.now(), e.getMessage(), request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
+
   @ExceptionHandler(IllegalArgumentException.class)
-  public ResponseEntity<?> handleIlegalArgument(IllegalArgumentException e, WebRequest request){
+  public ResponseEntity<?> handleIlegalArgument(IllegalArgumentException e, WebRequest request) {
     var error = new ErrorDetails(LocalDateTime.now(), e.getMessage(), request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
