@@ -42,7 +42,7 @@ public class TreatmentController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Treatment> result = this.treatmentService.getAll(pageable);
-    Page<TreatmentRes> resultDto = result.map(item -> mapper.map(result, TreatmentRes.class));
+    Page<TreatmentRes> resultDto = result.map(item -> mapper.map(item, TreatmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
 

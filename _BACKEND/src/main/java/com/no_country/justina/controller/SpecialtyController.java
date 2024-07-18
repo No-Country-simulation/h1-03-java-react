@@ -43,7 +43,7 @@ public class SpecialtyController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Specialty> result = this.specialtyService.getAll(pageable);
-    Page<SpecialtyRes> resultDto = result.map(item -> mapper.map(result, SpecialtyRes.class));
+    Page<SpecialtyRes> resultDto = result.map(item -> mapper.map(item, SpecialtyRes.class));
     return ResponseEntity.ok(resultDto);
   }
 
