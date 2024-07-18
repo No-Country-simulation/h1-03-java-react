@@ -7,7 +7,7 @@ import Button from "../../../Resources/FormElements/Button";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/patients/index.json";
 
-export default function CreatePatientComponent() {
+export default function EditMyInfoPatients() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
 	const handleSubmit = (e) => {
@@ -67,6 +67,16 @@ export default function CreatePatientComponent() {
 						id="marital_status"
 						title={i18n[language].maritalStatus.title}
 						arrayOptions={i18n[language].maritalStatus.list}
+						onChangeHandler={() => {}}
+						value=""
+						displayLabel="block"
+						isRequired={true}
+						hasLabel={true}
+					/>
+					<Select
+						id="genre"
+						title={i18n[language].genre.title}
+						arrayOptions={i18n[language].genre.list}
 						onChangeHandler={() => {}}
 						value=""
 						displayLabel="block"

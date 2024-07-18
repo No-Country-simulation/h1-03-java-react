@@ -4,18 +4,19 @@ export default function Button({
 	type= 'button',
 	text = null,
 	textColor = '#000',
+	bgColor = 'auto',
 	title,
 	isDisabled = false,
 	onClickHandler = ()=>{},
 }) {
-
+	console.log(type)
 	return (
 		<>
-			{type && (
+			{text && (
 				<div className="text-center">
 					<button
 						type={type}
-						className={`rounded-full w-full text-[${textColor}]`}
+						className={`rounded-full w-full text-[${textColor}] bg-[${bgColor}]`}
 						title={title}
 						aria-label={title}
 						disabled={isDisabled}

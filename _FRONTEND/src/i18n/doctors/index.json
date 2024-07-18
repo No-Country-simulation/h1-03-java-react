@@ -4,13 +4,13 @@
         "address": {"title": "Domicilio" , "placeholder": "Domicilio"},
         "license": {"title": "Matrícula" , "placeholder": "Matrícula"},
         "buttonSubmit": {"title": "Enviar", "text": "Enviar"},
-        "pageTitle": {"title": "Alta de Médico", "text": "Alta de Médico"}
+        "pageTitle": {"title": "Editar mis datos", "text": "EDITAR MIS DATOS"}
     },
     "en":{
         "telephone": {"title": "Telephone" , "placeholder": "543492999999"},
         "address": {"title": "Address" , "placeholder": "Address"},
         "license": {"title": "License" , "placeholder": "License"},
         "buttonSubmit": {"title": "Send", "text": "Send"},
-        "pageTitle": {"title": "Doctor Admission", "text": "Doctor Admission"}
+        "pageTitle": {"title": "Edit my info", "text": "EDIT MY INFO"}
     }
 }

@@ -36,22 +36,6 @@ export default function BottomMenu() {
 	return (
 		<nav className="bottomMenu" style={{bottom:bottomValue}}>
 			<div>
-				<div onClick={()=>navigate('/crear-paciente')}>Crear Paciente</div>
-				<div onClick={()=>navigate('/crear-medico')}>Crear Médico</div>
-			</div>
-			<div>
-				<div onClick={()=>navigate('/leer-paciente')}>Leer Paciente</div>
-				<div onClick={()=>navigate('/leer-medico')}>Leer Médico</div>
-			</div>
-			<div>
-				<div onClick={()=>navigate('/actualizar-paciente')}>Actualizar Paciente</div>
-				<div onClick={()=>navigate('/actualizar-medico')}>Actualizar Médico</div>
-			</div>
-			<div>
-				<div onClick={()=>navigate('/borrar-paciente')}>Borrar Paciente</div>
-				<div onClick={()=>navigate('/borrar-medico')}>Borrar Médico</div>
-			</div>
-			<div>
 				<div>OPT5</div>
 			</div>
 		</nav>

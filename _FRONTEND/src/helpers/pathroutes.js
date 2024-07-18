@@ -4,7 +4,7 @@ import i18nOtherRoutes from '../i18n/nav/otherRoutes.json'
 const getPathRoutes = (language, routeName, isForNavBar) => {
 	let filteredResult = null
 
-	if (Object.values(isForNavBar)[0]) {
+	if (Object.values(isForNavBar)[0] || isForNavBar===true) {
 		filteredResult = i18nNav[language].filter((e) => e[routeName])
 	} else {
 		filteredResult = i18nOtherRoutes[language].filter((e) => e[routeName])

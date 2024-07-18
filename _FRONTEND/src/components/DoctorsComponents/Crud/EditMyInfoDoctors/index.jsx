@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/doctors/index.json";
 import Button from "../../../Resources/FormElements/Button";
 
-export default function CreateDoctorComponent() {
+export default function EditMyInfoDoctors() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
 	const handleSubmit = (e) => {

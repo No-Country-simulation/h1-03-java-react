@@ -1,0 +1,1 @@
+This code defines a function getItemsNav (itemsNav.js:3-8:2) that takes a language parameter. It retrieves values from i18n based on the language, then maps over them to extract the first value of each object.

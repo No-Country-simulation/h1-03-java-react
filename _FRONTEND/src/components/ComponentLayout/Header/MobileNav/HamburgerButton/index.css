@@ -9,6 +9,7 @@
   top: 50%;
   transform: translateY(-50%);
   left: 13px;
+  scale: 0.7;
 }
 .hamburger-button .lineTop {
   background-color: #1D1D1D;
@@ -59,9 +60,8 @@
   width: 50%;
 }
 
-/* @media only screen and (min-width: 768px){
-    .hamburger-button{
-        cursor:pointer;
-        display:none;
-    }
-} *//*# sourceMappingURL=index.css.map */
+@media only screen and (min-width: 640px) {
+  .hamburger-button {
+    scale: 1;
+  }
+}/*# sourceMappingURL=index.css.map */

@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import EditMyInfoPatients from '../PatientsComponents/Crud/EditMyInfoPatients'
+import EditMyInfoDoctors from '../DoctorsComponents/Crud/EditMyInfoDoctors'
+import DeleteAccount from './DeleteAccount';
 
 export default function UserProfileMainComponent() {
+    const [tempTypeUser, setTempTypeUser] = useState(true);
 
     return (
-        <>
-            use profile            
+        <>  
+            <>
+            {tempTypeUser 
+                ? <EditMyInfoPatients />
+                : <EditMyInfoDoctors />
+            }
+            </>
+            <DeleteAccount />
         </>
     )
 }

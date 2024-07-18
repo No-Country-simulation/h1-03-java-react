@@ -41,7 +41,7 @@ export default function NavList() {
 				>
 					<nav
 						className="nav-list"
-						style={{ width: isActiveHamburgerButton ? "" : "0" }}
+						style={{ left: isActiveHamburgerButton ? "0" : "-100%" }}
 					>
 						<ul style={{ top: `${headerHeight}px` }}>
 							<ItemsNav />

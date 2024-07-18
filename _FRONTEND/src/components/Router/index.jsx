@@ -13,14 +13,14 @@ import Treatments from "../../pages/Treatments";
 import Signin from "../../pages/Signin";
 import Signup from "../../pages/Signup";
 import UserProfile from "../../pages/UserProfile"
-import CreatePatient from "../../pages/Patients/Crud/Create"
+/* import CreatePatient from "../../pages/Patients/Crud/Create"
 import ReadPatient from "../../pages/Patients/Crud/Read"
 import UpdatePatient from "../../pages/Patients/Crud/Update"
 import DeletePatient from "../../pages/Patients/Crud/Delete"
 import CreateDoctor from "../../pages/Doctors/Crud/Create"
 import ReadDoctor from "../../pages/Doctors/Crud/Read"
 import UpdateDoctor from "../../pages/Doctors/Crud/Update"
-import DeleteDoctor from "../../pages/Doctors/Crud/Delete"
+import DeleteDoctor from "../../pages/Doctors/Crud/Delete" */
 
 export default function Router() {
 
@@ -37,14 +37,14 @@ export default function Router() {
 		<Route path={`${getPathRoutes('en', 'signup', {isForNavBar: true})}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('en', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 
-		<Route path={`${getPathRoutes('en', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
+		{/* <Route path={`${getPathRoutes('en', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
 		<Route path={`${getPathRoutes('en', 'updatePatient', {isForNavBar: false})}`} element={<UpdatePatient />} />
 		<Route path={`${getPathRoutes('en', 'deletePatient', {isForNavBar: false})}`} element={<DeletePatient />} />
 		<Route path={`${getPathRoutes('en', 'readPatient', {isForNavBar: false})}`} element={<ReadPatient />} />
 		<Route path={`${getPathRoutes('en', 'createDoctor', {isForNavBar: false})}`} element={<CreateDoctor />} />
 		<Route path={`${getPathRoutes('en', 'updateDoctor', {isForNavBar: false})}`} element={<UpdateDoctor />} />
 		<Route path={`${getPathRoutes('en', 'deleteDoctor', {isForNavBar: false})}`} element={<DeleteDoctor />} />
-		<Route path={`${getPathRoutes('en', 'readDoctor', {isForNavBar: false})}`} element={<ReadDoctor />} />
+		<Route path={`${getPathRoutes('en', 'readDoctor', {isForNavBar: false})}`} element={<ReadDoctor />} /> */}
 
 		<Route path={`/error401`} element={<Error401 />} />
 
@@ -60,14 +60,14 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 		<Route path={'/error401'} element={<Error401 />} />
 
-		<Route path={`${getPathRoutes('sp', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
+		{/* <Route path={`${getPathRoutes('sp', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
 		<Route path={`${getPathRoutes('sp', 'updatePatient', {isForNavBar: false})}`} element={<UpdatePatient />} />
 		<Route path={`${getPathRoutes('sp', 'deletePatient', {isForNavBar: false})}`} element={<DeletePatient />} />
 		<Route path={`${getPathRoutes('sp', 'readPatient', {isForNavBar: false})}`} element={<ReadPatient />} />
 		<Route path={`${getPathRoutes('sp', 'createDoctor', {isForNavBar: false})}`} element={<CreateDoctor />} />
 		<Route path={`${getPathRoutes('sp', 'updateDoctor', {isForNavBar: false})}`} element={<UpdateDoctor />} />
 		<Route path={`${getPathRoutes('sp', 'deleteDoctor', {isForNavBar: false})}`} element={<DeleteDoctor />} />
-		<Route path={`${getPathRoutes('sp', 'readDoctor', {isForNavBar: false})}`} element={<ReadDoctor />} />
+		<Route path={`${getPathRoutes('sp', 'readDoctor', {isForNavBar: false})}`} element={<ReadDoctor />} /> */}
 
 		
 
