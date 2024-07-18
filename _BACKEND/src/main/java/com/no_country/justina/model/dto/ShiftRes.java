@@ -16,6 +16,6 @@ public class ShiftRes {
   private LocalDateTime startDate;
   private LocalDateTime endDate;
   private int appointment;
-  private String doctor;
-  private String specialty;
+  private DoctorShortRes doctor;
+  private SpecialtyRes specialty;
 }

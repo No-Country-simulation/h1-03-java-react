@@ -59,7 +59,22 @@ public class ShiftController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Shift> result = this.shiftService.getAll(pageable);
-    Page<ShiftRes> resultDto = result.map(item -> mapper.map(result, ShiftRes.class));
+    Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+
+  @PostMapping("/filters")
+  public ResponseEntity<?> getAllByDoctorOrSpecialty(@RequestParam(defaultValue = "0") int page,
+                                                     @RequestParam(defaultValue = "20") int size,
+                                                     @RequestParam(defaultValue = "idShift") String sort,
+                                                     @RequestParam(defaultValue = "asc") String direction,
+                                                     @RequestParam(required = false) Long doctorId,
+                                                     @RequestParam(required = false) String specialty,
+                                                     @RequestBody @Valid DateRange range,
+                                                     Pageable pageable){
+    Page<Shift> result = this.shiftService.getAllByDoctorOrSpecialtyBetweenDates(
+            pageable, doctorId, specialty, range.getStart(), range.getEnd());
+    Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
     return ResponseEntity.ok(resultDto);
   }
 

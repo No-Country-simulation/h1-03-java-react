@@ -12,11 +12,12 @@ public class AppConfig {
     private final ConvertDoctorReq converterDoctorReq;
     private final ConvertDoctorRes converterDoctorRes;
     private final ConverterShiftReq converterShiftReq;
-    private final ConverterShiftRes converterShiftRes;
+//    private final ConverterShiftRes converterShiftRes;
     private final ConvertAppointmentReq convertAppointmentReq;
     private final ConvertAppointmentRes convertAppointmentRes;
     private final ConvertPatientReq convertPatientReq;
     private final ConvertUserRes convertUserRes;
+    private final ConvertDoctorShort convertDoctorShort;
 
     @Bean
     public ModelMapper modelMapper() {
@@ -24,11 +25,12 @@ public class AppConfig {
         modelMapper.addConverter(converterDoctorReq);
         modelMapper.addConverter(converterDoctorRes);
         modelMapper.addConverter(converterShiftReq);
-        modelMapper.addConverter(converterShiftRes);
+//        modelMapper.addConverter(converterShiftRes);
         modelMapper.addConverter(convertAppointmentReq);
         modelMapper.addConverter(convertAppointmentRes);
         modelMapper.addConverter(convertPatientReq);
         modelMapper.addConverter(convertUserRes);
+        modelMapper.addConverter(convertDoctorShort);
         return modelMapper;
     }
 }
