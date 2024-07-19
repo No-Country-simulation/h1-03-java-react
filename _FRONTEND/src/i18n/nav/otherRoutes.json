@@ -7,7 +7,9 @@
         {"createDoctor" :{ "name": "Crear médico", "route": "/crear-medico" }},
         {"updateDoctor" :{ "name": "Actualizar médico", "route": "/actualizar-medico" }},
         {"deleteDoctor" :{ "name": "Borrar médico", "route": "/borrar-medico" }},
-        {"readDoctor" :{ "name": "Leer médico", "route": "/leer-medico" }}
+        {"readDoctor" :{ "name": "Leer médico", "route": "/leer-medico" }},
+
+        {"scheduleAppointment" :{ "name": "Leer médico", "route": "/leer-medico" }}
     ],
     "en":[
         {"createPatient" :{ "name": "Create patient", "route": "/create-patient" }},

@@ -4,7 +4,7 @@ import Button from "../../../Resources/FormElements/Button";
 import TitleAvatar from "../../../Resources/Others/TitleAvatar";
 import FilterAppointment from "./FilterAppointment";
 import Results from "../../../DoctorsComponents/Results"; */
-import ShiftsManagement from "./ShiftsManagement";
+import AppointmentsManagement from "./AppointmentsManagement";
 import NextAppointment from "./NextAppointment";
 import { useSelector } from "react-redux";
 import i18n from "../../../i18n/appointments/index.json";
@@ -14,12 +14,12 @@ export default function ApointmentsMainComponent() {
     const language = useSelector((state) => state.i18nReducer.language);
 
 	return (
-		<section className="min-h-screen flex justify-center items-start gap-8 p-10 pt-0">
-            <div className="flex-1">
+		<section className="min-h-screen flex flex-col lg:flex-row justify-center items-start gap-8 p-10 pt-0">
+            <div className="w-full lg:flex-1">
                 <p className="text-center mb-7">{i18n[language].appointmentPageTitle.title}</p>
                 <div className="flex flex-col gap-10">
                     <NextAppointment />
-                    <ShiftsManagement />
+                    <AppointmentsManagement />
                 </div>
             </div>
             <ProfessionalsList />

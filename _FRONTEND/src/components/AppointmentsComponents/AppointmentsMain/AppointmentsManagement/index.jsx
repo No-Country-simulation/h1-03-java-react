@@ -1,0 +1,58 @@
+import React from "react";
+import i18n from "../../../../i18n/appointments/index.json";
+import { useSelector } from "react-redux";
+import reserveAppointment from "../../../../assets/svg/others/reserveAppointment.svg";
+import modifyAppointment from "../../../../assets/svg/others/modifyAppointment.svg";
+import scheduledAppointments from "../../../../assets/svg/others/scheduledAppointments.svg";
+ 
+export default function AppointmentsManagement() {
+    const language = useSelector((state) => state.i18nReducer.language);
+
+	return (
+		<div className="flex flex-col sm:flex-row gap-5">
+			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+				<img
+					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
+					src={reserveAppointment}
+                    alt={i18n[language].reserveAppointment.title}
+					aria-label={i18n[language].reserveAppointment.title}
+					title={i18n[language].reserveAppointment.title}
+					loading="lazy"
+                    role="button"
+                    onClick={() => {}}
+				/>
+				<p className="2xl:text-2xl">{i18n[language].reserveAppointment.title}</p>
+			</div>
+			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+				<img
+					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
+					src={scheduledAppointments}
+					alt={i18n[language].scheduledAppointments.title}
+					aria-label={i18n[language].scheduledAppointments.title}
+					title={i18n[language].scheduledAppointments.title}
+					loading="lazy"
+                    role="button"
+                    onClick={() => {}}
+				/>
+
+				<p className="2xl:text-2xl">{i18n[language].scheduledAppointments.title}</p>
+			</div>
+			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+				<img
+					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
+					src={modifyAppointment}
+					alt={i18n[language].modifyAppointments.title}
+					aria-label={i18n[language].modifyAppointments.title}
+					title={i18n[language].modifyAppointments.title}
+					width={70}
+					height={70}
+					loading="lazy"
+                    role="button"
+                    onClick={() => {}}
+				/>
+
+				<p className="2xl:text-2xl">{i18n[language].modifyAppointments.title}</p>
+			</div>
+		</div>
+	);
+}

@@ -8,7 +8,7 @@ export default function ProfessionalsList() {
 
 	return (
 		<div
-			className="flex-1 border rounded-3xl h-full"
+			className="w-full lg:flex-1 border rounded-3xl h-full"
 			style={{
 				background:
 					"linear-gradient(180deg, rgba(86, 102, 190, 0.8) 57.95%, rgba(217, 130, 53, 0.56) 100%)",
