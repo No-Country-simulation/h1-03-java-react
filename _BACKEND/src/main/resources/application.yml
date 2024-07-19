@@ -9,31 +9,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    protocol: smtp
-    username: ${MAIL_USER}
-    password: ${MAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-            required: true
-          ssl:
-            trust: smtp.gmail.com
-
 jwt:
   time:
     expiration: ${JWT_EXPIRATION}
   secret:
     key: ${JWT_SECRETKEY}
-client:
-  url: ${CLIENT_URL}
-confirm:
-  url: ${CONFIRM_URL}
 logging:
   level:
     root: INFO
