@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -26,7 +27,10 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long idUser;
-    private String name, lastname, email, password;
+    private String name;
+    private String lastname;
+    private String email;
+    private String password;
     private LocalDateTime createdAt;
     private boolean isEnabled;
 
@@ -75,4 +79,11 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
+
+    @OneToOne(mappedBy = "userEntity")
+    private Admin admin;
+    @OneToOne(mappedBy = "userEntity")
+    private Doctor doctor;
+    @OneToOne(mappedBy = "user")
+    private Patient patient;
 }

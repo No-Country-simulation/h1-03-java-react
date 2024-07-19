@@ -34,8 +34,9 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
-    public Optional<UserEntity> getUser(Long id) {
-        return userRepository.findById(id);
+    public UserEntity getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(()->new UserIdNotFoundException(id));
     }
 
     @Override

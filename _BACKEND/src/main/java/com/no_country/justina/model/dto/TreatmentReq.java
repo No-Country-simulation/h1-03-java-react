@@ -14,5 +14,5 @@ import lombok.Setter;
 public class TreatmentReq {
   @NotBlank private String diagnosis;
   @NotBlank private String description;
-  @NotNull private long medicalHistoryId;
+  @NotNull private Long medicalHistoryId;
 }

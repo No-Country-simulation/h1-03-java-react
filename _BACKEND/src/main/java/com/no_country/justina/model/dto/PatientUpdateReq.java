@@ -15,15 +15,13 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PatientReq {
-       @NotBlank private String docIdentity;
-       @NotBlank private String phone;
-       @NotBlank private String address;
-       @NotNull private LocalDate birthdate;
-       @NotNull private MaritalStatus maritalStatus;
-       @NotNull private Genre genre;
-       @NotNull private Long userId;
-       private String bloodType;
-       private String job;
-       private String religion;
+public class PatientUpdateReq {
+  @NotBlank
+  private String docIdentity;
+  @NotBlank private String phone;
+  @NotBlank private String address;
+  @NotNull
+  private LocalDate birthdate;
+  @NotNull private MaritalStatus maritalStatus;
+  @NotNull private Genre genre;
 }

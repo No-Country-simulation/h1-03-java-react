@@ -2,10 +2,7 @@ package com.no_country.justina.model.entities;
 
 import com.no_country.justina.model.enums.BloodType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -18,15 +15,21 @@ public class MedicalHistory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long idMedicalHistory;
+  @Column(updatable = false, nullable = false)
   private LocalDateTime createdAt;
   @Enumerated(EnumType.STRING)
   private BloodType bloodType;
-  @Column(columnDefinition = "VARCHAR(100)")
+  @Column(length = 100)
   private String job;
-  @Column(columnDefinition = "VARCHAR(100)")
+  @Column(length = 100)
   private String religion;
 
   @OneToOne
-  @JoinColumn(name = "patient_id")
+  @JoinColumn(name = "patient_id", nullable = false)
   private Patient patient;
+
+  @PrePersist
+  public void onCreate(){
+    this.createdAt = LocalDateTime.now();
+  }
 }

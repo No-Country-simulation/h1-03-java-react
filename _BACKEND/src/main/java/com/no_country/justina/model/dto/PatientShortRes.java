@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicalHistoryReq {
-  private String bloodType;
-  private String job;
-  private String religion;
+public class PatientShortRes {
+  private long id;
+  private String patient;
+  private String docIdentity;
 }

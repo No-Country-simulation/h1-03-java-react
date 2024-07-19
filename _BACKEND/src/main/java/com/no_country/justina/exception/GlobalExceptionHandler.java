@@ -38,15 +38,16 @@ public class GlobalExceptionHandler {
     var error = new ErrorDetails(LocalDateTime.now(), e.getMessage(), request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
+
   @ExceptionHandler(IllegalArgumentException.class)
-  public ResponseEntity<?> handleIlegalArgument(IllegalArgumentException e, WebRequest request){
+  public ResponseEntity<?> handleIlegalArgument(IllegalArgumentException e, WebRequest request) {
     var error = new ErrorDetails(LocalDateTime.now(), e.getMessage(), request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 
-  @ExceptionHandler(Exception.class)
-  public ResponseEntity<?> handleGlobalExceptions(Exception ex, WebRequest request){
-    ErrorDetails error = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false) );
-    return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-  }
+//  @ExceptionHandler(Exception.class)
+//  public ResponseEntity<?> handleGlobalExceptions(Exception ex, WebRequest request){
+//    ErrorDetails error = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false) );
+//    return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+//  }
 }

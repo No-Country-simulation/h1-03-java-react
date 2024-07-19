@@ -1,10 +1,7 @@
 package com.no_country.justina.model.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
@@ -23,11 +20,11 @@ public class Doctor {
     @Column(length = 10)
     private String license;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", nullable = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
     @ManyToOne
-    @JoinColumn(name = "specialty_id", nullable = false)
+    @JoinColumn(name = "specialty_id")
     private Specialty specialty;
 }

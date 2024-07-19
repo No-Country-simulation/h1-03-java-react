@@ -9,8 +9,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MedicalHistoryReq {
-  private String bloodType;
-  private String job;
-  private String religion;
+public class DoctorShortRes {
+  private long id;
+  private String licence;
+  private String doctor;
 }

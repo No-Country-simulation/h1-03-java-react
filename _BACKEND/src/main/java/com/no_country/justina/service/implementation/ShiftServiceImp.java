@@ -1,5 +1,6 @@
 package com.no_country.justina.service.implementation;
 
+import com.no_country.justina.exception.ShiftException;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.repository.ShiftRepository;
@@ -25,6 +26,7 @@ public class ShiftServiceImp implements IShiftService {
   public Shift create(Shift shift) {
     this.verifyValidTimeShift(shift);
     this.verifyShiftHourByDay(shift);
+    this.verifyShiftIsAfterToday(shift);
     List<Shift> shiftsByDay = this.shiftRepository.findByDayAndDoctor(
             shift.getDoctor().getId(),
             shift.getStartDate().getYear(),
@@ -44,6 +46,7 @@ public class ShiftServiceImp implements IShiftService {
     orderShifts.forEach(shift->{
       this.verifyValidTimeShift(shift);
       this.verifyShiftHourByDay(shift);
+      this.verifyShiftIsAfterToday(shift);
     });
 
     Doctor doctor = orderShifts.get(1).getDoctor();
@@ -91,17 +94,28 @@ public class ShiftServiceImp implements IShiftService {
   }
 
   @Override
-  public Page<Shift> getAllBetweenDate(LocalDateTime start, LocalDateTime end, Pageable pageable){
+  public Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
+                                                           Long doctorId,
+                                                           String specialty,
+                                                           LocalDateTime start,
+                                                           LocalDateTime end){
     if(start.isAfter(end)){
       throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
-    }
-    if(start.getMonth() != end.getMonth()){
-      throw new IllegalArgumentException("Los rangos de horario deben ser del mismo mes.");
     }
     if(start.getYear() != end.getYear()){
       throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
     }
-    return this.shiftRepository.findShiftsMonthBetween(start, end, pageable);
+    return this.shiftRepository.findAllByDoctorOrSpecialty(
+            pageable, doctorId, specialty, start,end);
+  }
+
+
+  @Override
+  public void updateAppointmentAvailable(long idShift, int quantity){
+    var result =this.shiftRepository.updateAppointmentShift(idShift, quantity);
+    if(result == 0){
+      throw new ShiftException("Ningún registro de turnos fue actualizado.");
+    }
   }
 
   private void verifyShiftExist(long id) {
@@ -148,6 +162,11 @@ public class ShiftServiceImp implements IShiftService {
       if(current.getStartDate().isBefore(previous.getEndDate())){
         throw new IllegalArgumentException("Los turnos en el dia "+current.getStartDate()+" se superponen horarios.");
       }
+    }
+  }
+  private void verifyShiftIsAfterToday(Shift shift){
+    if(!shift.getStartDate().toLocalDate().isAfter(LocalDate.now())){
+      throw new IllegalArgumentException("No se pueden crear turnos para el mismo dia ni antes.");
     }
   }
 

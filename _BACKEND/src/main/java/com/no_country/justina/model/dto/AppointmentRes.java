@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @Setter
 public class AppointmentRes {
   private long appointmentId;
-  private LocalDateTime appointment;
+  private LocalDateTime date;
   private AppointmentStatus appointmentStatus;
-  private long patientId;
-  private long doctorId;
+  private PatientShortRes patient;
+  private ShiftRes shift;
 }

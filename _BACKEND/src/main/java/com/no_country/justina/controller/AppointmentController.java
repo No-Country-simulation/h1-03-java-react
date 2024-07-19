@@ -2,6 +2,7 @@ package com.no_country.justina.controller;
 
 import com.no_country.justina.model.dto.AppointmentReq;
 import com.no_country.justina.model.dto.AppointmentRes;
+import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.service.interfaces.IAppointmentService;
 import jakarta.validation.Valid;
@@ -26,7 +27,7 @@ public class AppointmentController {
     Appointment newAppointment = mapper.map(appointmentReq, Appointment.class);
     Appointment savedAppointment = this.appointmentService.create(newAppointment);
     return ResponseEntity
-            .status(HttpStatus.CREATED).body("hola");
+            .status(HttpStatus.CREATED).body(mapper.map(savedAppointment, AppointmentRes.class));
   }
 
   @GetMapping("/{id}")
@@ -42,7 +43,23 @@ public class AppointmentController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Appointment> result = this.appointmentService.getAll(pageable);
-    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(result, AppointmentRes.class));
+    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+
+  @PostMapping("/filter")
+  public ResponseEntity<?> getAllDoctorOrSpecialty(
+          @RequestParam(defaultValue = "0") int page,
+          @RequestParam(defaultValue = "20") int size,
+          @RequestParam(defaultValue = "idAppointment") String sort,
+          @RequestParam(defaultValue = "asc") String direction,
+          Pageable pageable,
+          @RequestParam(required = false) Long doctorId,
+          @RequestParam(required = false) String specialty,
+          @RequestBody @Valid DateRange range) {
+    Page<Appointment> result = this.appointmentService.getAllByDoctorOrSpecialty(
+            pageable, doctorId, specialty, range.getStart(), range.getEnd());
+    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
 
@@ -54,6 +71,21 @@ public class AppointmentController {
     var appointmentUpdated = this.appointmentService.update(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
+  @PutMapping("/reschedule/{id}")
+  public ResponseEntity<?> rescheduleById(@RequestBody @Valid AppointmentReq appointmentReq,
+                                      @PathVariable long id) {
+    var newAppointment = mapper.map(appointmentReq, Appointment.class);
+    newAppointment.setIdAppointment(id);
+    var appointmentUpdated = this.appointmentService.reschedule(newAppointment);
+    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
+  }
+
+  @PutMapping("/cancel/{id}")
+  public ResponseEntity<?> cancelById(@PathVariable long id) {
+    var appointmentUpdated = this.appointmentService.cancel(id);
+    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
+  }
+
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteById(@PathVariable long id) {

@@ -1,6 +1,7 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Admin;
+import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.AdminRepository;
 import com.no_country.justina.service.interfaces.IAdminService;
 import jakarta.persistence.EntityNotFoundException;
@@ -39,6 +40,13 @@ public class AdminServiceImp implements IAdminService {
   public void deleteById(Long id) {
     this.verifyAdminExist(id);
     this.adminRepo.deleteById(id);
+  }
+
+  @Override
+  public Admin createEmpty(UserEntity user) {
+    Admin newAdmin = new Admin();
+    newAdmin.setUserEntity(user);
+    return this.adminRepo.save(newAdmin);
   }
 
   private void verifyAdminExist(long id){

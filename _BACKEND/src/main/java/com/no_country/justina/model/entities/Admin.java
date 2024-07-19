@@ -18,7 +18,7 @@ public class Admin {
   @Column(length = 25)
   private String docIdentity;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id")
   private UserEntity userEntity;
 }

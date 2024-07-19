@@ -15,5 +15,6 @@ public class DoctorReq {
   @NotBlank private String phone;
   @NotBlank private String address;
   @NotBlank private String license;
-  @NotNull  private long specialtyId;
+  @NotNull  private Long specialtyId;
+  private long userId;
 }

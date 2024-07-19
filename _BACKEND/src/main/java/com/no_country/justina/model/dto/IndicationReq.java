@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 public class IndicationReq{
-        @NotNull @Min(0) private int dosage;
-        @NotNull @Min(0) private int quantity;
+        @NotNull @Min(0) private Integer dosage;
+        @NotNull @Min(0) private Integer quantity;
         @NotBlank private DrugForm form;
         @NotBlank private DrugRoute routeAdministration;
-        @NotNull @Min(0) private int frequency;
-        @NotNull @Min(0) private int duration;
+        @NotNull @Min(0) private Integer frequency;
+        @NotNull @Min(0) private Integer duration;
         @NotNull private LocalDate startDate;
         private String description;
-        @NotNull private long drugId;
-        @NotNull private long prescriptionId;
+        @NotNull private Long drugId;
+        @NotNull private Long prescriptionId;
 }

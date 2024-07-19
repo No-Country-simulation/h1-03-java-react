@@ -41,7 +41,7 @@ public class DrugController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Drug> searchResult = this.drugService.getAll(pageable);
-    Page<DrugRes> resultDto = searchResult.map(drug -> mapper.map(searchResult, DrugRes.class));
+    Page<DrugRes> resultDto = searchResult.map(drug -> mapper.map(drug, DrugRes.class));
     return ResponseEntity.ok(resultDto);
   }
 

@@ -21,5 +21,10 @@ public interface IShiftService {
 
   List<Shift> getAllBySpecialtyMonth(String specialty, int year, int month);
 
-  Page<Shift> getAllBetweenDate(LocalDateTime start, LocalDateTime end, Pageable pageable);
+  Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
+                                                    Long doctorId,
+                                                    String specialty,
+                                                    LocalDateTime start,
+                                                    LocalDateTime end);
+  void updateAppointmentAvailable(long idShift, int quantity);
 }

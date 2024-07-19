@@ -45,7 +45,7 @@ public class IndicationController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Indication> result = this.indicationService.getAll(pageable);
-    Page<IndicationRes> resultDto = result.map(item -> mapper.map(result, IndicationRes.class));
+    Page<IndicationRes> resultDto = result.map(item -> mapper.map(item, IndicationRes.class));
     return ResponseEntity.ok(resultDto);
   }
 
