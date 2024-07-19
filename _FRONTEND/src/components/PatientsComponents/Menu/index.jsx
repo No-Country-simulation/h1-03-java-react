@@ -15,7 +15,7 @@ export default function Menu() {
 					height={50}
 					loading="lazy"
 				/>
-				<p>CITAS</p>
+				<p>TURNOS</p>
 			</div>
 			<div className="text-center">
 				<img

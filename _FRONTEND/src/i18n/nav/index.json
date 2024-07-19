@@ -3,7 +3,7 @@
         {"home" :{ "name": "Inicio", "route": "/" }},
         {"patients" :{ "name": "Pacientes", "route": "/pacientes" }},
         {"doctors" :{ "name": "Médicos", "route": "/medicos" }},
-        {"appointments" :{ "name": "Citas", "route": "/citas" }},
+        {"appointments" :{ "name": "Turnos", "route": "/turnos" }},
         {"medical_records" :{ "name": "Historia clínica", "route": "/historia-clinica" }},
         {"prescriptions" :{ "name": "Recetas", "route": "/recetas" }},
         {"treatments" :{ "name": "Tratamientos", "route": "/tratamientos" }},

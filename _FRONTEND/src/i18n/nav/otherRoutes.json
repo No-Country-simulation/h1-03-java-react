@@ -9,7 +9,9 @@
         {"deleteDoctor" :{ "name": "Borrar médico", "route": "/borrar-medico" }},
         {"readDoctor" :{ "name": "Leer médico", "route": "/leer-medico" }},
 
-        {"scheduleAppointment" :{ "name": "Leer médico", "route": "/leer-medico" }}
+        {"reserve_appointment" :{ "name": "Reservar turno", "route": "/turnos/reservar-turno" }},
+        {"scheduled_appointments" :{ "name": "Turnos agendados", "route": "/turnos/turnos-agendados" }},
+        {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }}
     ],
     "en":[
         {"createPatient" :{ "name": "Create patient", "route": "/create-patient" }},
@@ -19,6 +21,10 @@
         {"createDoctor" :{ "name": "Create doctor", "route": "/create-doctor" }},
         {"updateDoctor" :{ "name": "Update Doctor", "route": "/update-doctor" }},
         {"deleteDoctor" :{ "name": "Delete doctor", "route": "/delete-doctor" }},
-        {"readDoctor" :{ "name": "Read doctor", "route": "/read-doctor" }}
+        {"readDoctor" :{ "name": "Read doctor", "route": "/read-doctor" }},
+
+        {"reserve_appointment" :{ "name": "Reserve Appointment", "route": "/appointments/reserve-appointment" }},
+        {"scheduled_appointments" :{ "name": "Scheduled Appointments", "route": "/appointments/scheduled-appointments" }},
+        {"modify_appointments" :{ "name": "Modify Appointments", "route": "/appointments/modify-appointments" }}
     ]
 }

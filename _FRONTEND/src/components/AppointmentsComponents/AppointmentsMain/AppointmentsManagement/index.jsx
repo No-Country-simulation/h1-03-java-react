@@ -4,26 +4,44 @@ import { useSelector } from "react-redux";
 import reserveAppointment from "../../../../assets/svg/others/reserveAppointment.svg";
 import modifyAppointment from "../../../../assets/svg/others/modifyAppointment.svg";
 import scheduledAppointments from "../../../../assets/svg/others/scheduledAppointments.svg";
- 
+import { useNavigate } from "react-router-dom";
+import getPathRoutes from "../../../../helpers/pathroutes";
+
 export default function AppointmentsManagement() {
-    const language = useSelector((state) => state.i18nReducer.language);
+	const language = useSelector((state) => state.i18nReducer.language);
+	const navigate = useNavigate();
 
 	return (
 		<div className="flex flex-col sm:flex-row gap-5">
-			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+			<div
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				onClick={() =>
+					navigate(
+						`${getPathRoutes(language, "reserve_appointment", { isForNavBar: false })}`
+					)
+				}
+			>
 				<img
 					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
 					src={reserveAppointment}
-                    alt={i18n[language].reserveAppointment.title}
+					alt={i18n[language].reserveAppointment.title}
 					aria-label={i18n[language].reserveAppointment.title}
 					title={i18n[language].reserveAppointment.title}
 					loading="lazy"
-                    role="button"
-                    onClick={() => {}}
+					role="button"
 				/>
-				<p className="2xl:text-2xl">{i18n[language].reserveAppointment.title}</p>
+				<p className="2xl:text-2xl">
+					{i18n[language].reserveAppointment.title}
+				</p>
 			</div>
-			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+			<div
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				onClick={() =>
+					navigate(
+						`${getPathRoutes(language, "scheduled_appointments", { isForNavBar: false })}`
+					)
+				}
+			>
 				<img
 					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
 					src={scheduledAppointments}
@@ -31,13 +49,21 @@ export default function AppointmentsManagement() {
 					aria-label={i18n[language].scheduledAppointments.title}
 					title={i18n[language].scheduledAppointments.title}
 					loading="lazy"
-                    role="button"
-                    onClick={() => {}}
+					role="button"
 				/>
 
-				<p className="2xl:text-2xl">{i18n[language].scheduledAppointments.title}</p>
+				<p className="2xl:text-2xl">
+					{i18n[language].scheduledAppointments.title}
+				</p>
 			</div>
-			<div className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer">
+			<div
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				onClick={() =>
+					navigate(
+						`${getPathRoutes(language, "modify_appointments", { isForNavBar: false })}`
+					)
+				}
+			>
 				<img
 					className="hover:scale-110 transition duration-500 w-[70px] 2xl:w-[100px] h-[70px] 2xl:h-[100px]"
 					src={modifyAppointment}
@@ -47,11 +73,12 @@ export default function AppointmentsManagement() {
 					width={70}
 					height={70}
 					loading="lazy"
-                    role="button"
-                    onClick={() => {}}
+					role="button"
 				/>
 
-				<p className="2xl:text-2xl">{i18n[language].modifyAppointments.title}</p>
+				<p className="2xl:text-2xl">
+					{i18n[language].modifyAppointments.title}
+				</p>
 			</div>
 		</div>
 	);

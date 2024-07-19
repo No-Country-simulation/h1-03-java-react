@@ -31,7 +31,7 @@ export default function FilterAppointment() {
 
 			<Select
 				id={"appointmentDate"}
-				title={"Fecha de la cita"}
+				title={"Fecha de la turno"}
 				arrayOptions={["01/01/2024", "02/01/2024", "03/01/2024"]}
 				isRequired={true}
 				hasLabel={false}

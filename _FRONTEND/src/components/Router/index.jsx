@@ -7,6 +7,9 @@ import Error401 from "../../pages/Error401";
 import Doctors from "../../pages/Doctors";
 import Patients from "../../pages/Patients";
 import Appointments from "../../pages/Appointments";
+import ReserveAppointment from "../../pages/Appointments/ReserveAppointment";
+import ScheduledAppointments from "../../pages/Appointments/ScheduledAppointments";
+import ModifyAppointments from "../../pages/Appointments/ModifyAppointments";
 import MedicalRecords from "../../pages/MedicalRecords";
 import Prescriptions from "../../pages/Prescriptions";
 import Treatments from "../../pages/Treatments";
@@ -36,6 +39,9 @@ export default function Router() {
 		<Route path={`${getPathRoutes('en', 'signin', {isForNavBar: true})}`} element={<Signin />} />
 		<Route path={`${getPathRoutes('en', 'signup', {isForNavBar: true})}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('en', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
+		<Route path={`${getPathRoutes('en', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
+		<Route path={`${getPathRoutes('en', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />
+		<Route path={`${getPathRoutes('en', 'modify_appointments', {isForNavBar: false})}`} element={<ModifyAppointments />} />
 
 		{/* <Route path={`${getPathRoutes('en', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
 		<Route path={`${getPathRoutes('en', 'updatePatient', {isForNavBar: false})}`} element={<UpdatePatient />} />
@@ -58,6 +64,9 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'signin', {isForNavBar: true})}`} element={<Signin />} />
 		<Route path={`${getPathRoutes('sp', 'signup', {isForNavBar: true})}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('sp', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
+		<Route path={`${getPathRoutes('sp', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
+		<Route path={`${getPathRoutes('sp', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />
+		<Route path={`${getPathRoutes('sp', 'modify_appointments', {isForNavBar: false})}`} element={<ModifyAppointments />} />
 		<Route path={'/error401'} element={<Error401 />} />
 
 		{/* <Route path={`${getPathRoutes('sp', 'createPatient', {isForNavBar: false})}`} element={<CreatePatient />} />
