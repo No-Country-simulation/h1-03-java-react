@@ -18,9 +18,9 @@ public class ConvertAppointmentRes extends AbstractConverter<Appointment, Appoin
             appointment.getShift().getDoctor().getUserEntity().getLastname());
     appointmentRes.setAppointmentId(appointment.getIdAppointment());
     appointmentRes.setDate(appointment.getDate());
-    appointmentRes.setPatient(patient);
-    appointmentRes.setDoctor(doctor);
-    appointmentRes.setSpecialty(appointment.getShift().getSpecialty().getName());
+//    appointmentRes.setPatient(patient);
+//    appointmentRes.setDoctor(doctor);
+//    appointmentRes.setSpecialty(appointment.getShift().getSpecialty().getName());
     appointmentRes.setAppointmentStatus(appointment.getAppointmentStatus());
     return appointmentRes;
   }

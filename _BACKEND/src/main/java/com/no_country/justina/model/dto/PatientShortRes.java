@@ -12,6 +12,5 @@ import lombok.Setter;
 public class PatientShortRes {
   private long id;
   private String patient;
-  private long historyId;
   private String docIdentity;
 }

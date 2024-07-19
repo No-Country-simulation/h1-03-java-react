@@ -1,7 +1,9 @@
 package com.no_country.justina.service.implementation;
 
+import com.no_country.justina.exception.AppointmentException;
 import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.model.entities.Shift;
+import com.no_country.justina.model.enums.AppointmentStatus;
 import com.no_country.justina.repository.AppointmentRepository;
 import com.no_country.justina.service.interfaces.IAppointmentService;
 import com.no_country.justina.service.interfaces.IShiftService;
@@ -10,10 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +29,7 @@ public class AppointmentServiceImp implements IAppointmentService {
     this.verifyOneAppointmentByDayAndPatient(appointment);
     this.verifyAppointmentsAvailable(appointment);
     var savedAppointment = this.appointmentRepo.save(appointment);
-    shiftService.makeAppointment(appointment.getShift().getIdShift());
+    shiftService.updateAppointmentAvailable(appointment.getShift().getIdShift(), 1);
     return savedAppointment;
   }
 
@@ -63,6 +65,41 @@ public class AppointmentServiceImp implements IAppointmentService {
     this.verifyAppointmentExist(appointment.getIdAppointment());
     return this.appointmentRepo.save(appointment);
   }
+
+  @Transactional
+  @Override
+  public Appointment reschedule(Appointment appointment){
+    var oldAppointment = this.getById(appointment.getIdAppointment());
+    if(oldAppointment.getAppointmentStatus() != AppointmentStatus.PENDING){
+      throw new IllegalArgumentException("Solo puedes reprogramar citas pendientes. id:"+appointment.getIdAppointment());
+    }
+    int updateResult = this.appointmentRepo.updateAppointmentStatus(
+            AppointmentStatus.RESCHEDULE, appointment.getIdAppointment());
+    if(updateResult != 1) {
+      throw new AppointmentException("Solo 1 cita puede ser actualizada.");
+    }
+    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getIdShift(), -1);
+    appointment.setIdAppointment(null);
+    return this.create(appointment);
+  }
+
+  @Transactional
+  @Override
+  public Appointment cancel(Long id){
+    var oldAppointment = this.getById(id);
+    if(oldAppointment.getAppointmentStatus() != AppointmentStatus.PENDING){
+      throw new IllegalArgumentException("Solo puedes cancelar citas pendientes. id:"+id);
+    }
+    int updateResult = this.appointmentRepo.updateAppointmentStatus(
+            AppointmentStatus.CANCELLED, id);
+    if(updateResult != 1) {
+      throw new AppointmentException("Solo 1 cita puede ser cancelada.");
+    }
+    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getIdShift(), -1);
+    oldAppointment.setAppointmentStatus(AppointmentStatus.CANCELLED);
+    return oldAppointment;
+  }
+
 
   @Override
   public void deleteById(Long id) {

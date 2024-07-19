@@ -35,8 +35,8 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
 
   @Transactional
   @Modifying
-  @Query("update Shift s set s.appointment = s.appointment-1 where s.idShift = :id")
-  int updateAppointmentShift(long id);
+  @Query("update Shift s set s.appointment = s.appointment - :quantity where s.idShift = :id")
+  int updateAppointmentShift(long id, int quantity);
 
   default Page<Shift> findAllByDoctorOrSpecialty(Pageable pageable,
                                                  Long doctorId,

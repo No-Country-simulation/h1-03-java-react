@@ -15,7 +15,6 @@ public class ConvertPatientShort extends AbstractConverter<Patient, PatientShort
             patient.getUser().getLastname());
 
     patientRes.setId(patient.getIdPatient());
-    patientRes.setHistoryId(patient.getMedicalHistory().getIdMedicalHistory());
     patientRes.setDocIdentity(patient.getDocIdentity());
     patientRes.setPatient(patientName);
     return patientRes;

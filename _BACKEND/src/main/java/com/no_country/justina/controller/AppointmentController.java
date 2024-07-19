@@ -71,6 +71,21 @@ public class AppointmentController {
     var appointmentUpdated = this.appointmentService.update(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
+  @PutMapping("/reschedule/{id}")
+  public ResponseEntity<?> rescheduleById(@RequestBody @Valid AppointmentReq appointmentReq,
+                                      @PathVariable long id) {
+    var newAppointment = mapper.map(appointmentReq, Appointment.class);
+    newAppointment.setIdAppointment(id);
+    var appointmentUpdated = this.appointmentService.reschedule(newAppointment);
+    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
+  }
+
+  @PutMapping("/cancel/{id}")
+  public ResponseEntity<?> cancelById(@PathVariable long id) {
+    var appointmentUpdated = this.appointmentService.cancel(id);
+    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
+  }
+
 
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteById(@PathVariable long id) {

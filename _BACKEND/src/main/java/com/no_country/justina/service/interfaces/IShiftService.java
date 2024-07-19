@@ -26,5 +26,5 @@ public interface IShiftService {
                                                     String specialty,
                                                     LocalDateTime start,
                                                     LocalDateTime end);
-  void makeAppointment(long idShift);
+  void updateAppointmentAvailable(long idShift, int quantity);
 }

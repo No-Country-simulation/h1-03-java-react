@@ -16,7 +16,6 @@ public class AppointmentRes {
   private long appointmentId;
   private LocalDateTime date;
   private AppointmentStatus appointmentStatus;
-  private String doctor;
-  private String patient;
-  private String specialty;
+  private PatientShortRes patient;
+  private ShiftRes shift;
 }

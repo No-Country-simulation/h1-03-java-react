@@ -111,8 +111,8 @@ public class ShiftServiceImp implements IShiftService {
 
 
   @Override
-  public void makeAppointment(long idShift){
-    var result =this.shiftRepository.updateAppointmentShift(idShift);
+  public void updateAppointmentAvailable(long idShift, int quantity){
+    var result =this.shiftRepository.updateAppointmentShift(idShift, quantity);
     if(result == 0){
       throw new ShiftException("Ningún registro de turnos fue actualizado.");
     }
