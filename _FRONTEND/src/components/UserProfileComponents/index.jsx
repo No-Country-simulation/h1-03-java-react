@@ -4,7 +4,7 @@ import EditMyInfoDoctors from '../DoctorsComponents/Crud/EditMyInfoDoctors'
 import DeleteAccount from './DeleteAccount';
 
 export default function UserProfileMainComponent() {
-    const [tempTypeUser, setTempTypeUser] = useState(true);
+    const [tempTypeUser] = useState(true);
 
     return (
         <>  

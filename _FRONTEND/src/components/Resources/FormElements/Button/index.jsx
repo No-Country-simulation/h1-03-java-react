@@ -9,7 +9,7 @@ export default function Button({
 	isDisabled = false,
 	onClickHandler = ()=>{},
 }) {
-	console.log(type)
+	
 	return (
 		<>
 			{text && (

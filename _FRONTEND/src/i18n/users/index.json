@@ -11,7 +11,11 @@
                 {"title": "YA NO UTILIZO LA PLATAFORMA", "id": "checkbox1"},
                 {"title": "NO ENTIENDO COMO SE UTILIZA", "id": "checkbox2"},
                 {"title": "YA NO RESIDO EN EL PAÍS", "id": "checkbox3"}
-            ]
+            ],
+            "buttons": {
+                "confirm": {"text": "CONFIRMAR", "title": "Confirmar"},
+                "cancel": {"text": "CANCELAR", "title": "Cancelar"}
+            }
         }
     },
     "en": {
@@ -26,7 +30,11 @@
                 {"title": "I NO LONGER USE THE PLATFORM", "id": "checkbox1"},
                 {"title": "I DON'T UNDERSTAND HOW TO USE IT", "id": "checkbox2"},
                 {"title": "I NO LONGER RESIDE IN THE COUNTRY", "id": "checkbox3"}
-            ]
+            ],
+            "buttons": {
+                "confirm": {"text": "CONFIRM", "title": "Confirm"},
+                "cancel": {"text": "CANCEL", "title": "Cancel"}
+            }
         }
     }
 }

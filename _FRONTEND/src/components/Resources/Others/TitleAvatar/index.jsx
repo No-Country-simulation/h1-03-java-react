@@ -4,7 +4,7 @@ export default function TitleAvatar({title}) {
 	return (
 		<p className="text-center relative">
 			{title}
-			<img
+			{/* <img
 				id=""
 				src=""
 				title="Avatar"
@@ -14,7 +14,7 @@ export default function TitleAvatar({title}) {
 				width={50}
 				height={50}
 				loading="lazy"
-			/>
+			/> */}
 		</p>
 	);
 }

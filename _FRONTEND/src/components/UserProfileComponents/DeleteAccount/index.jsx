@@ -8,7 +8,7 @@ export default function DeleteAccount() {
     const language = useSelector((state) => state.i18nReducer.language);
 
     useEffect(() => {
-        setClosePopup(false)
+        setClosePopup(true)
     }, [])
 
     const onClickHandler = ()=>{

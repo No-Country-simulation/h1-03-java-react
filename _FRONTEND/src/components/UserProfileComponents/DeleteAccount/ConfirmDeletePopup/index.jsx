@@ -5,6 +5,7 @@ import Input from "../../../Resources/FormElements/InputLabel/Input";
 import Label from "../../../Resources/FormElements/InputLabel/Label";
 import Form from "../../../Resources/FormElements/Form";
 import i18n from "../../../../i18n/users/index.json";
+import warningDeleteAccount from '../../../../assets/svg/others/warningDeleteAccount.svg'
 
 export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 	const language = useSelector((state) => state.i18nReducer.language);
@@ -15,7 +16,6 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 
     const closePopupHandler = () => {
         setClosePopup(true)
-        
     }
 
 	return (
@@ -30,13 +30,22 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 			>
 				<div className="font-bold text-balance">
 					<p
-						className="text-red-500 text-center py-1 sm:py-1"
+						className="flex justify-center items-center gap-3 text-red-500 text-center py-1 sm:py-1"
 						aria-label={i18n[language].confirmDelete.mainTitle}
 						aria-level={1}
 						role="heading"
 						lang={language}
 					>
-                        {i18n[language].confirmDelete.mainTitle}
+                        <img 
+							src={warningDeleteAccount}
+							alt="warningDeleteAccount"
+							width={20}
+							height={20}
+							aria-label={i18n[language].confirmDelete.mainTitle+' image'}
+							title={i18n[language].confirmDelete.mainTitle}
+							lang={language}
+						/>
+						{i18n[language].confirmDelete.mainTitle}
 					</p>
 					<p
 						className="text-center py-1 sm:pt-5"
@@ -72,18 +81,18 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 				<div className="grid grid-cols-2 gap-1 m-auto sm:gap-5 max-w-max pointer-events-auto">
 					<Button
 						type={"button"}
-						text={"CANCELAR"}
+						text={i18n[language].confirmDelete.buttons.cancel.text}
 						textColor={"#FFF"}
 						bgColor={"#D98236"}
-						title={""}
+						title={i18n[language].confirmDelete.buttons.cancel.title}
 						isDisabled={false}
 						onClickHandler={closePopupHandler}
 					/>
 					<Button
 						type={"submit"}
-						text={"CONFIRMAR"}
+						text={i18n[language].confirmDelete.buttons.confirm.text}
 						textColor={"#FFF"}
-						title={""}
+						title={i18n[language].confirmDelete.buttons.confirm.title}
 						isDisabled={false}
 						onClickHandler={() => {}}
 					/>
