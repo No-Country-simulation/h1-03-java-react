@@ -26,8 +26,5 @@ public interface IShiftService {
                                                     String specialty,
                                                     LocalDateTime start,
                                                     LocalDateTime end);
-
-  Page<Shift> getAllBetweenDate(LocalDateTime start, LocalDateTime end, Pageable pageable);
-
   void makeAppointment(long idShift);
 }

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -42,9 +43,19 @@ public class AppointmentServiceImp implements IAppointmentService {
   }
 
   @Override
-  public List<Appointment> getByShift(long shiftId){
-    Shift shiftTarget = this.shiftService.getById(shiftId);
-    return this.appointmentRepo.findByShift(shiftTarget);
+  public Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
+                                                     Long doctorId,
+                                                     String specialty,
+                                                     LocalDateTime start,
+                                                     LocalDateTime end) {
+    if(start.isAfter(end)){
+      throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
+    }
+    if(start.getYear() != end.getYear()){
+      throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+    }
+    return this.appointmentRepo.findAllByDoctorOrSpecialty(
+            pageable, doctorId, specialty, start, end);
   }
 
   @Override
@@ -61,7 +72,7 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   private void verifyAppointmentExist(long id) {
     boolean exist = this.appointmentRepo.existsById(id);
-    if (!exist) throw new EntityNotFoundException("Tratamiento no encontrado, id: " + id);
+    if (!exist) throw new EntityNotFoundException("Cita no encontrado, id: " + id);
   }
 
   private void verifyAppointmentIsAfterToday(Appointment appointment) {

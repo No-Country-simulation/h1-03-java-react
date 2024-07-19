@@ -109,19 +109,6 @@ public class ShiftServiceImp implements IShiftService {
             pageable, doctorId, specialty, start,end);
   }
 
-  @Override
-  public Page<Shift> getAllBetweenDate(LocalDateTime start, LocalDateTime end, Pageable pageable){
-    if(start.isAfter(end)){
-      throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
-    }
-    if(start.getMonth() != end.getMonth()){
-      throw new IllegalArgumentException("Los rangos de horario deben ser del mismo mes.");
-    }
-    if(start.getYear() != end.getYear()){
-      throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
-    }
-    return this.shiftRepository.findShiftsMonthBetween(start, end, pageable);
-  }
 
   @Override
   public void makeAppointment(long idShift){

@@ -63,7 +63,7 @@ public class ShiftController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PostMapping("/filters")
+  @PostMapping("/filter")
   public ResponseEntity<?> getAllByDoctorOrSpecialty(@RequestParam(defaultValue = "0") int page,
                                                      @RequestParam(defaultValue = "20") int size,
                                                      @RequestParam(defaultValue = "idShift") String sort,
@@ -78,20 +78,6 @@ public class ShiftController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PostMapping("/between")
-  public ResponseEntity<?> getAllBetweenDate(@RequestParam(defaultValue = "0") int page,
-                                             @RequestParam(defaultValue = "20") int size,
-                                             @RequestParam(defaultValue = "idShift") String sort,
-                                             @RequestParam(defaultValue = "asc") String direction,
-                                             Pageable pageable,
-                                             @RequestBody @Valid DateRange range
-                                             ) {
-    Page<Shift> result = this.shiftService.getAllBetweenDate(range.getStart(),
-            range.getEnd(),
-            pageable);
-    Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
-    return ResponseEntity.ok(resultDto);
-  }
 
   @GetMapping("/month/{doctorId}")
   public ResponseEntity<?> getAllByDoctorMonth(@PathVariable long doctorId,
@@ -102,6 +88,7 @@ public class ShiftController {
     var shiftsDto = shifts.stream().map(shift->mapper.map(shift, ShiftRes.class));
     return ResponseEntity.ok(shiftsDto);
   }
+
   @GetMapping("/specialty/{specialty}")
   public ResponseEntity<?> getAllBySpecialtyMonth(@PathVariable String specialty,
                                                @RequestParam(defaultValue = "#{T(java.time.LocalDate).now().getYear()}") int year,
