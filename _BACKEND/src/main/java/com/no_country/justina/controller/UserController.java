@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
 public class UserController {
-    private UserServiceImp userService;
-    private ModelMapper modelMapper;
+    private final UserServiceImp userService;
+    private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserRes> getUser(@PathVariable Long id) {
