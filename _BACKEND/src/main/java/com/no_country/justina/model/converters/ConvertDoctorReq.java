@@ -20,7 +20,7 @@ public class ConvertDoctorReq extends AbstractConverter<DoctorReq, Doctor> {
     doctor.setPhone(dto.getPhone());
     doctor.setAddress(dto.getAddress());
     doctor.setLicense(dto.getLicense());
-    doctor.setSpecialty(specialtyService.getById(dto.getSpecialtyId()));
+//    doctor.setSpecialty(specialtyService.getById(dto.getSpecialtyId()));
     return doctor;
   }
 }

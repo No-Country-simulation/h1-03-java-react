@@ -23,6 +23,7 @@ public class UserServiceImp implements IUserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
     @Override
     public UserEntity create(UserEntity user) {
         if (userRepository.existsByEmail(user.getEmail())) {

@@ -21,7 +21,6 @@ public class Doctor {
     private String license;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
     @ManyToOne

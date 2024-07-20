@@ -14,6 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserReq {
+  private Long idUser;
   @NotBlank
   @Pattern(regexp = "^[a-zA-Z']*$")
   @Size(min = 3)

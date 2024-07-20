@@ -10,5 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SpecialtyReq {
+  private Long idSpecialty;
   private String name;
 }

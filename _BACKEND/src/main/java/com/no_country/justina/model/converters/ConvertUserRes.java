@@ -23,12 +23,12 @@ public class ConvertUserRes extends AbstractConverter<UserEntity, UserRes> {
       throw new IllegalArgumentException("este usuario no tiene un rol creado.");
     }
     return new UserRes(
-            user.getId(),
+            user.getIdUser(),
             user.getName(),
             user.getLastname(),
             user.getLastname(),
             user.getCreatedAt(),
-            user.getRole(),
+            user.getRoles(),
             idRole
     );
   }

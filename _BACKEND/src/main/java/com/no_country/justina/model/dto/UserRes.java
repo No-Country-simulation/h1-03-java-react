@@ -1,12 +1,14 @@
 package com.no_country.justina.model.dto;
 
-import com.no_country.justina.model.enums.Role;
+import com.no_country.justina.model.entities.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -17,6 +19,6 @@ public class UserRes {
   private String lastname;
   private String email;
   private LocalDateTime createdAt;
-  private Role role;
+  private List<Role> role;
   private long idFromRole;
 }
