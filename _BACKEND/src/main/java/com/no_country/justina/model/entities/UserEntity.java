@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -31,6 +30,7 @@ public class UserEntity implements UserDetails {
     private String lastname;
     private String email;
     private String password;
+    @Column(updatable = false)
     private LocalDateTime createdAt;
     private boolean isEnabled;
 
@@ -80,9 +80,9 @@ public class UserEntity implements UserDetails {
         return isEnabled;
     }
 
-    @OneToOne(mappedBy = "userEntity")
+    @OneToOne(mappedBy = "user")
     private Admin admin;
-    @OneToOne(mappedBy = "userEntity")
+    @OneToOne(mappedBy = "user")
     private Doctor doctor;
     @OneToOne(mappedBy = "user")
     private Patient patient;

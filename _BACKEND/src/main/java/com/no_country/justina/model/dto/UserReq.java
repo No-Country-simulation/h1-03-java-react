@@ -1,6 +1,6 @@
 package com.no_country.justina.model.dto;
 
-import com.no_country.justina.model.enums.Role;
+import com.no_country.justina.model.entities.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,5 +35,5 @@ public class UserReq {
           message = "Mínimo una minúscula, mayúscula, número y carácter especial")
   @Size(min = 8, max = 16)
   private String password;
-  private Role role;
+//  private List<Role> role;
 }

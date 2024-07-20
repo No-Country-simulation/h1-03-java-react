@@ -4,6 +4,7 @@ import com.no_country.justina.exception.ShiftException;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.repository.ShiftRepository;
+import com.no_country.justina.service.interfaces.IDoctorService;
 import com.no_country.justina.service.interfaces.IShiftService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ShiftServiceImp implements IShiftService {
   private final ShiftRepository shiftRepository;
+  private final IDoctorService doctorService;
 
   @Override
   public Shift create(Shift shift) {
@@ -43,13 +45,14 @@ public class ShiftServiceImp implements IShiftService {
     orderShifts.sort(Comparator.comparing(Shift::getStartDate));
     this.verifyAllShiftsSameDoctor(orderShifts);
     this.verifyAllShiftsSameYearAndMonth(orderShifts);
+    Doctor doctor = this.doctorService.getDoctor(orderShifts.get(1).getDoctor().getId());
     orderShifts.forEach(shift->{
+      shift.setSpecialty(doctor.getSpecialty());
       this.verifyValidTimeShift(shift);
       this.verifyShiftHourByDay(shift);
       this.verifyShiftIsAfterToday(shift);
     });
 
-    Doctor doctor = orderShifts.get(1).getDoctor();
     LocalDateTime dateShifts = orderShifts.get(1).getStartDate();
     var currentShifts = this.shiftRepository.findByDoctorAndMonth(doctor.getId(),
             dateShifts.getYear(),

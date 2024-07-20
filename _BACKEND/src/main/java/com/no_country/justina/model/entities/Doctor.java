@@ -20,8 +20,8 @@ public class Doctor {
     @Column(length = 10)
     private String license;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserEntity userEntity;
+    @OneToOne()
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "specialty_id")

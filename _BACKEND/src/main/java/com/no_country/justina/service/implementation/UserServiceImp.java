@@ -6,8 +6,6 @@ import com.no_country.justina.model.entities.Role;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.UserRepository;
 import com.no_country.justina.service.interfaces.IUserService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

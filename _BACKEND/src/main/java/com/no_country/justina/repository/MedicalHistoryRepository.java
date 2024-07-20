@@ -1,6 +1,5 @@
 package com.no_country.justina.repository;
 
-import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.enums.BloodType;
 import jakarta.persistence.criteria.CriteriaBuilder;

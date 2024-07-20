@@ -49,7 +49,7 @@ public class DoctorServiceImp implements IDoctorService {
     @Override
     public Doctor createEmpty(UserEntity user) {
         Doctor newDoctor = new Doctor();
-        newDoctor.setUserEntity(user);
+        newDoctor.setUser(user);
         return this.doctorRepository.save(newDoctor);
     }
     private void verifyDoctorExist(long id){

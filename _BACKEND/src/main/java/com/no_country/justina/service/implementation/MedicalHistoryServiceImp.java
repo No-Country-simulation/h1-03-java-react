@@ -1,7 +1,6 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.MedicalHistoryExistException;
-import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.repository.MedicalHistoryRepository;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;

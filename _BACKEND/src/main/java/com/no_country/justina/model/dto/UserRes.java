@@ -20,5 +20,5 @@ public class UserRes {
   private String email;
   private LocalDateTime createdAt;
   private List<Role> role;
-  private long idFromRole;
+//  private long idFromRole;
 }

@@ -1,6 +1,5 @@
 package com.no_country.justina.model.dto;
 
-import com.no_country.justina.model.entities.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

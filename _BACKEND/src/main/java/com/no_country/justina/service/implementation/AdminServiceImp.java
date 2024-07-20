@@ -45,7 +45,7 @@ public class AdminServiceImp implements IAdminService {
   @Override
   public Admin createEmpty(UserEntity user) {
     Admin newAdmin = new Admin();
-    newAdmin.setUserEntity(user);
+    newAdmin.setUser(user);
     return this.adminRepo.save(newAdmin);
   }
 
