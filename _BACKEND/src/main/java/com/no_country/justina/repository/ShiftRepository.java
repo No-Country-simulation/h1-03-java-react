@@ -40,7 +40,7 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
 
   default Page<Shift> findAllByDoctorOrSpecialty(Pageable pageable,
                                                  Long doctorId,
-                                                 String specialty,
+                                                 Long specialtyId,
                                                  LocalDateTime start,
                                                  LocalDateTime end) {
     return findAll((Root<Shift> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
@@ -48,8 +48,8 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
       if (doctorId != null) {
         predicates.add(builder.equal(root.get("doctor").get("id"), doctorId));
       }
-      if (specialty != null) {
-        predicates.add(builder.equal(root.get("specialty").get("name"), specialty));
+      if (specialtyId != null) {
+        predicates.add(builder.equal(root.get("specialty").get("id"), specialtyId));
       }
       predicates.add(builder.between(root.get("startDate"), start, end));
       return builder.and(predicates.toArray(new Predicate[0]));

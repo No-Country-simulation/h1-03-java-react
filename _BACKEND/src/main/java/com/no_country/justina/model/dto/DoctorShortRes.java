@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DoctorShortRes {
   private long id;
-  private String licence;
-  private String doctor;
+  private String license;
+  private UserRes user;
 }

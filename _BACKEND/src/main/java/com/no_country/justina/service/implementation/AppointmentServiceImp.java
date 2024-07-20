@@ -25,6 +25,9 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Override
   public Appointment create(Appointment appointment) {
+    var shiftTarget = shiftService.getById(appointment.getShift().getId());
+    appointment.setDate(shiftTarget.getStartDate());
+    appointment.setShift(shiftTarget);
     this.verifyAppointmentIsAfterToday(appointment);
     this.verifyOneAppointmentByDayAndPatient(appointment);
     this.verifyAppointmentsAvailable(appointment);
@@ -47,7 +50,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                                      Long doctorId,
-                                                     String specialty,
+                                                     Long specialty,
                                                      LocalDateTime start,
                                                      LocalDateTime end) {
     if(start.isAfter(end)){

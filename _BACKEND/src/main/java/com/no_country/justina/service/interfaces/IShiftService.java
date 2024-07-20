@@ -23,7 +23,7 @@ public interface IShiftService {
 
   Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
                                                     Long doctorId,
-                                                    String specialty,
+                                                    Long specialty,
                                                     LocalDateTime start,
                                                     LocalDateTime end);
   void updateAppointmentAvailable(long idShift, int quantity);

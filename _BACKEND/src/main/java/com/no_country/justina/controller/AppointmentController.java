@@ -55,10 +55,10 @@ public class AppointmentController {
           @RequestParam(defaultValue = "asc") String direction,
           Pageable pageable,
           @RequestParam(required = false) Long doctorId,
-          @RequestParam(required = false) String specialty,
+          @RequestParam(required = false) Long specialtyId,
           @RequestBody @Valid DateRange range) {
     Page<Appointment> result = this.appointmentService.getAllByDoctorOrSpecialty(
-            pageable, doctorId, specialty, range.getStart(), range.getEnd());
+            pageable, doctorId, specialtyId, range.getStart(), range.getEnd());
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }

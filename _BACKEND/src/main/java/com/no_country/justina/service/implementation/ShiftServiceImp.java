@@ -99,7 +99,7 @@ public class ShiftServiceImp implements IShiftService {
   @Override
   public Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
                                                            Long doctorId,
-                                                           String specialty,
+                                                           Long specialtyId,
                                                            LocalDateTime start,
                                                            LocalDateTime end){
     if(start.isAfter(end)){
@@ -109,7 +109,7 @@ public class ShiftServiceImp implements IShiftService {
       throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
     }
     return this.shiftRepository.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialty, start,end);
+            pageable, doctorId, specialtyId, start,end);
   }
 
 

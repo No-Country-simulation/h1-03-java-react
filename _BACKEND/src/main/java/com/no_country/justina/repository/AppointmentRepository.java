@@ -41,7 +41,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
 
   default Page<Appointment> findAllByDoctorOrSpecialty(Pageable pageable,
                                                  Long doctorId,
-                                                 String specialty,
+                                                 Long specialtyId,
                                                  LocalDateTime start,
                                                  LocalDateTime end) {
     return findAll((Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
@@ -49,8 +49,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
       if (doctorId != null) {
         predicates.add(builder.equal(root.get("shift").get("doctor").get("id"), doctorId));
       }
-      if (specialty != null) {
-        predicates.add(builder.equal(root.get("shift").get("specialty").get("name"), specialty));
+      if (specialtyId != null) {
+        predicates.add(builder.equal(root.get("shift").get("specialty").get("id"), specialtyId));
       }
       predicates.add(builder.between(root.get("date"), start, end));
       predicates.add(builder.equal(root.get("appointmentStatus"), "PENDING"));

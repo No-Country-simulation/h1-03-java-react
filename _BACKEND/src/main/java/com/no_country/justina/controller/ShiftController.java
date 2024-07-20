@@ -69,7 +69,7 @@ public class ShiftController {
                                                      @RequestParam(defaultValue = "idShift") String sort,
                                                      @RequestParam(defaultValue = "asc") String direction,
                                                      @RequestParam(required = false) Long doctorId,
-                                                     @RequestParam(required = false) String specialty,
+                                                     @RequestParam(required = false) Long specialty,
                                                      @RequestBody @Valid DateRange range,
                                                      Pageable pageable){
     Page<Shift> result = this.shiftService.getAllByDoctorOrSpecialtyBetweenDates(

@@ -15,7 +15,7 @@ public interface IAppointmentService {
 
   Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                               Long doctorId,
-                                              String specialty,
+                                              Long specialty,
                                               LocalDateTime start,
                                               LocalDateTime end);
 
