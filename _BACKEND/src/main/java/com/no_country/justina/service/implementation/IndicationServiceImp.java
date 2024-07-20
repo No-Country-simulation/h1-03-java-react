@@ -33,7 +33,7 @@ public class IndicationServiceImp implements IIndicationService {
 
   @Override
   public Indication update(Indication indication) {
-    this.verifyIndicationExist(indication.getIdIndication());
+    this.verifyIndicationExist(indication.getId());
     return this.indicationRepo.save(indication);
   }
 

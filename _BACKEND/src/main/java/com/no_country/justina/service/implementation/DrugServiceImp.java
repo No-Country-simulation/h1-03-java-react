@@ -32,7 +32,7 @@ public class DrugServiceImp implements IDrugService {
 
   @Override
   public Drug update(Drug drug) {
-    this.verifyDrugExist(drug.getIdDrug());
+    this.verifyDrugExist(drug.getId());
     return this.drugRepository.save(drug);
   }
 

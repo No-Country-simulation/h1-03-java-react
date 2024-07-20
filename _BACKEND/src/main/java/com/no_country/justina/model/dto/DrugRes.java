@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class DrugRes {
-  private long idDrug;
+  private long id;
   private String name;
 }

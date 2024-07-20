@@ -32,7 +32,7 @@ public class AdminServiceImp implements IAdminService {
 
   @Override
   public Admin update(Admin admin) {
-    this.verifyAdminExist(admin.getIdAdmin());
+    this.verifyAdminExist(admin.getId());
     return this.adminRepo.save(admin);
   }
 

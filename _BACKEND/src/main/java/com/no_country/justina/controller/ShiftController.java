@@ -103,7 +103,7 @@ public class ShiftController {
   public ResponseEntity<?> updateById(@RequestBody ShiftReq shiftReq,
                                       @PathVariable long id) {
     var newShift = mapper.map(shiftReq, Shift.class);
-    newShift.setIdShift(id);
+    newShift.setId(id);
     var treatmentUpdated = this.shiftService.update(newShift);
     return ResponseEntity.ok(mapper.map(treatmentUpdated, ShiftRes.class));
   }

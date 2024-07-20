@@ -29,7 +29,7 @@ public class AppointmentServiceImp implements IAppointmentService {
     this.verifyOneAppointmentByDayAndPatient(appointment);
     this.verifyAppointmentsAvailable(appointment);
     var savedAppointment = this.appointmentRepo.save(appointment);
-    shiftService.updateAppointmentAvailable(appointment.getShift().getIdShift(), 1);
+    shiftService.updateAppointmentAvailable(appointment.getShift().getId(), 1);
     return savedAppointment;
   }
 
@@ -62,24 +62,24 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Override
   public Appointment update(Appointment appointment) {
-    this.verifyAppointmentExist(appointment.getIdAppointment());
+    this.verifyAppointmentExist(appointment.getId());
     return this.appointmentRepo.save(appointment);
   }
 
   @Transactional
   @Override
   public Appointment reschedule(Appointment appointment){
-    var oldAppointment = this.getById(appointment.getIdAppointment());
+    var oldAppointment = this.getById(appointment.getId());
     if(oldAppointment.getAppointmentStatus() != AppointmentStatus.PENDING){
-      throw new IllegalArgumentException("Solo puedes reprogramar citas pendientes. id:"+appointment.getIdAppointment());
+      throw new IllegalArgumentException("Solo puedes reprogramar citas pendientes. id:"+appointment.getId());
     }
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
-            AppointmentStatus.RESCHEDULE, appointment.getIdAppointment());
+            AppointmentStatus.RESCHEDULE, appointment.getId());
     if(updateResult != 1) {
       throw new AppointmentException("Solo 1 cita puede ser actualizada.");
     }
-    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getIdShift(), -1);
-    appointment.setIdAppointment(null);
+    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getId(), -1);
+    appointment.setId(null);
     return this.create(appointment);
   }
 
@@ -95,7 +95,7 @@ public class AppointmentServiceImp implements IAppointmentService {
     if(updateResult != 1) {
       throw new AppointmentException("Solo 1 cita puede ser cancelada.");
     }
-    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getIdShift(), -1);
+    this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getId(), -1);
     oldAppointment.setAppointmentStatus(AppointmentStatus.CANCELLED);
     return oldAppointment;
   }
@@ -130,7 +130,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   private void verifyAppointmentsAvailable(Appointment appointment) {
     Shift shift = appointment.getShift();
     if (shift.getAppointment() <= 0) {
-      throw new IllegalArgumentException("No hay citas disponibles para este turno. Turno id: " + shift.getIdShift());
+      throw new IllegalArgumentException("No hay citas disponibles para este turno. Turno id: " + shift.getId());
     }
   }
 }

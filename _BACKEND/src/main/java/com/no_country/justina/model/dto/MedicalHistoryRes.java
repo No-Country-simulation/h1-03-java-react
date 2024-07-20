@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicalHistoryRes {
+  private Long id;
   private String bloodType;
   private String job;
   private String religion;

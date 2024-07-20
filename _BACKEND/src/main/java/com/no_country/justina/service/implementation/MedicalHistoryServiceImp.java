@@ -60,13 +60,13 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
 
   @Override
   public MedicalHistory update(MedicalHistory medicalHistory) {
-    this.historyExistById(medicalHistory.getIdMedicalHistory());
+    this.historyExistById(medicalHistory.getId());
     this.medicalHistoryRepo.updateAllById(
             medicalHistory.getBloodType(),
             medicalHistory.getJob(),
             medicalHistory.getReligion(),
-            medicalHistory.getIdMedicalHistory());
-    return getById(medicalHistory.getIdMedicalHistory());
+            medicalHistory.getId());
+    return getById(medicalHistory.getId());
   }
 
   @Override

@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Admin {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long idAdmin;
+  private long id;
   @Column(length = 25)
   private String docIdentity;
 

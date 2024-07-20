@@ -32,7 +32,7 @@ public class PrescriptionServiceImp implements IPrescriptionService {
 
   @Override
   public Prescription update(Prescription prescription) {
-    this.verifyPrescriptionExist(prescription.getIdPrescription());
+    this.verifyPrescriptionExist(prescription.getId());
     return this.prescriptionRepository.save(prescription);
   }
 

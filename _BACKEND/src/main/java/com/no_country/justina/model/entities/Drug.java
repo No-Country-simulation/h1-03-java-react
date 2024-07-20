@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Drug {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idDrug;
+  private Long id;
   @Column(columnDefinition = "VARCHAR(50)")
   private String name;
 }

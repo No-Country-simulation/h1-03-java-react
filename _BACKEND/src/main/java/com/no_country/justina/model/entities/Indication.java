@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class Indication {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idIndication;
+  private Long id;
 
   private int dosage;
   @Column(columnDefinition = "TINYINT")

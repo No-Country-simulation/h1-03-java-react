@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class MedicalHistory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long idMedicalHistory;
+  private long id;
   @Column(updatable = false, nullable = false)
   private LocalDateTime createdAt;
   @Enumerated(EnumType.STRING)

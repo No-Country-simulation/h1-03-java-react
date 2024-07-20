@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShiftRes {
-  private long idShift;
+  private long id;
   private LocalDateTime startDate;
   private LocalDateTime endDate;
   private int appointment;

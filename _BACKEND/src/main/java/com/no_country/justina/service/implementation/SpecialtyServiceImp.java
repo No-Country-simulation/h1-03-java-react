@@ -31,7 +31,7 @@ public class SpecialtyServiceImp implements ISpecialtyService {
 
   @Override
   public Specialty update(Specialty specialty) {
-    this.verifySpecialtyExist(specialty.getIdSpecialty());
+    this.verifySpecialtyExist(specialty.getId());
     return this.specialtyRepo.save(specialty);
   }
 

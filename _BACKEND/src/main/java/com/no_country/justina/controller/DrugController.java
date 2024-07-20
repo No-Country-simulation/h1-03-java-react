@@ -49,7 +49,7 @@ public class DrugController {
   public ResponseEntity<?> updateById(@RequestBody DrugReq drugReq,
                                       @PathVariable long id) {
     var newDrug = mapper.map(drugReq, Drug.class);
-    newDrug.setIdDrug(id);
+    newDrug.setId(id);
     var drugUpdated = this.drugService.update(newDrug);
     return ResponseEntity.ok(mapper.map(drugUpdated, DrugRes.class));
   }

@@ -15,10 +15,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShiftReq {
+  private Long id;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
   @NotNull private LocalDateTime startDate;
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
   @NotNull private LocalDateTime endDate;
   @NotNull @Min(1) private Integer appointment;
-  @NotNull private long doctorId;
+  @NotNull private DoctorReq doctor;
 }

@@ -12,7 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TreatmentReq {
+  private Long id;
   @NotBlank private String diagnosis;
   @NotBlank private String description;
-  @NotNull private Long medicalHistoryId;
+  @NotNull private MedicalHistoryReq medicalHistory;
 }

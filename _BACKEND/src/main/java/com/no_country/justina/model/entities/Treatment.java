@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Treatment {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idTreatment;
+  private Long id;
 
   private String diagnosis;
 

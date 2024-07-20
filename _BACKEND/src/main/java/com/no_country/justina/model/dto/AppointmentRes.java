@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class AppointmentRes {
-  private long appointmentId;
+  private long id;
   private LocalDateTime date;
   private AppointmentStatus appointmentStatus;
   private PatientShortRes patient;

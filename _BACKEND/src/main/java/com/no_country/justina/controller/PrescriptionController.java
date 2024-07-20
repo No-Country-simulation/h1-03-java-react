@@ -47,7 +47,7 @@ public class PrescriptionController {
   public ResponseEntity<?> updateById(@RequestBody PrescriptionReq prescriptionReq,
                                       @PathVariable long id){
     var newPrescription = mapper.map(prescriptionReq, Prescription.class);
-    newPrescription.setIdPrescription(id);
+    newPrescription.setId(id);
     var prescriptionUpdated = this.prescriptionService.update(newPrescription);
     return ResponseEntity.ok(mapper.map(prescriptionUpdated, PrescriptionRes.class));
   }

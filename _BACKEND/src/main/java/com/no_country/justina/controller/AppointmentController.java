@@ -67,7 +67,7 @@ public class AppointmentController {
   public ResponseEntity<?> updateById(@RequestBody AppointmentReq appointmentReq,
                                       @PathVariable long id) {
     var newAppointment = mapper.map(appointmentReq, Appointment.class);
-    newAppointment.setIdAppointment(id);
+    newAppointment.setId(id);
     var appointmentUpdated = this.appointmentService.update(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
@@ -75,7 +75,7 @@ public class AppointmentController {
   public ResponseEntity<?> rescheduleById(@RequestBody @Valid AppointmentReq appointmentReq,
                                       @PathVariable long id) {
     var newAppointment = mapper.map(appointmentReq, Appointment.class);
-    newAppointment.setIdAppointment(id);
+    newAppointment.setId(id);
     var appointmentUpdated = this.appointmentService.reschedule(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }

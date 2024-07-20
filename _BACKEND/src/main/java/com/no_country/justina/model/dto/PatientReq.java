@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientReq {
+       private Long id;
        @NotBlank private String docIdentity;
        @NotBlank private String phone;
        @NotBlank private String address;

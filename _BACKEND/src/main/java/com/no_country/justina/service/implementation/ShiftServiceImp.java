@@ -74,7 +74,7 @@ public class ShiftServiceImp implements IShiftService {
 
   @Override
   public Shift update(Shift shift) {
-    this.verifyShiftExist(shift.getIdShift());
+    this.verifyShiftExist(shift.getId());
     return this.shiftRepository.save(shift);
   }
 

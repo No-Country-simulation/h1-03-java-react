@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorReq {
+  private Long id;
   @NotBlank private String phone;
   @NotBlank private String address;
   @NotBlank private String license;

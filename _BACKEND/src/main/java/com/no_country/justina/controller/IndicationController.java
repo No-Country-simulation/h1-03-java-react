@@ -53,7 +53,7 @@ public class IndicationController {
   public ResponseEntity<?> updateById(@RequestBody IndicationReq indicationReq,
                                       @PathVariable long id) {
     var newIndication = mapper.map(indicationReq, Indication.class);
-    newIndication.setIdIndication(id);
+    newIndication.setId(id);
     var indicationUpdated = this.indicationService.update(newIndication);
     return ResponseEntity.ok(mapper.map(indicationUpdated, IndicationRes.class));
   }

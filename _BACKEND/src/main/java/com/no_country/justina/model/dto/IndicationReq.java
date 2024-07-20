@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 public class IndicationReq{
+        private Long id;
         @NotNull @Min(0) private Integer dosage;
         @NotNull @Min(0) private Integer quantity;
         @NotBlank private DrugForm form;
@@ -23,6 +24,6 @@ public class IndicationReq{
         @NotNull @Min(0) private Integer duration;
         @NotNull private LocalDate startDate;
         private String description;
-        @NotNull private Long drugId;
-        @NotNull private Long prescriptionId;
+        @NotNull private DrugReq drug;
+        @NotNull private PrescriptionReq prescription;
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 public class IndicationRes {
-  private long idIndication;
+  private long id;
   private int dosage;
   private int quantity;
   private DrugForm form;
@@ -22,5 +22,5 @@ public class IndicationRes {
   private DrugStatus drugStatus;
   private LocalDate startDate;
   private String description;
-  private String drugName;
+  private DrugRes drug;
 }

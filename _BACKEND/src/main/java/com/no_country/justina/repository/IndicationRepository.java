@@ -13,6 +13,6 @@ public interface IndicationRepository extends JpaRepository<Indication, Long> {
 
   @Transactional
   @Modifying
-  @Query("UPDATE Indication i SET i.drugStatus = :status WHERE i.idIndication = :id")
+  @Query("UPDATE Indication i SET i.drugStatus = :status WHERE i.id = :id")
   void stopIndication(long id, DrugStatus status);
 }

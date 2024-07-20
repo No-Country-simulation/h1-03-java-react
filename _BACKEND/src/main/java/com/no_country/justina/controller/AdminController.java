@@ -50,7 +50,7 @@ public class AdminController {
   public ResponseEntity<?> updateById(@RequestBody AdminReq treatmentReq,
                                       @PathVariable long id) {
     var newAdmin = mapper.map(treatmentReq, Admin.class);
-    newAdmin.setIdAdmin(id);
+    newAdmin.setId(id);
     var adminUpdated = this.adminService.update(newAdmin);
     return ResponseEntity.ok(mapper.map(adminUpdated, AdminRes.class));
   }

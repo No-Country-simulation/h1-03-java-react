@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoctorRes {
-  private long idDoctor;
+  private long id;
   private String phone;
   private String address;
   private String license;

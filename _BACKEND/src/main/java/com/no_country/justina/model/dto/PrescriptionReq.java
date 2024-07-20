@@ -12,5 +12,6 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class PrescriptionReq {
+  private Long id;
   @NotNull private Long treatmentId;
 }

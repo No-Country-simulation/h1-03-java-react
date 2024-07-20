@@ -11,6 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AdminRes {
-  private long idAdmin;
+  private long id;
   private String docIdentity;
 }

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Prescription {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long idPrescription;
+  private Long id;
   @Column(updatable = false, nullable = false)
   private LocalDateTime createdAt;
   @ManyToOne

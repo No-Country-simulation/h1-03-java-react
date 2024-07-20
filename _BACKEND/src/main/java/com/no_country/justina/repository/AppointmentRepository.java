@@ -36,7 +36,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
 
   @Transactional
   @Modifying
-  @Query("update Appointment a set a.appointmentStatus = ?1 where a.idAppointment = ?2")
+  @Query("update Appointment a set a.appointmentStatus = ?1 where a.id = ?2")
   int updateAppointmentStatus(AppointmentStatus appointmentStatus, long idAppointment);
 
   default Page<Appointment> findAllByDoctorOrSpecialty(Pageable pageable,

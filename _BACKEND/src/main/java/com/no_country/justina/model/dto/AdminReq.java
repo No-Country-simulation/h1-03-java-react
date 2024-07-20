@@ -10,5 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AdminReq {
+  private Long id;
   private String docIdentity;
 }

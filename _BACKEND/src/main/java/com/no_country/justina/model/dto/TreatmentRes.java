@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TreatmentRes {
-  private long idTreatment;
+  private long id;
   private String diagnosis;
   private String description;
-  private long medicalHistoryId;
+  private MedicalHistoryRes medicalHistory;
 }

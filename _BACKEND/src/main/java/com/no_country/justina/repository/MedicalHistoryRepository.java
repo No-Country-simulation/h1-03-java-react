@@ -25,7 +25,7 @@ public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, 
         JpaSpecificationExecutor<MedicalHistory> {
   @Transactional
   @Modifying
-  @Query("update MedicalHistory m set m.bloodType = ?1, m.job = ?2, m.religion = ?3 where m.idMedicalHistory = ?4")
+  @Query("update MedicalHistory m set m.bloodType = ?1, m.job = ?2, m.religion = ?3 where m.id = ?4")
   int updateAllById(BloodType bloodType, String job, String religion, long idMedicalHistory);
 
   default Page<MedicalHistory> findByLastnameCreationIdentification(

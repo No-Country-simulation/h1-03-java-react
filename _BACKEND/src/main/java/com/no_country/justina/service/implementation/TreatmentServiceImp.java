@@ -34,7 +34,7 @@ public class TreatmentServiceImp implements ITreatmentService {
 
   @Override
   public Treatment update(Treatment treatment) {
-    this.verifyTreatmentExist(treatment.getIdTreatment());
+    this.verifyTreatmentExist(treatment.getId());
     return this.treatmentRepo.save(treatment);
   }
 

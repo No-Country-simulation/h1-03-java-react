@@ -70,7 +70,7 @@ public class MedicalHistoryController {
   public ResponseEntity<?> updateById(@RequestBody MedicalHistoryReq medicalHistoryReq,
                                       @PathVariable long id) {
     var newHistory = mapper.map(medicalHistoryReq, MedicalHistory.class);
-    newHistory.setIdMedicalHistory(id);
+    newHistory.setId(id);
     var historyUpdated = this.historyService.update(newHistory);
     return ResponseEntity.ok(mapper.map(historyUpdated, MedicalHistoryRes.class));
   }

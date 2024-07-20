@@ -51,7 +51,7 @@ public class SpecialtyController {
   public ResponseEntity<?> updateById(@RequestBody SpecialtyReq treatmentReq,
                                       @PathVariable long id) {
     var newSpecialty = mapper.map(treatmentReq, Specialty.class);
-    newSpecialty.setIdSpecialty(id);
+    newSpecialty.setId(id);
     var specialtyUpdated = this.specialtyService.update(newSpecialty);
     return ResponseEntity.ok(mapper.map(specialtyUpdated, SpecialtyRes.class));
   }
