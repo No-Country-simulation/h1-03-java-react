@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PatientShortRes {
-  private long id;
-  private UserRes user;
-  private String docIdentity;
+public class DrugRouteRes {
+  private Long id;
+  private String name;
 }

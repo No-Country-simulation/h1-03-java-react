@@ -55,7 +55,7 @@ public class ShiftController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "idShift") String sort,
+                                  @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Shift> result = this.shiftService.getAll(pageable);

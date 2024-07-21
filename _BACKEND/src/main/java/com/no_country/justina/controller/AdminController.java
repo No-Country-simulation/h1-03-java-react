@@ -38,7 +38,7 @@ public class AdminController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "idAdmin") String sort,
+                                  @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Admin> result = this.adminService.getAll(pageable);
