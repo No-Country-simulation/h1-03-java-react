@@ -1,8 +1,8 @@
 import React from 'react'
 import Filters from '../Others/Filters'
 import { useSelector } from 'react-redux';
-import i18n from "../../../i18n/appointments/reserveAppointment/index.json";
-import TableResults from '../ReserveAppointmentComponents/TableResults';
+import i18n from "../../../i18n/appointments/scheduledAppointments/index.json";
+import TableResults from '../Others/TableResults'; 
 
 
 export default function ScheduledAppointmentsComponent() {   

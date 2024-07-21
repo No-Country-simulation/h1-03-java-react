@@ -12,7 +12,7 @@ export default function ComponentLayout({children} ) {
                     {children}                    
                 </section>
             <Footer />
-            <BottomMenu />
+            {/* <BottomMenu /> */}
         </div>
     )
 }

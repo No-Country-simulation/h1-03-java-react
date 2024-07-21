@@ -1,0 +1,10 @@
+.language-select .language-select__container {
+  display: flex;
+}
+.language-select .language-select__container select {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.25rem;
+  outline: none;
+}/*# sourceMappingURL=index.css.map */

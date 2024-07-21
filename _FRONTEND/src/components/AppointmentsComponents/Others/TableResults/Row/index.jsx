@@ -4,9 +4,12 @@ import calendarReserveAppointment from "../../../../../assets/svg/others/calenda
 import { useSelector } from 'react-redux';
 import i18n from "../../../../../i18n/appointments/reserveAppointment/index.json";
 import pencilButton from "../../../../../assets/svg/others/pencilButton.svg";
+import { Navigate, useNavigate } from 'react-router-dom';
+import getPathRoutes from '../../../../../helpers/pathroutes';
 
 export default function Row({ isButtonSchedule }) {
     const language = useSelector((state) => state.i18nReducer.language);
+    const navigate = useNavigate()
 
     return (
         <div className="">
@@ -66,7 +69,7 @@ export default function Row({ isButtonSchedule }) {
                                 title={i18n[language].reserveAppointment.tableResults.pencilButtonTitle}
                                 loading="lazy"
                                 role="button"
-                                onClick={() => {}}
+                                onClick={() => {navigate( `${getPathRoutes(language, 'modify_appointments', {isForNavBar: false})}`)}}
                             />)
                         }
                     </div>

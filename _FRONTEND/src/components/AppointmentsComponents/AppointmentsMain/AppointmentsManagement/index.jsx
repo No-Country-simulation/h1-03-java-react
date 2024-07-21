@@ -14,7 +14,7 @@ export default function AppointmentsManagement() {
 	return (
 		<div className="flex flex-col sm:flex-row gap-5">
 			<div
-				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 sm:pb-0 overflow-hidden cursor-pointer"
 				onClick={() =>
 					navigate(
 						`${getPathRoutes(language, "reserve_appointment", { isForNavBar: false })}`
@@ -30,12 +30,12 @@ export default function AppointmentsManagement() {
 					loading="lazy"
 					role="button"
 				/>
-				<p className="2xl:text-2xl">
+				<p className="">
 					{i18n[language].reserveAppointment.title}
 				</p>
 			</div>
 			<div
-				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 sm:pb-0 overflow-hidden cursor-pointer"
 				onClick={() =>
 					navigate(
 						`${getPathRoutes(language, "scheduled_appointments", { isForNavBar: false })}`
@@ -52,12 +52,12 @@ export default function AppointmentsManagement() {
 					role="button"
 				/>
 
-				<p className="2xl:text-2xl">
+				<p className="">
 					{i18n[language].scheduledAppointments.title}
 				</p>
 			</div>
 			<div
-				className="text-center whitespace-nowrap bg-[#5666BF] text-white sm:text-[0.7rem] flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 pb-0 overflow-hidden cursor-pointer"
+				className="text-center whitespace-nowrap bg-[#5666BF] text-white flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 sm:pb-0 overflow-hidden cursor-pointer"
 				onClick={() =>
 					navigate(
 						`${getPathRoutes(language, "modify_appointments", { isForNavBar: false })}`
@@ -76,7 +76,7 @@ export default function AppointmentsManagement() {
 					role="button"
 				/>
 
-				<p className="2xl:text-2xl">
+				<p className="">
 					{i18n[language].modifyAppointments.title}
 				</p>
 			</div>

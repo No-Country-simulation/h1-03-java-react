@@ -24,11 +24,5 @@ export default function ApointmentsMainComponent() {
             </div>
             <ProfessionalsList />
 		</section>
-
-		/* <section className="grid m-auto sm:justify-center sm:w-[400px] gap-5 border border-red-500">
-            <TitleAvatar title="AGENDAR TURNO" />
-            <FilterAppointment />
-            <Results />
-        </section> */
 	);
 }

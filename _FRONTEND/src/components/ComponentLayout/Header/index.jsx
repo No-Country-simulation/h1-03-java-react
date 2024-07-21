@@ -33,24 +33,8 @@ export default function Header() {
 	return (
 		<header 
 			className="header"
-			style={{ 
-				height: `${headerHeightValue}px`,
-				/* backgroundColor: isActiveHamburgerButton ? 'rgba(0,0,0)' : '' */
-			}}
+			style={{ height: `${headerHeightValue}px`}}
 		>
-			{/* <a
-				href={'/'}
-				title="logo"
-				aria-label="logo"
-			>
-				<img
-					src={Logo}
-					alt="logo"
-					width={100}
-					height={100}
-					className="logo"
-				/>
-			</a> */}
 			{isMobileScreen
 				? <MobileNav />
 				: <Nav />

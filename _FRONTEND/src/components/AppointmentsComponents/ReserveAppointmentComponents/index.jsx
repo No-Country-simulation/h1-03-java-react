@@ -1,6 +1,6 @@
 import React from "react";
 import Filters from "../Others/Filters";
-import TableResults from "./TableResults";
+import TableResults from "../Others/TableResults";
 import { useSelector } from "react-redux";
 import i18n from "../../../i18n/appointments/reserveAppointment/index.json";
 

@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import ItemsNav from "../../Nav/ItemsNav";
-import { setIsActiveHamburgerButton } from "../../../../../redux/actions";
+import { setI18n, setIsActiveHamburgerButton } from "../../../../../redux/actions";
 import getItemsNav from "../../../../../helpers/itemsNav";
+import LanguageSelect from "../../LanguageSelectt";
 
 export default function NavList() {
 	const dispatch = useDispatch()
@@ -17,6 +18,10 @@ export default function NavList() {
 	const scrollHandler = useRef(() => {
 		window.scrollTo(0, 0);
 	});
+
+	const handleSelectLanguage = (lang) => {
+		dispatch(setI18n(lang))
+	}
 
 	useEffect(() => {
 		if (isActiveHamburgerButton) {
@@ -45,6 +50,7 @@ export default function NavList() {
 					>
 						<ul style={{ top: `${headerHeight}px` }}>
 							<ItemsNav />
+							<LanguageSelect handleSelectLanguage={handleSelectLanguage} />
 						</ul>
 					</nav>
 				</section>

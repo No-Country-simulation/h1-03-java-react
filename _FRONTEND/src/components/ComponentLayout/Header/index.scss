@@ -10,7 +10,7 @@
     background-image: none;    
     transition: 500ms background-color;
 
-    & .logo{
+    /* & .logo{
         animation: bigBurgerBlink 20000ms linear infinite;
         animation-timing-function: steps(40, start);
         cursor: pointer;
@@ -32,12 +32,13 @@
         100%{
             visibility: hidden;
         }
-    }
+    } */
 }
 
 @media only screen and (min-width: 1280px){
     .header{
-        background-color: rgb(29, 29, 29, 0.3);
-        background-image: linear-gradient(rgb(29, 29, 29), rgb(29, 29, 29, 0.6),transparent);
+        padding-top: 0.8vw;
+        //background-color: rgb(29, 29, 29, 0.3);
+        //background-image: linear-gradient(rgb(29, 29, 29), rgb(29, 29, 29, 0.6),transparent);
     }
 }

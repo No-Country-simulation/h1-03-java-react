@@ -1,7 +1,7 @@
 .itemNavWithAvatar {
   display: flex;
   gap: 0.25rem;
-  align-items: center;
+  align-items: baseline;
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;

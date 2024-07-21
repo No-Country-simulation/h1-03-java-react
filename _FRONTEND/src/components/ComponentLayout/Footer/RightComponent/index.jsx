@@ -5,16 +5,10 @@ import Twitter from "../../../../assets/svg/socialMedia/twitter.svg";
 import Whatsapp from "../../../../assets/svg/socialMedia/whatsapp.svg";
 import Gmail from "../../../../assets/svg/socialMedia/gmail.svg";
 import SocialNetworkLink from "./SocialNetworkLink";
-import { useDispatch, useSelector } from "react-redux";
-import { setI18n } from "../../../../redux/actions";
+import { useSelector } from "react-redux";
 
 export default function RightComponent() {
 	const language = useSelector((state) => state.i18nReducer.language);
-	const dispatch = useDispatch()
-
-	const handleClickLanguage = (language) => {
-		dispatch(setI18n(language))
-	}
 
 	return (
 		<section className="rightSection">
@@ -44,26 +38,6 @@ export default function RightComponent() {
 					src={Whatsapp}
 					title={"Whatsapp"}
 				/>
-			</div>
-			<div className="rightSection__languages">
-				<p
-					onClick={ () => handleClickLanguage("en") }
-					title="Change to english"
-					aria-label="Change to english"
-					role="button"
-					aria-pressed="false"
-				>
-					🇺🇸
-				</p>
-				<p
-					onClick={ () => handleClickLanguage("sp") }
-					title="Cambiar a español"
-					aria-label="Cambiar a Español"
-					role="button"
-					aria-pressed="false"
-				>
-					🇪🇸
-				</p>
 			</div>
 		</section>
 	);

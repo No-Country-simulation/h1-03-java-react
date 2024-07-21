@@ -9,7 +9,7 @@
         {"treatments" :{ "name": "Tratamientos", "route": "/tratamientos" }},
         {"signin" :{ "name": "Iniciar sesión", "route": "/iniciar-sesion" }},
         {"signup" :{ "name": "Registrarse", "route": "/registrarse" }},
-        {"user_profile" :{ "name": "Perfil", "route": "/perfil-usuario" }}
+        {"user_profile" :{ "name": "Mi cuenta", "route": "/mi-cuenta" }}
     ],
     "en":[
         {"home" :{ "name": "Home", "route": "/" }},
@@ -21,6 +21,6 @@
         {"treatments" :{ "name": "Treatments", "route": "/treatments" }},
         {"signin" :{ "name": "Signin", "route": "/signin" }},
         {"signup" :{ "name": "Signup", "route": "/signup" }},
-        {"user_profile" :{ "name": "Profile", "route": "/user-profile" }}
+        {"user_profile" :{ "name": "My account", "route": "/my-account" }}
      ]
 }

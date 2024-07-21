@@ -17,14 +17,6 @@
                 "timeSlotMorning": "Manana",
                 "timeSlotAfternoon": "Tarde"
             }
-        },
-        "scheduledAppointments": {
-            "filters": {
-                "componentTitle": "Buscar mis turnos agendados"
-            },
-            "tableResults": {
-                "componentTitle": "Resultados de tu búsqueda - Turnos agendados"
-            }
         }
     },
     "en":{
@@ -44,14 +36,6 @@
                 "chooseTimeSlotTitle": "Choose time slot",
                 "timeSlotMorning": "Morning",
                 "timeSlotAfternoon": "Afternoon"
-            }
-        },
-        "scheduledAppointments": {
-            "filters": {
-                "componentTitle": "Search My Scheduled Appointments"
-            },
-            "tableResults": {
-                "componentTitle": "Your search results - Scheduled Appointments"
             }
         }
     }
