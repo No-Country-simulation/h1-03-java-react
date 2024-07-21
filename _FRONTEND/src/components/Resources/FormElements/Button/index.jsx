@@ -5,6 +5,7 @@ export default function Button({
 	text = null,
 	textColor = '#000',
 	bgColor = 'auto',
+	classNames = '',
 	title,
 	isDisabled = false,
 	onClickHandler = ()=>{},
@@ -16,7 +17,7 @@ export default function Button({
 				<div className="text-center">
 					<button
 						type={type}
-						className={`rounded-full w-full text-[${textColor}] bg-[${bgColor}]`}
+						className={`rounded-full p-3 w-full text-[${textColor}] bg-[${bgColor}] select-none ${classNames}`}
 						title={title}
 						aria-label={title}
 						disabled={isDisabled}

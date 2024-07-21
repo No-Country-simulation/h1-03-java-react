@@ -1,0 +1,58 @@
+{
+    "sp":{
+        "reserveAppointment": {
+            "filters": {
+                "componentTitle": "Buscar turno",
+                "selectProfessional": "Seleccione un profesional",
+                "selectSpecialty": "Seleccione una especialidad",
+                "selectTimeSlot": "Seleccione una franja horaria",
+                "searchButton": "Buscar"
+            },            
+            "tableResults": {
+                "componentTitle": "Resultados de tu búsqueda - Turnos disponibles",
+                "calendarReserveAppointmentImage": "Fecha del turno",
+                "scheduleButton": "Agendar",
+                "pencilButtonTitle": "Modificar turno",
+                "chooseTimeSlotTitle": "Elegir franja horaria",
+                "timeSlotMorning": "Manana",
+                "timeSlotAfternoon": "Tarde"
+            }
+        },
+        "scheduledAppointments": {
+            "filters": {
+                "componentTitle": "Buscar mis turnos agendados"
+            },
+            "tableResults": {
+                "componentTitle": "Resultados de tu búsqueda - Turnos agendados"
+            }
+        }
+    },
+    "en":{
+        "reserveAppointment": {
+            "filters": {
+                "componentTitle": "Search Appointment",
+                "selectProfessional": "Select a professional",
+                "selectSpecialty": "Select a speciality",
+                "selectTimeSlot": "Select time slot",
+                "searchButton": "Search"
+            },
+            "tableResults": {
+                "componentTitle": "Your search results - Available Appointments",
+                "calendarReserveAppointmentImage": "Appointment date",
+                "scheduleButton": "Schedule",
+                "pencilButtonTitle": "Modify appointment",
+                "chooseTimeSlotTitle": "Choose time slot",
+                "timeSlotMorning": "Morning",
+                "timeSlotAfternoon": "Afternoon"
+            }
+        },
+        "scheduledAppointments": {
+            "filters": {
+                "componentTitle": "Search My Scheduled Appointments"
+            },
+            "tableResults": {
+                "componentTitle": "Your search results - Scheduled Appointments"
+            }
+        }
+    }
+}
