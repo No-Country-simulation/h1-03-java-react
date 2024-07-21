@@ -18,11 +18,11 @@ import java.util.List;
 public class UserReq {
   private Long id;
   @NotBlank
-  @Pattern(regexp = "^[a-zA-Z']*$")
+  @Pattern(regexp = "^[a-zA-Z'\\s]*$")
   @Size(min = 3)
   private String name;
   @NotBlank
-  @Pattern(regexp = "^[a-zA-Z']*$")
+  @Pattern(regexp = "^[a-zA-Z'\\s]*$")
   @Size(min = 3)
   private String lastname;
   @NotBlank
