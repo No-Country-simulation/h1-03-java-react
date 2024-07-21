@@ -50,6 +50,6 @@ public class Indication {
 
   @PrePersist
   public void onCreate(){
-    this.drugStatus = DrugStatus.ACTIVO;
+    this.drugStatus = DrugStatus.ACTIVE;
   }
 }

@@ -17,7 +17,7 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
   @Modifying
   @Query("""
           update Patient p set p.docIdentity = ?1, p.phone = ?2, p.address = ?3, p.birthdate = ?4, p.maritalStatus = ?5, p.genre = ?6
-          where p.id = ?7""")
+          where p.idPatient = ?7""")
   int updateById(String docIdentity,
                  String phone,
                  String address,

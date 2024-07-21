@@ -11,7 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MedicalHistoryReq {
   private Long id;
-  private String bloodType;
+  private Integer bloodType;
   private String job;
   private String religion;
+  private PatientReq patient;
 }

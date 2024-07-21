@@ -1,7 +1,5 @@
 package com.no_country.justina.model.dto;
 
-import com.no_country.justina.model.enums.Genre;
-import com.no_country.justina.model.enums.MaritalStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,13 +12,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientRes{
-        private long id;
+        private long idPatient;
         private String docIdentity;
         private String phone;
         private String address;
         private LocalDate birthdate;
-        private MaritalStatus maritalStatus;
-        private Genre genre;
-        private long medicalHistory;
+        private int maritalStatus;
+        private int genre;
         private UserRes user;
 }

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class AppointmentRes {
   private long id;
   private LocalDateTime date;
-  private AppointmentStatus appointmentStatus;
+  private int appointmentStatus;
   private PatientShortRes patient;
   private ShiftRes shift;
 }

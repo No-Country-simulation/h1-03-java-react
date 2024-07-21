@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MedicalHistoryRes {
   private Long id;
-  private String bloodType;
+  private int bloodType;
   private String job;
   private String religion;
   private LocalDateTime createdAt;

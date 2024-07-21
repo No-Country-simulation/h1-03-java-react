@@ -1,8 +1,13 @@
 package com.no_country.justina.config;
 
+import com.no_country.justina.model.dto.PatientReq;
+import com.no_country.justina.model.dto.PatientRes;
+import com.no_country.justina.model.entities.Patient;
+import com.no_country.justina.model.enums.MaritalStatus;
 import com.no_country.justina.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,11 +24,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AppConfig {
     private final UserRepository userRepository;
 
-    @Bean
-    public ModelMapper modelMapper() {
-        var modelMapper = new ModelMapper();
-        return modelMapper;
-    }
     /**
      * Metodo que configura el bean encriptador de contraseña
      * @return encriptador de contraseña BCrypt

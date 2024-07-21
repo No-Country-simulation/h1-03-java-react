@@ -45,7 +45,7 @@ public class IndicationServiceImp implements IIndicationService {
 
   @Override
   public Indication stopMedication(long id){
-    this.indicationRepo.stopIndication(id, DrugStatus.SUSPENDIDO);
+    this.indicationRepo.stopIndication(id, DrugStatus.SUSPEND);
     return this.getById(id);
   }
 

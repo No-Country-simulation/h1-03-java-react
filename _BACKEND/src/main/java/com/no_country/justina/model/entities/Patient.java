@@ -33,8 +33,8 @@ public class Patient {
   private Genre genre;
   private boolean isEnabled;
 
-  @OneToOne(mappedBy = "patient")
-  private MedicalHistory medicalHistory;
+//  @OneToOne(mappedBy = "patient", fetch = FetchType.EAGER)
+//  private MedicalHistory medicalHistory;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "user_id", nullable = false)

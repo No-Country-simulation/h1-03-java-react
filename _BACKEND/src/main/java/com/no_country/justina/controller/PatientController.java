@@ -5,6 +5,7 @@ import com.no_country.justina.model.dto.PatientRes;
 import com.no_country.justina.model.dto.PatientUpdateReq;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Patient;
+import com.no_country.justina.model.enums.MaritalStatus;
 import com.no_country.justina.service.interfaces.IPatientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,9 @@ public class PatientController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
-    var patientFound = mapper.map(this.patientServ.getById(id), PatientRes.class);
-    return ResponseEntity.ok(patientFound);
+    var patientFound = this.patientServ.getById(id);
+    var patientMap = mapper.map(patientFound, PatientRes.class);
+    return ResponseEntity.ok(patientMap);
   }
 
   @GetMapping

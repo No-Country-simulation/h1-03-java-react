@@ -19,11 +19,7 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
 
   @Override
   public MedicalHistory create(MedicalHistory medicalHistory) {
-    var patient = medicalHistory.getPatient();
-    if (patient.getMedicalHistory() == null) {
-      return this.medicalHistoryRepo.save(medicalHistory);
-    }
-    throw new MedicalHistoryExistException(patient.getIdPatient());
+    return this.medicalHistoryRepo.save(medicalHistory);
   }
 
   @Override

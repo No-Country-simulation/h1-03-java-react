@@ -3,6 +3,7 @@ package com.no_country.justina.controller;
 import com.no_country.justina.model.dto.MedicalHistoryReq;
 import com.no_country.justina.model.dto.MedicalHistoryRes;
 import com.no_country.justina.model.entities.MedicalHistory;
+import com.no_country.justina.model.enums.BloodType;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -36,8 +37,12 @@ public class MedicalHistoryController {
 
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
-    var historyFound = mapper.map(this.historyService.getById(id), MedicalHistoryRes.class);
-    return ResponseEntity.ok(historyFound);
+    var historyFound = this.historyService.getById(id);
+//    var hc = new MedicalHistory();
+    var historyMap = mapper.map(historyFound, MedicalHistoryRes.class);
+    return ResponseEntity.ok(historyMap);
+//    hc.setBloodType(historyFound.getBloodType());
+//    return ResponseEntity.ok(mapper.map(hc,MedicalHistoryRes.class));
   }
 
   @GetMapping
