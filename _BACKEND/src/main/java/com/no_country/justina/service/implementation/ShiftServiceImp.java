@@ -131,7 +131,7 @@ public class ShiftServiceImp implements IShiftService {
     boolean isValidShifts = shifts.stream().allMatch(
             shift -> Objects.equals(shift.getDoctor().getId(), doctor.getId()));
     if(!isValidShifts) {
-      throw new IllegalArgumentException("Todas las citas deben ser del mismo doctor.");
+      throw new IllegalArgumentException("Todos los turnos deben ser del mismo doctor.");
     }
   }
 
@@ -140,12 +140,12 @@ public class ShiftServiceImp implements IShiftService {
     boolean validShifts = shifts.stream().allMatch(
             shift -> shift.getStartDate().getMonth().getValue() == dateShifts.getMonth().getValue());
     if(!validShifts){
-      throw new IllegalArgumentException("Todas las citas deben ser del mismo mes.");
+      throw new IllegalArgumentException("Todos los turnos deben ser del mismo mes.");
     }
   }
   private void verifyValidTimeShift(Shift shift){
     if(!shift.getStartDate().isBefore(shift.getEndDate())) {
-      throw new IllegalArgumentException("Cita con horario invalido, date:"+shift.getStartDate());
+      throw new IllegalArgumentException("Turno con horario invalido, date:"+shift.getStartDate());
     }
   }
 
