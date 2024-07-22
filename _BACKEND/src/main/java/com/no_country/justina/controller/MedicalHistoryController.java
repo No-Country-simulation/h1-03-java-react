@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("${api.base-url}/history")
+@RequestMapping("${api.base-url}/medical-histories")
 public class MedicalHistoryController {
   private final IMedicalHistoryService historyService;
 

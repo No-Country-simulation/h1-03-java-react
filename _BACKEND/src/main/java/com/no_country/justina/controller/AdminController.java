@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("${api.base-url}/admin")
+@RequestMapping("${api.base-url}/admins")
 @RequiredArgsConstructor
 public class AdminController {
   private final IAdminService adminService;

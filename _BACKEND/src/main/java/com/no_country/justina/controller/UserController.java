@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.base-url}/user")
+@RequestMapping("${api.base-url}/users")
 public class UserController {
     private final UserServiceImp userService;
     private final ModelMapper modelMapper;
@@ -37,7 +37,6 @@ public class UserController {
     @PostMapping()
     public ResponseEntity<UserRes> create(@RequestBody @Valid UserReq userReq) {
         var user = userService.create(modelMapper.map(userReq, UserEntity.class));
-
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.CREATED);
     }
 

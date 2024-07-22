@@ -20,7 +20,7 @@ public class Doctor {
     @Column(length = 10)
     private String license;
 
-    @OneToOne()
+    @OneToOne
     private UserEntity user;
 
     @ManyToOne

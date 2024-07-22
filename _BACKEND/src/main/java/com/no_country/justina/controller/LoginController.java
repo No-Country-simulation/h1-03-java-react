@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/user-login")
+@RequestMapping("/api/v1/users-login")
 @RequiredArgsConstructor
 public class LoginController {
 
     private final ILoginService loginService;
 
-    @PostMapping("/token")
+    @PostMapping()
     public ResponseEntity<LoginRes> login(@RequestBody LoginReq loginReq){
         return ResponseEntity.ok(loginService.authenticate(loginReq));
     }

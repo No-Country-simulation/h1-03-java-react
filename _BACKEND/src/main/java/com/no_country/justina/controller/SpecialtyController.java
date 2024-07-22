@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("${api.base-url}/specialty")
+@RequestMapping("${api.base-url}/specialties")
 @RequiredArgsConstructor
 public class SpecialtyController {
   private final ISpecialtyService specialtyService;

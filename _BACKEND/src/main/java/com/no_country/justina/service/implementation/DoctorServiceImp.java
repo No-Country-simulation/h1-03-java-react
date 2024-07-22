@@ -1,6 +1,7 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Doctor;
+import com.no_country.justina.model.entities.Specialty;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.DoctorRepository;
 import com.no_country.justina.service.interfaces.IDoctorService;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class DoctorServiceImp implements IDoctorService {
 
     private final DoctorRepository doctorRepository;
+    private final SpecialtyServiceImp specialtyService;
     @Override
     public Doctor create(Doctor doctor) {
         return doctorRepository.save(doctor);
@@ -35,25 +37,25 @@ public class DoctorServiceImp implements IDoctorService {
     }
 
     @Override
+    @Transactional
     public Doctor update(Doctor doctor) {
-        this.verifyDoctorExist(doctor.getId());
-        doctorRepository.updateByIdDoctor(
-                doctor.getPhone(),
-                doctor.getAddress(),
-                doctor.getLicense(),
-                doctor.getSpecialty(),
-                doctor.getId());
-        return this.getDoctor(doctor.getId());
-    }
-
-    @Override
-    public Doctor createEmpty(UserEntity user) {
-        Doctor newDoctor = new Doctor();
-        newDoctor.setUser(user);
-        return this.doctorRepository.save(newDoctor);
-    }
-    private void verifyDoctorExist(long id){
-        boolean exist = this.doctorRepository.existsById(id);
-        if(!exist) throw new EntityNotFoundException("Doctor no encontrado, id:"+id);
+        Doctor doctorDB = doctorRepository.findById(doctor.getId())
+                                            .orElseThrow(() -> new EntityNotFoundException(
+                                                    "El doctor con id " + doctor.getId() +
+                                                    " no se encuentra en base de datos"));
+        if(doctor.getAddress() != null) {
+            doctorDB.setAddress(doctor.getAddress());
+        }
+        if(doctor.getPhone() != null) {
+            doctorDB.setPhone(doctor.getPhone());
+        }
+        if(doctor.getLicense() != null) {
+            doctorDB.setLicense(doctor.getLicense());
+        }
+        if(doctor.getSpecialty() != null) {
+            Specialty specialtyDB = specialtyService.getById(doctor.getSpecialty().getId());
+            doctorDB.setSpecialty(specialtyDB);
+        }
+        return doctorRepository.save(doctorDB);
     }
 }

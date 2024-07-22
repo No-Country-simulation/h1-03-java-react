@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("${api.base-url}/indication")
+@RequestMapping("${api.base-url}/indications")
 @RequiredArgsConstructor
 @Slf4j
 public class IndicationController {

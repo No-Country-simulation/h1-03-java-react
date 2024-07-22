@@ -42,6 +42,12 @@ public class CustomSecurityFilterChain {
                                         "/v3/api-docs/**").permitAll()
                                 .requestMatchers(
                                         "/api/v1/roles/**").hasRole( "ADMIN")
+                                .requestMatchers(
+                                        "/api/v1/users/**").hasRole( "USER")
+                                .requestMatchers(
+                                        "/api/v1/doctors/**", "/api/v1/medical-histories/**" ).hasRole( "DOCTOR")
+                                .requestMatchers(
+                                        "/api/v1/patients/**").hasRole( "PATIENT")
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(session->

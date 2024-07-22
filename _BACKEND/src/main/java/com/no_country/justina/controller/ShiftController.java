@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("${api.base-url}/shift")
+@RequestMapping("${api.base-url}/shifts")
 @RequiredArgsConstructor
 public class ShiftController {
   private final IShiftService shiftService;

@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,7 +37,13 @@ public class UserEntity implements UserDetails {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "idUser"),
             inverseJoinColumns = @JoinColumn(name = "idRole"))
-    private List<Role> roles;
+    private Set<Role> roles;
+    @OneToOne(mappedBy = "user")
+    private Admin admin;
+    @OneToOne(mappedBy = "user")
+    private Doctor doctor;
+    @OneToOne(mappedBy = "user")
+    private Patient patient;
 
     @PrePersist
     public void onCreate(){
@@ -79,11 +84,4 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return isEnabled;
     }
-
-    @OneToOne(mappedBy = "user")
-    private Admin admin;
-    @OneToOne(mappedBy = "user")
-    private Doctor doctor;
-    @OneToOne(mappedBy = "user")
-    private Patient patient;
 }

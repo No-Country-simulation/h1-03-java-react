@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.base-url}/treatment")
+@RequestMapping("${api.base-url}/treatments")
 public class TreatmentController {
   private final ITreatmentService treatmentService;
   private final ModelMapper mapper;

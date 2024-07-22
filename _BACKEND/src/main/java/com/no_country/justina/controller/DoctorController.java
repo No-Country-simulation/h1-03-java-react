@@ -42,11 +42,9 @@ public class DoctorController {
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<DoctorRes> update(@RequestBody @Valid DoctorReq doctorReq, @PathVariable long id) {
-        var newDoctor = modelMapper.map(doctorReq, Doctor.class);
-        newDoctor.setId(id);
-        var doctor = doctorService.update(newDoctor);
+    @PutMapping()
+    public ResponseEntity<DoctorRes> update(@RequestBody @Valid DoctorReq doctorReq) {
+        var doctor = doctorService.update(modelMapper.map(doctorReq, Doctor.class));
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.OK);
     }
 }

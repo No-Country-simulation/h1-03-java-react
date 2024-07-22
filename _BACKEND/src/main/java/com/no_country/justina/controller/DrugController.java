@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("${api.base-url}/drug")
+@RequestMapping("${api.base-url}/drugs")
 public class DrugController {
   private final IDrugService drugService;
   private final ModelMapper mapper;

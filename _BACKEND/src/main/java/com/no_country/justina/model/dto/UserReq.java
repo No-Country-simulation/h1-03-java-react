@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,5 +36,6 @@ public class UserReq {
           message = "Mínimo una minúscula, mayúscula, número y carácter especial")
   @Size(min = 8, max = 16)
   private String password;
-//  private List<Role> role;
+
+  private Set<RoleReq> roles;
 }

@@ -18,7 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("${api.base-url}/patient")
+@RequestMapping("${api.base-url}/patients")
 @RequiredArgsConstructor
 public class PatientController {
   private final IPatientService patientServ;
@@ -49,12 +49,9 @@ public class PatientController {
     Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
     return ResponseEntity.ok(this.patientServ.getAll(pageable));
   }
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody @Valid PatientUpdateReq patientUpdateReq,
-                                      @PathVariable long id){
-    var newPatient = mapper.map(patientUpdateReq, Patient.class);
-    newPatient.setIdPatient(id);
-    var patientUpdated = this.patientServ.update(newPatient);
+  @PutMapping()
+  public ResponseEntity<?> updateById(@RequestBody @Valid PatientUpdateReq patientUpdateReq){
+    var patientUpdated = this.patientServ.update(mapper.map(patientUpdateReq, Patient.class));
     return ResponseEntity.ok(mapper.map(patientUpdated, PatientRes.class));
   }
 
