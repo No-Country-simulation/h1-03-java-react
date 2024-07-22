@@ -39,7 +39,7 @@ public class AppointmentController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "idAppointment") String sort,
+                                  @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Appointment> result = this.appointmentService.getAll(pageable);

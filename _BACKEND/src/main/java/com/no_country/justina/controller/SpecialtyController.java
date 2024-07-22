@@ -39,7 +39,7 @@ public class SpecialtyController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "idSpecialty") String sort,
+                                  @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Specialty> result = this.specialtyService.getAll(pageable);

@@ -37,7 +37,7 @@ public class DrugController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "idDrug") String sort,
+                                  @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Drug> searchResult = this.drugService.getAll(pageable);

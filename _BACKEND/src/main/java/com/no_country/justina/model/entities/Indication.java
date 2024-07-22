@@ -1,7 +1,5 @@
 package com.no_country.justina.model.entities;
 
-import com.no_country.justina.model.enums.DrugForm;
-import com.no_country.justina.model.enums.DrugRoute;
 import com.no_country.justina.model.enums.DrugStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,12 +22,12 @@ public class Indication {
   private int dosage;
   @Column(columnDefinition = "TINYINT")
   private int quantity;
-  @Enumerated(EnumType.STRING)
-  @Column(columnDefinition = "VARCHAR(25)")
+  @ManyToOne
+  @JoinColumn(name = "form_id", nullable = false)
   private DrugForm form;
-  @Enumerated(EnumType.STRING)
-  @Column(columnDefinition = "VARCHAR(25)")
-  private DrugRoute routeAdministration;
+  @ManyToOne
+  @JoinColumn(name = "route_id", nullable = false)
+  private DrugRoute route;
   @Column(columnDefinition = "TINYINT")
   private int frequency;
   @Column(columnDefinition = "TINYINT")
