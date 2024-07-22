@@ -33,7 +33,7 @@ public class Patient {
   private Genre genre;
   private boolean isEnabled;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne()
   @JoinColumn(name = "user_id", nullable = false)
   private UserEntity user;
 

@@ -37,10 +37,10 @@ public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, 
     return findAll((Root<MedicalHistory> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
       List<Predicate> predicates = new ArrayList<>();
       if (lastname != null) {
-        predicates.add(builder.like(root.get("patient").get("lastname"), lastname));
+        predicates.add(builder.like(root.get("patient").get("user").get("lastname"), lastname+"%"));
       }
       if (identification != null) {
-        predicates.add(builder.like(root.get("patient").get("docIdentity"), identification));
+        predicates.add(builder.like(root.get("patient").get("docIdentity"), identification+"%"));
       }
       if(start != null && end != null){
         predicates.add(builder.between(root.get("createdAt"), start, end));

@@ -54,7 +54,7 @@ public class MedicalHistoryController {
     return ResponseEntity.ok(this.historyService.getAll(pageable));
   }
 
-  @PostMapping("/filter")
+  @GetMapping("/filter")
   public ResponseEntity<?> getAllByLastnameOrIdentity(
           @RequestParam(defaultValue = "0") int page,
           @RequestParam(defaultValue = "20") int size,

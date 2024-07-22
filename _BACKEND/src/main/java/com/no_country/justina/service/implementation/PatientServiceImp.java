@@ -8,6 +8,7 @@ import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import com.no_country.justina.service.interfaces.IPatientService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PatientServiceImp implements IPatientService {
   private final PatientRepository patientRepo;
   private final IMedicalHistoryService historyService;
@@ -25,6 +27,7 @@ public class PatientServiceImp implements IPatientService {
     var savedPatient = this.patientRepo.save(patient);
     history.setPatient(savedPatient);
     var savedHistory = historyService.create(history);
+
     return savedHistory.getPatient();
   }
 
