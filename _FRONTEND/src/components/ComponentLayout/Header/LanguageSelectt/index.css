@@ -7,4 +7,27 @@
   cursor: pointer;
   margin-right: 0.25rem;
   outline: none;
+  position: relative;
+  left: -30px;
+  text-align: end;
+  width: 70px;
+}
+
+@media only screen and (min-width: 2000px) {
+  .language-select .language-select__container select {
+    width: 80px;
+    left: -35px;
+  }
+}
+@media only screen and (min-width: 3000px) {
+  .language-select .language-select__container select {
+    width: 110px;
+    left: -50px;
+  }
+}
+@media only screen and (min-width: 4000px) {
+  .language-select .language-select__container select {
+    width: 150px;
+    left: -70px;
+  }
 }/*# sourceMappingURL=index.css.map */

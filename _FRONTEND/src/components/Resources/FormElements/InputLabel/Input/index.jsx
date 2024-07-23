@@ -8,11 +8,11 @@ export default function Input({
 	isRequired = false,
 	autoFocus = false,
 	value = "",
-	onChangeHandler = () => {},
+	onChangeHandler = {},
 	isChecked = null,
 	minLength = "3",
 	maxLength = "50",
-	pattern = ""
+	pattern = "",
 }) {
 	/*
 	const [pattern, setPattern] = useState("");
@@ -42,7 +42,7 @@ export default function Input({
 					maxLength={maxLength}
 					/* min={type === "date" ? "1900/01/01" : ""}
 				max={type === "date" ? "2024/05/01" : ""} */
-					pattern={pattern}
+					pattern={null}
 					title={title}
 					aria-label="Input field"
 					aria-describedby={title}
@@ -51,9 +51,9 @@ export default function Input({
 					autoCapitalize="off"
 					spellCheck="false"
 					autoFocus={autoFocus}
-					{...value==='' ? {} : value={value}}
 					onChange={(e) => onChangeHandler(e.target.value)}
 					checked={isChecked}
+					{...(value === "" ? {} : (value = { value }))}
 				/>
 			)}
 		</>

@@ -1,7 +1,12 @@
 import React from "react";
 import Icons from "../../../SessionComponents/Signup/RolePopup/Icons";
 
-export default function Radio({ legend, arrayItems, isItVertical = false }) {
+export default function Radio({ legend, name, arrayItems, isItVertical = false, setClosePopup, setIsButtonDisabled }) {
+
+	const handleClickRadio = () => {
+		//setClosePopup(true)
+		setIsButtonDisabled(false)
+	}
 
 	return (
 		<fieldset className="w-[-webkit-fill-available]">
@@ -21,18 +26,18 @@ export default function Radio({ legend, arrayItems, isItVertical = false }) {
 							</label>
 							
 							<input
-								className="w-[1.4rem] sm:w-[1.6rem] md:w-[1.8rem] me-2 "
+								className="w-[1.4rem] sm:w-[1.6rem] md:w-[1.8rem] me-2 cursor-pointer"
 								style={{filter: 'invert(1)', accentColor: '#FFF'}}
 								type="radio"
 								id={e.id}
-								name={legend
+								name={name/* legend
 									.toLowerCase()
 									.normalize("NFD")
-									.replace(/[\u0300-\u036f]/g, "")}
+									.replace(/[\u0300-\u036f]/g, "")*/} 
 								value={e.title}
 								aria-label={e.title}
 								required
-								
+								onClick={() => handleClickRadio()}
 							/>
 						</div>
 						<Icons i={i} />

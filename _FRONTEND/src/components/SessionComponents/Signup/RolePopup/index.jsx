@@ -7,22 +7,30 @@ import { useNavigate } from 'react-router-dom'
 import getPathRoutes from '../../../../helpers/pathroutes'
 import closePopupSvg from '../../../../assets/svg/others/closePopup.svg'
 
-export default function RolePopup() {
+export default function RolePopup({ setRoleSelection }) {
     const navigate = useNavigate()
     const language = useSelector((state)=>state.i18nReducer.language)
     const [closePopup, setClosePopup] = useState(false)
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+
+    const onClickButtonHandler = (value) => {
+        setClosePopup(value)
+    }
 
     useEffect(() => {
-        setClosePopup(false)
+        onClickButtonHandler(false)
     }, [])
-
-    const onClickHandler = ()=>{
-        setClosePopup(true)
-    }
 
     const closePopupAndGoToHome = ()=>{
         setClosePopup(true)
         navigate(getPathRoutes(language, 'home', true))
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        const formData = new FormData(e.target)
+        const entries = Object.fromEntries(formData.entries())
+        setRoleSelection(entries.role)
     }
 
     return (
@@ -38,33 +46,38 @@ export default function RolePopup() {
                 <img 
                     className="absolute top-0 right-0 me-5 mt-5 cursor-pointer" 
                     src={closePopupSvg} 
-                    alt="Close Popup" //poner desde i18n
-                    aria-label="Close Popup"
+                    alt={i18n[language].closePopupSvgButton}
+                    aria-label={i18n[language].closePopupSvgButton}
                     onClick={() => closePopupAndGoToHome()}
-                    title="Close Popup"
+                    title={i18n[language].closePopupSvgButton}
                     role="button"
                     loading="lazy"
                     width={30}
                     height={30}
                 />
-                <p className="text-center mt-10" role="heading">{i18n[language].titlePopup}</p>
-
-                <form className="m-auto">
-                    <Radio 
-                        legend= ''
-                        arrayItems= {i18n[language].roleList}
-                        isItVertical={true}
-                    />
-                </form>
-
-                <div className="w-3/5 sm:w-2/5 xl:w-3/5 m-auto mt-10">
-                    <Button 
-                        text={i18n[language].buttonPopupText}
-                        textColor='#FFF'
-                        title={i18n[language].buttonPopupTitle}
-                        isDisabled={false}
-                        onClickHandler={onClickHandler}
-                    />
+                <div className="flex flex-col gap-10">
+                    <p className="text-center mt-10" role="heading">{i18n[language].titlePopup}</p>
+                    <form className="m-auto" onSubmit={(e)=>handleSubmit(e)}>
+                        <Radio 
+                            legend= ''
+                            name= 'role'
+                            arrayItems= {i18n[language].roleList}
+                            isItVertical={true}
+                            setClosePopup={setClosePopup}
+                            setIsButtonDisabled={setIsButtonDisabled}
+                        />
+                    
+                        <div className="w-3/5 sm:w-2/5 xl:w-3/5 m-auto mt-14">
+                            <Button 
+                                type= 'submit'
+                                text={i18n[language].buttonPopupText}
+                                textColor='#FFF'
+                                title={i18n[language].buttonPopupTitle}
+                                isDisabled={isButtonDisabled}
+                                onClickHandler={onClickButtonHandler}
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>

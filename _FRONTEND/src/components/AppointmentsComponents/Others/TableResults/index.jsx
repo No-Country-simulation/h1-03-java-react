@@ -6,7 +6,7 @@ import i18n from "../../../../i18n/appointments/reserveAppointment/index.json";
 import Row from "./Row";
 import Pagination from "./Pagination";
 
-export default function TableResults({ componentTitle, isButtonSchedule }) {
+export default function TableResults({ componentTitle, isButtonSchedule, isModificate=false }) {
 	const language = useSelector((state) => state.i18nReducer.language);
 
 	const { data, error, isLoading, isFetching } = useQuery({
@@ -21,9 +21,9 @@ export default function TableResults({ componentTitle, isButtonSchedule }) {
 					<p className="text-center text-base">{componentTitle}</p>
 
 					<>
-						<Row isButtonSchedule={isButtonSchedule} />
-						<Row isButtonSchedule={isButtonSchedule} />
-						<Row isButtonSchedule={isButtonSchedule} />
+						<Row isButtonSchedule={isButtonSchedule} isModificate={isModificate} />
+						<Row isButtonSchedule={isButtonSchedule} isModificate={isModificate} />
+						<Row isButtonSchedule={isButtonSchedule} isModificate={isModificate} />
 						<Pagination />
 					</>
 				</section>

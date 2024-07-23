@@ -17,6 +17,7 @@
         "passwordPlaceholder": "CONTRASEÑA",
         "repeatPasswordTitle": "Repita su Contraseña",
         "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA",
+        "passwordMatchTitle": "Las contraseñas no coinciden.",
         "roleListForSelect": ["Seleccionar rol","Admin", "Paciente", "Médico"],
         "roleTitleForSelect": "Seleccione su rol",
         "roleList": [
@@ -25,7 +26,8 @@
         ],
         "titlePopup": "Seleccione su perfil de registro",
         "buttonPopupText": "CONFIRMAR",
-        "buttonPopupTitle": "Confirmar"
+        "buttonPopupTitle": "Confirmar",
+        "closePopupSvgButton" : "Cerrar"
     },
     "en":{
         "pageTitle": "SIGN UP",
@@ -44,6 +46,7 @@
         "emailPlaceholder": "E-MAIL",
         "passwordTitle": "Enter your password",
         "passwordPlaceholder": "PASSWORD",
+        "passwordMatchTitle": "Passwords don't match.",
         "repeatPasswordTitle": "Repeat your password",
         "repeatPasswordPlaceholder": "REPEAT PASSWORD",
         "roleListForSelect": ["Select role","Admin", "Patient", "Doctor"],
@@ -54,6 +57,7 @@
         ],
         "titlePopup": "Select your registration profile",
         "buttonPopupText": "CONFIRM",
-        "buttonPopupTitle": "Confirm"
+        "buttonPopupTitle": "Confirm",
+        "closePopupSvgButton" : "Close"
     }
 }

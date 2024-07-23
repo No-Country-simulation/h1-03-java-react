@@ -9,6 +9,7 @@ export default function Button({
 	title,
 	isDisabled = false,
 	onClickHandler = ()=>{},
+	setClosePopup
 }) {
 	
 	return (
@@ -17,11 +18,11 @@ export default function Button({
 				<div className="text-center">
 					<button
 						type={type}
-						className={`rounded-full p-3 w-full text-[${textColor}] bg-[${bgColor}] select-none ${classNames}`}
+						className={`rounded-full p-3 w-full text-[${textColor}] ${!isDisabled ? 'bg-[' +bgColor + ']' : 'bg-gray-500' } select-none ${classNames}`}
 						title={title}
 						aria-label={title}
 						disabled={isDisabled}
-						onClick={() => onClickHandler()}
+						onClick={() => onClickHandler(true)}
 					>
 						{text}
 					</button>

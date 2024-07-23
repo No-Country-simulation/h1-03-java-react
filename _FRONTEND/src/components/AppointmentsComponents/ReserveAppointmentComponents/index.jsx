@@ -16,6 +16,7 @@ export default function ReserveAppointmentComponent() {
             <TableResults 
 				componentTitle={i18n[language].reserveAppointment.tableResults.componentTitle}
 				isButtonSchedule={true}
+				isModificate={false}
 			/>
 		</section>
 	);

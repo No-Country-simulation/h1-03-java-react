@@ -56,7 +56,7 @@ export default function AppointmentsManagement() {
 					{i18n[language].scheduledAppointments.title}
 				</p>
 			</div>
-			<div
+			{/* <div
 				className="text-center whitespace-nowrap bg-[#5666BF] text-white flex flex-row sm:flex-col flex-1 gap-5 sm:justify-center items-center min-h-[170px] 2xl:h-[350px] rounded-3xl p-5 sm:pb-0 overflow-hidden cursor-pointer"
 				onClick={() =>
 					navigate(
@@ -79,7 +79,7 @@ export default function AppointmentsManagement() {
 				<p className="">
 					{i18n[language].modifyAppointments.title}
 				</p>
-			</div>
+			</div> */}
 		</div>
 	);
 }

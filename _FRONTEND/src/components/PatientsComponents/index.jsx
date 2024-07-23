@@ -8,10 +8,11 @@ export default function UserProfileMainComponent() {
 
     return (
         <section className="grid gap-20">
-            <TitleAvatar title="HOLA USUARIO!" />
+            Patient
+            {/* <TitleAvatar title="HOLA USUARIO!" />
             <Menu />
             <NextAppointment />
-            <Treatment />
+            <Treatment /> */}
         </section>
     )
 }

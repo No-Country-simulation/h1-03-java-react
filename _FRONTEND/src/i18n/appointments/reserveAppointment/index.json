@@ -14,6 +14,7 @@
                 "scheduleButton": "Agendar",
                 "pencilButtonTitle": "Modificar turno",
                 "chooseTimeSlotTitle": "Elegir franja horaria",
+                "chooseTimeSlotTitleModify": "Franja horaria",
                 "timeSlotMorning": "Manana",
                 "timeSlotAfternoon": "Tarde"
             }
@@ -34,6 +35,7 @@
                 "scheduleButton": "Schedule",
                 "pencilButtonTitle": "Modify appointment",
                 "chooseTimeSlotTitle": "Choose time slot",
+                "chooseTimeSlotTitleModify": "Time slot",
                 "timeSlotMorning": "Morning",
                 "timeSlotAfternoon": "Afternoon"
             }

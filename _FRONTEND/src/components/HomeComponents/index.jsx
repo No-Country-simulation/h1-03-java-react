@@ -44,7 +44,7 @@ export default function HomeComponent() {
 			<JustinaLaw />
             <NationalDayImpact />
 
-			<p className="text-center m-10"><strong className="bg-red-500 text-white p-14 underline font-extrabold">DE ACA PARA ABAJO NO VA NADA</strong></p>
+			{/* <p className="text-center m-10"><strong className="bg-red-500 text-white p-14 underline font-extrabold">DE ACA PARA ABAJO NO VA NADA</strong></p>
 			{isLoading ? (
 				<p className="text-center">
 					⌛{" "}
@@ -65,9 +65,9 @@ export default function HomeComponent() {
 					</span>
 					<Table data={data} showSelectionColumn={true} />
 				</>
-			)}
+			)} */}
 
-			<Form handleSubmit={handleSubmitPatient}>
+			{/* <Form handleSubmit={handleSubmitPatient}>
 				<InputLabel
 					type={"text"}
 					id={"firstName"}
@@ -75,8 +75,8 @@ export default function HomeComponent() {
 					title={i18nPatients[language].firstName.title}
 					isRequired={true}
 					value="test"
-					/* value={val}
-                    onChangeHandler={setVal} */
+					value={val}
+                    onChangeHandler={setVal}
 				/>
 				<InputLabel
 					type={"text"}
@@ -114,7 +114,7 @@ export default function HomeComponent() {
 					text={i18nForm[language].buttonSubmit}
 					title={i18nForm[language].buttonSubmit}
 				/>
-			</Form>
+			</Form> */}
 		</section>
 	);
 }

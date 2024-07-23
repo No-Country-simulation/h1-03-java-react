@@ -4,7 +4,7 @@ export default function DoctorsMainComponent() {
     
     return (
         <>
-            medicos        
+            Medics
         </>
     )
 }
