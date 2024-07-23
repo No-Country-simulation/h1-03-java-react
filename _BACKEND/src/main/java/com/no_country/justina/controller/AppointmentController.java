@@ -51,14 +51,15 @@ public class AppointmentController {
   public ResponseEntity<?> getAllDoctorOrSpecialty(
           @RequestParam(defaultValue = "0") int page,
           @RequestParam(defaultValue = "20") int size,
-          @RequestParam(defaultValue = "idAppointment") String sort,
+          @RequestParam(defaultValue = "id") String sort,
           @RequestParam(defaultValue = "asc") String direction,
           Pageable pageable,
           @RequestParam(required = false) Long doctorId,
+          @RequestParam(required = false) Integer status,
           @RequestParam(required = false) Long specialtyId,
           @RequestBody @Valid DateRange range) {
     Page<Appointment> result = this.appointmentService.getAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, range.getStart(), range.getEnd());
+            pageable, doctorId, specialtyId, status, range.getStart(), range.getEnd());
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
@@ -82,7 +83,7 @@ public class AppointmentController {
 
   @PutMapping("/cancel/{id}")
   public ResponseEntity<?> cancelById(@PathVariable long id) {
-    var appointmentUpdated = this.appointmentService.cancel(id);
+    var appointmentUpdated = this.appointmentService.cancelAppointment(id);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
 

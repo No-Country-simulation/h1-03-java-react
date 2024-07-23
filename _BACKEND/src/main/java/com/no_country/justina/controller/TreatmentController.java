@@ -24,9 +24,8 @@ public class TreatmentController {
   public ResponseEntity<?> create(@RequestBody @Valid TreatmentReq treatmentReq) {
     Treatment newTreatment = mapper.map(treatmentReq, Treatment.class);
     Treatment savedTreatment = this.treatmentService.create(newTreatment);
-    return ResponseEntity
-            .status(HttpStatus.CREATED).body("hola");
-//            .body(mapper.map(savedIndication, TreatmentRes.class));
+    return ResponseEntity.status(HttpStatus.CREATED)
+            .body(mapper.map(savedTreatment, TreatmentRes.class));
   }
 
   @GetMapping("/{id}")

@@ -24,4 +24,7 @@ public class Treatment {
   @ManyToOne
   @JoinColumn(name = "medical_history_id", nullable = false)
   private MedicalHistory medicalHistory;
+  @ManyToOne
+  @JoinColumn(name = "appointment_id")
+  private Appointment appointment;
 }

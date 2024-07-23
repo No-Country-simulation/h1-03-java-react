@@ -38,11 +38,8 @@ public class MedicalHistoryController {
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
     var historyFound = this.historyService.getById(id);
-//    var hc = new MedicalHistory();
     var historyMap = mapper.map(historyFound, MedicalHistoryRes.class);
     return ResponseEntity.ok(historyMap);
-//    hc.setBloodType(historyFound.getBloodType());
-//    return ResponseEntity.ok(mapper.map(hc,MedicalHistoryRes.class));
   }
 
   @GetMapping
@@ -71,11 +68,15 @@ public class MedicalHistoryController {
     return ResponseEntity.ok(historyDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody MedicalHistoryReq medicalHistoryReq,
-                                      @PathVariable long id) {
+  @GetMapping("/patient/{id}")
+  public ResponseEntity<?> getByPatientId(@PathVariable Long id){
+            var historyFound = this.historyService.getByPatientId(id);
+
+    return ResponseEntity.ok(mapper.map(historyFound, MedicalHistoryRes.class));
+  }
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody MedicalHistoryReq medicalHistoryReq) {
     var newHistory = mapper.map(medicalHistoryReq, MedicalHistory.class);
-    newHistory.setId(id);
     var historyUpdated = this.historyService.update(newHistory);
     return ResponseEntity.ok(mapper.map(historyUpdated, MedicalHistoryRes.class));
   }

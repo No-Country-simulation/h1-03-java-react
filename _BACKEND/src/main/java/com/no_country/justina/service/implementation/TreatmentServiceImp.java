@@ -2,6 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Treatment;
 import com.no_country.justina.repository.TreatmentRepository;
+import com.no_country.justina.service.interfaces.IAppointmentService;
 import com.no_country.justina.service.interfaces.ITreatmentService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class TreatmentServiceImp implements ITreatmentService {
   private final TreatmentRepository treatmentRepo;
+  private final IAppointmentService appointmentService;
 
   @Override
   public Treatment create(Treatment treatment) {
+    this.appointmentService.updateToSuccessAppointment(treatment.getAppointment().getId());
     return this.treatmentRepo.save(treatment);
   }
 

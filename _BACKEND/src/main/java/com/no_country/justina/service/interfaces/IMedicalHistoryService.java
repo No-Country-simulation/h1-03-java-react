@@ -20,4 +20,6 @@ public interface IMedicalHistoryService {
 
   MedicalHistory update(MedicalHistory medicalHistory);
   void deleteById(Long id);
+
+  MedicalHistory getByPatientId(Long id);
 }

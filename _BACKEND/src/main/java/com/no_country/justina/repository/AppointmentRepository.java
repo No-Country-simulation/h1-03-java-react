@@ -28,6 +28,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   @Query("select a from Appointment a where a.patient.id = :patientId and DATE(a.date) = :date")
   List<Appointment> getAllByDayAndPatient(long patientId, LocalDate date);
 
+
   @Query("select a from Appointment a where a.shift = ?1")
   List<Appointment> findByShift(Shift shift);
 
@@ -40,10 +41,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   int updateAppointmentStatus(AppointmentStatus appointmentStatus, long idAppointment);
 
   default Page<Appointment> findAllByDoctorOrSpecialty(Pageable pageable,
-                                                 Long doctorId,
-                                                 Long specialtyId,
-                                                 LocalDateTime start,
-                                                 LocalDateTime end) {
+                                                       Long doctorId,
+                                                       Long specialtyId,
+                                                       AppointmentStatus status,
+                                                       LocalDateTime start,
+                                                       LocalDateTime end) {
     return findAll((Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
       List<Predicate> predicates = new ArrayList<>();
       if (doctorId != null) {
@@ -52,8 +54,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
       if (specialtyId != null) {
         predicates.add(builder.equal(root.get("shift").get("specialty").get("id"), specialtyId));
       }
+      if (status != null) {
+        predicates.add(builder.equal(root.get("appointmentStatus"), status));
+      }
       predicates.add(builder.between(root.get("date"), start, end));
-      predicates.add(builder.equal(root.get("appointmentStatus"), "PENDING"));
       return builder.and(predicates.toArray(new Predicate[0]));
 
     }, pageable);

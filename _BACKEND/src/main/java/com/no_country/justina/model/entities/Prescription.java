@@ -19,6 +19,7 @@ public class Prescription {
   private Long id;
   @Column(updatable = false, nullable = false)
   private LocalDateTime createdAt;
+
   @ManyToOne
   @JoinColumn(name = "treatment_id")
   private Treatment treatment;

@@ -14,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("${api.base-url}/indications")
 @RequiredArgsConstructor
@@ -26,10 +29,23 @@ public class IndicationController {
   public ResponseEntity<?> create(@RequestBody @Valid IndicationReq indicationReq) {
     Indication newIndication = mapper.map(indicationReq, Indication.class);
     Indication savedIndication = this.indicationService.create(newIndication);
-    log.info(savedIndication.toString());
     return ResponseEntity
-            .status(HttpStatus.CREATED).body("hola");
-//            .body(mapper.map(savedIndication, IndicationRes.class));
+            .status(HttpStatus.CREATED)
+            .body(mapper.map(savedIndication, IndicationRes.class));
+  }
+
+  @PostMapping("/group")
+  public ResponseEntity<?> createAll(@RequestBody @Valid Set<@Valid IndicationReq> indicationsReq) {
+    Set<Indication> indications = indicationsReq.stream()
+            .map(item->mapper.map(item, Indication.class))
+            .collect(Collectors.toSet());
+    Set<Indication> savedIndications = this.indicationService.createAll(indications);
+    return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(
+                    savedIndications.stream()
+                            .map(item->mapper.map(item, IndicationRes.class))
+                            .collect(Collectors.toSet()));
   }
 
   @GetMapping("/{id}")
@@ -49,11 +65,9 @@ public class IndicationController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody IndicationReq indicationReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody @Valid IndicationReq indicationReq) {
     var newIndication = mapper.map(indicationReq, Indication.class);
-    newIndication.setId(id);
     var indicationUpdated = this.indicationService.update(newIndication);
     return ResponseEntity.ok(mapper.map(indicationUpdated, IndicationRes.class));
   }

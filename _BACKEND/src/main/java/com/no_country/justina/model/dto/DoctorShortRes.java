@@ -12,5 +12,5 @@ import lombok.Setter;
 public class DoctorShortRes {
   private long id;
   private String license;
-  private UserRes user;
+  private UserShortRes user;
 }

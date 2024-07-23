@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PatientShortRes {
   private long id;
-  private UserRes user;
+  private UserShortRes user;
   private String docIdentity;
 }

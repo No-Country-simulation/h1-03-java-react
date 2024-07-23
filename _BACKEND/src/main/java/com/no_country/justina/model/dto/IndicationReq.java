@@ -2,7 +2,6 @@ package com.no_country.justina.model.dto;
 
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,8 +15,8 @@ public class IndicationReq{
         private Long id;
         @NotNull @Min(0) private Integer dosage;
         @NotNull @Min(0) private Integer quantity;
-        @NotBlank private DrugFormReq form;
-        @NotBlank private DrugRouteReq route;
+        @NotNull private DrugFormReq form;
+        @NotNull private DrugRouteReq route;
         @NotNull @Min(0) private Integer frequency;
         @NotNull @Min(0) private Integer duration;
         @NotNull private LocalDate startDate;

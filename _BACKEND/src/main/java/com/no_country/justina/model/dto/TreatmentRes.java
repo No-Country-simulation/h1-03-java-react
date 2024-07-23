@@ -14,4 +14,5 @@ public class TreatmentRes {
   private String diagnosis;
   private String description;
   private MedicalHistoryRes medicalHistory;
+  private AppointmentRes appointment;
 }

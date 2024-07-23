@@ -1,6 +1,5 @@
 package com.no_country.justina.service.implementation;
 
-import com.no_country.justina.exception.MedicalHistoryExistException;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.repository.MedicalHistoryRepository;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;
@@ -72,8 +71,14 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
     this.medicalHistoryRepo.deleteById(id);
   }
 
+  @Override
+  public MedicalHistory getByPatientId(Long id) {
+    return this.medicalHistoryRepo.findByPatientId(id)
+            .orElseThrow(()->new EntityNotFoundException("Historia clínica no encontrada, id: "+id));
+  }
+
   private void historyExistById(long id) {
     boolean existHistory = this.medicalHistoryRepo.existsById(id);
-    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id" + id);
+    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id:" + id);
   }
 }

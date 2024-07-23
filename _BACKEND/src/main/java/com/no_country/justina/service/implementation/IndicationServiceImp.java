@@ -9,6 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -20,10 +25,19 @@ public class IndicationServiceImp implements IIndicationService {
     return this.indicationRepo.save(indication);
   }
 
+  @Transactional
+  @Override
+  public Set<Indication> createAll(Set<Indication> indications) {
+    this.verifyAllHaveValidDate(indications);
+    this.verifyAllSamePrescription(indications);
+    var response = this.indicationRepo.saveAll(indications);
+    return new HashSet<>(response);
+  }
+
   @Override
   public Indication getById(Long id) {
     return this.indicationRepo.findById(id)
-            .orElseThrow(()->new EntityNotFoundException("Indicación no encontrada, id:"+id));
+            .orElseThrow(() -> new EntityNotFoundException("Indicación no encontrada, id:" + id));
   }
 
   @Override
@@ -44,13 +58,29 @@ public class IndicationServiceImp implements IIndicationService {
   }
 
   @Override
-  public Indication stopMedication(long id){
+  public Indication stopMedication(long id) {
     this.indicationRepo.stopIndication(id, DrugStatus.SUSPEND);
     return this.getById(id);
   }
 
-  private void verifyIndicationExist(long id){
+  private void verifyIndicationExist(long id) {
     boolean existIndication = this.indicationRepo.existsById(id);
-    if(!existIndication) throw new EntityNotFoundException("Indicación no encontrada, id:"+id);
+    if (!existIndication) throw new EntityNotFoundException("Indicación no encontrada, id:" + id);
+  }
+
+  private void verifyAllSamePrescription(Set<Indication> indications) {
+    boolean allMatches = indications.stream()
+            .map(Indication::getId)
+            .distinct()
+            .count() == 1;
+    if (!allMatches) throw new IllegalArgumentException("No todas las indicaciones pertenecen a la misma receta");
+  }
+
+  private void verifyAllHaveValidDate(Set<Indication> indications) {
+    indications.forEach(indication->{
+      if(indication.getStartDate().isBefore(LocalDate.now())){
+        throw new IllegalArgumentException("Algunas indicaciones tienen fechas en tiempo pasado");
+      }
+    });
   }
 }

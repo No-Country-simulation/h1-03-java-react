@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, Long>,
@@ -49,4 +50,7 @@ public interface MedicalHistoryRepository extends JpaRepository<MedicalHistory, 
 
     }, pageable);
   }
+
+  @Query("select m from MedicalHistory m where m.patient.idPatient = ?1")
+  Optional<MedicalHistory> findByPatientId(Long idPatient);
 }

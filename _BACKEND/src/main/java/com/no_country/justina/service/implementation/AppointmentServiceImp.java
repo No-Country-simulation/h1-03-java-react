@@ -51,16 +51,21 @@ public class AppointmentServiceImp implements IAppointmentService {
   public Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                                      Long doctorId,
                                                      Long specialty,
+                                                     Integer status,
                                                      LocalDateTime start,
                                                      LocalDateTime end) {
-    if(start.isAfter(end)){
+    AppointmentStatus statusFormat = null;
+    if (start.isAfter(end)) {
       throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
     }
-    if(start.getYear() != end.getYear()){
-      throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+    if (start.getYear() != end.getYear()) {
+      throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+    }
+    if(status != null) {
+      statusFormat = AppointmentStatus.fromId(status);
     }
     return this.appointmentRepo.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialty, start, end);
+            pageable, doctorId, specialty, statusFormat, start, end);
   }
 
   @Override
@@ -71,16 +76,12 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Transactional
   @Override
-  public Appointment reschedule(Appointment appointment){
+  public Appointment reschedule(Appointment appointment) {
     var oldAppointment = this.getById(appointment.getId());
-    if(oldAppointment.getAppointmentStatus() != AppointmentStatus.PENDING){
-      throw new IllegalArgumentException("Solo puedes reprogramar citas pendientes. id:"+appointment.getId());
-    }
+    this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.RESCHEDULE, appointment.getId());
-    if(updateResult != 1) {
-      throw new AppointmentException("Solo 1 cita puede ser actualizada.");
-    }
+    this.verifyOnlyOneAppointmentIsAffected(updateResult);
     this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getId(), -1);
     appointment.setId(null);
     return this.create(appointment);
@@ -88,19 +89,37 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Transactional
   @Override
-  public Appointment cancel(Long id){
+  public Appointment cancelAppointment(Long id) {
     var oldAppointment = this.getById(id);
-    if(oldAppointment.getAppointmentStatus() != AppointmentStatus.PENDING){
-      throw new IllegalArgumentException("Solo puedes cancelar citas pendientes. id:"+id);
-    }
+    this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.CANCELLED, id);
-    if(updateResult != 1) {
-      throw new AppointmentException("Solo 1 cita puede ser cancelada.");
-    }
+    this.verifyOnlyOneAppointmentIsAffected(updateResult);
     this.shiftService.updateAppointmentAvailable(oldAppointment.getShift().getId(), -1);
     oldAppointment.setAppointmentStatus(AppointmentStatus.CANCELLED);
     return oldAppointment;
+  }
+
+  @Transactional
+  @Override
+  public Appointment missingAppointment(Appointment appointment) {
+    this.verifyAppointmentIsPending(appointment);
+    int updateResult = this.appointmentRepo.updateAppointmentStatus(
+            AppointmentStatus.MISSING, appointment.getId());
+    this.verifyOnlyOneAppointmentIsAffected(updateResult);
+    appointment.setAppointmentStatus(AppointmentStatus.CANCELLED);
+    return appointment;
+  }
+
+  @Transactional
+  @Override
+  public Appointment updateToSuccessAppointment(Long id) {
+    Appointment currentAppointment = this.getById(id);
+    this.verifyAppointmentIsPending(currentAppointment);
+    int response = this.appointmentRepo.updateAppointmentStatus(AppointmentStatus.SUCCESS, id);
+    this.verifyOnlyOneAppointmentIsAffected(response);
+    currentAppointment.setAppointmentStatus(AppointmentStatus.SUCCESS);
+    return currentAppointment;
   }
 
 
@@ -134,6 +153,19 @@ public class AppointmentServiceImp implements IAppointmentService {
     Shift shift = appointment.getShift();
     if (shift.getAppointment() <= 0) {
       throw new IllegalArgumentException("No hay citas disponibles para este turno. Turno id: " + shift.getId());
+    }
+  }
+
+  private void verifyAppointmentIsPending(Appointment appointment) {
+    if (appointment.getAppointmentStatus() != AppointmentStatus.PENDING) {
+      throw new IllegalArgumentException("Solo puedes actualizar citas pendientes. Estado actual: "
+              + appointment.getAppointmentStatus());
+    }
+  }
+
+  private void verifyOnlyOneAppointmentIsAffected(int response) {
+    if (response != 1) {
+      throw new AppointmentException("Solo un registro debe ser afectado por la actualización. Registro afectado: " + response);
     }
   }
 }

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public interface IAppointmentService {
   Appointment create(Appointment appointment);
@@ -16,6 +15,7 @@ public interface IAppointmentService {
   Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                               Long doctorId,
                                               Long specialty,
+                                              Integer status,
                                               LocalDateTime start,
                                               LocalDateTime end);
 
@@ -24,7 +24,13 @@ public interface IAppointmentService {
   Appointment reschedule(Appointment appointment);
 
   @Transactional
-  Appointment cancel(Long id);
+  Appointment cancelAppointment(Long id);
+
+  @Transactional
+  Appointment missingAppointment(Appointment appointment);
+
+  @Transactional
+  Appointment updateToSuccessAppointment(Long id);
 
   void deleteById(Long id);
 }
