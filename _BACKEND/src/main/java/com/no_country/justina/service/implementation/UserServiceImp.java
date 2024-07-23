@@ -13,9 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,9 +22,6 @@ public class UserServiceImp implements IUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
-    private final AdminServiceImp adminService;
-    private final PatientServiceImp patientService;
-    private final DoctorServiceImp doctorService;
 
     @Override
     public UserEntity create(UserEntity user) {
