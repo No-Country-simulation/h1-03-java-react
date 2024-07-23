@@ -5,7 +5,6 @@ import com.no_country.justina.model.dto.PatientRes;
 import com.no_country.justina.model.dto.PatientUpdateReq;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Patient;
-import com.no_country.justina.model.enums.MaritalStatus;
 import com.no_country.justina.service.interfaces.IPatientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

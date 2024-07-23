@@ -9,11 +9,11 @@ public class GenreConverter implements AttributeConverter<Genre, Integer> {
 
   @Override
   public Integer convertToDatabaseColumn(Genre attribute) {
-    return attribute != null ? attribute.getValue() : null;
+    return attribute != null ? attribute.getId() : null;
   }
 
   @Override
   public Genre convertToEntityAttribute(Integer dbData) {
-    return dbData != null ? Genre.fromValue(dbData) : null;
+    return dbData != null ? Genre.fromId(dbData) : null;
   }
 }

@@ -27,7 +27,7 @@ public class ModelMapperConfig {
     };
     Converter<Integer, Genre> genreMap = ctx-> {
       if(ctx.getSource() == null) return null;
-      return Genre.fromValue(ctx.getSource());
+      return Genre.fromId(ctx.getSource());
     };
     modelMapper.createTypeMap(PatientReq.class, Patient.class)
             .addMappings(mapper->mapper.using(maritalMap)
@@ -41,7 +41,7 @@ public class ModelMapperConfig {
     };
     Converter<Genre, Integer> genreMapInvert = ctx-> {
       if(ctx.getSource() == null) return null;
-      return ctx.getSource().getValue();
+      return ctx.getSource().getId();
     };
     modelMapper.createTypeMap(Patient.class, PatientRes.class)
             .addMappings(mapper->mapper.using(maritalMapInvert)

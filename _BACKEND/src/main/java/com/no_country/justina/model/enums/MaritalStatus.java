@@ -1,7 +1,6 @@
 package com.no_country.justina.model.enums;
 
 import lombok.Getter;
-import lombok.ToString;
 
 @Getter
 public enum MaritalStatus {
