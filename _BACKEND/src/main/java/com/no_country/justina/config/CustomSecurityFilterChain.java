@@ -41,7 +41,7 @@ public class CustomSecurityFilterChain {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth ->
-                    auth.requestMatchers("/api/v1/user-login/**",
+                    auth.requestMatchers("/api/v1/users-login/**",
                                     "/swagger-ui/**",
                                     "/v3/api-docs/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
