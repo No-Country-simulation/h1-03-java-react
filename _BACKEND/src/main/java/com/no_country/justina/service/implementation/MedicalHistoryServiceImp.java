@@ -1,15 +1,19 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.MedicalHistory;
+import com.no_country.justina.model.entities.Role;
+import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.MedicalHistoryRepository;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +27,14 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
 
   @Override
   public MedicalHistory getById(Long id) {
+    UserEntity user = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Set<Role> roles = user.getRoles();
+    for (Role role: roles) {
+      if (role.getRoleName().equals("PATIENT")){
+        return this.medicalHistoryRepo.findById(user.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Historia clínica no encontrada, id:" + id));
+      }
+    }
     return this.medicalHistoryRepo.findById(id)
             .orElseThrow(() -> new EntityNotFoundException("Historia clínica no encontrada, id:" + id));
   }
