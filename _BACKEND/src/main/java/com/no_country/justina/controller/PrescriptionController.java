@@ -9,9 +9,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @RestController
@@ -39,21 +42,37 @@ public class PrescriptionController {
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
                                   @RequestParam(defaultValue = "id") String sort,
-                                  @RequestParam(defaultValue = "asc") String direction) {
-    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
+                                  @RequestParam(defaultValue = "asc") String direction,
+                                  Pageable pageable) {
     return ResponseEntity.ok(this.prescriptionService.getAll(pageable));
   }
+
+  @GetMapping("/filter")
+  public ResponseEntity<?> getAllByFilters(@RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "20") int size,
+                                           @RequestParam(defaultValue = "id") String sort,
+                                           @RequestParam(defaultValue = "asc") String direction,
+                                           Pageable pageable,
+                                           @RequestParam(required = false) Long doctorId,
+                                           @RequestParam(required = false) Long patientId,
+                                           @RequestParam(required = false) Long specialtyId,
+                                           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+    return ResponseEntity.ok(this.prescriptionService.getAllFilters(pageable, doctorId, patientId, specialtyId, start, end));
+  }
+
   @PutMapping("/{id}")
   public ResponseEntity<?> updateById(@RequestBody PrescriptionReq prescriptionReq,
-                                      @PathVariable long id){
+                                      @PathVariable long id) {
     var newPrescription = mapper.map(prescriptionReq, Prescription.class);
     newPrescription.setId(id);
     var prescriptionUpdated = this.prescriptionService.update(newPrescription);
     return ResponseEntity.ok(mapper.map(prescriptionUpdated, PrescriptionRes.class));
   }
+
   @DeleteMapping("/{id}")
-  public ResponseEntity<?> deleteById(@PathVariable long id){
+  public ResponseEntity<?> deleteById(@PathVariable long id) {
     this.prescriptionService.deleteById(id);
-    return ResponseEntity.ok("Prescripción eliminada con éxito, id:"+id);
+    return ResponseEntity.ok("Prescripción eliminada con éxito, id:" + id);
   }
 }

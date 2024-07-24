@@ -24,6 +24,14 @@ public class Prescription {
   @JoinColumn(name = "treatment_id")
   private Treatment treatment;
 
+  @ManyToOne
+  @JoinColumn(name = "patient_id", nullable = false)
+  private Patient patient;
+
+  @ManyToOne
+  @JoinColumn(name = "doctor_id", nullable = false)
+  private Doctor doctor;
+
   @PrePersist
   public void onCreate(){
     this.createdAt = LocalDateTime.now();

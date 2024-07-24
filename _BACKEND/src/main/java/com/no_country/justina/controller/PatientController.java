@@ -9,6 +9,7 @@ import com.no_country.justina.service.interfaces.IPatientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -43,10 +44,12 @@ public class PatientController {
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
-                                  @RequestParam(defaultValue = "id") String sort,
-                                  @RequestParam(defaultValue = "asc") String direction) {
-    Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
-    return ResponseEntity.ok(this.patientServ.getAll(pageable));
+                                  @RequestParam(defaultValue = "idPatient") String sort,
+                                  @RequestParam(defaultValue = "asc") String direction,
+                                  Pageable pageable) {
+    Page<Patient> patients = this.patientServ.getAll(pageable);
+    Page<PatientRes> patientsDto = patients.map(item->mapper.map(item, PatientRes.class));
+    return ResponseEntity.ok(patientsDto);
   }
   @PutMapping()
   public ResponseEntity<?> updateById(@RequestBody @Valid PatientUpdateReq patientUpdateReq){
