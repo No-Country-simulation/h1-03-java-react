@@ -4,7 +4,6 @@ import com.no_country.justina.model.dto.RoleRes;
 import com.no_country.justina.model.dto.UserReq;
 import com.no_country.justina.model.dto.UserRes;
 import com.no_country.justina.model.entities.UserEntity;
-import com.no_country.justina.service.implementation.UserServiceImp;
 import com.no_country.justina.service.interfaces.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
