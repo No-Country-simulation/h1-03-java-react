@@ -6,6 +6,7 @@ import com.no_country.justina.model.dto.UserRes;
 import com.no_country.justina.model.entities.Role;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.implementation.UserServiceImp;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -27,6 +28,11 @@ public class UserController {
     private final UserServiceImp userService;
     private final ModelMapper modelMapper;
 
+    @Operation(
+            summary = "Traer informacion de usuario por id",
+            description = "Devuelve informacion de usuario, por id pasado por parametro, si no se encuentra en base" +
+                    "de datos un usuario con el id suministrado se devuelve una excepcion de entidad no encontrada"
+    )
     @GetMapping("/{id}")
     public ResponseEntity<UserRes> getUser(@PathVariable Long id) {
         UserEntity userDB = userService.getUserById(id);
@@ -37,6 +43,11 @@ public class UserController {
         userRes.setRoles(roles);
         return new ResponseEntity<>(userRes, HttpStatus.OK);
     }
+
+    @Operation(
+            summary = "Traer lista de usuarios paginados",
+            description = "Devuelve la lista de usuarios paginados"
+    )
     @GetMapping()
     public ResponseEntity<Page<UserRes>> getAllUsers(Pageable pageable) {
         List<UserRes> userList= userService.getAllUsers(pageable).stream()
@@ -51,18 +62,35 @@ public class UserController {
         return new ResponseEntity<>(page, HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Crear usuario",
+            description = "Crea en base de datos una entidad de usuario, con los datos recibidos en el cuerpo de la " +
+                    "solicitud, si ya existe el email ingresado en BD devuelve una excepcion de email ya registrado," +
+                    "sino devuelve los datos del usuario que se creo con estado 201 creado "
+    )
     @PostMapping()
     public ResponseEntity<UserRes> create(@RequestBody @Valid UserReq userReq) {
         var user = userService.create(modelMapper.map(userReq, UserEntity.class));
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.CREATED);
     }
 
+    @Operation(
+            summary = "Actualiza el usuario",
+            description = "Actualiza el usuario, con los datos pasado por el cuerpo de la solicitud, " +
+                    "si el id no se encuentra en base de datos, devuelve una excepcion de entidad no encontrada," +
+                    "sino devuelve los datos de usuario que fueron actualizados"
+    )
     @PutMapping()
     public ResponseEntity<UserRes> update(@RequestBody @Valid UserReq userReq) {
         var user = userService.update(modelMapper.map(userReq, UserEntity.class));
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.OK);
     }
 
+    @Operation(
+            summary = "Eliminar usuario",
+            description = "Realiza un borrado logico del usuario, si no se encuentra en BD por id devuelve una excepcion" +
+                    "de usuario no encontrado en base de datos"
+    )
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
         userService.deleteById(id);
