@@ -41,18 +41,18 @@ public class CustomSecurityFilterChain {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(auth ->
-                    auth.requestMatchers("/api/v1/users-login/**",
+                    auth.requestMatchers("/api/v1/users-login",
+                                    "/api/v1/roles/**",
                                     "/swagger-ui/**",
                                     "/v3/api-docs/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                             .requestMatchers(
-                                    "/api/v1/roles/**").hasRole("ADMIN")
-                            .requestMatchers(
-                                    "/api/v1/users/**").hasRole("USER")
-                            .requestMatchers(
                                     HttpMethod.GET, "/api/v1/medical-histories/{id}").hasRole("PATIENT")
                             .requestMatchers(
-                                    "/api/v1/doctors/**", "/api/v1/medical-histories/**").hasRole("DOCTOR")
+                                    "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
+                            .requestMatchers(
+                                    "/api/v1/doctors/**",
+                                    "/api/v1/medical-histories/**").hasRole("DOCTOR")
                             .requestMatchers(
                                     "/api/v1/patients/**").hasRole("PATIENT")
                             .anyRequest().authenticated()
