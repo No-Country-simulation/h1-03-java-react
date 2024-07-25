@@ -89,9 +89,9 @@ public class UserController {
             description = "Realiza un borrado logico del usuario, si no se encuentra en BD por id devuelve una excepcion" +
                     "de usuario no encontrado en base de datos"
     )
-    @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
-        userService.deleteById(id);
+    @DeleteMapping()
+    public ResponseEntity<HttpStatus> deleteUser() {
+        userService.delete();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

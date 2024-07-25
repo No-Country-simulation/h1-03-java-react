@@ -13,6 +13,6 @@ public interface IUserService {
 
   UserEntity update(UserEntity userEntity);
 
-  void deleteById(Long id);
+  void delete();
 
 }

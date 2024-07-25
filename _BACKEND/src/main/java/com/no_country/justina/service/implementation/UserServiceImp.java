@@ -9,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -71,9 +72,10 @@ public class UserServiceImp implements IUserService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        var userDb = userRepository.findById(id)
-                .orElseThrow(() -> new UserIdNotFoundException(id));
+    public void delete() {
+        UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        var userDb = userRepository.findById(user.getId())
+                .orElseThrow(() -> new UserIdNotFoundException(user.getId()));
         userDb.setEnabled(false);
         userRepository.save(userDb);
     }
