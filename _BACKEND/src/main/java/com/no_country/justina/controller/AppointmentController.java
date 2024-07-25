@@ -5,6 +5,7 @@ import com.no_country.justina.model.dto.AppointmentRes;
 import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.service.interfaces.IAppointmentService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,6 +23,10 @@ public class AppointmentController {
   private final IAppointmentService appointmentService;
   private final ModelMapper mapper;
 
+  @Operation(
+          summary = "Crea una cita.",
+          description = "Crea una cita para un determinado paciente y turno medico específico, no pasar el parámetro id."
+  )
   @PostMapping
   public ResponseEntity<?> create(@RequestBody @Valid AppointmentReq appointmentReq) {
     Appointment newAppointment = mapper.map(appointmentReq, Appointment.class);
@@ -29,13 +34,13 @@ public class AppointmentController {
     return ResponseEntity
             .status(HttpStatus.CREATED).body(mapper.map(savedAppointment, AppointmentRes.class));
   }
-
+  @Operation(summary = "Trae una cita por su id")
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
     var appointmentFound = mapper.map(this.appointmentService.getById(id), Appointment.class);
     return ResponseEntity.ok(appointmentFound);
   }
-
+  @Operation(summary = "Traer todas las citas en formato pagina.")
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
@@ -46,7 +51,8 @@ public class AppointmentController {
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
-
+  @Operation(summary = "Trae todos las citas con determinados filtros.",
+  description = "Obtiene las citas en un determinado intervalo de fechas y aplicándole filtros por id de doctor, id de especialidad, o estado de cita.")
   @PostMapping("/filter")
   public ResponseEntity<?> getAllDoctorOrSpecialty(
           @RequestParam(defaultValue = "0") int page,
@@ -64,30 +70,30 @@ public class AppointmentController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody AppointmentReq appointmentReq,
-                                      @PathVariable long id) {
+  @Operation(summary = "Actualiza una cita",
+  description = "Actualiza la cita, aquí es necesario pasar el id en el json.")
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody AppointmentReq appointmentReq) {
     var newAppointment = mapper.map(appointmentReq, Appointment.class);
-    newAppointment.setId(id);
     var appointmentUpdated = this.appointmentService.update(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
-  @PutMapping("/reschedule/{id}")
-  public ResponseEntity<?> rescheduleById(@RequestBody @Valid AppointmentReq appointmentReq,
-                                      @PathVariable long id) {
+  @Operation(summary = "Reprograma una cita.",
+  description = "Reprograma una cita, el id es de la cita a reprogramar, los demás datos de la nueva cita.")
+  @PutMapping("/reschedule")
+  public ResponseEntity<?> rescheduleById(@RequestBody @Valid AppointmentReq appointmentReq) {
     var newAppointment = mapper.map(appointmentReq, Appointment.class);
-    newAppointment.setId(id);
     var appointmentUpdated = this.appointmentService.reschedule(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
-
+  @Operation(summary = "Cancela una cita por id.")
   @PutMapping("/cancel/{id}")
   public ResponseEntity<?> cancelById(@PathVariable long id) {
     var appointmentUpdated = this.appointmentService.cancelAppointment(id);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
 
-
+  @Operation(summary = "borra una cita por id de la base de datos.")
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteById(@PathVariable long id) {
     this.appointmentService.deleteById(id);
