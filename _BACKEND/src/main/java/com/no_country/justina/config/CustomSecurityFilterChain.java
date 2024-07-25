@@ -46,9 +46,10 @@ public class CustomSecurityFilterChain {
                                     "/api/v1/specialties/**",
                                     "/swagger-ui/**",
                                     "/v3/api-docs/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v1/doctors/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                             .requestMatchers(
-                                    HttpMethod.GET, "/api/v1/medical-histories/{id}", "/api/v1/doctors/**",
+                                    HttpMethod.GET, "/api/v1/medical-histories/{id}",
                                     "/api/v1/shifts/**").hasAnyRole("PATIENT", "DOCTOR")
                             .requestMatchers(
                                     "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
