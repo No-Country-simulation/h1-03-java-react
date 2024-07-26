@@ -6,7 +6,6 @@
 
 Pequeña descripción del proyecto...
 
-##
 https://github.com/No-Country-simulation/h1-03-java-react
 
 
@@ -26,7 +25,11 @@ https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2p
 | <img style="width: 100px; min-width: 100px" src="https://user-images.githubusercontent.com/68760595/164306020-120e8664-cb5b-459a-80a3-99e13b057b52.png" >| Uso de la metodologia Scrum para llevar el equipo a las mejores practicas |
 
 ## Agradecimientos
+
 ![download (1)](https://github.com/No-Country/s14-09-ft-node-react/assets/117502571/99be7fc2-9ccc-4a33-b189-388d7b570853)
 
 ## Equipo de desarrollo
+
+|**QA**|**Backend**|**Frontend**|**UI/UX**|**Project Manager/TeamLider**|
+|:---:|:---:|:---:|:---:|:---:|
 
