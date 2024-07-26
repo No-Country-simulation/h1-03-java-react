@@ -7,6 +7,20 @@ El proyecto Justina tiene como propósito mejorar la eficiencia y el impacto en 
 Diseñar la interfaz omnicanal para la integración de las distintas partes del ecosistema de la salud.
 ### Login y Registro: 
 La autenticación y autorización se gestionará mediante JSON Web Tokens (JWT), garantizando un acceso seguro y protegido a la plataforma. Los usuarios podrán registrarse y acceder utilizando credenciales seguras, integrando prácticas de seguridad como encriptación de contraseñas y validación de correos electrónicos.
+### ABM de Usuarios: 
+La aplicación permitirá la gestión de usuarios con diferentes roles, incluyendo administradores, médicos, pacientes, entre otros, según lo especificado en la documentación funcional.
+Cada usuario tendrá permisos específicos según su rol para acceder y gestionar funcionalidades adecuadas a sus responsabilidades dentro del sistema.
+
+### Agenda de Turnos Médicos: 
+Los pacientes podrán gestionar sus turnos médicos a través de una agenda integrada en sus perfiles, con visibilidad también para el médico correspondiente. La funcionalidad permitirá reprogramar turnos, aceptar o declinar citas pendientes, garantizando una comunicación fluida y eficiente entre médicos y pacientes.
+
+### Input de Tratamientos y Recetas: 
+Los médicos podrán registrar tratamientos, medicamentos y recetas directamente desde la aplicación. Esta información será adjuntada a la historia clínica del paciente, accesible para revisión por parte del paciente. Se implementará la opción de adjuntar documentos relevantes y, para facilitar el proceso de ingreso de datos, se integrará la funcionalidad de transcripción de voz y procesamiento mediante inteligencia artificial. Esto permitirá a los médicos capturar información de manera eficiente durante la consulta, mejorando la precisión y optimizando el tiempo dedicado al ingreso de datos clínicos.
+  •	Funcionalidad trasplante cruzado. ABM de funcionalidad de trasplante cruzado
+  •	ABM de nomenclador. Además, la posibilidad de agregarlos mediante un Excel facilitar su carga
+
+Dicho nomenclador puede encontrarse en este enlace:
+https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-897-2023-383213/actualización  
 
 ##
 https://github.com/No-Country-simulation/h1-03-java-react
