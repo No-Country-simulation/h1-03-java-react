@@ -63,7 +63,7 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://cdn.worldvectorlogo.com/logos/postman.svg" >| Postman |
 | <img style="width: 50px; min-width: 50px" src="https://cdn.worldvectorlogo.com/logos/jira-software.svg" >| Jira |
 | <img style="width: 50px; min-width: 50px" src="https://www.selenium.dev/images/selenium_logo_square_green.png" >| Selenium |
-| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Office_Word_2013_logo.png" >| Word |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Microsoft_Office_Word_2013_Logo.png" >| Word |
 
 ## Agradecimientos
 
