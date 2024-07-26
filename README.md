@@ -3,7 +3,6 @@
 
 
 
-
 Pequeña descripción del proyecto...
 
 https://github.com/No-Country-simulation/h1-03-java-react
@@ -30,6 +29,7 @@ https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2p
 
 ## Equipo de desarrollo
 
-|**QA**|**Backend**|**Frontend**|**UI/UX**|**Project Manager/TeamLider**|
-|:---:|:---:|:---:|:---:|:---:|
 
+|**QA**|**Backend**|**Frontend**|**UI/UX**|**TeamLider**|
+|:---:|:---:|:---:|:---:|:---:|
+|**Cinthia Gutiérrez Vargas** <br> [LinkedIn](https://www.linkedin.com/in/cinthia-guti%C3%A9rrez-vargas-ti/)|**Alexander Machicado** <br> [LinkedIn](https://www.linkedin.com/in/machicadogomezalexander/) <br> **David Thomen** <br> [LinkedIn](https://www.linkedin.com/in/david-ramon-thomen/)|**Matias Fiordelli** <br> [LinkedIn](https://www.linkedin.com/in/matiasfiordelli/)|**Daiana Belen Caffiero** <br> [LinkedIn](https://www.linkedin.com/in/daiana-b-caffiero/)|**Vero Eschenmoser**|
