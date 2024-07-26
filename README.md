@@ -30,9 +30,7 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" >| Figma, herramienta de prototipado ágil |
 
 ## Stacks de Equipo Frontend
-## Tecnologías utilizadas
 
-## Tecnologías utilizadas
 |||
 |:---:|:---:|
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" >| React.js |
