@@ -48,6 +48,15 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://www.sourcetreeapp.com/images/sourcetree_logo.png" >| Sourcetree |
 | <img style="width: 50px; min-width: 50px" src="https://codeium.com/images/logo.svg" >| IA: Codeium |
 
+## Stacks de Equipo Backend
+
+|||
+|:---:|:---:|
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Java_logo_and_wordmark.svg" >| Java |
+| <img style="width: 50px; min-width: 50px" src="https://spring.io/images/spring_logo.png" >| Spring Boot |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/61/MySQL_logo.svg" >| MySQL |
+| <img style="width: 50px; min-width: 50px" src="https://swagger.io/images/swagger-logo-triad-color.png" >| Swagger |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/IntelliJ_IDEA_Icon.svg" >| IntelliJ IDEA |
 
 
 ## Agradecimientos
