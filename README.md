@@ -52,11 +52,11 @@ Aquí va el enlace del sitio web
 
 |||
 |:---:|:---:|
-| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Java_logo_and_wordmark.svg" >| Java |
-| <img style="width: 50px; min-width: 50px" src="https://spring.io/images/spring-logo.svg" >| Spring Boot |
-| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/61/MySQL_logo.svg" >| MySQL |
-| <img style="width: 50px; min-width: 50px" src="https://swagger.io/images/swagger-logo-triad-color.png" >| Swagger |
-| <img style="width: 50px; min-width: 50px" src="https://www.jetbrains.com/idea/images/idea_logo.png" >| IntelliJ IDEA |
+| <img style="width: 50px; min-width: 50px" src="https://www.java.com/favicon.ico" >| Java |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Spring_framework_logo.svg" >| Spring Boot |
+| <img style="width: 50px; min-width: 50px" src="https://www.mysql.com/common/logos/mysql-logo.svg" >| MySQL |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Swagger_logo.png" >| Swagger |
+| <img style="width: 50px; min-width: 50px" src="https://www.jetbrains.com/idea/favicon.ico" >| IntelliJ IDEA |
 
 
 ## Agradecimientos
