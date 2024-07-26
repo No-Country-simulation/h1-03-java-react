@@ -13,7 +13,8 @@ export default function NavList() {
 		(state) => state.headerReducer.isActiveHamburgerButton
 	);
 	const language = useSelector((state)=>state.i18nReducer.language)
-	const itemsNav = getItemsNav(language)
+	const role = useSelector((state) => state.roleReducer.role);
+	const itemsNav = getItemsNav(language, role)
 
 	const scrollHandler = useRef(() => {
 		window.scrollTo(0, 0);

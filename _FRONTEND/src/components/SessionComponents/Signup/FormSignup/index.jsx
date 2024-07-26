@@ -8,20 +8,33 @@ import i18n from "../../../../i18n/session/signup/index.json";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Container from "../../../Resources/Others/Container";
+import { useQuery } from "@tanstack/react-query";
+import { postFetch } from "../../../../services";
+import endpoints from "../../../../helpers/endpoints.js";
+import roleList from "../../../../helpers/roleList";
 
-export default function FormSignup() {
+const handlePassword = (e, setPassword) => {
+	setPassword(e)
+};
+const handleRepeatPassword = (e, setRepeatPassword) => {
+	setRepeatPassword(e)
+};
+
+const getFormEntries = (e) => {
+	const formData = new FormData(e.target);
+	const entries = Object.fromEntries(formData.entries());
+	delete entries.repeatpassword;
+	return entries
+}
+
+export default function FormSignup( { roleSelection } ) {
 	const navigate = useNavigate();
 	const language = useSelector((state) => state.i18nReducer.language);
 	const [password, setPassword] = useState('');
 	const [repeatPassword, setRepeatPassword] = useState('');
 	const [passwordsMatch, setPasswordMatch] = useState(true);
-
-	const handlePassword = (e) => {
-		setPassword(e)
-	};
-	const handleRepeatPassword = (e) => {
-		setRepeatPassword(e)
-	};
+	const [entriesData, setEntriesData] = useState(null);
+	const getSpecificRole = (roleName) => roleList.filter((e)=>e.roleName===roleName)[0]
 
 	useEffect(() => {
 		if (password === repeatPassword) {
@@ -32,30 +45,32 @@ export default function FormSignup() {
 
 	}, [password, repeatPassword]);
 
+	const url = endpoints.signup
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-signup"],
+		queryFn: ()=> postFetch(url, entriesData),
+		enabled: false,
+	})
+
 	const handleSignupSubmit = (e) => {
 		e.preventDefault();
-		const formData = new FormData(e.target);
-		const entries = Object.fromEntries(formData.entries());
-		delete entries.repeatpassword;
-
-		const uri =
-			"https://deploy-justina-production.up.railway.app/api/v1/user";
-		const options = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(entries),
-		};
-
-		fetch(uri, options)
-			.then((res) => res.json())
-			.then((data) => console.log(data))
-			.catch((err) => console.log(err));
-
-		//alert("enviado!");
-		//e.target.reset();
+		
+		const entries = getFormEntries(e)
+		entries.roles = [{id: getSpecificRole(roleSelection).id}]
+		console.log(entries)
+		setEntriesData(entries)		
 	};
+
+	useEffect(()=>{
+		if(entriesData){
+			refetch()
+				.then((e)=>{
+					navigate(getPathRoutes(language, "home", true))
+					alert("Registrado!");		
+				})
+				.catch((err)=>console.log(err))
+		}
+	},[entriesData])
 
 	return (
 		<>
@@ -105,16 +120,18 @@ export default function FormSignup() {
 						<input
 							className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
 							id={"password"}
+							name={"password"}
 							type={"password"}
 							placeholder={i18n[language].passwordPlaceholder}
 							title={i18n[language].passwordTitle}
 							aria-label="Input field"
 							required={true}
 							maxLength="16"
-							pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`}
+							/* pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`} */
 							/* pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" */
+							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{8,16}$"
 							value={password}
-							onChange={(e)=>handlePassword(e.target.value)}
+							onChange={(e)=>handlePassword(e.target.value, setPassword)}
 						/>
 
 						<input
@@ -126,9 +143,9 @@ export default function FormSignup() {
 							aria-label="Input field"
 							required={true}
 							maxLength="16"
-							pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`}
+							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{8,16}$"
 							value={repeatPassword}
-							onChange={(e)=>handleRepeatPassword(e.target.value)}
+							onChange={(e)=>handleRepeatPassword(e.target.value, setRepeatPassword)}
 						/>
 
 						{/* <Select
@@ -159,7 +176,7 @@ export default function FormSignup() {
 								title={i18n[language].signUpLinkTitle}
 								aria-label={i18n[language].signUpLinkTitle}
 								onClick={() =>
-									navigate(getPathRoutes(language, "signin"))
+									navigate(getPathRoutes(language, "signin",true))
 								}
 							>
 								{i18n[language].signUpLinkText}

@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 export default function Nav() {
 	const headerHeightValue = useSelector((state) => state.headerReducer.headerHeight)
 	const language = useSelector((state)=>state.i18nReducer.language)
-	const itemsNav = getItemsNav(language)
+	const role = useSelector((state) => state.roleReducer.role)
+	const [itemsNav, setItemsNav] = useState(null)
+//	const itemsNav = getItemsNav(language, role)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
@@ -23,6 +25,11 @@ export default function Nav() {
 			hideTopMenuOnScroll(headerHeightValue, setTopValue)
 		}
 	}, [])
+
+	useEffect(()=>{
+		setItemsNav(getItemsNav(language, role))
+		//console.log(role)
+	},[role])
 
 	const handleSelectLanguage = (lang) => {
 		dispatch(setI18n(lang))
@@ -47,7 +54,9 @@ export default function Nav() {
 							role="button"
 							onClick={() => navigate('/')}
 						/>
-						<ItemsNav />
+						<div className="flex gap-5">
+							<ItemsNav />
+						</div>
 						<LanguageSelect handleSelectLanguage={handleSelectLanguage} />
 					</ul>
 				</nav>

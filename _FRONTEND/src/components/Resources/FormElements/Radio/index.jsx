@@ -1,7 +1,7 @@
 import React from "react";
 import Icons from "../../../SessionComponents/Signup/RolePopup/Icons";
 
-export default function Radio({ legend, name, arrayItems, isItVertical = false, setClosePopup, setIsButtonDisabled }) {
+export default function Radio({ legend, name, arrayTitles, arrayItems, isItVertical = false, setClosePopup, setIsButtonDisabled }) {
 
 	const handleClickRadio = () => {
 		//setClosePopup(true)
@@ -20,22 +20,22 @@ export default function Radio({ legend, name, arrayItems, isItVertical = false, 
 						<div className="grid grid-flow-col bg-[#93BFAF] rounded-lg left-2 relative">							
 							<label 
 								className="relative m-auto p-3 text-center w-[150px] sm:w-[290px] md:w-[350px] z-2" 
-								htmlFor={e.id}
+								htmlFor={arrayTitles[i].id}
 							>								
-								{e.title}
+								{arrayTitles[i].title}
 							</label>
 							
 							<input
 								className="w-[1.4rem] sm:w-[1.6rem] md:w-[1.8rem] me-2 cursor-pointer"
 								style={{filter: 'invert(1)', accentColor: '#FFF'}}
 								type="radio"
-								id={e.id}
+								id={arrayTitles[i].id}
 								name={name/* legend
 									.toLowerCase()
 									.normalize("NFD")
 									.replace(/[\u0300-\u036f]/g, "")*/} 
-								value={e.title}
-								aria-label={e.title}
+								value={e}
+								aria-label={arrayTitles[i].title}
 								required
 								onClick={() => handleClickRadio()}
 							/>

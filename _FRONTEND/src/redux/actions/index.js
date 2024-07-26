@@ -2,7 +2,8 @@ import {
     SETDISPLAYSPINNER, 
     SETHEADERHEIGHT, 
     SETISACTIVEHAMBURGERBUTTON, 
-    SETI18N 
+    SETI18N,
+    SETROLE
 } from "../types"
 
 export const setDisplaySpinner = (payload) => ({
@@ -22,5 +23,10 @@ export const setIsActiveHamburgerButton = (payload) => ({
 
 export const setI18n = (payload) => ({
     type: SETI18N,
+    payload: payload
+})
+
+export const setRole = (payload) => ({
+    type: SETROLE,
     payload: payload
 })

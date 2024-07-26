@@ -6,9 +6,19 @@ import Label from "../../../Resources/FormElements/InputLabel/Label";
 import Form from "../../../Resources/FormElements/Form";
 import i18n from "../../../../i18n/users/index.json";
 import warningDeleteAccount from '../../../../assets/svg/others/warningDeleteAccount.svg'
+/* import { useQuery } from "@tanstack/react-query";
+import { deleteFetch } from "../../../../services";
+import endpoints from "../../../../helpers/endpoints.js"; */
 
 export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 	const language = useSelector((state) => state.i18nReducer.language);
+
+/* 	const url = endpoints
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-signin"],
+		queryFn: ()=> deleteFetch(url, entriesData),
+		enabled: false,
+	}) */
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

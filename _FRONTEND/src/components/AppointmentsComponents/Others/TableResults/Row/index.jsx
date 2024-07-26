@@ -11,7 +11,7 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
     const language = useSelector((state) => state.i18nReducer.language);
     const navigate = useNavigate()
     const [modificate, setModificate] = useState(isModificate)
-console.log(isButtonSchedule)
+
     return (
         <div className="">
             <div className={`grid grid-cols-4 border border-[#5666BF] rounded-3xl ${modificate ? 'rounded-b-none' : ''} transition-all duration-300 overflow-hidden`}>

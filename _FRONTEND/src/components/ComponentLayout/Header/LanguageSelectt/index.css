@@ -8,26 +8,26 @@
   margin-right: 0.25rem;
   outline: none;
   position: relative;
-  left: -30px;
   text-align: end;
-  width: 70px;
+  width: 80px;
+  left: -30px;
 }
 
 @media only screen and (min-width: 2000px) {
   .language-select .language-select__container select {
-    width: 80px;
-    left: -35px;
+    width: 120px;
+    left: -40px;
   }
 }
 @media only screen and (min-width: 3000px) {
   .language-select .language-select__container select {
-    width: 110px;
-    left: -50px;
+    width: 160px;
+    left: -70px;
   }
 }
 @media only screen and (min-width: 4000px) {
   .language-select .language-select__container select {
-    width: 150px;
-    left: -70px;
+    width: 190px;
+    left: -90px;
   }
 }/*# sourceMappingURL=index.css.map */

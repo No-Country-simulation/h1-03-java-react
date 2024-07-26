@@ -9,9 +9,9 @@
 			margin-right: 0.25rem;
 			outline: none;
 			position: relative;
-			left: -30px;
 			text-align: end;
-            width: 70px;
+            width: 80px;
+			left: -30px;
 		}
 	}
 }
@@ -29,7 +29,7 @@
 	}
 }
 
-@include mediaquery(2000px, 80px, -35px);
-@include mediaquery(3000px, 110px, -50px);
-@include mediaquery(4000px, 150px, -70px);
+@include mediaquery(2000px, 120px, -40px);
+@include mediaquery(3000px, 160px, -70px);
+@include mediaquery(4000px, 190px, -90px);
 

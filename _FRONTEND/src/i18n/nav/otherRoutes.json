@@ -1,5 +1,8 @@
 {
     "sp": [
+        {"logout" :{ "name": "Cerrar sesión", "route": "/cerrar-sesion" }},
+        {"signup" :{ "name": "Registrarse", "route": "/registrarse" }},
+
         {"createPatient" :{ "name": "Crear paciente", "route": "/crear-paciente" }},
         {"updatePatient" :{ "name": "Actualizar paciente", "route": "/actualizar-paciente" }},
         {"deletePatient" :{ "name": "Borrar paciente", "route": "/borrar-paciente" }},
@@ -14,6 +17,9 @@
         {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }}
     ],
     "en":[
+        {"logout" :{ "name": "Logout", "route": "/logout" }},
+        {"signup" :{ "name": "Signup", "route": "/signup" }},
+        
         {"createPatient" :{ "name": "Create patient", "route": "/create-patient" }},
         {"updatePatient" :{ "name": "Update patient", "route": "/update-patient" }},
         {"deletePatient" :{ "name": "Delete patient", "route": "/delete-patient" }},

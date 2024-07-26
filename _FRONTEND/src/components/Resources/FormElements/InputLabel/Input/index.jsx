@@ -1,4 +1,5 @@
 import React from "react";
+//import magnifyingGlass from "../../../../../assets/svg/others/magnifyingGlass.svg";
 
 export default function Input({
 	type,

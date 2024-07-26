@@ -1,40 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../Resources/Others/Container";
 import Input from "../../Resources/FormElements/InputLabel/Input";
 import Button from "../../Resources/FormElements/Button";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setRole } from "../../../redux/actions/index.js";
 import i18n from "../../../i18n/session/signin/index.json";
 import logo from "../../../assets/svg/logo/logo.svg";
 import getPathRoutes from "../../../helpers/pathroutes";
 import Form from "../../Resources/FormElements/Form";
+import { useQuery } from "@tanstack/react-query";
+import { postFetch } from "../../../services";
+import endpoints from "../../../helpers/endpoints.js";
+
 
 export default function Signin() {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const language = useSelector((state) => state.i18nReducer.language);
+	const [entriesData, setEntriesData] = useState(null);
+
+	const url = endpoints.signin
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-signin"],
+		queryFn: ()=> postFetch(url, entriesData),
+		enabled: false,
+	})
 
 	const handleSigninSubmit = (e) => {
 		e.preventDefault();
+
 		const formData = new FormData(e.target);
 		const entries = Object.fromEntries(formData.entries());
+		setEntriesData(entries)	
 
-		const uri =
-			"https://deploy-justina-production.up.railway.app/api/v1/user-login/token";
-		const options = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(entries),
-		};
-
-		fetch(uri, options)
-			.then((res) => res.json())
-			.then((data) => {
-				sessionStorage.setItem("token", data.token);
-			})
-			.catch((err) => console.log(err));
 	};
+
+	useEffect(()=>{
+		if(entriesData){
+			refetch()
+				.then((data) => {
+					sessionStorage.setItem("token", data.data.token);
+					//el back fue estructurado asi, sino manejaria los errores de otra forma
+					if (data.data.message===undefined) {
+						dispatch(setRole(data.data.roles[0].roleName))
+						alert('Inicio de sesión exitoso!')
+						navigate(getPathRoutes(language, "home", true))
+					} else {
+						alert(data.data.message)
+					}
+				})
+				.catch((err) => console.log(err));
+		}
+	},[entriesData])
 
 	return (
 		<Container>
@@ -104,7 +122,7 @@ export default function Signin() {
 					role="button"
 					title={i18n[language].signInLinkTitle}
 					aria-label={i18n[language].signInLinkTitle}
-					onClick={() => navigate(getPathRoutes(language, "signup"))}
+					onClick={() => navigate(getPathRoutes(language, "signup", false))}
 				>
 					{i18n[language].signInLinkText}
 				</span>

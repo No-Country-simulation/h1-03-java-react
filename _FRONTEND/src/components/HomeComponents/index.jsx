@@ -9,7 +9,6 @@ import Radio from "../Resources/FormElements/Radio";
 import Select from "../Resources/FormElements/Select";
 import Table from "../Resources/Table";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTest } from "../../services";
 import { setI18n } from "../../redux/actions";
 import logo from "../../assets/svg/logo/logo.svg";
 import JustinaLaw from "./JustinaLaw";
@@ -19,12 +18,12 @@ export default function HomeComponent() {
 	const language = useSelector((state) => state.i18nReducer.language);
 	const dispatch = useDispatch();
 
-	const { data, error, isLoading, isFetching } = useQuery({
+	/* const { data, error, isLoading, isFetching } = useQuery({
 		queryKey: ["key-test"],
 		queryFn: fetchTest,
-	});
+	}); */
 
-	if (error) console.log(error);
+	/* if (error) console.log(error); */
 
 	const handleSubmitPatient = (e) => {
 		e.preventDefault();

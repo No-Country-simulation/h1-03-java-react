@@ -6,12 +6,16 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import getPathRoutes from '../../../../helpers/pathroutes'
 import closePopupSvg from '../../../../assets/svg/others/closePopup.svg'
+import roleList from '../../../../helpers/roleList'
+
 
 export default function RolePopup({ setRoleSelection }) {
     const navigate = useNavigate()
     const language = useSelector((state)=>state.i18nReducer.language)
     const [closePopup, setClosePopup] = useState(false)
     const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+
+    const getRoles = () => roleList.map((e)=>e.roleName)
 
     const onClickButtonHandler = (value) => {
         setClosePopup(value)
@@ -61,7 +65,8 @@ export default function RolePopup({ setRoleSelection }) {
                         <Radio 
                             legend= ''
                             name= 'role'
-                            arrayItems= {i18n[language].roleList}
+                            arrayTitles={i18n[language].roleList}
+                            arrayItems= {getRoles()}
                             isItVertical={true}
                             setClosePopup={setClosePopup}
                             setIsButtonDisabled={setIsButtonDisabled}

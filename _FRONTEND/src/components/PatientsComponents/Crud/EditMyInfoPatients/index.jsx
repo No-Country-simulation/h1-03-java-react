@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../../Resources/Others/Container";
 import Form from "../../../Resources/FormElements/Form";
 import InputLabel from "../../../Resources/FormElements/InputLabel";
@@ -6,9 +6,24 @@ import Select from "../../../Resources/FormElements/Select";
 import Button from "../../../Resources/FormElements/Button";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/patients/index.json";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "../../../../services";
+import endpoints from "../../../../helpers/endpoints.js";
 
 export default function EditMyInfoPatients() {
 	const language = useSelector((state) => state.i18nReducer.language);
+
+	const url = endpoints.getPatientInfo
+	const token = sessionStorage.getItem('token')
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-getPatientInfo"],
+		queryFn: ()=> getFetch(url, token),
+		enabled: false,
+	}) 
+
+	useEffect(()=>{
+		refetch()
+	},[])
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

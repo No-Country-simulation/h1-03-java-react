@@ -20,6 +20,7 @@ const queryClient = new QueryClient({defaultOptions: {
 	},
 }})
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<QueryClientProvider client={queryClient}>
 		<BrowserRouter>
@@ -28,3 +29,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		</BrowserRouter>
 	</QueryClientProvider>
 );
+
+
+//export default queryClient

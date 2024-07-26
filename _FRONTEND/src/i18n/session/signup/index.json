@@ -21,8 +21,8 @@
         "roleListForSelect": ["Seleccionar rol","Admin", "Paciente", "Médico"],
         "roleTitleForSelect": "Seleccione su rol",
         "roleList": [
-                {"title": "Paciente", "id": "paciente"},
-                {"title": "Medico", "id": "medico"}
+                {"title": "Medico", "id": "medico"},
+                {"title": "Paciente", "id": "paciente"}
         ],
         "titlePopup": "Seleccione su perfil de registro",
         "buttonPopupText": "CONFIRMAR",
@@ -52,8 +52,8 @@
         "roleListForSelect": ["Select role","Admin", "Patient", "Doctor"],
         "roleTitleForSelect": "Select your role",
         "roleList": [
-            {"title": "Patient", "id": "patient"},
-            {"title": "Doctor", "id": "doctor"}
+            {"title": "Doctor", "id": "doctor"},
+            {"title": "Patient", "id": "patient"}
         ],
         "titlePopup": "Select your registration profile",
         "buttonPopupText": "CONFIRM",

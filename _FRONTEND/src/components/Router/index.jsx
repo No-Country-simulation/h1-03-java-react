@@ -37,7 +37,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('en', 'prescriptions', {isForNavBar: true})}`} element={<Prescriptions />} />
 		<Route path={`${getPathRoutes('en', 'treatments', {isForNavBar: true})}`} element={<Treatments />} />
 		<Route path={`${getPathRoutes('en', 'signin', {isForNavBar: true})}`} element={<Signin />} />
-		<Route path={`${getPathRoutes('en', 'signup', {isForNavBar: true})}`} element={<Signup />} />
+		<Route path={`${getPathRoutes('en', 'signup', {isForNavBar: false})}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('en', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 		<Route path={`${getPathRoutes('en', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
 		<Route path={`${getPathRoutes('en', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />
@@ -62,7 +62,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'prescriptions', {isForNavBar: true})}`} element={<Prescriptions />} />
 		<Route path={`${getPathRoutes('sp', 'treatments', {isForNavBar: true})}`} element={<Treatments />} />
 		<Route path={`${getPathRoutes('sp', 'signin', {isForNavBar: true})}`} element={<Signin />} />
-		<Route path={`${getPathRoutes('sp', 'signup', {isForNavBar: true})}`} element={<Signup />} />
+		<Route path={`${getPathRoutes('sp', 'signup', {isForNavBar: false})}`} element={<Signup />} />
 		<Route path={`${getPathRoutes('sp', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 		<Route path={`${getPathRoutes('sp', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
 		<Route path={`${getPathRoutes('sp', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />

@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SeeMoreButton from "./SeeMoreButton";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/appointments/index.json";
+import { getFetch } from "../../../../services";
+import { useQuery } from "@tanstack/react-query";
+import endpoints from "../../../../helpers/endpoints.js";
 
 export default function ProfessionalsList() {
     const language = useSelector((state) => state.i18nReducer.language);
+
+    const url = endpoints.getAllDoctors
+	const token = sessionStorage.getItem('token')
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-getDoctorsList"],
+		queryFn: ()=> getFetch(url, token),
+		enabled: false,
+	}) 
+
+	useEffect(()=>{
+		//refetch()
+		//.catch((err)=>console.log(err))
+	},[])
 
 	return (
 		<div
