@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/treatments")
@@ -41,6 +43,22 @@ public class TreatmentController {
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
     Page<Treatment> result = this.treatmentService.getAll(pageable);
+    Page<TreatmentRes> resultDto = result.map(item -> mapper.map(item, TreatmentRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+
+  @GetMapping("filters")
+  public ResponseEntity<?> getAllByFilters(@RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "20") int size,
+                                           @RequestParam(defaultValue = "id") String sort,
+                                           @RequestParam(defaultValue = "asc") String direction,
+                                           Pageable pageable,
+                                           @RequestParam(required = false) Long doctorId,
+                                           @RequestParam(required = false) Long historyId,
+                                           @RequestParam(required = false) Long specialtyId,
+                                           @RequestParam(required = false) LocalDateTime start,
+                                           @RequestParam(required = false) LocalDateTime end) {
+    Page<Treatment> result = this.treatmentService.getAllByFilters(pageable, doctorId, historyId, specialtyId, start, end);
     Page<TreatmentRes> resultDto = result.map(item -> mapper.map(item, TreatmentRes.class));
     return ResponseEntity.ok(resultDto);
   }

@@ -1,5 +1,8 @@
 package com.no_country.justina.service.implementation;
 
+import com.no_country.justina.model.entities.Appointment;
+import com.no_country.justina.model.entities.Doctor;
+import com.no_country.justina.model.entities.Specialty;
 import com.no_country.justina.model.entities.Treatment;
 import com.no_country.justina.repository.TreatmentRepository;
 import com.no_country.justina.service.interfaces.IAppointmentService;
@@ -11,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -20,7 +25,12 @@ public class TreatmentServiceImp implements ITreatmentService {
 
   @Override
   public Treatment create(Treatment treatment) {
-    this.appointmentService.updateToSuccessAppointment(treatment.getAppointment().getId());
+    Appointment currentAppointment = this.appointmentService.getById(treatment.getAppointment().getId());
+    this.appointmentService.updateToSuccessAppointment(currentAppointment.getId());
+    Doctor currentDoctor = currentAppointment.getShift().getDoctor();
+    Specialty currentSpecialty = currentAppointment.getShift().getSpecialty();
+    treatment.setDoctor(currentDoctor);
+    treatment.setSpecialty(currentSpecialty);
     return this.treatmentRepo.save(treatment);
   }
 
@@ -33,6 +43,21 @@ public class TreatmentServiceImp implements ITreatmentService {
   @Override
   public Page<Treatment> getAll(Pageable pageable) {
     return this.treatmentRepo.findAll(pageable);
+  }
+
+  @Override
+  public Page<Treatment> getAllByFilters(Pageable pageable,
+                                         Long doctorId,
+                                         Long historyId,
+                                         Long specialtyId,
+                                         LocalDateTime start,
+                                         LocalDateTime end){
+    if(start != null && end != null){
+      if(start.isAfter(end)){
+        throw new IllegalArgumentException("Horario invalido, la fecha de inicio debe ser menor a la termino.");
+      }
+    }
+    return this.treatmentRepo.findByFilters(pageable, doctorId, historyId, specialtyId, start, end);
   }
 
   @Override

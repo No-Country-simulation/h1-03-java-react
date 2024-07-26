@@ -43,12 +43,14 @@ public class CustomSecurityFilterChain {
             .authorizeHttpRequests(auth ->
                     auth.requestMatchers("/api/v1/users-login",
                                     "/api/v1/roles/**",
+                                    "/api/v1/specialties/**",
                                     "/swagger-ui/**",
                                     "/v3/api-docs/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v1/doctors/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
                             .requestMatchers(
-                                    HttpMethod.GET, "/api/v1/medical-histories/{id}", "/api/v1/doctors/**",
-                                    "/api/v1/shifts/**").hasRole("PATIENT")
+                                    HttpMethod.GET, "/api/v1/medical-histories/{id}",
+                                    "/api/v1/shifts/**").hasAnyRole("PATIENT", "DOCTOR")
                             .requestMatchers(
                                     "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
                             .requestMatchers(
