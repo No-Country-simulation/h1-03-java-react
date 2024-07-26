@@ -5,10 +5,13 @@ import com.no_country.justina.model.entities.Specialty;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.DoctorRepository;
 import com.no_country.justina.service.interfaces.IDoctorService;
+import com.no_country.justina.service.interfaces.ISpecialtyService;
+import com.no_country.justina.service.interfaces.IUserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,9 +22,14 @@ import java.util.Optional;
 public class DoctorServiceImp implements IDoctorService {
 
     private final DoctorRepository doctorRepository;
-    private final SpecialtyServiceImp specialtyService;
+    private final IUserService userService;
+    private final ISpecialtyService specialtyService;
     @Override
+    @Transactional
     public Doctor create(Doctor doctor) {
+        UserEntity user = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        doctor.setUser(userService.getUserById(user.getId()));
+        doctor.setSpecialty(specialtyService.getById(doctor.getSpecialty().getId()));
         return doctorRepository.save(doctor);
     }
 

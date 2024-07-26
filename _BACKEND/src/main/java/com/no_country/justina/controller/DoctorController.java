@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.DoctorReq;
 import com.no_country.justina.model.dto.DoctorRes;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.service.interfaces.IDoctorService;
+import com.no_country.justina.service.interfaces.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,7 +24,7 @@ public class DoctorController {
     private final ModelMapper modelMapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<DoctorRes> getUser(@PathVariable Long id) {
+    public ResponseEntity<DoctorRes> getDoctor(@PathVariable Long id) {
         DoctorRes doctorRes = modelMapper.map(doctorService.getDoctor(id), DoctorRes.class);
         return new ResponseEntity<>(doctorRes, HttpStatus.OK);
     }
@@ -37,7 +38,6 @@ public class DoctorController {
 
     @PostMapping()
     public ResponseEntity<DoctorRes> create(@RequestBody DoctorReq doctorReq) {
-        System.out.println(modelMapper.map(doctorReq, Doctor.class).getAddress());
         Doctor doctor = doctorService.create(modelMapper.map(doctorReq, Doctor.class));
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }

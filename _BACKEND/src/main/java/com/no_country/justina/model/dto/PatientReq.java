@@ -21,7 +21,6 @@ public class PatientReq {
        @NotNull private LocalDate birthdate;
        @NotNull private Integer maritalStatus;
        @NotNull private Integer genre;
-       @NotNull private UserReq user;
        private String bloodType;
        private String job;
        private String religion;
