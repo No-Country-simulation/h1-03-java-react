@@ -16,13 +16,13 @@ Los pacientes podrán gestionar sus turnos médicos a través de una agenda inte
 
 ### Input de Tratamientos y Recetas: 
 Los médicos podrán registrar tratamientos, medicamentos y recetas directamente desde la aplicación. Esta información será adjuntada a la historia clínica del paciente, accesible para revisión por parte del paciente. Se implementará la opción de adjuntar documentos relevantes y, para facilitar el proceso de ingreso de datos, se integrará la funcionalidad de transcripción de voz y procesamiento mediante inteligencia artificial. Esto permitirá a los médicos capturar información de manera eficiente durante la consulta, mejorando la precisión y optimizando el tiempo dedicado al ingreso de datos clínicos.
-  •	Funcionalidad trasplante cruzado. ABM de funcionalidad de trasplante cruzado
-  •	ABM de nomenclador. Además, la posibilidad de agregarlos mediante un Excel facilitar su carga
+  •	Funcionalidad trasplante cruzado. ABM de funcionalidad de trasplante cruzado.
+  •	ABM de nomenclador. Además, la posibilidad de agregarlos mediante un Excel facilitar su carga.
 
 Dicho nomenclador puede encontrarse en este enlace:
 https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-897-2023-383213/actualización  
 
-##
+## Github
 https://github.com/No-Country-simulation/h1-03-java-react
 
 
