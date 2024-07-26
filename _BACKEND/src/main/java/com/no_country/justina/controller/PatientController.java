@@ -25,8 +25,7 @@ public class PatientController {
   @PostMapping
   public ResponseEntity<?> create(@RequestBody @Valid PatientReq patientReq) {
     Patient newPatient = mapper.map(patientReq, Patient.class);
-    MedicalHistory newHistory = mapper.map(patientReq, MedicalHistory.class);
-    Patient savedPatient = this.patientServ.create(newPatient, newHistory);
+    Patient savedPatient = this.patientServ.create(newPatient);
     return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(mapper.map(savedPatient, PatientRes.class));
