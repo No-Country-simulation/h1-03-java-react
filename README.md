@@ -28,5 +28,5 @@ https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2p
 ## Agradecimientos
 ![download (1)](https://github.com/No-Country/s14-09-ft-node-react/assets/117502571/99be7fc2-9ccc-4a33-b189-388d7b570853)
 
-
+## Equipo de desarrollo
 
