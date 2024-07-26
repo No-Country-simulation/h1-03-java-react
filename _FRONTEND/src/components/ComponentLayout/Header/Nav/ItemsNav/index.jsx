@@ -34,6 +34,7 @@ const ItemsNav = () => {
 		if(e.route==='/logout'){
 			sessionStorage.removeItem("token")
 			dispatch(setRole(null))
+			navigate('/')
 			/* const signinText = i18nNav[language].find((e)=>e.signin).signin
 			const logoutText = i18nOtherRoutes[language].find((e)=>e.logout).logout.name
 			const indexLogout = itemsNav.findIndex((e)=>e.name===logoutText)

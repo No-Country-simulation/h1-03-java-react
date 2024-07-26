@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../../Resources/Others/Container";
 import Form from "../../../Resources/FormElements/Form";
 import InputLabel from "../../../Resources/FormElements/InputLabel";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/doctors/index.json";
 import Button from "../../../Resources/FormElements/Button";
+import { useQuery } from "@tanstack/react-query";
+import endpoints from "../../../../helpers/endpoints.js";
+import { getFetch } from "../../../../services";
 
 export default function EditMyInfoDoctors() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
+	const url = endpoints.getAllDoctors
+	const token = sessionStorage.getItem('token')
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-getDoctorsList"],
+		queryFn: ()=> getFetch(url, token),
+		enabled: false,
+	}) 
+
+	useEffect(()=>{
+		refetch()
+	},[])
+console.log(data)
 	const handleSubmit = (e) => {
 		e.preventDefault();
         alert('enviado!')

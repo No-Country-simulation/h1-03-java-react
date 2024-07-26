@@ -18,10 +18,9 @@ export default function ProfessionalsList() {
 	}) 
 
 	useEffect(()=>{
-		//refetch()
-		//.catch((err)=>console.log(err))
+//		refetch()
 	},[])
-
+//console.log(data)
 	return (
 		<div
 			className="w-full lg:flex-1 border rounded-3xl h-full"

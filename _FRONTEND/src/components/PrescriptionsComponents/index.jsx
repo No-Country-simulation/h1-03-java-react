@@ -1,26 +1,29 @@
-import React from 'react'
-import InputLabel from '../Resources/FormElements/InputLabel'
+import React from "react";
+import PrescriptionCard from "./PrescriptionCard";
+import Filter from "./Filter";
 
-export default function PrescriptionsMainComponent() {    
+export default function PrescriptionsMainComponent() {
+	return (
+		<section className="min-h-screen flex flex-col md:flex-row justify-center items-center md:items-start gap-8 p-10">
+			<div className="flex-[0.5] flex flex-col justify-center items-center m-0">
+				<div className="w-[80vw] lg:w-[75%]">
+					<p className="text-start pb-5 pe-5">Buscar receta</p>
+					<div className="flex flex-col gap-5 w-[inherit] md:w-auto">
+						<Filter />
+					</div>
+				</div>
+			</div>
 
-    return (
-        <section className="min-h-screen flex flex-col lg:flex-row justify-center items-start gap-8 p-10 pt-0">
-            <div className="w-full flex-1">
-                <InputLabel 
-                    type="text"
-                    id="searchPrescription"
-                    placeholder=""
-                    title="Buscar Receta"
-                    isRequired = {false}
-                    autoFocus = {true}
-                    value = ""
-                    onChangeHandler = {()=>{}}
-                    pattern = ""
-                />
-            </div>
-            <div className="w-full flex-1">
-                lista de recetas
-            </div>
-        </section>
-    )
+			<div className="flex-[0.5] p-0 w-[80vw] md:w-auto m-auto mt-0">
+				<dir className="flex flex-col m-0 ps-0 w-[inherit] md:w-auto">
+                    <p className="text-center md:text-start pb-5 md:pe-5">Historial de recetas</p>
+                    <div className="flex flex-col gap-5 w-[inherit] md:w-auto">
+                        <PrescriptionCard />
+                        <PrescriptionCard />
+                        <PrescriptionCard />
+                    </div>
+				</dir>
+			</div>
+		</section>
+	);
 }
