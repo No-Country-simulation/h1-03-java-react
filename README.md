@@ -12,6 +12,7 @@ https://github.com/No-Country-simulation/h1-03-java-react
 https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2pm9FYkUbFxt0Iu-1
 
 ## Ver el sitio web de Justina.io
+Aquí va el enlace del sitio web
 
 ## Stacks General 📁 📂
 
@@ -22,6 +23,13 @@ https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2p
 | <img style="width: 100px; min-width: 100px" src="https://i.pinimg.com/originals/36/98/41/369841848d679cef173ae2b0f5ed6e39.png" >|Miro, para presentar documentos, agendas de las Dailys y Meet|
 | <img style="width: 100px; min-width: 100px" src="https://cdn2.unrealengine.com/what-is-discord-1920x1080-c3d90ca45f57.jpg" >| Creacion de canal Discord para la comunicacion del equipo de desarrollo|
 | <img style="width: 100px; min-width: 100px" src="https://user-images.githubusercontent.com/68760595/164306020-120e8664-cb5b-459a-80a3-99e13b057b52.png" >| Uso de la metodologia Scrum para llevar el equipo a las mejores practicas |
+
+## Stacks de Equipo UX/UI
+|||
+|:---:|:---:|
+| <img style="width: 100px; min-width: 100px" src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" >| Figma, herramienta de prototipado ágil |
+
+## Stacks de Equipo Frontend
 
 ## Agradecimientos
 
