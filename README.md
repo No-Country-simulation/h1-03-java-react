@@ -32,6 +32,7 @@ Aquí va el enlace del sitio web
 ## Stacks de Equipo Frontend
 ## Tecnologías utilizadas
 
+## Tecnologías utilizadas
 |||
 |:---:|:---:|
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" >| React.js |
@@ -46,8 +47,9 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://vitejs.dev/logo.svg" >| Vite |
 | <img style="width: 50px; min-width: 50px" src="https://avatars.githubusercontent.com/u/46258668?s=200&v=4" >| PostCSS |
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" >| Visual Studio Code |
-| <img style="width: 50px; min-width: 50px" src="https://user-images.githubusercontent.com/197597/35024636-26f4d726-fb15-11e7-8c04-8c41e21d5ab1.png" >| Sourcetree |
-| <img style="width: 50px; min-width: 50px" src="https://codeium.com/icons/icon-512x512.png" >| IA: Codeium |
+| <img style="width: 50px; min-width: 50px" src="https://www.sourcetreeapp.com/images/sourcetree_logo.png" >| Sourcetree |
+| <img style="width: 50px; min-width: 50px" src="https://codeium.com/images/logo.svg" >| IA: Codeium |
+
 
 
 ## Agradecimientos
