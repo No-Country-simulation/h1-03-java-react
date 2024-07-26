@@ -55,8 +55,8 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://www.vectorlogo.zone/logos/java/java-ar21.svg" >| Java |
 | <img style="width: 50px; min-width: 50px" src="https://www.vectorlogo.zone/logos/springio/springio-ar21.svg" >| Spring Boot |
 | <img style="width: 50px; min-width: 50px" src="https://www.mysql.com/common/logos/mysql-logo.svg" >| MySQL |
-| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Swagger_logo.png" >| Swagger |
-| <img style="width: 50px; min-width: 50px" src="https://resources.jetbrains.com/storage/products/idea/img/meta/idea_logo_300x300.png" >| IntelliJ IDEA |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Swagger_logo.png/640px-Swagger_logo.png" >| Swagger |
+| <img style="width: 50px; min-width: 50px" src="https://www.jetbrains.com/idea/idea_logo.svg" >| IntelliJ IDEA |
 
 
 
