@@ -60,10 +60,10 @@ Aquí va el enlace del sitio web
 ## Stacks de Equipo QA Tester
 |||
 |:---:|:---:|
-| <img style="width: 50px; min-width: 50px" src="https://www.postman.com/assets/images/logos/postman-logo.svg" >| Postman |
-| <img style="width: 50px; min-width: 50px" src="https://www.atlassian.com/software/jira/images/jira-logo.svg" >| Jira |
-| <img style="width: 50px; min-width: 50px" src="https://www.selenium.dev/images/selenium_logo_square_green.png" >| Selenium |
-| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Microsoft_Office_Word_2013_Logo.png/800px-Microsoft_Office_Word_2013_Logo.png" >| Word |
+| <img style="width: 50px; min-width: 50px" src="https://cdn.worldvectorlogo.com/logos/postman.svg" >| Postman |
+| <img style="width: 50px; min-width: 50px" src="https://cdn.worldvectorlogo.com/logos/jira-software.svg" >| Jira |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Selenium_Logo.png" >| Selenium |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Office_Word_2013_logo.png" >| Word |
 
 ## Agradecimientos
 
