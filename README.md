@@ -14,7 +14,7 @@ https://h1-03-java-react.vercel.app/
 
 ## Deploy Backend
 https://h1-03-java-react.vercel.app
-## Deploy Backend
+## Deploy Frontend
 http://justinah1-03.up.railway.app 
 
 ## Stacks General 📁 📂
