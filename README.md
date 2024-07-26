@@ -27,7 +27,7 @@ Aquí va el enlace del sitio web
 ## Stacks de Equipo UX/UI
 |||
 |:---:|:---:|
-| <img style="width: 100px; min-width: 100px" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" >| Figma, herramienta de prototipado ágil |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" >| Figma, herramienta de prototipado ágil |
 
 ## Stacks de Equipo Frontend
 
