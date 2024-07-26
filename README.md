@@ -30,6 +30,22 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" >| Figma, herramienta de prototipado ágil |
 
 ## Stacks de Equipo Frontend
+|||
+|:---:|:---:|
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" >| React.js |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" >| HTML |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" >| CSS |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" >| Javascript |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" >| ES6+ |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg" >| SASS |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" >| Tailwind CSS |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/4/49/Redux.png" >| Redux |
+| <img style="width: 50px; min-width: 50px" src="https://react-query-v3.tanstack.com/_next/static/images/logo-355da1e2c59f0b8b2da0ec7f16c0eb66.svg" >| @Tanstack/react-query |
+| <img style="width: 50px; min-width: 50px" src="https://vitejs.dev/logo.svg" >| Vite |
+| <img style="width: 50px; min-width: 50px" src="https://postcss.org/_/src/logo.svg" >| PostCSS |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" >| Visual Studio Code |
+| <img style="width: 50px; min-width: 50px" src="https://sourcetreeapp.com/images/sourcetree_logo.png" >| Sourcetree |
+| <img style="width: 50px; min-width: 50px" src="https://codeium.com/logo/logo-full-black.svg" >| IA: Codeium |
 
 ## Agradecimientos
 
