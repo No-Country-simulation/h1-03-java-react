@@ -1,25 +1,37 @@
 .nav {
+  background-color: rgb(242, 242, 242);
+  color: rgb(29, 29, 29);
   padding: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   white-space: nowrap;
   overflow: hidden;
+  position: fixed;
+  transition: 1500ms cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .nav ul {
   list-style: none;
   display: grid;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
   grid-auto-flow: column;
-  gap: 10%;
+  gap: 2.5%;
   width: 100%;
-  margin: 5%;
   overflow: hidden;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+.nav ul .logo {
+  width: 7rem;
+  height: 7rem;
+  cursor: pointer;
 }
 .nav ul li {
   cursor: pointer;
@@ -34,6 +46,7 @@
   overflow: hidden;
   margin: inherit;
   padding: 0;
+  pointer-events: none;
   text-decoration: underline;
   transition: 1600ms width;
   width: 0px;
@@ -43,11 +56,15 @@
   width: 8rem;
 }
 .nav ul li:active::before {
-  color: #FFF;
+  color: #fff;
 }
 
-@media only screen and (max-width: 768px) {
-  .nav {
-    display: none;
+@media only screen and (min-width: 1280px) {
+  .nav ul {
+    justify-content: space-between;
+  }
+  .nav ul .logo {
+    width: 5rem;
+    height: 5rem;
   }
 }/*# sourceMappingURL=index.css.map */

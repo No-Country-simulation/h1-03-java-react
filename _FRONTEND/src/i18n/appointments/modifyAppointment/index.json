@@ -1,0 +1,16 @@
+{
+    "sp":{
+        "modifyAppointment": {
+            "tableResults": {
+                "componentTitle": "Resultados de tu búsqueda - Turnos agendados"
+            }
+        }
+    },
+    "en":{
+        "modifyAppointment": {
+            "tableResults": {
+                "componentTitle": "Your search results - Scheduled Appointments"
+            }
+        }
+    }
+}

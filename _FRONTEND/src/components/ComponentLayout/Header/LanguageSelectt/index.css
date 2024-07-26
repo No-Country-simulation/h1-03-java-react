@@ -1,0 +1,33 @@
+.language-select .language-select__container {
+  display: flex;
+}
+.language-select .language-select__container select {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.25rem;
+  outline: none;
+  position: relative;
+  text-align: end;
+  width: 80px;
+  left: -30px;
+}
+
+@media only screen and (min-width: 2000px) {
+  .language-select .language-select__container select {
+    width: 120px;
+    left: -40px;
+  }
+}
+@media only screen and (min-width: 3000px) {
+  .language-select .language-select__container select {
+    width: 160px;
+    left: -70px;
+  }
+}
+@media only screen and (min-width: 4000px) {
+  .language-select .language-select__container select {
+    width: 190px;
+    left: -90px;
+  }
+}/*# sourceMappingURL=index.css.map */

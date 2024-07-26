@@ -1,28 +1,42 @@
 import React from "react";
+import Label from "../InputLabel/Label";
 
-export default function Select({ id, title, arrayOptions }) {
-    
+export default function Select({
+	id,
+	title,
+	arrayOptions,
+	onChangeHandler = () => {},
+	value = "",
+	displayLabel = "block",
+	isRequired = false,
+	hasLabel = true,
+}) {
+	const getNumericValueFromSelectOption = (e) => {
+		return Number(e.target.value.split(" ")[0]);
+	};
+
 	return (
-		<div className="text-center flex flex-col gap-3 justify-center items-center">
-			<label
-				htmlFor={id}
-				className="text-start w-96"
-			>
-				{title}:
-			</label>
+		<div className="text-center flex flex-col gap-3 justify-center items-center mb-3">
+			{hasLabel && (
+				<Label id={id} title={title} />
+			)}
 			<select
-				className="p-3 w-96 m-0"
+				className="p-3 w-[-webkit-fill-available] m-0 rounded-full border-[rgb(174, 174, 174)]"
 				id={id}
 				name={id}
-				required
+				required={isRequired}
+				title={title}
 				aria-label={title}
-                defaultValue=""
+				defaultValue={value}
+				onChange={(e) =>
+					onChangeHandler(getNumericValueFromSelectOption(e))
+				}
 			>
 				<option value="" disabled>
-					{`Elija su ${title.toLowerCase()}`}
+					{arrayOptions[0]}
 				</option>
-				{arrayOptions.map((e, i) => (
-					<option value={e} key={`${e}${i}`}>
+				{arrayOptions.slice(1).map((e, i) => (
+					<option value={i} key={`${e}${i}`}>
 						{e}
 					</option>
 				))}

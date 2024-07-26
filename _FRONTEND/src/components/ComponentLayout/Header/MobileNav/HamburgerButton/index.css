@@ -8,10 +8,11 @@
   height: 50px;
   top: 50%;
   transform: translateY(-50%);
-  right: 0;
+  left: 13px;
+  scale: 0.7;
 }
 .hamburger-button .lineTop {
-  background-color: #FFF;
+  background-color: #1D1D1D;
   border-radius: 10px;
   position: absolute;
   height: 10%;
@@ -21,7 +22,7 @@
   transition: 500ms all;
 }
 .hamburger-button .lineMiddle {
-  background-color: #FFF;
+  background-color: #1D1D1D;
   border-radius: 10px;
   position: absolute;
   height: 10%;
@@ -33,7 +34,7 @@
   transform: translateY(-50%);
 }
 .hamburger-button .lineBottom {
-  background-color: #FFF;
+  background-color: #1D1D1D;
   border-radius: 10px;
   position: absolute;
   height: 10%;
@@ -59,9 +60,8 @@
   width: 50%;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 640px) {
   .hamburger-button {
-    cursor: pointer;
-    display: none;
+    scale: 1;
   }
 }/*# sourceMappingURL=index.css.map */

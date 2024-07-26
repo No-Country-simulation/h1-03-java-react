@@ -16,9 +16,9 @@ export default function HamburgerButton() {
             className={`hamburger-button ${isActiveHamburgerButton ? "hamburger-button--active" : ""}`}
             onClick={()=>handleClick()}
         >
-            <div className="lineTop" />
-            <div className="lineMiddle" />
-            <div className="lineBottom" />
+            <div className="lineTop" style={isActiveHamburgerButton ? { backgroundColor: '#FFF' } : {}} />
+            <div className="lineMiddle" style={isActiveHamburgerButton ? { backgroundColor: '#FFF' } : {}} />
+            <div className="lineBottom" style={isActiveHamburgerButton ? { backgroundColor: '#FFF' } : {}} />
         </section>
 	);
 }

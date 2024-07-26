@@ -1,0 +1,26 @@
+{
+    "sp":{
+        "appointmentPageTitle": {"title": "Gestiona tus turnos"},
+        "reserveAppointment": {"title": "Reservar turno"},
+        "scheduledAppointments": {"title": "Turnos agendados"},
+        "modifyAppointments": {"title": "Modificar turnos"},
+        "nextAppointment": {
+            "imageClock" : {"title": "Reloj"},
+            "imageBell" : {"title": "Notificación"}
+        },
+        "professionalsList": {"title": "Profesionales"},
+        "seeMoreButton": {"title": "Ver mas"}
+    },
+    "en":{
+        "appointmentPageTitle": {"title": "Manage your appointments"},
+        "reserveAppointment": {"title": "Reserve Appointment"},
+        "scheduledAppointments": {"title": "Scheduled Appointments"},
+        "modifyAppointments": {"title": "Modify Appointments"},
+        "nextAppointment": {
+            "imageClock" : {"title": "Clock"},
+            "imageBell" : {"title": "Notification"}
+        },
+        "professionalsList": {"title": "Profesionals"},
+        "seeMoreButton": {"title": "See more"}
+    }
+}

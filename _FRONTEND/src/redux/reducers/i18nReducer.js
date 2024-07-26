@@ -1,13 +1,24 @@
 import { SETI18N } from "../types";
 
-const initialState = {
-    language: 'sp'
+const initialState = () => {
+    if (!localStorage.getItem('language')) {
+        localStorage.setItem('language', 'sp')
+    }
+
+    return {language: localStorage.getItem('language')}
 }
 
-export default function i18nReducer(state=initialState, action ){
+const setState = (state, payload) => {
+    const language = localStorage.getItem('language')
+    localStorage.setItem('language', payload)
+
+    return {...state, language: payload}
+}
+
+export default function i18nReducer(state=initialState(), action ){
     switch(action.type){
         case SETI18N:
-            return {...state, language: action.payload}
+            return setState(state, action.payload)
             
         default:
             return state

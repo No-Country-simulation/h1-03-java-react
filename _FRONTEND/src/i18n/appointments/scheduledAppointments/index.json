@@ -1,0 +1,22 @@
+{
+    "sp":{
+        "scheduledAppointments": {
+            "filters": {
+                "componentTitle": "Buscar mis turnos agendados"
+            },
+            "tableResults": {
+                "componentTitle": "Resultados de tu búsqueda - Turnos agendados"
+            }
+        }
+    },
+    "en":{
+        "scheduledAppointments": {
+            "filters": {
+                "componentTitle": "Search My Scheduled Appointments"
+            },
+            "tableResults": {
+                "componentTitle": "Your search results - Scheduled Appointments"
+            }
+        }
+    }
+}

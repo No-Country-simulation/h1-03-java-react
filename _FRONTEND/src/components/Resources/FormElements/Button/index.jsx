@@ -1,15 +1,33 @@
-import React from 'react'
-import i18n from '../../../../i18n/form'
-import { useSelector } from 'react-redux'
+import React from "react";
 
-export default function Button() {
-    const language = useSelector((state)=>state.i18nReducer.language)
-
-    return (
-        <div className="text-center">
-            <button>
-                {i18n[language].buttonSubmit}
-            </button>
-        </div>
-    )
+export default function Button({
+	type= 'button',
+	text = null,
+	textColor = '#000',
+	bgColor = 'auto',
+	classNames = '',
+	title,
+	isDisabled = false,
+	onClickHandler = ()=>{},
+	setClosePopup
+}) {
+	
+	return (
+		<>
+			{text && (
+				<div className="text-center">
+					<button
+						type={type}
+						className={`rounded-full p-3 w-full text-[${textColor}] ${!isDisabled ? 'bg-[' +bgColor + ']' : 'bg-gray-500' } select-none ${classNames}`}
+						title={title}
+						aria-label={title}
+						disabled={isDisabled}
+						onClick={() => onClickHandler(true)}
+					>
+						{text}
+					</button>
+				</div>
+			)}
+		</>
+	);
 }

@@ -1,0 +1,34 @@
+{
+    "sp":{
+        "pageTitle": "INICIAR SESIÓN",
+        "buttonSigninText": "ENVIAR",
+        "buttonSigninTitle": "Enviar",
+        "forgotPasswordText": "Olvidó su contraseña?",
+        "forgotPasswordTitle": "Click para recuperar contraseña",
+        "dontHaveAccountText": "No tiene una cuenta? ",
+        "dontHaveAccountTitle": "Click para registrarse",
+        "signInLinkText": "Registrarse.",
+        "signInLinkTitle": "Click para registrarse.",
+
+        "emailTitle": "Ingrese su Correo electrónico",
+        "emailPlaceholder": "CORREO ELECTRÓNICO",
+        "passwordTitle": "Ingrese su Contraseña",
+        "passwordPlaceholder": "CONTRASEÑA"
+    },
+    "en":{
+        "pageTitle": "SIGN IN",
+        "buttonSigninText": "SEND",
+        "buttonSigninTitle": "Send",
+        "forgotPasswordText": "Forgot your password?",
+        "forgotPasswordTitle": "Click to recover your passrword.",
+        "dontHaveAccountText": "Don't have an account? ",
+        "dontHaveAccountTitle": "Click to sign up.",
+        "signInLinkText": "Sign Up.",
+        "signInLinkTitle": "Click Sign Up.",
+        
+        "emailTitle": "Enter your E-mail",
+        "emailPlaceholder": "E-MAIL",
+        "passwordTitle": "Enter your Password",
+        "passwordPlaceholder": "PASSWORD"
+    }
+}

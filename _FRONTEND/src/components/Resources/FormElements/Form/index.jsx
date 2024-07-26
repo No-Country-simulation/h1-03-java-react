@@ -4,7 +4,7 @@ export default function Form({ handleSubmit, children }) {
 
     return (
         <form
-            className="grid gap-2"
+            className="flex flex-col gap-[inherit] justify-items-start w-[inherit]"
             onSubmit={(e)=>handleSubmit(e)}
         >
             {children}

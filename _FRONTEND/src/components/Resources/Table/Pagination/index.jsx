@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/table";
+import Button from "../../FormElements/Button";
 
 export default function Pagination({
 	previousPage,
@@ -14,14 +15,12 @@ export default function Pagination({
 
 	return (
 		<div className="flex justify-center gap-3 my-3">
-			<button
-				onClick={() => previousPage()}
+			<Button
+				text={i18n[language].pagination.previousButtonText}
+				title={i18n[language].pagination.previousButtonText}
+				onClickHandler={previousPage}
 				disabled={!canPreviousPage}
-				className="w-[6rem] px-0"
-				title={i18n[language].pagination.previousButtonTitle}
-			>
-				{i18n[language].pagination.previousButtonText}
-			</button>
+			/>
 			<span 
 				className="grid items-center tracking-widest min-w-[3rem] text-center"
 				role="text"
@@ -30,14 +29,12 @@ export default function Pagination({
 			>
 				{pageIndex + 1}/{pageOptions.length}
 			</span>
-			<button
-				onClick={() => nextPage()}
+			<Button 
+				text={i18n[language].pagination.nextButtonText}
+				title={i18n[language].pagination.nextButtonText}
+				onClickHandler={nextPage}
 				disabled={!canNextPage}
-				className="w-[6rem] px-0"
-				title={i18n[language].pagination.nextButtonTitle}
-			>
-				{i18n[language].pagination.nextButtonText}
-			</button>
+			/>
 		</div>
 	);
 }

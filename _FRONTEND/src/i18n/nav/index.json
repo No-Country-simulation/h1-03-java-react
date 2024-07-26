@@ -1,0 +1,27 @@
+{
+    "sp": [
+        {"home" :{ "name": "Inicio", "route": "/", "role": "loggedout" }},
+        {"patients" :{ "name": "Paciente", "route": "/paciente", "role": "patient" }},
+        {"doctors" :{ "name": "Médico", "route": "/medico", "role": "doctor" }},
+        {"appointments" :{ "name": "Turnos", "route": "/turnos", "role": "both" }},
+        {"medical_records" :{ "name": "Historia clínica", "route": "/historia-clinica", "role": "both" }},
+        {"prescriptions" :{ "name": "Recetas", "route": "/recetas", "role": "both" }},
+        {"treatments" :{ "name": "Tratamientos", "route": "/tratamientos", "role": "both" }},
+        {"user_profile" :{ "name": "Mi cuenta", "route": "/mi-cuenta", "role": "both" }},
+        {"signin" :{ "name": "Iniciar sesión", "route": "/iniciar-sesion", "role": "loggedout" }},
+        {"logout" :{ "name": "Cerrar sesión", "route": "/logout", "role": "loggedout" }}
+        
+    ],
+    "en":[
+        {"home" :{ "name": "Home", "route": "/", "role": "loggedout" }},
+        {"patients" :{ "name": "Patient", "route": "/patient", "role": "patient" }},
+        {"doctors" :{ "name": "Medic", "route": "/medic", "role": "doctor" }},
+        {"appointments" :{ "name": "Appointments", "route": "/appointments", "role": "both" }},
+        {"medical_records" :{ "name": "Medical records", "route": "medical-records", "role": "both" }},
+        {"prescriptions" :{ "name": "Prescriptions", "route": "/prescriptions", "role": "both" }},
+        {"treatments" :{ "name": "Treatments", "route": "/treatments", "role": "both" }},
+        {"user_profile" :{ "name": "My account", "route": "/my-account", "role": "both" }},
+        {"signin" :{ "name": "Signin", "route": "/signin", "role": "loggedout" }},
+        {"logout" :{ "name": "Logout", "route": "/logout", "role": "loggedout" }}
+     ]
+}

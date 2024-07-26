@@ -7,18 +7,18 @@ export default function FilterInput({ filter, setFilter }) {
     const language = useSelector((state)=>state.i18nReducer.language)
     
     return (
-        <div className="flex flex-row">
+        <div className="block">
             <Input
+                autoFocus={false}
                 type={'text'}
                 id={'searchInput'}
                 placeholder={i18n[language].filterInput.placeholder}
                 title={i18n[language].filterInput.title}
-                required={false}
                 value={filter || ''}
-                onChange={(e) => setFilter(e.target.value)}
+                onChangeHandler={setFilter}
             />
             <span 
-                className="flex justify-center items-center p-0 -m-[1.5rem] h-auto cursor-pointer"
+                className="inline-block p-0 -m-[1.5rem] h-auto cursor-pointer"
                 onClick={()=>setFilter('')}
                 title={i18n[language].filterInput.deleteText}
                 aria-label={i18n[language].filterInput.deleteText}

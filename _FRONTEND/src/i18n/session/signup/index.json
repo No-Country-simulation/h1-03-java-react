@@ -1,0 +1,63 @@
+{
+    "sp":{
+        "pageTitle": "REGISTRARSE",
+        "buttonSignupText": "ENVIAR",
+        "buttonSignupTitle": "Enviar",
+        "alreadyHaveAccount": "Ya tiene una cuenta?",
+        "signUpLinkText": "Iniciar sesión.",
+        "signUpLinkTitle": "Click para Iniciar sesión.",
+
+        "firstNameTitle": "Ingrese su nombre",
+        "firstNamePlaceholder": "NOMBRE",
+        "lastNameTitle": "Ingrese su apellido",
+        "lastNamePlaceholder": "APELLIDO",
+        "emailTitle": "Ingrese su Correo electrónico",
+        "emailPlaceholder": "CORREO ELECTRÓNICO",
+        "passwordTitle": "Ingrese su Contraseña",
+        "passwordPlaceholder": "CONTRASEÑA",
+        "repeatPasswordTitle": "Repita su Contraseña",
+        "repeatPasswordPlaceholder": "REPETIR CONTRASEÑA",
+        "passwordMatchTitle": "Las contraseñas no coinciden.",
+        "roleListForSelect": ["Seleccionar rol","Admin", "Paciente", "Médico"],
+        "roleTitleForSelect": "Seleccione su rol",
+        "roleList": [
+                {"title": "Medico", "id": "medico"},
+                {"title": "Paciente", "id": "paciente"}
+        ],
+        "titlePopup": "Seleccione su perfil de registro",
+        "buttonPopupText": "CONFIRMAR",
+        "buttonPopupTitle": "Confirmar",
+        "closePopupSvgButton" : "Cerrar"
+    },
+    "en":{
+        "pageTitle": "SIGN UP",
+        "buttonSignupText": "SEND",
+        "buttonSignupTitle": "Send",
+        "forgotPassword": "Forgot your password?",
+        "alreadyHaveAccount": "Already have an account? ",
+        "signUpLinkText": "Sign In.",
+        "signUpLinkTitle": "Click to Sign In.",
+ 
+        "firstNameTitle": "Enter your first name",
+        "firstNamePlaceholder": "FIRST NAME",
+        "lastNameTitle": "Enter your last name",
+        "lastNamePlaceholder": "LAST NAME",
+        "emailTitle": "Enter your E-mail",
+        "emailPlaceholder": "E-MAIL",
+        "passwordTitle": "Enter your password",
+        "passwordPlaceholder": "PASSWORD",
+        "passwordMatchTitle": "Passwords don't match.",
+        "repeatPasswordTitle": "Repeat your password",
+        "repeatPasswordPlaceholder": "REPEAT PASSWORD",
+        "roleListForSelect": ["Select role","Admin", "Patient", "Doctor"],
+        "roleTitleForSelect": "Select your role",
+        "roleList": [
+            {"title": "Doctor", "id": "doctor"},
+            {"title": "Patient", "id": "patient"}
+        ],
+        "titlePopup": "Select your registration profile",
+        "buttonPopupText": "CONFIRM",
+        "buttonPopupTitle": "Confirm",
+        "closePopupSvgButton" : "Close"
+    }
+}
