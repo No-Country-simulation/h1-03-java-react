@@ -1,9 +1,7 @@
 # ![image](https://github.com/user-attachments/assets/02661f21-ea63-4199-8f57-bcbc4f14967e)
 
 
-
-
-Pequeña descripción del proyecto...
+El proyecto Justina tiene como propósito mejorar la eficiencia y el impacto en el sector de la salud mediante una plataforma integral, dirigida a profesionales de la salud, pacientes adultos y menores, y diversos actores del ecosistema. La plataforma incluye funcionalidades como un sistema de gestión de usuarios, una agenda para turnos médicos, y un módulo para el registro de tratamientos y recetas con transcripción de voz e inteligencia artificial. Se desarrolla utilizando tecnologías como MySQL para la gestión de datos, JWT para la seguridad de accesos, y un diseño responsivo para adaptarse a distintos dispositivos.
 
 https://github.com/No-Country-simulation/h1-03-java-react
 
