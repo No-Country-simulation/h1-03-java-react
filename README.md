@@ -49,7 +49,6 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://codeium.com/images/logo.svg" >| IA: Codeium |
 
 ## Stacks de Equipo Backend
-
 |||
 |:---:|:---:|
 | <img style="width: 50px; min-width: 50px" src="https://www.vectorlogo.zone/logos/java/java-ar21.svg" >| Java |
@@ -58,7 +57,13 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Swagger_logo.png/640px-Swagger_logo.png" >| Swagger |
 | <img style="width: 50px; min-width: 50px" src="https://www.jetbrains.com/idea/idea_logo.svg" >| IntelliJ IDEA |
 
-
+## Stacks de Equipo QA Tester
+|||
+|:---:|:---:|
+| <img style="width: 50px; min-width: 50px" src="https://www.postman.com/postman-docs/images/postman-logo.png" >| Postman |
+| <img style="width: 50px; min-width: 50px" src="https://wac-cdn.atlassian.com/dam/jcr:2db73a2c-40f7-466b-8e91-41c02c83e800/jira-software.svg" >| Jira |
+| <img style="width: 50px; min-width: 50px" src="https://www.selenium.dev/images/selenium_logo_square_green.png" >| Selenium |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_Office_Word_2013_Logo.png" >| Word |
 
 ## Agradecimientos
 
