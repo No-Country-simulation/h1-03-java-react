@@ -1,16 +1,15 @@
 package com.no_country.justina.service.implementation;
 
-import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.PatientRepository;
-import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import com.no_country.justina.service.interfaces.IPatientService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,27 +19,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class PatientServiceImp implements IPatientService {
   private final PatientRepository patientRepo;
-  private final IMedicalHistoryService historyService;
-
-  @Override
-  public Patient create(Patient patient, MedicalHistory history) {
-    var savedPatient = this.patientRepo.save(patient);
-    history.setPatient(savedPatient);
-    var savedHistory = historyService.create(history);
-
-    return savedHistory.getPatient();
-  }
 
   @Override
   @Transactional
-  public Patient createEmpty(UserEntity user){
-    var emptyPatient = new Patient();
-    emptyPatient.setUser(user);
-    var savedPatient = this.patientRepo.save(emptyPatient);
-    var emptyHistory = new MedicalHistory();
-    emptyHistory.setPatient(savedPatient);
-    var savedHistory = this.historyService.create(emptyHistory);
-    return savedHistory.getPatient();
+  public Patient create(Patient patient) {
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    patient.setUser(user);
+    return this.patientRepo.save(patient);
   }
 
   @Override
@@ -67,13 +52,6 @@ public class PatientServiceImp implements IPatientService {
             patient.getIdPatient()
     );
     return getById(patient.getIdPatient());
-  }
-
-  @Override
-  public void deleteById(Long id) {
-    var patientFound = this.getById(id);
-    patientFound.setEnabled(false);
-    this.patientRepo.save(patientFound);
   }
 
   private void verifyPatientExist(long id){

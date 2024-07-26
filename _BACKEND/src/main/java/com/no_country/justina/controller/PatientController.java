@@ -54,10 +54,4 @@ public class PatientController {
     var patientUpdated = this.patientServ.update(mapper.map(patientUpdateReq, Patient.class));
     return ResponseEntity.ok(mapper.map(patientUpdated, PatientRes.class));
   }
-
-  @DeleteMapping("/{id}")
-  public ResponseEntity<?> deleteById(@PathVariable long id){
-    this.patientServ.deleteById(id);
-    return ResponseEntity.ok("Paciente de baja con éxito, id:"+id);
-  }
 }

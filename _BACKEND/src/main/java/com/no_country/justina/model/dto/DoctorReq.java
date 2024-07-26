@@ -16,5 +16,4 @@ public class DoctorReq {
   @NotBlank private String address;
   @NotBlank private String license;
   private SpecialtyReq specialty;
-  private UserReq user;
 }
