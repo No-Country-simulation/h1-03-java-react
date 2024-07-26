@@ -30,6 +30,8 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" >| Figma, herramienta de prototipado ágil |
 
 ## Stacks de Equipo Frontend
+## Tecnologías utilizadas
+
 |||
 |:---:|:---:|
 | <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" >| React.js |
@@ -43,9 +45,10 @@ Aquí va el enlace del sitio web
 | <img style="width: 50px; min-width: 50px" src="https://react-query-v3.tanstack.com/_next/static/images/logo-355da1e2c59f0b8b2da0ec7f16c0eb66.svg" >| @Tanstack/react-query |
 | <img style="width: 50px; min-width: 50px" src="https://vitejs.dev/logo.svg" >| Vite |
 | <img style="width: 50px; min-width: 50px" src="https://avatars.githubusercontent.com/u/46258668?s=200&v=4" >| PostCSS |
-| <img style="width: 50px; min-width: 50px" src="https://user-images.githubusercontent.com/18131787/107107080-39b63c00-67d7-11eb-8d22-e794ec8e57c7.png" >| Visual Studio Code |
-| <img style="width: 50px; min-width: 50px" src="https://sourcetreeapp.com/images/sourcetree_logo.png" >| Sourcetree |
-| <img style="width: 50px; min-width: 50px" src="https://codeium.com/logo/logo-full-black.svg" >| IA: Codeium |
+| <img style="width: 50px; min-width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" >| Visual Studio Code |
+| <img style="width: 50px; min-width: 50px" src="https://user-images.githubusercontent.com/197597/35024636-26f4d726-fb15-11e7-8c04-8c41e21d5ab1.png" >| Sourcetree |
+| <img style="width: 50px; min-width: 50px" src="https://codeium.com/icons/icon-512x512.png" >| IA: Codeium |
+
 
 ## Agradecimientos
 
