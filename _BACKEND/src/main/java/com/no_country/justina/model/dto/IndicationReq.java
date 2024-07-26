@@ -13,8 +13,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class IndicationReq{
         private Long id;
-        @NotNull @Min(0) private Integer dosage;
+        @NotNull @Min(0) private String dosage;
         @NotNull @Min(0) private Integer quantity;
+        @NotNull @Min(0) private Integer quantityByFrequency;
         @NotNull private DrugFormReq form;
         @NotNull private DrugRouteReq route;
         @NotNull @Min(0) private Integer frequency;

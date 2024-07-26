@@ -13,6 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TreatmentReq {
   private Long id;
+  @NotBlank private String reason_consult;
+  @NotBlank private String plan;
   @NotBlank private String diagnosis;
   @NotBlank private String description;
   @NotNull private MedicalHistoryReq medicalHistory;

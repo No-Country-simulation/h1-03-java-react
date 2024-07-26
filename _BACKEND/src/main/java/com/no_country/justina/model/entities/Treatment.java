@@ -22,6 +22,9 @@ public class Treatment {
 
   @Column(columnDefinition = "TEXT")
   private String description;
+  private String reason_consult;
+  @Column(columnDefinition = "TEXT")
+  private String plan;
   @Column(updatable = false)
   private LocalDateTime createdAt;
   @ManyToOne

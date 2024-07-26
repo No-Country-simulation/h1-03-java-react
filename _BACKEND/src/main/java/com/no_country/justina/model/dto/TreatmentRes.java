@@ -13,6 +13,9 @@ public class TreatmentRes {
   private long id;
   private String diagnosis;
   private String description;
+  private String reason_consult;
+  private String plan;
   private MedicalHistoryRes medicalHistory;
-  private AppointmentRes appointment;
+  private DoctorRes doctor;
+  private SpecialtyRes specialty;
 }

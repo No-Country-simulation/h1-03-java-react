@@ -19,9 +19,11 @@ public class Indication {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private int dosage;
+  private String dosage;
   @Column(columnDefinition = "TINYINT")
   private int quantity;
+  @Column(columnDefinition = "TINYINT")
+  private int quantityByFrequency;
   @ManyToOne
   @JoinColumn(name = "form_id", nullable = false)
   private DrugForm form;
