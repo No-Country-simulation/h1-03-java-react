@@ -5,6 +5,7 @@ import com.no_country.justina.model.dto.MedicalHistoryRes;
 import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.enums.BloodType;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -50,7 +51,8 @@ public class MedicalHistoryController {
     Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(direction), sort));
     return ResponseEntity.ok(this.historyService.getAll(pageable));
   }
-
+  @Operation(summary = "Trae todas las historias paginadas y por filtros.",
+  description = "Usa filtros como apellido, doc identidad y periodo en que se creo.")
   @GetMapping("/filter")
   public ResponseEntity<?> getAllByLastnameOrIdentity(
           @RequestParam(defaultValue = "0") int page,

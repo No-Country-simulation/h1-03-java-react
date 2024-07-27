@@ -56,7 +56,8 @@ public class PatientServiceImp implements IPatientService {
 
   @Override
   public Patient getByUserId(Long id) {
-    return patientRepo.findByUserId(id).orElseThrow(() -> new EntityNotFoundException("Paciente no cargado a la base de datos"));
+    return patientRepo.findByUserId(id).orElseThrow(
+            () -> new EntityNotFoundException("Paciente no cargado a la base de datos"));
   }
 
   private void verifyPatientExist(long id){

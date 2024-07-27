@@ -3,14 +3,17 @@ package com.no_country.justina.service.implementation;
 import com.no_country.justina.exception.AppointmentException;
 import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.model.entities.Shift;
+import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.model.enums.AppointmentStatus;
 import com.no_country.justina.repository.AppointmentRepository;
 import com.no_country.justina.service.interfaces.IAppointmentService;
+import com.no_country.justina.service.interfaces.IPatientService;
 import com.no_country.justina.service.interfaces.IShiftService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,12 +25,17 @@ import java.time.LocalDateTime;
 public class AppointmentServiceImp implements IAppointmentService {
   private final AppointmentRepository appointmentRepo;
   private final IShiftService shiftService;
+  private final IPatientService patientService;
 
   @Override
   public Appointment create(Appointment appointment) {
+    var userAuth = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    var patientTarget = patientService.getByUserId(userAuth.getId());
     var shiftTarget = shiftService.getById(appointment.getShift().getId());
+
     appointment.setDate(shiftTarget.getStartDate());
     appointment.setShift(shiftTarget);
+    appointment.setPatient(patientTarget);
     this.verifyAppointmentIsAfterToday(appointment);
     this.verifyOneAppointmentByDayAndPatient(appointment);
     this.verifyAppointmentsAvailable(appointment);

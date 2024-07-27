@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.TreatmentReq;
 import com.no_country.justina.model.dto.TreatmentRes;
 import com.no_country.justina.model.entities.Treatment;
 import com.no_country.justina.service.interfaces.ITreatmentService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -46,7 +47,8 @@ public class TreatmentController {
     Page<TreatmentRes> resultDto = result.map(item -> mapper.map(item, TreatmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
-
+  @Operation(summary = "Trae los tratamientos paginado y usando filtros.",
+          description = "Usa filtros por doctor, especialidad, historia clínica y un período.")
   @GetMapping("filters")
   public ResponseEntity<?> getAllByFilters(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "20") int size,

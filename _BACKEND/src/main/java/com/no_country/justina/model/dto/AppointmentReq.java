@@ -12,6 +12,5 @@ import lombok.Setter;
 @Setter
 public class AppointmentReq {
   private Long id;
-  @NotNull private PatientReq patient;
   @NotNull private ShiftReq shift;
 }

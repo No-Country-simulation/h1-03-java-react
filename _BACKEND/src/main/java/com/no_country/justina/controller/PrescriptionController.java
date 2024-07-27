@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.PrescriptionReq;
 import com.no_country.justina.model.dto.PrescriptionRes;
 import com.no_country.justina.model.entities.Prescription;
 import com.no_country.justina.service.interfaces.IPrescriptionService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.PageRequest;
@@ -46,7 +47,8 @@ public class PrescriptionController {
                                   Pageable pageable) {
     return ResponseEntity.ok(this.prescriptionService.getAll(pageable));
   }
-
+  @Operation(summary = "Trae todas las recetas por filtros y paginadas.",
+  description = "Usa filtros como id del doctor, paciente, especialidad y por periodo de creación.")
   @GetMapping("/filter")
   public ResponseEntity<?> getAllByFilters(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "20") int size,

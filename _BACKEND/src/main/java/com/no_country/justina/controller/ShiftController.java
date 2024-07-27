@@ -5,6 +5,7 @@ import com.no_country.justina.model.dto.ShiftReq;
 import com.no_country.justina.model.dto.ShiftRes;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.service.interfaces.IShiftService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -30,7 +31,8 @@ public class ShiftController {
     return ResponseEntity
             .status(HttpStatus.CREATED).body(mapper.map(savedShift, ShiftRes.class));
   }
-
+  @Operation(summary = "Crea un conjunto de turnos",
+  description = "Valida que los turnos no se superpongan, que sean de un mismo doctor, especialidad,y mismo mes-año")
   @PostMapping("/month")
   public ResponseEntity<?> createByMonthAndDoctor(@RequestBody @Valid List<@Valid ShiftReq> shiftsReq) {
     List<Shift> newShifts = shiftsReq.stream()
@@ -62,11 +64,12 @@ public class ShiftController {
     Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
     return ResponseEntity.ok(resultDto);
   }
-
+  @Operation(summary = "Trae los turnos con filtros y paginado.",
+          description = "Usa filtros por doctor, especialidad y periodo de tiempo")
   @PostMapping("/filter")
   public ResponseEntity<?> getAllByDoctorOrSpecialty(@RequestParam(defaultValue = "0") int page,
                                                      @RequestParam(defaultValue = "20") int size,
-                                                     @RequestParam(defaultValue = "idShift") String sort,
+                                                     @RequestParam(defaultValue = "id") String sort,
                                                      @RequestParam(defaultValue = "asc") String direction,
                                                      @RequestParam(required = false) Long doctorId,
                                                      @RequestParam(required = false) Long specialty,
@@ -78,7 +81,8 @@ public class ShiftController {
     return ResponseEntity.ok(resultDto);
   }
 
-
+  @Operation(summary = "Trae los turnos por parámetros específicos.",
+          description = "Usa filtros como doctor, mes y año")
   @GetMapping("/month/{doctorId}")
   public ResponseEntity<?> getAllByDoctorMonth(@PathVariable long doctorId,
                                                @RequestParam(defaultValue = "#{T(java.time.LocalDate).now().getYear()}") int year,
@@ -88,7 +92,8 @@ public class ShiftController {
     var shiftsDto = shifts.stream().map(shift->mapper.map(shift, ShiftRes.class));
     return ResponseEntity.ok(shiftsDto);
   }
-
+  @Operation(summary = "Trae los turnos por parámetros específicos.",
+          description = "Usa filtros como especialidad, mes y año")
   @GetMapping("/specialty/{specialty}")
   public ResponseEntity<?> getAllBySpecialtyMonth(@PathVariable String specialty,
                                                @RequestParam(defaultValue = "#{T(java.time.LocalDate).now().getYear()}") int year,

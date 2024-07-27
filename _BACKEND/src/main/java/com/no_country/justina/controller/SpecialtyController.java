@@ -47,11 +47,9 @@ public class SpecialtyController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody SpecialtyReq treatmentReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody SpecialtyReq treatmentReq) {
     var newSpecialty = mapper.map(treatmentReq, Specialty.class);
-    newSpecialty.setId(id);
     var specialtyUpdated = this.specialtyService.update(newSpecialty);
     return ResponseEntity.ok(mapper.map(specialtyUpdated, SpecialtyRes.class));
   }

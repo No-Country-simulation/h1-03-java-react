@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.DrugReq;
 import com.no_country.justina.model.dto.DrugRes;
 import com.no_country.justina.model.entities.Drug;
 import com.no_country.justina.service.interfaces.IDrugService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
@@ -33,7 +34,7 @@ public class DrugController {
     var drugFound = mapper.map(this.drugService.getById(id), DrugRes.class);
     return ResponseEntity.ok(drugFound);
   }
-
+  @Operation(summary = "Trae todas los medicamento, paginado.")
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
@@ -45,11 +46,9 @@ public class DrugController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody DrugReq drugReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody DrugReq drugReq) {
     var newDrug = mapper.map(drugReq, Drug.class);
-    newDrug.setId(id);
     var drugUpdated = this.drugService.update(newDrug);
     return ResponseEntity.ok(mapper.map(drugUpdated, DrugRes.class));
   }
@@ -59,13 +58,15 @@ public class DrugController {
     this.drugService.deleteById(id);
     return ResponseEntity.ok("Medicamento eliminado con éxito, id:" + id);
   }
-
+  @Operation(summary = "Busca retorna un medicamento por su nombre.")
   @GetMapping("/search/{name}")
   public ResponseEntity<?> searchByName(@PathVariable String name) {
     Drug result = this.drugService.getByName(name);
     return ResponseEntity.ok(this.mapper.map(result, DrugRes.class));
   }
-
+  @Operation(summary = "Retorna medicamentos que coinciden con el nombre.",
+  description = "Retorna los las coincidencias paginadas, usando como filtro el nombre del medicamento," +
+          " mínimo 4 caracteres para el nombre.")
   @GetMapping("/findByName/{name}")
   public ResponseEntity<?> findLikeName(@PathVariable String name,
                                         @RequestParam(defaultValue = "0") int page,

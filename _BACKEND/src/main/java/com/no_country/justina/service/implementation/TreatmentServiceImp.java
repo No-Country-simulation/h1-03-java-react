@@ -1,17 +1,15 @@
 package com.no_country.justina.service.implementation;
 
-import com.no_country.justina.model.entities.Appointment;
-import com.no_country.justina.model.entities.Doctor;
-import com.no_country.justina.model.entities.Specialty;
-import com.no_country.justina.model.entities.Treatment;
+import com.no_country.justina.model.entities.*;
 import com.no_country.justina.repository.TreatmentRepository;
-import com.no_country.justina.service.interfaces.IAppointmentService;
+import com.no_country.justina.service.interfaces.IDoctorService;
 import com.no_country.justina.service.interfaces.ITreatmentService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,14 +19,14 @@ import java.time.LocalDateTime;
 @Slf4j
 public class TreatmentServiceImp implements ITreatmentService {
   private final TreatmentRepository treatmentRepo;
-  private final IAppointmentService appointmentService;
+  private final IDoctorService doctorService;
 
   @Override
   public Treatment create(Treatment treatment) {
-    Appointment currentAppointment = this.appointmentService.getById(treatment.getAppointment().getId());
-    this.appointmentService.updateToSuccessAppointment(currentAppointment.getId());
-    Doctor currentDoctor = currentAppointment.getShift().getDoctor();
-    Specialty currentSpecialty = currentAppointment.getShift().getSpecialty();
+    var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication();
+    Doctor currentDoctor = doctorService.getByUserId(userTarget.getId());
+    Specialty currentSpecialty = currentDoctor.getSpecialty();
+
     treatment.setDoctor(currentDoctor);
     treatment.setSpecialty(currentSpecialty);
     return this.treatmentRepo.save(treatment);

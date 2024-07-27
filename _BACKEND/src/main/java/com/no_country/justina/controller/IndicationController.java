@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.IndicationReq;
 import com.no_country.justina.model.dto.IndicationRes;
 import com.no_country.justina.model.entities.Indication;
 import com.no_country.justina.service.interfaces.IIndicationService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,9 @@ public class IndicationController {
             .status(HttpStatus.CREATED)
             .body(mapper.map(savedIndication, IndicationRes.class));
   }
-
+  @Operation(summary = "Puedes crear un conjunto de citas a la vez.",
+  description = "Permite crear multiples indicaciones, verificando que la fecha de inicio sea posterior a la actual" +
+          "y todas estén asociadas a la misma receta.")
   @PostMapping("/group")
   public ResponseEntity<?> createAll(@RequestBody @Valid Set<@Valid IndicationReq> indicationsReq) {
     Set<Indication> indications = indicationsReq.stream()
