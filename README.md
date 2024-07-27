@@ -34,9 +34,9 @@ https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2p
 ## Ver el sitio web de Justina.io
 https://h1-03-java-react.vercel.app/
 
-## Deploy Backend
+## Deploy Frontend 
 https://h1-03-java-react.vercel.app
-## Deploy Frontend
+## Deploy Backend
 http://justinah1-03.up.railway.app 
 
 ## Stacks General 📁 📂
