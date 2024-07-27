@@ -35,10 +35,14 @@ public class UserAndDoctorController {
                     "sino devuelve los datos de usuario que fueron actualizados"
     )
     @PutMapping()
-    public ResponseEntity<UserRes> update(@RequestBody @Valid UserAndDoctorReq userAndDoctorReq) {
+    public ResponseEntity<UserAndDoctorRes> update(@RequestBody @Valid UserAndDoctorReq userAndDoctorReq) {
         var user = userAndDoctorService.update(modelMapper.map(userAndDoctorReq.getUser(), UserEntity.class),
                 modelMapper.map(userAndDoctorReq.getDoctor(), Doctor.class));
+        return new ResponseEntity<>(modelMapper.map(user, UserAndDoctorRes.class), HttpStatus.OK);
+    }
 
-        return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.OK);
+    @GetMapping()
+    public ResponseEntity<UserAndDoctorRes> getUserAndDoctor() {
+        return new ResponseEntity<>(userAndDoctorService.get(), HttpStatus.OK);
     }
 }

@@ -18,4 +18,6 @@ public interface IPatientService {
     Page<Patient> getAll(Pageable pageable);
 
     Patient update(Patient patient);
+
+    Patient getByUserId(Long id);
 }

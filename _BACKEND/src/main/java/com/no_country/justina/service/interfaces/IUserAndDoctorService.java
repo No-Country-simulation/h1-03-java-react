@@ -6,4 +6,5 @@ import com.no_country.justina.model.entities.UserEntity;
 
 public interface IUserAndDoctorService {
     UserAndDoctorRes update(UserEntity user, Doctor doctor);
+    UserAndDoctorRes get();
 }

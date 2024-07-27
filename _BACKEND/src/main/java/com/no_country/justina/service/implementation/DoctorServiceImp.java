@@ -66,4 +66,9 @@ public class DoctorServiceImp implements IDoctorService {
         }
         return doctorRepository.save(doctorDB);
     }
+
+    @Override
+    public Doctor getByUserId(Long id) {
+        return doctorRepository.findByUserId(id).orElseThrow(() -> new EntityNotFoundException("Datos de doctor no cargados"));
+    }
 }

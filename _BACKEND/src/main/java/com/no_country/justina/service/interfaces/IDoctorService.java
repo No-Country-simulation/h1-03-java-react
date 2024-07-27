@@ -13,4 +13,6 @@ public interface IDoctorService {
   Page<Doctor> getAllDoctors(Pageable pageable);
 
   Doctor update(Doctor doctor);
+
+    Doctor getByUserId(Long id);
 }

@@ -8,4 +8,5 @@ import com.no_country.justina.model.entities.UserEntity;
 
 public interface IUserAndPatientService {
     UserAndPatientRes update(UserEntity user, Patient patient);
+    UserAndPatientRes get();
 }
