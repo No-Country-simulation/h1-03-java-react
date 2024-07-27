@@ -25,6 +25,8 @@ https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-897-2023-383213/
 ## Github
 https://github.com/No-Country-simulation/h1-03-java-react
 
+## Documentación equipo de desarrollo
+https://drive.google.com/drive/folders/1_Dakpfgdm_T2Z7lmIktlL3o8dIqGOQJS
 
 ## Diseño del proyecto
 https://www.figma.com/design/wiu48utM0BM2Dh9dfT7Mad/JUSTINA.IO?node-id=9-2&t=Q2pm9FYkUbFxt0Iu-1
