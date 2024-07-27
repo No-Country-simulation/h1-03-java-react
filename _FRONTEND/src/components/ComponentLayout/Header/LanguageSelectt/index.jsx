@@ -20,13 +20,12 @@ export default function LanguageSelect({ handleSelectLanguage }) {
 					onChange={(e) => handleSelectLanguage(e.target.value)}
 					aria-label="logo"
 					title="Justina.io"
-					lang={language}
 					translate="no"
 					id="logo"
 					name="logo"
 				>
-					<option value="sp">ES</option>
-					<option value="en">EN</option>
+					<option value="sp" translate="no">ES</option>
+					<option value="en" translate="no">EN</option>
 				</select>
 			</div>
 		</li>

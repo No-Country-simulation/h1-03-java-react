@@ -44,7 +44,6 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 						aria-label={i18n[language].confirmDelete.mainTitle}
 						aria-level={1}
 						role="heading"
-						lang={language}
 					>
                         <img 
 							src={warningDeleteAccount}
@@ -53,7 +52,6 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 							height={20}
 							aria-label={i18n[language].confirmDelete.mainTitle+' image'}
 							title={i18n[language].confirmDelete.mainTitle}
-							lang={language}
 						/>
 						{i18n[language].confirmDelete.mainTitle}
 					</p>
@@ -62,7 +60,6 @@ export default function ConfirmDeletePopup({ closePopup, setClosePopup }) {
 						aria-label={i18n[language].confirmDelete.mainSubtitle}
 						aria-level={2}
 						role="heading"
-						lang={language}
 					>
 						{i18n[language].confirmDelete.mainSubtitle}
 					</p>

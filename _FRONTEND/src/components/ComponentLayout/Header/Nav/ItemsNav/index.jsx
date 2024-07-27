@@ -85,6 +85,7 @@ const ItemsNav = () => {
 						data-text={e.name}
 						key={i}
 						onClick={() => handleClick(e)}
+						translate="no"
 					>
 						{e.name}
 					</li>

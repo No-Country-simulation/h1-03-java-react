@@ -4,7 +4,7 @@ export default function Button({
 	type= 'button',
 	text = null,
 	textColor = '#000',
-	bgColor = 'auto',
+	bgColor = '#646cff',
 	classNames = '',
 	title,
 	isDisabled = false,

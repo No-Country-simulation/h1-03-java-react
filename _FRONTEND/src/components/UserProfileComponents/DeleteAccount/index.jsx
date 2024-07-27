@@ -22,7 +22,6 @@ export default function DeleteAccount() {
                 className="text-red-500 font-bold underline text-center py-5"
                 aria-label={i18n[language].deleteUser.title}
                 role="button"
-                lang={language}
                 onClick={() => onClickHandler()}
             >
                 {i18n[language].deleteUser.text}

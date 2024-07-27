@@ -47,7 +47,6 @@ export default function Nav() {
 							className="logo"
 							title="Justina.io"
 							aria-label="logo"
-							lang={language}
 							translate="no"
 							id="logo"
 							name="logo"

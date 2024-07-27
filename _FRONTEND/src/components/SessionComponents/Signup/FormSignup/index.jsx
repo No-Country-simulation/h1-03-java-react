@@ -126,10 +126,11 @@ export default function FormSignup( { roleSelection } ) {
 							title={i18n[language].passwordTitle}
 							aria-label="Input field"
 							required={true}
+							minLength="8"
 							maxLength="16"
 							/* pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`} */
 							/* pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" */
-							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{8,16}$"
+							pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
 							value={password}
 							onChange={(e)=>handlePassword(e.target.value, setPassword)}
 						/>
@@ -142,8 +143,9 @@ export default function FormSignup( { roleSelection } ) {
 							title={i18n[language].repeatPasswordTitle}
 							aria-label="Input field"
 							required={true}
+							minLength="8"
 							maxLength="16"
-							pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z\d!@#$%^&*()_+]{8,16}$"
+							pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
 							value={repeatPassword}
 							onChange={(e)=>handleRepeatPassword(e.target.value, setRepeatPassword)}
 						/>
