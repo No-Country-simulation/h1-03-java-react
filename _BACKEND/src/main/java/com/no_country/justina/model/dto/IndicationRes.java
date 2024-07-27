@@ -11,8 +11,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class IndicationRes {
   private long id;
-  private int dosage;
+  private String dosage;
   private int quantity;
+  private int quantityByFrequency;
   private DrugFormRes form;
   private DrugRouteRes routeAdministration;
   private int frequency;
