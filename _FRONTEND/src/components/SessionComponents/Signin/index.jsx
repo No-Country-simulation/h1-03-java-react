@@ -90,6 +90,7 @@ export default function Signin() {
 					isRequired={true}
 					value=""
 					onChangeHandler={() => {}}
+					minLength="8"
 					maxLength="16"
 					pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
 				/>

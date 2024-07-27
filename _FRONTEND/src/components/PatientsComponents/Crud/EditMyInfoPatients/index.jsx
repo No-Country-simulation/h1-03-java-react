@@ -35,7 +35,6 @@ export default function EditMyInfoPatients() {
             <p
                 aria-label={i18n[language].pageTitle.title}
                 role="heading"
-                lang={language}
             >
                 {i18n[language].pageTitle.text}
             </p>

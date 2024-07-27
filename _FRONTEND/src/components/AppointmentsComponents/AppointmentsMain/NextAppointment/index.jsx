@@ -8,7 +8,7 @@ export default function NextAppointment() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
 	return (
-		<div className="flex justify-center items-center p-4 text-center border border-[#D98236] w-full h-[125px] rounded-3xl ">
+		<div className="flex flex-col-reverse md:flex-row justify-center items-center p-4 text-center border border-[#D98236] w-full h-auto md:h-[125px] rounded-3xl ">
 			<div className="flex flex-row flex-1">
 				<div className="flex justify-center">
 					<img
