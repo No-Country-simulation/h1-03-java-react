@@ -97,3 +97,11 @@ http://justinah1-03.up.railway.app
 |**QA**|**Backend**|**Frontend**|**UI/UX**|**TeamLider**|
 |:---:|:---:|:---:|:---:|:---:|
 |**Cinthia Gutiérrez Vargas** <br> [LinkedIn](https://www.linkedin.com/in/cinthia-guti%C3%A9rrez-vargas-ti/)|**Alexander Machicado** <br> [LinkedIn](https://www.linkedin.com/in/machicadogomezalexander/) <br> **David Thomen** <br> [LinkedIn](https://www.linkedin.com/in/david-ramon-thomen/)|**Matias Fiordelli** <br> [LinkedIn](https://www.linkedin.com/in/matiasfiordelli/)|**Daiana Belen Caffiero** <br> [LinkedIn](https://www.linkedin.com/in/daiana-b-caffiero/)|**Vero Eschenmoser** <br> [LinkedIn](https://www.linkedin.com/in/veronica-eschenmoser-152969241/)|
+
+## Referencias bibliográficas 
+Mozilla. (n.d.). Learn to code with the world's largest web developer site. Mozilla Developer Network. Retrieved from https://developer.mozilla.org/en-US/
+Ministerio de Salud. (2023, May 5). Actualización. Resolución 897/2023. Retrieved from https://www.argentina.gob.ar/normativa/nacional/resoluci%C3%B3n-897-2023-383213/actualizaci%C3%B3n
+Codeium. (n.d.). The modern coding superpower. Retrieved from https://codeium.com/
+OpenAI. (n.d.). ChatGPT. Retrieved from https://www.openai.com/
+W3Schools. (n.d.). Learn to code with the world's largest web developer site. Retrieved from https://www.w3schools.com/
+
