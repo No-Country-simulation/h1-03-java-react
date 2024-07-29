@@ -65,11 +65,9 @@ public class TreatmentController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody TreatmentReq treatmentReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody TreatmentReq treatmentReq) {
     var newTreatment = mapper.map(treatmentReq, Treatment.class);
-    newTreatment.setId(id);
     var treatmentUpdated = this.treatmentService.update(newTreatment);
     return ResponseEntity.ok(mapper.map(treatmentUpdated, TreatmentRes.class));
   }

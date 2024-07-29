@@ -7,9 +7,7 @@ import com.no_country.justina.service.interfaces.IPrescriptionService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +45,7 @@ public class PrescriptionController {
                                   Pageable pageable) {
     return ResponseEntity.ok(this.prescriptionService.getAll(pageable));
   }
+
   @Operation(summary = "Trae todas las recetas por filtros y paginadas.",
   description = "Usa filtros como id del doctor, paciente, especialidad y por periodo de creación.")
   @GetMapping("/filter")
@@ -63,11 +62,9 @@ public class PrescriptionController {
     return ResponseEntity.ok(this.prescriptionService.getAllFilters(pageable, doctorId, patientId, specialtyId, start, end));
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody PrescriptionReq prescriptionReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody PrescriptionReq prescriptionReq) {
     var newPrescription = mapper.map(prescriptionReq, Prescription.class);
-    newPrescription.setId(id);
     var prescriptionUpdated = this.prescriptionService.update(newPrescription);
     return ResponseEntity.ok(mapper.map(prescriptionUpdated, PrescriptionRes.class));
   }

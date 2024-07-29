@@ -5,8 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class PrescriptionRes {
+  private Long id;
+  private LocalDateTime createdAt;
+  private TreatmentRes treatment;
+  private PatientRes patient;
+  private DoctorRes doctor;
 }

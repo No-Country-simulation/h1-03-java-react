@@ -23,7 +23,7 @@ public class TreatmentServiceImp implements ITreatmentService {
 
   @Override
   public Treatment create(Treatment treatment) {
-    var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication();
+    var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Doctor currentDoctor = doctorService.getByUserId(userTarget.getId());
     Specialty currentSpecialty = currentDoctor.getSpecialty();
 

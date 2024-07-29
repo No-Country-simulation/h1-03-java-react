@@ -46,11 +46,9 @@ public class DrugRouteController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody DrugRouteReq drugFormReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody DrugRouteReq drugFormReq) {
     var newDrugRoute = mapper.map(drugFormReq, DrugRoute.class);
-    newDrugRoute.setId(id);
     var updated = this.routeService.update(newDrugRoute);
     return ResponseEntity.ok(mapper.map(updated, DrugRouteRes.class));
   }

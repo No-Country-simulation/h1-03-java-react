@@ -104,11 +104,9 @@ public class ShiftController {
     return ResponseEntity.ok(shiftsDto);
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<?> updateById(@RequestBody ShiftReq shiftReq,
-                                      @PathVariable long id) {
+  @PutMapping
+  public ResponseEntity<?> updateById(@RequestBody ShiftReq shiftReq) {
     var newShift = mapper.map(shiftReq, Shift.class);
-    newShift.setId(id);
     var treatmentUpdated = this.shiftService.update(newShift);
     return ResponseEntity.ok(mapper.map(treatmentUpdated, ShiftRes.class));
   }
