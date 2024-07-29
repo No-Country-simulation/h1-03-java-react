@@ -1,10 +1,11 @@
 package com.no_country.justina.service.implementation;
 
-import com.no_country.justina.model.dto.*;
-import com.no_country.justina.model.entities.Doctor;
+import com.no_country.justina.model.dto.*;;
 import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.UserEntity;
+import com.no_country.justina.repository.PatientRepository;
 import com.no_country.justina.service.interfaces.*;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserAndPatientService implements IUserAndPatientService {
     private final IUserService userService;
     private final IPatientService patientService;
+    private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
     @Override
@@ -27,7 +29,13 @@ public class UserAndPatientService implements IUserAndPatientService {
     @Override
     public UserAndPatientRes get() {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Patient patient = patientService.getByUserId(user.getId());
+        Patient patient;
+        try {
+            patient = patientService.getByUserId(user.getId());
+        } catch (EntityNotFoundException ex) {
+            patient = new Patient();
+        }
+
         UserRes userRes = modelMapper.map(userService.getUserById(user.getId()), UserRes.class);
         PatientRes patientRes = modelMapper.map(patient, PatientRes.class);
         return new UserAndPatientRes(userRes, patientRes);
