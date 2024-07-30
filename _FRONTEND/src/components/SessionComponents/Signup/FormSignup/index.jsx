@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Container from "../../../Resources/Others/Container";
 import { useQuery } from "@tanstack/react-query";
-import { postFetch } from "../../../../services";
+import { postFetch, putFetch } from "../../../../services";
 import endpoints from "../../../../helpers/endpoints.js";
 import roleList from "../../../../helpers/roleList";
 
@@ -20,21 +20,31 @@ const handleRepeatPassword = (e, setRepeatPassword) => {
 	setRepeatPassword(e)
 };
 
-const getFormEntries = (e) => {
+const getFormEntries = (e, userDataState) => {
 	const formData = new FormData(e.target);
 	const entries = Object.fromEntries(formData.entries());
+	entries.id = userDataState.user.id
 	delete entries.repeatpassword;
+	
+	//console.log(entries)
 	return entries
 }
 
-export default function FormSignup( { roleSelection } ) {
+export default function FormSignup( { 
+	roleSelection, 
+	userData, 
+	showAlreadyHaveAccount=false, 
+	showFormTitle=false, 
+} ) {
 	const navigate = useNavigate();
 	const language = useSelector((state) => state.i18nReducer.language);
 	const [password, setPassword] = useState('');
 	const [repeatPassword, setRepeatPassword] = useState('');
 	const [passwordsMatch, setPasswordMatch] = useState(true);
 	const [entriesData, setEntriesData] = useState(null);
+	const [userDataState, setUserDataState] = useState(null);
 	const getSpecificRole = (roleName) => roleList.filter((e)=>e.roleName===roleName)[0]
+	const token = sessionStorage.getItem("token");
 
 	useEffect(() => {
 		if (password === repeatPassword) {
@@ -45,41 +55,74 @@ export default function FormSignup( { roleSelection } ) {
 
 	}, [password, repeatPassword]);
 
-	const url = endpoints.signup
-	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
-		queryKey: ["key-signup"],
-		queryFn: ()=> postFetch(url, entriesData),
+	const urlSignup = endpoints.signup
+	const { refetch: refetchSignupPost } = useQuery({
+		queryKey: ["key-signup-post"],
+		queryFn: ()=> postFetch(urlSignup, entriesData),
 		enabled: false,
 	})
 
+	const { error, refetch: refetchSignupPut } = useQuery({
+		queryKey: ["key-signup-put"],
+		queryFn: ()=> putFetch(urlSignup, entriesData, token),
+		enabled: false,
+	})
+
+	if(error) console.log(error)
 	const handleSignupSubmit = (e) => {
 		e.preventDefault();
 		
-		const entries = getFormEntries(e)
+		const entries = getFormEntries(e, userDataState)
 		entries.roles = [{id: getSpecificRole(roleSelection).id}]
-		console.log(entries)
+
 		setEntriesData(entries)		
 	};
 
 	useEffect(()=>{
+		
 		if(entriesData){
-			refetch()
+			refetchSignupPut()
 				.then((e)=>{
-					navigate(getPathRoutes(language, "home", true))
-					alert("Registrado!");		
+					alert(error ? error : "Actualizado!");
 				})
-				.catch((err)=>console.log(err))
 		}
+
 	},[entriesData])
+
+	useEffect(()=>{
+		if(userDataState){
+			const form = document.querySelector("#signupForm")
+			const formData = new FormData(form)
+			formData.set('name', userDataState.user.name)
+			formData.set('lastname', userDataState.user.lastname)
+			formData.set('email', userDataState.user.email)
+			//console.log(Object.fromEntries(formData.entries()))
+
+			for (let [name, value] of formData.entries()) {
+				const input = form.elements.namedItem(name);
+				if (input) {
+				  input.value = value;
+				}
+			  }
+			  
+			  form.dispatchEvent(new Event('input', { bubbles: true }));
+		}
+	},[userDataState])
+
+	if(userData && !userDataState) {
+		setUserDataState(userData)
+	}
 
 	return (
 		<>
 			{password !== undefined && repeatPassword !== undefined && (
 				<Container>
-					<p className="text-start md:text-center">
-						{i18n[language].pageTitle}
-					</p>
-					<Form handleSubmit={(e) => handleSignupSubmit(e)}>
+					{showFormTitle &&
+						<p className="text-start md:text-center">
+							{i18n[language].pageTitle}
+						</p>
+					}
+					<Form handleSubmit={(e) => handleSignupSubmit(e)} id={'signupForm'} >
 						<Input
 							id={"name"}
 							type={"text"}
@@ -87,8 +130,8 @@ export default function FormSignup( { roleSelection } ) {
 							title={i18n[language].firstNameTitle}
 							isRequired={true}
 							autoFocus={true}
-							value=""
-							onChangeHandler={() => {}}
+							/* value={userData ? userData.user.name : ""}
+							onChangeHandler={userData ? handleState : null} */
 							maxLength="50"
 							pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
 						/>
@@ -99,8 +142,8 @@ export default function FormSignup( { roleSelection } ) {
 							placeholder={i18n[language].lastNamePlaceholder}
 							title={i18n[language].lastNameTitle}
 							isRequired={true}
-							value=""
-							onChangeHandler={() => {}}
+							/* value={userData ? userData.lastname : ""}
+							onChangeHandler={userData ? handleState : null} */
 							maxLength="50"
 							pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
 						/>
@@ -111,45 +154,49 @@ export default function FormSignup( { roleSelection } ) {
 							placeholder={i18n[language].emailPlaceholder}
 							title={i18n[language].emailTitle}
 							isRequired={true}
-							value=""
-							onChangeHandler={() => {}}
+							/* value={userData ? userData.email : ""}
+							onChangeHandler={userData ? handleState : null} */
 							maxLength="50"
 							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 						/>
+						
+						{userData="" &&
+						<>
+							<input
+								className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
+								id={"password"}
+								name={"password"}
+								type={"password"}
+								placeholder={i18n[language].passwordPlaceholder}
+								title={i18n[language].passwordTitle}
+								aria-label="Input field"
+								required={true}
+								minLength="8"
+								maxLength="16"
+								/* pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`} */
+								/* pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" */
+								pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).*$"
+								value={password}
+								onChange={(e)=>handlePassword(e.target.value, setPassword)}
+							/>
 
-						<input
-							className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
-							id={"password"}
-							name={"password"}
-							type={"password"}
-							placeholder={i18n[language].passwordPlaceholder}
-							title={i18n[language].passwordTitle}
-							aria-label="Input field"
-							required={true}
-							minLength="8"
-							maxLength="16"
-							/* pattern={`^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[-+|!¡@#$%^&.{}*"'/()=?!¿'~;,:<>°])[A-Za-z\d-+|!¡@#$%^&.{}*"'/()=?!¿'´~;,:<>°]+$`} */
-							/* pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" */
-							pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
-							value={password}
-							onChange={(e)=>handlePassword(e.target.value, setPassword)}
-						/>
-
-						<input
-							className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
-							id={"repeatpassword"}
-							type={"password"}
-							placeholder={i18n[language].repeatPasswordPlaceholder}
-							title={i18n[language].repeatPasswordTitle}
-							aria-label="Input field"
-							required={true}
-							minLength="8"
-							maxLength="16"
-							pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
-							value={repeatPassword}
-							onChange={(e)=>handleRepeatPassword(e.target.value, setRepeatPassword)}
-						/>
-
+							<input
+								className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
+								id={"repeatpassword"}
+								type={"password"}
+								placeholder={i18n[language].repeatPasswordPlaceholder}
+								title={i18n[language].repeatPasswordTitle}
+								aria-label="Input field"
+								required={true}
+								minLength="8"
+								maxLength="16"
+								pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).*$"
+								value={repeatPassword}
+								onChange={(e)=>handleRepeatPassword(e.target.value, setRepeatPassword)}
+							/>
+						</>
+						}
+						
 						{/* <Select
 							id={"role"}
 							title={i18n[language].roleTitle}
@@ -170,20 +217,22 @@ export default function FormSignup( { roleSelection } ) {
 							isDisabled={passwordsMatch ? false : true}
 						/>
 
-						<p className="text-center">
-							{i18n[language].alreadyHaveAccount}&nbsp;
-							<span
-								className="underline whitespace-nowrap font-bold"
-								role="button"
-								title={i18n[language].signUpLinkTitle}
-								aria-label={i18n[language].signUpLinkTitle}
-								onClick={() =>
-									navigate(getPathRoutes(language, "signin",true))
-								}
-							>
-								{i18n[language].signUpLinkText}
-							</span>
-						</p>
+						{showAlreadyHaveAccount && 
+							(<p className="text-center">
+								{i18n[language].alreadyHaveAccount}&nbsp;
+								<span
+									className="underline whitespace-nowrap font-bold"
+									role="button"
+									title={i18n[language].signUpLinkTitle}
+									aria-label={i18n[language].signUpLinkTitle}
+									onClick={() =>
+										navigate(getPathRoutes(language, "signin",true))
+									}
+								>
+									{i18n[language].signUpLinkText}
+								</span>
+							</p>)
+						}
 
 						<p className="flex justify-center items-center text-red-500 font-bold text-center min-h-[2rem]">
 							{(password!=='' && repeatPassword!=='' && !passwordsMatch) 

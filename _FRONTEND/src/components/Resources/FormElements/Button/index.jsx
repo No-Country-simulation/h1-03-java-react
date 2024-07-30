@@ -9,7 +9,7 @@ export default function Button({
 	title,
 	isDisabled = false,
 	onClickHandler = ()=>{},
-	setClosePopup
+	setClosePopup,
 }) {
 	
 	return (

@@ -6,9 +6,9 @@ export default function PrescriptionsMainComponent() {
 	return (
 		<section className="min-h-screen flex flex-col md:flex-row justify-center items-center md:items-start gap-8 p-10">
 			<div className="flex-[0.5] flex flex-col justify-center items-center m-0">
-				<div className="w-[80vw] lg:w-[75%]">
+				<div className="w-[80vw] md:w-full">
 					<p className="text-start pb-5 pe-5">Buscar receta</p>
-					<div className="flex flex-col gap-5 w-[inherit] md:w-auto">
+					<div className="flex flex-col gap-5 w-[inherit]">
 						<Filter />
 					</div>
 				</div>

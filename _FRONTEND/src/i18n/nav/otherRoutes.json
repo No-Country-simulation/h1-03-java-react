@@ -2,35 +2,17 @@
     "sp": [
         {"logout" :{ "name": "Cerrar sesión", "route": "/cerrar-sesion" }},
         {"signup" :{ "name": "Registrarse", "route": "/registrarse" }},
-
-        {"createPatient" :{ "name": "Crear paciente", "route": "/crear-paciente" }},
-        {"updatePatient" :{ "name": "Actualizar paciente", "route": "/actualizar-paciente" }},
-        {"deletePatient" :{ "name": "Borrar paciente", "route": "/borrar-paciente" }},
-        {"readPatient" :{ "name": "Leer paciente", "route": "/leer-paciente" }},
-        {"createDoctor" :{ "name": "Crear médico", "route": "/crear-medico" }},
-        {"updateDoctor" :{ "name": "Actualizar médico", "route": "/actualizar-medico" }},
-        {"deleteDoctor" :{ "name": "Borrar médico", "route": "/borrar-medico" }},
-        {"readDoctor" :{ "name": "Leer médico", "route": "/leer-medico" }},
-
         {"reserve_appointment" :{ "name": "Reservar turno", "route": "/turnos/reservar-turno" }},
         {"scheduled_appointments" :{ "name": "Turnos agendados", "route": "/turnos/turnos-agendados" }},
-        {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }}
+        {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }},
+        {"create_treatment" :{ "name": "Crear tratamiento", "route": "/tratamientos/crear-tratamiento" }}
     ],
     "en":[
         {"logout" :{ "name": "Logout", "route": "/logout" }},
         {"signup" :{ "name": "Signup", "route": "/signup" }},
-        
-        {"createPatient" :{ "name": "Create patient", "route": "/create-patient" }},
-        {"updatePatient" :{ "name": "Update patient", "route": "/update-patient" }},
-        {"deletePatient" :{ "name": "Delete patient", "route": "/delete-patient" }},
-        {"readPatient" :{ "name": "Read patient", "route": "/read-patient" }},
-        {"createDoctor" :{ "name": "Create doctor", "route": "/create-doctor" }},
-        {"updateDoctor" :{ "name": "Update Doctor", "route": "/update-doctor" }},
-        {"deleteDoctor" :{ "name": "Delete doctor", "route": "/delete-doctor" }},
-        {"readDoctor" :{ "name": "Read doctor", "route": "/read-doctor" }},
-
-        {"reserve_appointment" :{ "name": "Reserve Appointment", "route": "/appointments/reserve-appointment" }},
-        {"scheduled_appointments" :{ "name": "Scheduled Appointments", "route": "/appointments/scheduled-appointments" }},
-        {"modify_appointments" :{ "name": "Modify Appointments", "route": "/appointments/modify-appointments" }}
+        {"reserve_appointment" :{ "name": "Reserve appointment", "route": "/appointments/reserve-appointment" }},
+        {"scheduled_appointments" :{ "name": "Scheduled appointments", "route": "/appointments/scheduled-appointments" }},
+        {"modify_appointments" :{ "name": "Modify appointments", "route": "/appointments/modify-appointments" }},
+        {"create_treatment" :{ "name": "Create treatment", "route": "/treatments/create-treatment" }}
     ]
 }

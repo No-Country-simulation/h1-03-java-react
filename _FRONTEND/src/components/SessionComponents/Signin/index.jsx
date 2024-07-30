@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../Resources/Others/Container";
-import Input from "../../Resources/FormElements/InputLabel/Input";
-import Button from "../../Resources/FormElements/Button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setRole } from "../../../redux/actions/index.js";
 import i18n from "../../../i18n/session/signin/index.json";
 import logo from "../../../assets/svg/logo/logo.svg";
 import getPathRoutes from "../../../helpers/pathroutes";
-import Form from "../../Resources/FormElements/Form";
 import { useQuery } from "@tanstack/react-query";
 import { postFetch } from "../../../services";
 import endpoints from "../../../helpers/endpoints.js";
+import FormSignin from "./FormSignin";
 
 
 export default function Signin() {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const language = useSelector((state) => state.i18nReducer.language);
 	const [entriesData, setEntriesData] = useState(null);
-
-	const url = endpoints.signin
-	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
-		queryKey: ["key-signin"],
-		queryFn: ()=> postFetch(url, entriesData),
-		enabled: false,
-	})
 
 	const handleSigninSubmit = (e) => {
 		e.preventDefault();
@@ -35,6 +26,13 @@ export default function Signin() {
 		setEntriesData(entries)	
 
 	};
+
+	const url = endpoints.signin
+	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
+		queryKey: ["key-signin"],
+		queryFn: ()=> postFetch(url, entriesData),
+		enabled: false,
+	})
 
 	useEffect(()=>{
 		if(entriesData){
@@ -53,6 +51,7 @@ export default function Signin() {
 				.catch((err) => console.log(err));
 		}
 	},[entriesData])
+	
 
 	return (
 		<Container>
@@ -68,50 +67,9 @@ export default function Signin() {
 			/>
 
 			<p>{i18n[language].pageTitle}</p>
-			<Form handleSubmit={(e) => handleSigninSubmit(e)}>
-				<Input
-					id={"email"}
-					type={"email"}
-					placeholder={i18n[language].emailPlaceholder}
-					title={i18n[language].emailTitle}
-					isRequired={true}
-					autoFocus={true}
-					value=""
-					onChangeHandler={() => {}}
-					maxLength="50"
-					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-				/>
+			
+			<FormSignin handleSubmit={handleSigninSubmit} />
 
-				<Input
-					id={"password"}
-					type={"password"}
-					placeholder={i18n[language].passwordPlaceholder}
-					title={i18n[language].passwordTitle}
-					isRequired={true}
-					value=""
-					onChangeHandler={() => {}}
-					minLength="8"
-					maxLength="16"
-					pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$"
-				/>
-
-				<p
-					className="text-end sm:text-center"
-					role="button"
-					title={i18n[language].forgotPasswordTitle}
-					aria-label={i18n[language].forgotPasswordTitle}
-					onClick={() => navigate()}
-				>
-					{i18n[language].forgotPasswordText}
-				</p>
-
-				<Button
-					type="submit"
-					text={i18n[language].buttonSigninText}
-					title={i18n[language].buttonSigninTitle}
-					textColor="#FFF"
-				/>
-			</Form>
 			<p
 				className="text-center"
 				title={i18n[language].dontHaveAccountTitle}

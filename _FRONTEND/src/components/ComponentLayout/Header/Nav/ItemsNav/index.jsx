@@ -59,7 +59,7 @@ const ItemsNav = () => {
 	},[role]) */
 	
 	useEffect(()=>{
-		
+
 		if(role===null){
 			if(data){
 				dispatch(setRole(data.roles[0].roleName))
@@ -70,9 +70,8 @@ const ItemsNav = () => {
 	
 	useEffect(()=>{
 
-		if(!role && token){			
+		if(!role && token){	
 			refetch()
-				.catch((err)=>console.log(err))
 		}	
 
 	},[])

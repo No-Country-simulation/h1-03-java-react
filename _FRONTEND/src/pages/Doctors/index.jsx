@@ -1,9 +1,9 @@
 import React from 'react'
-import DoctorsComponent from '../../components/DoctorsComponents'
+import Dashboard from '../../components/DashboardComponents/DashboardDoctor'
 
 export default function Doctors() {    
 
     return (
-        <DoctorsComponent />
+        <Dashboard />
     )
 }

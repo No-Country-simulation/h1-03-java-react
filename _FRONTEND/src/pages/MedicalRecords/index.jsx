@@ -1,5 +1,5 @@
 import React from 'react'
-import MedicalRecordsComponent from '../../components/MedicalRecords'
+import MedicalRecordsComponent from '../../components/MedicalRecordsComponents'
 
 export default function MedicalRecords() {    
 

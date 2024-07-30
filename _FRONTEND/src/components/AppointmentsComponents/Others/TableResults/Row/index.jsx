@@ -13,7 +13,7 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
     const [modificate, setModificate] = useState(isModificate)
 
     return (
-        <div className="">
+        <div>
             <div className={`grid grid-cols-4 border border-[#5666BF] rounded-3xl ${modificate ? 'rounded-b-none' : ''} transition-all duration-300 overflow-hidden`}>
                 <div className={`flex justify-center items-center gap-5 text-center p-6 transition-colors duration-300 ${isButtonSchedule ? '' : modificate ? '' : 'bg-[#f0efef]'}`}>
                     <img 

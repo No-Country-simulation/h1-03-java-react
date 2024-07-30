@@ -3,9 +3,11 @@ const endpoints = {
     signin: `${urlBase}/users-login`,
     signup: `${urlBase}/users`,
     checkRoleAndToken: `${urlBase}/token/authenticate`,
-    getPatientInfo: `${urlBase}/patients`,
+    patients: `${urlBase}/patients`,
+    doctors: `${urlBase}/doctors`,
 
-    getAllDoctors: `${urlBase}/doctors`,
+    getUserAndDoctorInfo: `${urlBase}/users-doctors`,
+    getUserAndPatientInfo: `${urlBase}/users-patients`,
 }
 
 export default endpoints
