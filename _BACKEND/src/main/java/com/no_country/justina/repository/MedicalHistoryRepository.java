@@ -1,7 +1,6 @@
 package com.no_country.justina.repository;
 
 import com.no_country.justina.model.entities.MedicalHistory;
-import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.model.enums.BloodType;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;

@@ -3,7 +3,6 @@ package com.no_country.justina.service.implementation;
 import com.no_country.justina.model.dto.*;;
 import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.UserEntity;
-import com.no_country.justina.repository.PatientRepository;
 import com.no_country.justina.service.interfaces.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

@@ -37,7 +37,7 @@ public class Indication {
   private LocalDate startDate;
   private String description;
   @Enumerated(EnumType.STRING)
-  @Column(columnDefinition = "VARCHAR(25)")
+  @Column(length = 25)
   private DrugStatus drugStatus;
 
   @ManyToOne
