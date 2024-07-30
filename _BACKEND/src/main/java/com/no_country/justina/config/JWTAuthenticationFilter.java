@@ -56,7 +56,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
       try {
         jwt = authHeader.substring(7);
         if (jwtUtil.isTokenExpired(jwt)) {
-          log.info("el comunismo es empobrecedor");
           filterChain.doFilter(request, response);
         } else {
           email = jwtUtil.extractUsername(jwt);

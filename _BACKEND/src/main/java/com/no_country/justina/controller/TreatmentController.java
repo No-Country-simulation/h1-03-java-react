@@ -31,6 +31,29 @@ public class TreatmentController {
             .body(mapper.map(savedTreatment, TreatmentRes.class));
   }
 
+  @GetMapping("/current-user")
+  public ResponseEntity<?> getAllByMedicalHistory(@RequestParam(defaultValue = "0") int page,
+                                                  @RequestParam(defaultValue = "20") int size,
+                                                  @RequestParam(defaultValue = "id") String sort,
+                                                  @RequestParam(defaultValue = "asc") String direction,
+                                                  Pageable pageable) {
+    Page<Treatment> treatmentsFound = this.treatmentService.getByHistorieForPatient(pageable);
+    Page<TreatmentRes> treatmentsRes = treatmentsFound.map(item -> mapper.map(item, TreatmentRes.class));
+    return ResponseEntity.ok(treatmentsRes);
+  }
+
+  @GetMapping("/historie/{historie}")
+  public ResponseEntity<?> getAllForHistorie(@RequestParam(defaultValue = "0") int page,
+                                             @RequestParam(defaultValue = "20") int size,
+                                             @RequestParam(defaultValue = "id") String sort,
+                                             @RequestParam(defaultValue = "asc") String direction,
+                                             Pageable pageable,
+                                             @PathVariable Long historieId) {
+    Page<Treatment> treatmentsFound = this.treatmentService.getByHistorieForDoctor(historieId, pageable);
+    Page<TreatmentRes> treatmentsRes = treatmentsFound.map(item -> mapper.map(item, TreatmentRes.class));
+    return ResponseEntity.ok(treatmentsRes);
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
     var indicationFound = mapper.map(this.treatmentService.getById(id), Treatment.class);
@@ -47,6 +70,7 @@ public class TreatmentController {
     Page<TreatmentRes> resultDto = result.map(item -> mapper.map(item, TreatmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
+
   @Operation(summary = "Trae los tratamientos paginado y usando filtros.",
           description = "Usa filtros por doctor, especialidad, historia clínica y un período.")
   @GetMapping("filters")

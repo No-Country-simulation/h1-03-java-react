@@ -22,4 +22,6 @@ public interface IMedicalHistoryService {
   void deleteById(Long id);
 
   MedicalHistory getByPatientId(Long id);
+
+  MedicalHistory getByCurrentPatient();
 }

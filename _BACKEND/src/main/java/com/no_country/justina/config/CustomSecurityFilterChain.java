@@ -48,15 +48,21 @@ public class CustomSecurityFilterChain {
                                     "/v3/api-docs/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/doctors/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                            .requestMatchers("/api/v1/medical-histories/current").hasRole("PATIENT")
                             .requestMatchers(
                                     HttpMethod.GET, "/api/v1/medical-histories/{id}",
                                     "/api/v1/shifts/**").hasAnyRole("PATIENT", "DOCTOR")
                             .requestMatchers(
                                     "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
                             .requestMatchers(
+                                    HttpMethod.GET,
+                                    "/api/v1/treatments/current-user")
+                                    .hasRole("PATIENT")
+                            .requestMatchers(
                                     "/api/v1/doctors/**",
                                     "/api/v1/medical-histories/**",
-                                    "/api/v1/shifts/**").hasRole("DOCTOR")
+                                    "/api/v1/shifts/**",
+                                    "/api/v1/treatments/**" ).hasRole("DOCTOR")
                             .requestMatchers(
                                     "/api/v1/patients/**", "/api/v1/appointments/**").hasRole("PATIENT")
                             .anyRequest().authenticated()

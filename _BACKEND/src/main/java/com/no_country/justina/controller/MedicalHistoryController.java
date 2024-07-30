@@ -42,6 +42,12 @@ public class MedicalHistoryController {
     var historyMap = mapper.map(historyFound, MedicalHistoryRes.class);
     return ResponseEntity.ok(historyMap);
   }
+  @GetMapping("/current")
+  public ResponseEntity<?> getCurrent(){
+    MedicalHistory historyFound = this.historyService.getByCurrentPatient();
+    var historyMap = mapper.map(historyFound, MedicalHistoryRes.class);
+    return ResponseEntity.ok(historyMap);
+  }
 
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,

@@ -9,6 +9,11 @@ import java.time.LocalDateTime;
 public interface ITreatmentService {
   Treatment create(Treatment treatment);
   Treatment getById(Long id);
+
+  Page<Treatment> getByHistorieForPatient(Pageable pageable);
+
+  Page<Treatment> getByHistorieForDoctor(Long id, Pageable pageable);
+
   Page<Treatment> getAll(Pageable pageable);
 
   Page<Treatment> getAllByFilters(Pageable pageable,

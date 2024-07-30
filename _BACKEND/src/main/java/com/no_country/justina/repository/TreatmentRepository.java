@@ -17,6 +17,7 @@ import java.util.List;
 
 @Repository
 public interface TreatmentRepository extends JpaRepository<Treatment, Long>, JpaSpecificationExecutor<Treatment> {
+
   default Page<Treatment> findByFilters(
           Pageable pageable,
           Long doctorId,
@@ -42,4 +43,6 @@ public interface TreatmentRepository extends JpaRepository<Treatment, Long>, Jpa
       return builder.and(predicates.toArray(new Predicate[0]));
     }, pageable);
   }
+
+  Page<Treatment> findByMedicalHistory_Id(long id, Pageable pageable);
 }

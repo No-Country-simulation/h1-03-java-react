@@ -89,8 +89,15 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
             .orElseThrow(()->new EntityNotFoundException("Historia clínica no encontrada, id: "+id));
   }
 
+  @Override
+  public MedicalHistory getByCurrentPatient() {
+    UserEntity currentUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    return this.medicalHistoryRepo.findByPatient_User_Id(currentUser.getId())
+            .orElseThrow(()->new EntityNotFoundException("Historia no encontrada para este user, id: "+currentUser));
+  }
+
   private void historyExistById(long id) {
     boolean existHistory = this.medicalHistoryRepo.existsById(id);
-    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id:" + id);
+    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id: " + id);
   }
 }
