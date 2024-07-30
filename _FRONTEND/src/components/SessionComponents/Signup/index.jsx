@@ -10,7 +10,11 @@ export default function Signup() {
 		<div className="w-[inherit] xl:w-full flex justify-evenly m-auto md:pe-5 lg:pe-auto gap-[inherit]">
 			<RolePopup setRoleSelection={setRoleSelection} />
 			<LeftImage />
-			<FormSignup roleSelection={roleSelection} />
+			<FormSignup
+				roleSelection={roleSelection}
+				showAlreadyHaveAccount={true}
+				showFormTitle={true}
+			/>
 		</div>
 	);
 }

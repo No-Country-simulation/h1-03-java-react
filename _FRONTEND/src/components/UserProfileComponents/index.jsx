@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import EditMyInfoPatients from '../PatientsComponents/Crud/EditMyInfoPatients'
-import EditMyInfoDoctors from '../DoctorsComponents/Crud/EditMyInfoDoctors'
+import EditMyInfoPatients from './EditMyInfo/EditMyInfoPatients'
+import EditMyInfoDoctors from './EditMyInfo/EditMyInfoDoctors'
 import DeleteAccount from './DeleteAccount';
 import { useSelector } from 'react-redux';
 import endpoints from '../../helpers/endpoints';
@@ -21,7 +21,10 @@ export default function UserProfileMainComponent() {
 	})
 
     useEffect(()=>{
-        refetch()
+        if (!role) {
+            refetch()
+        }
+
     },[data])
 
     return (

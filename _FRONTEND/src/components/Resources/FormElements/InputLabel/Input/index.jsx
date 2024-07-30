@@ -9,7 +9,7 @@ export default function Input({
 	isRequired = false,
 	autoFocus = false,
 	value = "",
-	onChangeHandler = {},
+	onChangeHandler = "",
 	isChecked = null,
 	minLength = "3",
 	maxLength = "50",
@@ -52,7 +52,7 @@ export default function Input({
 					autoCapitalize="off"
 					spellCheck="false"
 					autoFocus={autoFocus}
-					onChange={(e) => onChangeHandler(e.target.value)}
+					onChange={onChangeHandler === "" ? ()=>{} : (e) => onChangeHandler(e) }
 					checked={isChecked}
 					{...(value === "" ? {} : (value = { value }))}
 				/>

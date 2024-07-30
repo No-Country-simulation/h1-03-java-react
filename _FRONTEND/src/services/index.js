@@ -1,5 +1,4 @@
 export const fetchData = async (url, options) => {
-    
     if (url && options) {
         try{
             const res = await fetch(url, options)
@@ -13,11 +12,12 @@ export const fetchData = async (url, options) => {
     }
 }
 
-export const postFetch = async (url, data) => {
+export const postFetch = async (url, data, token=null) => {
     
     const options = {
         method: "POST",
         headers: {
+            ...(token ? {"Authorization": `Bearer ${token}`} : {}),
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
@@ -31,7 +31,7 @@ export const getFetch = async (url, token) => {
         const options = {
             method: "GET",
             headers: {
-                'Authorization': `Bearer ${token}`,
+                "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
             //body: JSON.stringify(token),
@@ -43,12 +43,25 @@ export const getFetch = async (url, token) => {
     }
 }
 
+export const putFetch = async (url, data, token) => {
+    const options = {
+        method: "PUT",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    };
+
+    return fetchData(url, options)
+}
+
 export const deleteFetch = async (url) => {
 
     const options = {
         method: "DELETE",
         headers: {
-            'Authorization': `Bearer ${token}`,
+            "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json",
         },
         //body: JSON.stringify(token),

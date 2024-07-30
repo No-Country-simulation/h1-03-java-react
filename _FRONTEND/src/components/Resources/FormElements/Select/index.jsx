@@ -16,7 +16,7 @@ export default function Select({
 	};
 
 	return (
-		<div className="text-center flex flex-col gap-3 justify-center items-center mb-3">
+		<div className="text-center flex flex-col gap-3 justify-center items-center mb-3 flex-1">
 			{hasLabel && (
 				<Label id={id} title={title} />
 			)}
