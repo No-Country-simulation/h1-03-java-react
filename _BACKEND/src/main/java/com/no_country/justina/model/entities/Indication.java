@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -34,7 +34,7 @@ public class Indication {
   private int frequency;
   @Column(columnDefinition = "TINYINT")
   private int duration;
-  private LocalDate startDate;
+  private LocalDateTime startDate;
   private String description;
   @Enumerated(EnumType.STRING)
   @Column(length = 25)

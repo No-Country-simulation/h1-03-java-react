@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -78,7 +78,7 @@ public class IndicationServiceImp implements IIndicationService {
 
   private void verifyAllHaveValidDate(Set<Indication> indications) {
     indications.forEach(indication->{
-      if(indication.getStartDate().isBefore(LocalDate.now())){
+      if(indication.getStartDate().isBefore(LocalDateTime.now())){
         throw new IllegalArgumentException("Algunas indicaciones tienen fechas en tiempo pasado");
       }
     });
