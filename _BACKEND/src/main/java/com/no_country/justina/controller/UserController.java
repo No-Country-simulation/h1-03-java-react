@@ -3,6 +3,7 @@ package com.no_country.justina.controller;
 import com.no_country.justina.model.dto.RoleRes;
 import com.no_country.justina.model.dto.UserReq;
 import com.no_country.justina.model.dto.UserRes;
+import com.no_country.justina.model.dto.UserUpdateReq;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.interfaces.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -79,7 +80,7 @@ public class UserController {
                     "sino devuelve los datos de usuario que fueron actualizados"
     )
     @PutMapping()
-    public ResponseEntity<UserRes> update(@RequestBody @Valid UserReq userReq) {
+    public ResponseEntity<UserRes> update(@RequestBody @Valid UserUpdateReq userReq) {
         var user = userService.update(modelMapper.map(userReq, UserEntity.class));
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.OK);
     }
