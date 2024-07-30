@@ -41,17 +41,27 @@ public class PatientServiceImp implements IPatientService {
 
   @Override
   public Patient update(Patient patient) {
-    this.verifyPatientExist(patient.getIdPatient());
-    this.patientRepo.updateById(
-            patient.getDocIdentity(),
-            patient.getPhone(),
-            patient.getAddress(),
-            patient.getBirthdate(),
-            patient.getMaritalStatus(),
-            patient.getGenre(),
-            patient.getIdPatient()
-    );
-    return getById(patient.getIdPatient());
+    Patient currentPatient = this.getById(patient.getIdPatient());
+    
+    if(patient.getDocIdentity() != null){
+      currentPatient.setDocIdentity(patient.getDocIdentity());
+    }
+    if(patient.getPhone() != null){
+      currentPatient.setPhone(patient.getPhone());
+    }
+    if(patient.getAddress() != null){
+      currentPatient.setAddress(patient.getAddress());
+    }
+    if(patient.getBirthdate() != null){
+      currentPatient.setBirthdate(patient.getBirthdate());
+    }
+    if(patient.getMaritalStatus() != null){
+      currentPatient.setMaritalStatus(patient.getMaritalStatus());
+    }
+    if(patient.getGenre() != null){
+      currentPatient.setGenre(patient.getGenre());
+    }
+    return this.patientRepo.save(currentPatient);
   }
 
   @Override

@@ -10,15 +10,16 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UserAndPatientService implements IUserAndPatientService {
     private final IUserService userService;
     private final IPatientService patientService;
-    private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
+    @Transactional
     @Override
     public UserAndPatientRes update(UserEntity user, Patient patient) {
         UserRes userReq = modelMapper.map(userService.update(user), UserRes.class);
