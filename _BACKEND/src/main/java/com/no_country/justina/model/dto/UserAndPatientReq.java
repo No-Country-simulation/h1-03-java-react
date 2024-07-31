@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserAndPatientReq {
     private UserReq user;
-    private PatientReq patient;
+    private PatientUpdateReq patient;
 }

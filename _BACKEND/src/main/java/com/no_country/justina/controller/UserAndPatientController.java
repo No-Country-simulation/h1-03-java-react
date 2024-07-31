@@ -38,6 +38,7 @@ public class UserAndPatientController {
 
         return new ResponseEntity<>(modelMapper.map(user, UserAndPatientRes.class), HttpStatus.OK);
     }
+
     @Operation(summary = "Trae al paciente autenticado")
     @GetMapping()
     public ResponseEntity<UserAndPatientRes> getUserAndDoctor() {

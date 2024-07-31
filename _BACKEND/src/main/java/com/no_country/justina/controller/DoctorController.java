@@ -48,7 +48,8 @@ public class DoctorController {
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Actualiza un doctor", description = "Disponible solo para el rol DOCTOR")
+    @Operation(summary = "Actualiza un doctor", description = "Disponible solo para el rol DOCTOR",
+    security = @SecurityRequirement(name = "bearer-key"))
     @PutMapping()
     public ResponseEntity<DoctorRes> update(@RequestBody @Valid DoctorReq doctorReq) {
         var doctor = doctorService.update(modelMapper.map(doctorReq, Doctor.class));
