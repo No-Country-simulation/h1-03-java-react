@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/users-doctors")
-@Tag(name = "Usuario doctor")
+@Tag(name = "Usuario doctor", description = "Disponible solo para el rol DOCTOR")
 @SecurityRequirement(name = "bearer-key")
 public class UserAndDoctorController {
     private final IUserAndDoctorService userAndDoctorService;

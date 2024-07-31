@@ -2,6 +2,8 @@ package com.no_country.justina.controller;
 
 import com.no_country.justina.model.dto.RoleRes;
 import com.no_country.justina.service.interfaces.IRoleService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -18,10 +20,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/roles")
+@Tag(name="Roles")
 public class RoleController {
     private final IRoleService roleService;
     private final ModelMapper modelMapper;
 
+    @Operation(summary = "Trae todos los roles.")
     @GetMapping()
     public ResponseEntity<Page<RoleRes>> getAll(Pageable pageable) {
         List<RoleRes> rolesRes = roleService.getAll(pageable).stream()

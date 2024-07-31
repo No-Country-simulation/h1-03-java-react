@@ -42,7 +42,7 @@ public class SpecialtyController {
     var specialtyFound = mapper.map(this.specialtyService.getById(id), Specialty.class);
     return ResponseEntity.ok(specialtyFound);
   }
-  @Operation(summary = "crea una especialidad")
+  @Operation(summary = "trae todas las especialidades paginadas")
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
@@ -53,14 +53,14 @@ public class SpecialtyController {
     Page<SpecialtyRes> resultDto = result.map(item -> mapper.map(item, SpecialtyRes.class));
     return ResponseEntity.ok(resultDto);
   }
-
+  @Operation(summary = "Actualiza una especialidad por id", description = "Solo disponible para el ADMIN. No testear",security = @SecurityRequirement(name = "bearer key"))
   @PutMapping
   public ResponseEntity<?> updateById(@RequestBody SpecialtyReq treatmentReq) {
     var newSpecialty = mapper.map(treatmentReq, Specialty.class);
     var specialtyUpdated = this.specialtyService.update(newSpecialty);
     return ResponseEntity.ok(mapper.map(specialtyUpdated, SpecialtyRes.class));
   }
-
+  @Operation(summary = "Elimina una especialidad por id", description = "Solo disponible para el ADMIN. No testear",security = @SecurityRequirement(name = "bearer key"))
   @DeleteMapping("/{id}")
   public ResponseEntity<?> deleteById(@PathVariable long id) {
     this.specialtyService.deleteById(id);

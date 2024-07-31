@@ -5,6 +5,8 @@ import com.no_country.justina.model.dto.IndicationRes;
 import com.no_country.justina.model.entities.Indication;
 import com.no_country.justina.service.interfaces.IIndicationService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,10 +24,13 @@ import java.util.stream.Collectors;
 @RequestMapping("${api.base-url}/indications")
 @RequiredArgsConstructor
 @Slf4j
+@Tag(name = "Indicación Farmacológica")
+@SecurityRequirement(name = "bearer-key")
 public class IndicationController {
   private final IIndicationService indicationService;
   private final ModelMapper mapper;
 
+  @Operation(summary = "Crea una indicación", description = "Disponible solo para DOCTOR")
   @PostMapping
   public ResponseEntity<?> create(@RequestBody @Valid IndicationReq indicationReq) {
     Indication newIndication = mapper.map(indicationReq, Indication.class);
@@ -34,9 +39,10 @@ public class IndicationController {
             .status(HttpStatus.CREATED)
             .body(mapper.map(savedIndication, IndicationRes.class));
   }
-  @Operation(summary = "Puedes crear un conjunto de citas a la vez.",
+
+  @Operation(summary = "Puedes crear un conjunto de indicaciones.",
   description = "Permite crear multiples indicaciones, verificando que la fecha de inicio sea posterior a la actual" +
-          "y todas estén asociadas a la misma receta.")
+          "y todas estén asociadas a la misma receta. Disponible solo para DOCTOR")
   @PostMapping("/group")
   public ResponseEntity<?> createAll(@RequestBody @Valid Set<@Valid IndicationReq> indicationsReq) {
     Set<Indication> indications = indicationsReq.stream()
@@ -51,12 +57,15 @@ public class IndicationController {
                             .collect(Collectors.toSet()));
   }
 
+  @Operation(summary = "Trae una indicación por su id.", description = "Disponible solo para DOCTOR")
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
     var indicationFound = mapper.map(this.indicationService.getById(id), IndicationRes.class);
     return ResponseEntity.ok(indicationFound);
   }
 
+  @Operation(summary = "Trae todas las indicaciones paginadas.",
+          description = "Disponible solo para DOCTOR")
   @GetMapping
   public ResponseEntity<?> getAll(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "20") int size,
@@ -68,17 +77,17 @@ public class IndicationController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @PutMapping
-  public ResponseEntity<?> updateById(@RequestBody @Valid IndicationReq indicationReq) {
-    var newIndication = mapper.map(indicationReq, Indication.class);
-    var indicationUpdated = this.indicationService.update(newIndication);
-    return ResponseEntity.ok(mapper.map(indicationUpdated, IndicationRes.class));
-  }
-
-  @DeleteMapping("/{id}")
-  public ResponseEntity<?> deleteById(@PathVariable long id) {
-    this.indicationService.deleteById(id);
-    return ResponseEntity.ok("Indicación eliminada con éxito, id:" + id);
-  }
+//  @PutMapping
+//  public ResponseEntity<?> updateById(@RequestBody @Valid IndicationReq indicationReq) {
+//    var newIndication = mapper.map(indicationReq, Indication.class);
+//    var indicationUpdated = this.indicationService.update(newIndication);
+//    return ResponseEntity.ok(mapper.map(indicationUpdated, IndicationRes.class));
+//  }
+//
+//  @DeleteMapping("/{id}")
+//  public ResponseEntity<?> deleteById(@PathVariable long id) {
+//    this.indicationService.deleteById(id);
+//    return ResponseEntity.ok("Indicación eliminada con éxito, id:" + id);
+//  }
 
 }

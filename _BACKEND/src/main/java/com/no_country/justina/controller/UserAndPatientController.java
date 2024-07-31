@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/users-patients")
-@Tag(name = "Usuario Paciente")
+@Tag(name = "Usuario Paciente", description = "Disponible solo para el rol PATIENT ")
 @SecurityRequirement(name = "bearer-key")
 public class UserAndPatientController {
     private final IUserAndPatientService userAndPatientService;
