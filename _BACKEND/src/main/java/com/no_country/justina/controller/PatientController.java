@@ -3,7 +3,9 @@ package com.no_country.justina.controller;
 import com.no_country.justina.model.dto.PatientReq;
 import com.no_country.justina.model.dto.PatientRes;
 import com.no_country.justina.model.dto.PatientUpdateReq;
+import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Patient;
+import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import com.no_country.justina.service.interfaces.IPatientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "bearer-key")
 public class PatientController {
   private final IPatientService patientServ;
+  private final IMedicalHistoryService historyService;
   private final ModelMapper mapper;
 
   @PostMapping
@@ -31,6 +34,9 @@ public class PatientController {
   public ResponseEntity<?> create(@RequestBody @Valid PatientReq patientReq) {
     Patient newPatient = mapper.map(patientReq, Patient.class);
     Patient savedPatient = this.patientServ.create(newPatient);
+    MedicalHistory newHistory = mapper.map(patientReq, MedicalHistory.class);
+    newHistory.setPatient(savedPatient);
+    this.historyService.create(newHistory);
     return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(mapper.map(savedPatient, PatientRes.class));
