@@ -1,5 +1,5 @@
 import React from "react";
-import doctor from "../../../../assets/svg/icons/doctorDashboard.svg";
+import doctor from "../../../../assets/svg/icons/doctorDashboardDoctor.svg";
 
 export default function index() {
   return (

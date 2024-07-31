@@ -1,7 +1,7 @@
 import React from "react";
-import medicalAppointment from "../../../../assets/svg/icons/medicalAppointmentDashboard.svg";
-import clinicalHistories from "../../../../assets/svg/icons/clinicalHistoriesDashboard.svg";
-import appointments from "../../../../assets/svg/icons/appointmentsDashboard.svg";
+import medicalAppointment from "../../../../assets/svg/icons/medicalAppointmentDashboardDoctor.svg";
+import clinicalHistories from "../../../../assets/svg/icons/clinicalHistoriesDashboardDoctor.svg";
+import appointments from "../../../../assets/svg/icons/appointmentsDashboardDoctor.svg";
 
 export default function index() {
   return (

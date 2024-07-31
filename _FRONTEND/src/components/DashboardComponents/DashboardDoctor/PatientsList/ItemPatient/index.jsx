@@ -1,6 +1,6 @@
 import React from "react";
-import patient from "../../../../../assets/svg/icons/patientDashboard.svg";
-import sch from "../../../../../assets/svg/others/search.svg";
+import patient from "../../../../../assets/svg/icons/patientDashboardDoctor.svg";
+import search from "../../../../../assets/svg/others/search.svg";
 
 export default function index() {
   return (
@@ -34,7 +34,7 @@ export default function index() {
           </div>
           <div className="flex justify-center">
             <img
-              src={sch}
+              src={search}
               alt="icono de busqueda"
               aria-label=""
               title=""
