@@ -7,6 +7,7 @@ import com.no_country.justina.service.interfaces.IPrescriptionService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -43,11 +44,29 @@ public class PrescriptionController {
                                   @RequestParam(defaultValue = "id") String sort,
                                   @RequestParam(defaultValue = "asc") String direction,
                                   Pageable pageable) {
-    return ResponseEntity.ok(this.prescriptionService.getAll(pageable));
+    Page<Prescription> prescriptions = this.prescriptionService.getAll(pageable);
+    Page<PrescriptionRes> prescriptionsRes = prescriptions.map(item->mapper.map(item, PrescriptionRes.class));
+    return ResponseEntity.ok(prescriptionsRes);
+  }
+
+  @GetMapping("/current-user")
+  public ResponseEntity<?> getAllCurrent(@RequestParam(defaultValue = "0") int page,
+                                         @RequestParam(defaultValue = "20") int size,
+                                         @RequestParam(defaultValue = "id") String sort,
+                                         @RequestParam(defaultValue = "asc") String direction,
+                                         Pageable pageable,
+                                         @RequestParam(required = false) Long doctorId,
+                                         @RequestParam(required = false) Long specialtyId,
+                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
+
+    Page<Prescription> prescriptions = this.prescriptionService.getAllCurrent(pageable, doctorId,specialtyId, start, end );
+    Page<PrescriptionRes> prescriptionsRes = prescriptions.map(item->mapper.map(item, PrescriptionRes.class));
+    return ResponseEntity.ok(prescriptionsRes);
   }
 
   @Operation(summary = "Trae todas las recetas por filtros y paginadas.",
-  description = "Usa filtros como id del doctor, paciente, especialidad y por periodo de creación.")
+          description = "Usa filtros como id del doctor, paciente, especialidad y por periodo de creación.")
   @GetMapping("/filter")
   public ResponseEntity<?> getAllByFilters(@RequestParam(defaultValue = "0") int page,
                                            @RequestParam(defaultValue = "20") int size,

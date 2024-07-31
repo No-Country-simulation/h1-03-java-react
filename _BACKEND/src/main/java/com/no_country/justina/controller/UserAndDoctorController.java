@@ -6,6 +6,8 @@ import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.interfaces.IUserAndDoctorService;
 import com.no_country.justina.service.interfaces.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/users-doctors")
+@Tag(name = "Usuario doctor")
+@SecurityRequirement(name = "bearer-key")
 public class UserAndDoctorController {
     private final IUserAndDoctorService userAndDoctorService;
     private final ModelMapper modelMapper;
@@ -40,7 +44,7 @@ public class UserAndDoctorController {
                 modelMapper.map(userAndDoctorReq.getDoctor(), Doctor.class));
         return new ResponseEntity<>(modelMapper.map(user, UserAndDoctorRes.class), HttpStatus.OK);
     }
-
+    @Operation(summary = "Trae al usuario doctor autenticado")
     @GetMapping()
     public ResponseEntity<UserAndDoctorRes> getUserAndDoctor() {
         return new ResponseEntity<>(userAndDoctorService.get(), HttpStatus.OK);

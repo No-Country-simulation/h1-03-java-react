@@ -5,6 +5,8 @@ import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.interfaces.IUserAndPatientService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/users-patients")
+@Tag(name = "Usuario Paciente")
+@SecurityRequirement(name = "bearer-key")
 public class UserAndPatientController {
     private final IUserAndPatientService userAndPatientService;
     private final ModelMapper modelMapper;
@@ -34,7 +38,7 @@ public class UserAndPatientController {
 
         return new ResponseEntity<>(modelMapper.map(user, UserAndPatientRes.class), HttpStatus.OK);
     }
-
+    @Operation(summary = "Trae al paciente autenticado")
     @GetMapping()
     public ResponseEntity<UserAndPatientRes> getUserAndDoctor() {
         return new ResponseEntity<>(userAndPatientService.get(), HttpStatus.OK);

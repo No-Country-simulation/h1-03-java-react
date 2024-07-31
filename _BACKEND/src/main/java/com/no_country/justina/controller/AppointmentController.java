@@ -6,6 +6,8 @@ import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.service.interfaces.IAppointmentService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("${api.base-url}/appointments")
 @RequiredArgsConstructor
+@Tag(name = "Turnos")
+@SecurityRequirement(name = "bearer-key")
 public class AppointmentController {
   private final IAppointmentService appointmentService;
   private final ModelMapper mapper;

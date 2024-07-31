@@ -4,6 +4,7 @@ import com.no_country.justina.model.dto.AdminReq;
 import com.no_country.justina.model.dto.AdminRes;
 import com.no_country.justina.model.entities.Admin;
 import com.no_country.justina.service.interfaces.IAdminService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("${api.base-url}/admins")
 @RequiredArgsConstructor
+@Tag(name = "Admin", description = "Falta implementar funcionalidad, no testear.")
 public class AdminController {
   private final IAdminService adminService;
   private final ModelMapper mapper;
