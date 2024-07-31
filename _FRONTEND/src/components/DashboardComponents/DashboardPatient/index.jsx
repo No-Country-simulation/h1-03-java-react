@@ -2,6 +2,7 @@ import React from "react";
 import NextAppointment from "../../AppointmentsComponents/AppointmentsPatients/AppointmentsMain/NextAppointment";
 import TreatamentMonitoring from "./TreatmentMonitoring";
 import MedicationNotifications from "./MedicationNotifications";
+import Calendar from "./Calendar"
 
 export default function DashboardPatient() {
   return (
@@ -17,6 +18,7 @@ export default function DashboardPatient() {
               </p>
               <NextAppointment />
             </div>
+            <Calendar />
           </div>
           <div className="flex flex-col gap-10"></div>
         </div>
