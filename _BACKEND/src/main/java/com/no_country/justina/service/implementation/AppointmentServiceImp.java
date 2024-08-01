@@ -88,8 +88,7 @@ public class AppointmentServiceImp implements IAppointmentService {
                                                       Integer status,
                                                       LocalDateTime start,
                                                       LocalDateTime end) {
-    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    Patient patientAuth = this.patientService.getByUserId(user.getId());
+    Patient patientAuth = this.getAuthPatient();
     return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, start, end);
   }
 
@@ -161,6 +160,14 @@ public class AppointmentServiceImp implements IAppointmentService {
     return this.appointmentRepo.findByShift_Id(id);
   }
 
+  @Override
+  public Appointment getCloseByCurrentUser() {
+    Patient currentPatient = this.getAuthPatient();
+    var closeAppointment = this.appointmentRepo.getCloseByPatientAndDate(currentPatient.getIdPatient(), LocalDateTime.now());
+    return closeAppointment.orElseThrow(
+            ()-> new AppointmentException("No hay citas futuras para el paciente con id:"+currentPatient.getIdPatient()));
+  }
+
   private void verifyAppointmentExist(long id) {
     boolean exist = this.appointmentRepo.existsById(id);
     if (!exist) throw new EntityNotFoundException("Cita no encontrado, id: " + id);
@@ -207,5 +214,10 @@ public class AppointmentServiceImp implements IAppointmentService {
     if (response != 1) {
       throw new AppointmentException("Solo un registro debe ser afectado por la actualización. Registro afectado: " + response);
     }
+  }
+
+  private Patient getAuthPatient(){
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    return this.patientService.getByUserId(user.getId());
   }
 }

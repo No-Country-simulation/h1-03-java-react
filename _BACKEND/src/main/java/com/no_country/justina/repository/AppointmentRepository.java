@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>, JpaSpecificationExecutor<Appointment> {
@@ -28,7 +29,12 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   @Query("select a from Appointment a where a.patient.id = :patientId and DATE(a.date) = :date")
   List<Appointment> getAllByDayAndPatient(long patientId, LocalDate date);
 
-
+  @Query(value="select * from Appointment a where " +
+          "a.date > :time and " +
+          "a.patient_id = :patientId and " +
+          "a.appointment_status = 'PENDING' order by a.date ASC limit 1",
+  nativeQuery = true)
+  Optional<Appointment> getCloseByPatientAndDate(long patientId, LocalDateTime time);
 
   @Transactional
   @Modifying
@@ -59,7 +65,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
       if(start != null && end != null){
         predicates.add(builder.between(root.get("date"), start, end));
       }
-//      predicates.add(builder.between(root.get("date"), start, end));
       return builder.and(predicates.toArray(new Predicate[0]));
 
     }, pageable);

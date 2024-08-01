@@ -44,4 +44,6 @@ public interface IAppointmentService {
   void deleteById(Long id);
 
   List<Appointment> getByShift(long id);
+
+  Appointment getCloseByCurrentUser();
 }

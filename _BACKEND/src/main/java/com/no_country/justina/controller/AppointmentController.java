@@ -111,6 +111,14 @@ public class AppointmentController {
     return ResponseEntity.ok(resultDto);
   }
 
+  @Operation(summary = "Trae el turno mas próximo a la fecha actual",
+          description = "Solo disponible para el rol PATIENT")
+  @GetMapping("/current-user/close")
+  public ResponseEntity<?> getLastByCurrentUser(){
+    Appointment nextAppointment = this.appointmentService.getCloseByCurrentUser();
+    return ResponseEntity.ok(mapper.map(nextAppointment, AppointmentRes.class));
+  }
+
 //  @Operation(summary = "Actualiza una turno",
 //  description = "Actualiza la turno, aquí es necesario pasar el id en el json.")
 //  @PutMapping
