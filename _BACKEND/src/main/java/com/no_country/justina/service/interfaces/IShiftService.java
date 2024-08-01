@@ -27,4 +27,6 @@ public interface IShiftService {
                                                     LocalDateTime start,
                                                     LocalDateTime end);
   void updateAppointmentAvailable(long idShift, int quantity);
+
+  Shift getCloserByDoctor();
 }

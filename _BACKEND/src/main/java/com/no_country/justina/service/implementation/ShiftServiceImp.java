@@ -3,6 +3,7 @@ package com.no_country.justina.service.implementation;
 import com.no_country.justina.exception.ShiftException;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.model.entities.Shift;
+import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.repository.ShiftRepository;
 import com.no_country.justina.service.interfaces.IDoctorService;
 import com.no_country.justina.service.interfaces.IShiftService;
@@ -10,6 +11,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -122,6 +124,14 @@ public class ShiftServiceImp implements IShiftService {
     if (result == 0) {
       throw new ShiftException("Ningún registro de turnos fue actualizado.");
     }
+  }
+
+  @Override
+  public Shift getCloserByDoctor(){
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Doctor doctorAuth = this.doctorService.getByUserId(user.getId());
+    var closeShift = this.shiftRepository.getCloseByDoctorAndDate(doctorAuth.getId(), LocalDateTime.now());
+    return closeShift.orElseThrow(()->new ShiftException("No hay turnos próximos."));
   }
 
   private void verifyShiftExist(long id) {

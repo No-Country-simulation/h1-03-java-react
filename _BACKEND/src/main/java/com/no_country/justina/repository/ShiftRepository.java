@@ -1,5 +1,6 @@
 package com.no_country.justina.repository;
 
+import com.no_country.justina.model.entities.Appointment;
 import com.no_country.justina.model.entities.Shift;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecificationExecutor<Shift> {
@@ -30,8 +32,12 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
   @Query("SELECT s FROM Shift s WHERE s.specialty.name = :specialty AND YEAR(s.startDate) = :year AND MONTH(s.startDate) = :month")
   List<Shift> findBySpecialtyAndMonth(String specialty, int year, int month);
 
-  @Query("select s from Shift s where s.startDate between ?1 and ?2")
-  Page<Shift> findShiftsMonthBetween(LocalDateTime startDateStart, LocalDateTime startDateEnd, Pageable pageable);
+  @Query(value="select * from Shift s where " +
+          "s.end_date > :time and " +
+          "s.doctor_id = :doctorId " +
+          "order by s.end_date ASC limit 1",
+          nativeQuery = true)
+  Optional<Shift> getCloseByDoctorAndDate(long doctorId, LocalDateTime time);
 
   @Transactional
   @Modifying

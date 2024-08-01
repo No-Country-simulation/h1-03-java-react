@@ -114,6 +114,15 @@ public class ShiftController {
     var shiftsDto = shifts.stream().map(shift->mapper.map(shift, ShiftRes.class));
     return ResponseEntity.ok(shiftsDto);
   }
+
+  @Operation(summary = "Trae el turno medico mas próximo del usuario autenticado.",
+  description = "Disponible solo para el rol DOCTOR")
+  @GetMapping("/current-user/close")
+  public ResponseEntity<?> getCloseByCurrentUser(){
+    var shiftFound = this.shiftService.getCloserByDoctor();
+    return ResponseEntity.ok(mapper.map(shiftFound, ShiftRes.class));
+  }
+
 //  @Operation(summary = "Actualiza un turno", description = "Actualiza usando el id del body. No es un endpoint funcional no testear.")
 //  @PutMapping
 //  public ResponseEntity<?> updateById(@RequestBody ShiftReq shiftReq) {
