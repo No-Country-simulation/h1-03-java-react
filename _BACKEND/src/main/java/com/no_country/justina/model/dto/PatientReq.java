@@ -14,14 +14,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientReq {
-       private Long id;
+       private Long idPatient;
        @NotBlank private String docIdentity;
        @NotBlank private String phone;
        @NotBlank private String address;
        @NotNull private LocalDate birthdate;
        @NotNull private Integer maritalStatus;
        @NotNull private Integer genre;
-       private String bloodType;
-       private String job;
-       private String religion;
 }

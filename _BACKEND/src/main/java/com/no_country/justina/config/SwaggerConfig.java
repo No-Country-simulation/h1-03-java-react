@@ -6,8 +6,10 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 
 /**
  *     Configuracion de Api Swagger
@@ -32,5 +34,13 @@ public class SwaggerConfig {
                 .components(new Components()
                         .addSecuritySchemes("bearer-key",
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
+    }
+
+    public SecurityScheme apiKeySecuritySchema() {
+        return new SecurityScheme()
+                .name("authorization")
+                .description("Description about the TOKEN")
+                .in(SecurityScheme.In.HEADER)
+                .type(SecurityScheme.Type.APIKEY);
     }
 }

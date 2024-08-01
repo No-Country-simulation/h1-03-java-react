@@ -20,4 +20,10 @@ public interface IPrescriptionService {
 
   Prescription update(Prescription prescription);
   void deleteById(Long id);
+
+  Page<Prescription> getAllCurrent(Pageable pageable,
+                                   Long doctorId,
+                                   Long specialtyId,
+                                   LocalDateTime start,
+                                   LocalDateTime end);
 }

@@ -43,22 +43,42 @@ public class CustomSecurityFilterChain {
             .authorizeHttpRequests(auth ->
                     auth.requestMatchers("/api/v1/users-login",
                                     "/api/v1/roles/**",
-                                    "/api/v1/specialties/**",
                                     "/swagger-ui/**",
                                     "/v3/api-docs/**").permitAll()
+                            .requestMatchers(HttpMethod.GET, "/api/v1/specialties/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/api/v1/doctors/**").permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+
+                            .requestMatchers(
+                                    HttpMethod.GET, "/api/v1/medical-histories/current"
+                            ).hasRole("PATIENT")
                             .requestMatchers(
                                     HttpMethod.GET, "/api/v1/medical-histories/{id}",
                                     "/api/v1/shifts/**").hasAnyRole("PATIENT", "DOCTOR")
                             .requestMatchers(
+                                    HttpMethod.GET,"/api/v1/shifts/filter")
+                            .hasAnyRole("PATIENT", "DOCTOR")
+                            .requestMatchers(
                                     "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
+                            .requestMatchers(
+                                    HttpMethod.GET,
+                                    "/api/v1/treatments/current-user")
+                            .hasRole("PATIENT")
                             .requestMatchers(
                                     "/api/v1/doctors/**",
                                     "/api/v1/medical-histories/**",
-                                    "/api/v1/shifts/**").hasRole("DOCTOR")
+                                    "/api/v1/shifts/**",
+                                    "/api/v1/treatments/**",
+                                    "/api/v1/users-doctors/**",
+                                    "/api/v1/appointments/filter",
+                                    "/api/v1/appointments/shifts/{id}"
+                            ).hasRole("DOCTOR")
                             .requestMatchers(
-                                    "/api/v1/patients/**", "/api/v1/appointments/**").hasRole("PATIENT")
+                                    "/api/v1/patients/**",
+                                    "/api/v1/appointments/**",
+                                    "/api/v1/users-patients/**"
+                            ).hasRole("PATIENT")
+                            .requestMatchers("/api/v1/specialties/**").hasRole("ADMIN")
                             .anyRequest().authenticated()
             )
             .sessionManagement(session ->
@@ -73,6 +93,7 @@ public class CustomSecurityFilterChain {
 
   /**
    * This method customize the message for unauthorized access.
+   *
    * @return AuthenticationEntryPoint
    */
   @Bean
@@ -82,10 +103,12 @@ public class CustomSecurityFilterChain {
       response.getWriter().write("Unauthorized: Please log in to access this resource.");
     };
   }
+
   /**
    * This method handled the logic associated with exceptions for insufficient permissions.
+   *
    * @return AccessDeniedHandler
-   * */
+   */
   @Bean
   public AccessDeniedHandler accessDeniedHandler() {
     return (request, response, accessDeniedException) -> {

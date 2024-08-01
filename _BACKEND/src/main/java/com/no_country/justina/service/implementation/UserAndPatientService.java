@@ -3,22 +3,22 @@ package com.no_country.justina.service.implementation;
 import com.no_country.justina.model.dto.*;;
 import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.UserEntity;
-import com.no_country.justina.repository.PatientRepository;
 import com.no_country.justina.service.interfaces.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class UserAndPatientService implements IUserAndPatientService {
     private final IUserService userService;
     private final IPatientService patientService;
-    private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
+    @Transactional
     @Override
     public UserAndPatientRes update(UserEntity user, Patient patient) {
         UserRes userReq = modelMapper.map(userService.update(user), UserRes.class);

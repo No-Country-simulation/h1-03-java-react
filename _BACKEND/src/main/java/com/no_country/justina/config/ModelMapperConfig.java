@@ -11,6 +11,7 @@ import com.no_country.justina.model.enums.MaritalStatus;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,11 +30,18 @@ public class ModelMapperConfig {
       if(ctx.getSource() == null) return null;
       return Genre.fromId(ctx.getSource());
     };
+
     modelMapper.createTypeMap(PatientReq.class, Patient.class)
             .addMappings(mapper->mapper.using(maritalMap)
                     .map(PatientReq::getMaritalStatus, Patient::setMaritalStatus))
             .addMappings(mapper->mapper.using(genreMap)
                     .map(PatientReq::getGenre, Patient::setGenre));
+
+    modelMapper.createTypeMap(PatientUpdateReq.class, Patient.class)
+            .addMappings(mapper->mapper.using(maritalMap)
+                    .map(PatientUpdateReq::getMaritalStatus, Patient::setMaritalStatus))
+            .addMappings(mapper->mapper.using(genreMap)
+                    .map(PatientUpdateReq::getGenre, Patient::setGenre));
 
     Converter<MaritalStatus, Integer> maritalMapInvert = ctx-> {
       if(ctx.getSource() == null) return null;

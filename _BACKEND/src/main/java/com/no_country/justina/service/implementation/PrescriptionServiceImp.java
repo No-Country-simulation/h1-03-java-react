@@ -1,9 +1,11 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.Appointment;
+import com.no_country.justina.model.entities.MedicalHistory;
 import com.no_country.justina.model.entities.Prescription;
 import com.no_country.justina.model.entities.Treatment;
 import com.no_country.justina.repository.PrescriptionRepository;
+import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import com.no_country.justina.service.interfaces.IPrescriptionService;
 import com.no_country.justina.service.interfaces.ITreatmentService;
 import jakarta.persistence.EntityNotFoundException;
@@ -18,6 +20,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class PrescriptionServiceImp implements IPrescriptionService {
   private final ITreatmentService treatmentService;
+  private final IMedicalHistoryService historyService;
   private final PrescriptionRepository prescriptionRepository;
 
   @Override
@@ -48,7 +51,7 @@ public class PrescriptionServiceImp implements IPrescriptionService {
                                           LocalDateTime start,
                                           LocalDateTime end) {
     if(start != null && end != null){
-      if(start.isBefore(end)){
+      if(!(start.isBefore(end))){
         throw new IllegalArgumentException("La fecha de inicio debe ser antes de la fecha de termino.");
       }
     }
@@ -65,6 +68,27 @@ public class PrescriptionServiceImp implements IPrescriptionService {
   public void deleteById(Long id) {
     this.verifyPrescriptionExist(id);
     this.prescriptionRepository.deleteById(id);
+  }
+
+  @Override
+  public Page<Prescription> getAllCurrent(Pageable pageable,
+                                          Long doctorId,
+                                          Long specialtyId,
+                                          LocalDateTime start,
+                                          LocalDateTime end) {
+    MedicalHistory current = this.historyService.getByCurrentPatient();
+    if(start != null && end != null){
+      if(!(start.isBefore(end))){
+        throw new IllegalArgumentException("La fecha de inicio debe ser antes de la fecha de termino.");
+      }
+    }
+    return this.prescriptionRepository.findByFilters(pageable,
+            doctorId,
+            current.getPatient().getIdPatient(),
+            specialtyId,
+            start,
+            end
+            );
   }
 
   private void verifyPrescriptionExist(long id){

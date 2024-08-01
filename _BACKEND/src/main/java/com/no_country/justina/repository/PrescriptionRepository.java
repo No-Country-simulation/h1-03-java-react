@@ -43,4 +43,6 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Long
       return builder.and(predicates.toArray(new Predicate[0]));
     }, pageable);
   }
+
+  Page<Prescription> findByPatient_IdPatient(Long idPatient, Pageable pageable);
 }

@@ -3,6 +3,7 @@ package com.no_country.justina.service.implementation;
 import com.no_country.justina.model.entities.*;
 import com.no_country.justina.repository.TreatmentRepository;
 import com.no_country.justina.service.interfaces.IDoctorService;
+import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import com.no_country.justina.service.interfaces.ITreatmentService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +21,11 @@ import java.time.LocalDateTime;
 public class TreatmentServiceImp implements ITreatmentService {
   private final TreatmentRepository treatmentRepo;
   private final IDoctorService doctorService;
+  private final IMedicalHistoryService historyService;
 
   @Override
   public Treatment create(Treatment treatment) {
-    var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication();
+    var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Doctor currentDoctor = doctorService.getByUserId(userTarget.getId());
     Specialty currentSpecialty = currentDoctor.getSpecialty();
 
@@ -36,6 +38,15 @@ public class TreatmentServiceImp implements ITreatmentService {
   public Treatment getById(Long id) {
     return this.treatmentRepo.findById(id)
             .orElseThrow(()->new EntityNotFoundException("Tratamiento no encontrado, id:"+id));
+  }
+  @Override
+  public Page<Treatment> getByHistorieForPatient(Pageable pageable){
+    var currentHistoryPatient = this.historyService.getByCurrentPatient();
+    return this.treatmentRepo.findByMedicalHistory_Id(currentHistoryPatient.getId(), pageable);
+  }
+  @Override
+  public Page<Treatment> getByHistorieForDoctor(Long  id, Pageable pageable){
+    return this.treatmentRepo.findByMedicalHistory_Id(id, pageable);
   }
 
   @Override

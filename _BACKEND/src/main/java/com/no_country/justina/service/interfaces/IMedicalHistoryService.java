@@ -1,6 +1,5 @@
 package com.no_country.justina.service.interfaces;
 
-import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.entities.MedicalHistory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,4 +21,6 @@ public interface IMedicalHistoryService {
   void deleteById(Long id);
 
   MedicalHistory getByPatientId(Long id);
+
+  MedicalHistory getByCurrentPatient();
 }

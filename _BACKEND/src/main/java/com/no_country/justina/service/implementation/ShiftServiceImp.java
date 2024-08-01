@@ -46,7 +46,7 @@ public class ShiftServiceImp implements IShiftService {
     this.verifyAllShiftsSameDoctor(orderShifts);
     this.verifyAllShiftsSameYearAndMonth(orderShifts);
     Doctor doctor = this.doctorService.getDoctor(orderShifts.get(1).getDoctor().getId());
-    orderShifts.forEach(shift->{
+    orderShifts.forEach(shift -> {
       shift.setSpecialty(doctor.getSpecialty());
       this.verifyValidTimeShift(shift);
       this.verifyShiftHourByDay(shift);
@@ -67,7 +67,7 @@ public class ShiftServiceImp implements IShiftService {
   @Override
   public Shift getById(Long id) {
     return this.shiftRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Turno no encontrado, id: " + id));
+            .orElseThrow(() -> new EntityNotFoundException("Turno Medico no encontrado, id: " + id));
   }
 
   @Override
@@ -86,13 +86,14 @@ public class ShiftServiceImp implements IShiftService {
     this.verifyShiftExist(id);
     this.shiftRepository.deleteById(id);
   }
+
   @Override
   public List<Shift> getAllByDoctorMonth(long doctorId, int year, int month) {
     return this.shiftRepository.findByDoctorAndMonth(doctorId, year, month);
   }
 
   @Override
-  public List<Shift> getAllBySpecialtyMonth(String specialty, int year, int month){
+  public List<Shift> getAllBySpecialtyMonth(String specialty, int year, int month) {
     return this.shiftRepository.findBySpecialtyAndMonth(specialty, year, month);
   }
 
@@ -101,22 +102,24 @@ public class ShiftServiceImp implements IShiftService {
                                                            Long doctorId,
                                                            Long specialtyId,
                                                            LocalDateTime start,
-                                                           LocalDateTime end){
-    if(start.isAfter(end)){
-      throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
-    }
-    if(start.getYear() != end.getYear()){
-      throw  new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+                                                           LocalDateTime end) {
+    if (start != null && end != null) {
+      if (start.isAfter(end)) {
+        throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
+      }
+      if (start.getYear() != end.getYear()) {
+        throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+      }
     }
     return this.shiftRepository.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, start,end);
+            pageable, doctorId, specialtyId, start, end);
   }
 
 
   @Override
-  public void updateAppointmentAvailable(long idShift, int quantity){
-    var result =this.shiftRepository.updateAppointmentShift(idShift, quantity);
-    if(result == 0){
+  public void updateAppointmentAvailable(long idShift, int quantity) {
+    var result = this.shiftRepository.updateAppointmentShift(idShift, quantity);
+    if (result == 0) {
       throw new ShiftException("Ningún registro de turnos fue actualizado.");
     }
   }
@@ -126,56 +129,58 @@ public class ShiftServiceImp implements IShiftService {
     if (!exist) throw new EntityNotFoundException("Turno no encontrado, id: " + id);
   }
 
-  private void verifyAllShiftsSameDoctor(List<Shift> shifts){
+  private void verifyAllShiftsSameDoctor(List<Shift> shifts) {
     Doctor doctor = shifts.get(1).getDoctor();
     boolean isValidShifts = shifts.stream().allMatch(
             shift -> Objects.equals(shift.getDoctor().getId(), doctor.getId()));
-    if(!isValidShifts) {
+    if (!isValidShifts) {
       throw new IllegalArgumentException("Todos los turnos deben ser del mismo doctor.");
     }
   }
 
-  private void verifyAllShiftsSameYearAndMonth(List<Shift> shifts){
+  private void verifyAllShiftsSameYearAndMonth(List<Shift> shifts) {
     LocalDateTime dateShifts = shifts.get(1).getStartDate();
     boolean validShifts = shifts.stream().allMatch(
             shift -> shift.getStartDate().getMonth().getValue() == dateShifts.getMonth().getValue());
-    if(!validShifts){
+    if (!validShifts) {
       throw new IllegalArgumentException("Todos los turnos deben ser del mismo mes.");
     }
   }
-  private void verifyValidTimeShift(Shift shift){
-    if(!shift.getStartDate().isBefore(shift.getEndDate())) {
-      throw new IllegalArgumentException("Turno con horario invalido, date:"+shift.getStartDate());
+
+  private void verifyValidTimeShift(Shift shift) {
+    if (!shift.getStartDate().isBefore(shift.getEndDate())) {
+      throw new IllegalArgumentException("Turno con horario invalido, date:" + shift.getStartDate());
     }
   }
 
-  private void verifyShiftHourByDay(Shift shift){
+  private void verifyShiftHourByDay(Shift shift) {
     boolean isValidShift = Duration.between(shift.getStartDate(), shift.getEndDate()).toHours() <= 8;
-    if(!isValidShift){
+    if (!isValidShift) {
       throw new IllegalArgumentException("Los turnos no pueden exceder las 8 horas");
     }
   }
 
-  private void verifyOverlappingShiftsDay(List<Shift> shifts){
+  private void verifyOverlappingShiftsDay(List<Shift> shifts) {
     List<Shift> orderShifts = new ArrayList<>(shifts);
     orderShifts.sort(Comparator.comparing(Shift::getStartDate));
-    for(int i = 1; i<orderShifts.size(); i++){
-      Shift previous = orderShifts.get(i-1);
+    for (int i = 1; i < orderShifts.size(); i++) {
+      Shift previous = orderShifts.get(i - 1);
       Shift current = orderShifts.get(i);
-      if(current.getStartDate().isBefore(previous.getEndDate())){
-        throw new IllegalArgumentException("Los turnos en el dia "+current.getStartDate()+" se superponen horarios.");
+      if (current.getStartDate().isBefore(previous.getEndDate())) {
+        throw new IllegalArgumentException("Los turnos en el dia " + current.getStartDate() + " se superponen horarios.");
       }
     }
   }
-  private void verifyShiftIsAfterToday(Shift shift){
-    if(!shift.getStartDate().toLocalDate().isAfter(LocalDate.now())){
+
+  private void verifyShiftIsAfterToday(Shift shift) {
+    if (!shift.getStartDate().toLocalDate().isAfter(LocalDate.now())) {
       throw new IllegalArgumentException("No se pueden crear turnos para el mismo dia ni antes.");
     }
   }
 
-  private List<List<Shift>> sliceShiftsByDay(List<Shift> shifts){
+  private List<List<Shift>> sliceShiftsByDay(List<Shift> shifts) {
     Map<LocalDate, List<Shift>> shiftsByDay = shifts.stream().collect(
-            Collectors.groupingBy(shift->shift.getStartDate().toLocalDate()));
+            Collectors.groupingBy(shift -> shift.getStartDate().toLocalDate()));
     return shiftsByDay.values().stream().toList();
   }
 }

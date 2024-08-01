@@ -2,6 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.AppointmentException;
 import com.no_country.justina.model.entities.Appointment;
+import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.model.enums.AppointmentStatus;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +31,7 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Override
   public Appointment create(Appointment appointment) {
-    var userAuth = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    var userAuth = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     var patientTarget = patientService.getByUserId(userAuth.getId());
     var shiftTarget = shiftService.getById(appointment.getShift().getId());
 
@@ -58,22 +60,37 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                                      Long doctorId,
-                                                     Long specialty,
+                                                     Long specialtyId,
+                                                     Long patientId,
                                                      Integer status,
                                                      LocalDateTime start,
                                                      LocalDateTime end) {
     AppointmentStatus statusFormat = null;
-    if (start.isAfter(end)) {
-      throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
+    if (start != null && end != null) {
+      if (start.isAfter(end)) {
+        throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
+      }
+      if (start.getYear() != end.getYear()) {
+        throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+      }
     }
-    if (start.getYear() != end.getYear()) {
-      throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
-    }
-    if(status != null) {
+    if (status != null) {
       statusFormat = AppointmentStatus.fromId(status);
     }
     return this.appointmentRepo.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialty, statusFormat, start, end);
+            pageable, doctorId, specialtyId, patientId, statusFormat, start, end);
+  }
+
+  @Override
+  public Page<Appointment> getAllByFiltersForAuthUser(Pageable pageable,
+                                                      Long doctorId,
+                                                      Long specialty,
+                                                      Integer status,
+                                                      LocalDateTime start,
+                                                      LocalDateTime end) {
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Patient patientAuth = this.patientService.getByUserId(user.getId());
+    return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, start, end);
   }
 
   @Override
@@ -86,6 +103,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Appointment reschedule(Appointment appointment) {
     var oldAppointment = this.getById(appointment.getId());
+    this.verifyOnlyAuthUserModifyHisOwnAppointment(oldAppointment);
     this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.RESCHEDULE, appointment.getId());
@@ -99,6 +117,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Appointment cancelAppointment(Long id) {
     var oldAppointment = this.getById(id);
+    this.verifyOnlyAuthUserModifyHisOwnAppointment(oldAppointment);
     this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.CANCELLED, id);
@@ -137,6 +156,11 @@ public class AppointmentServiceImp implements IAppointmentService {
     this.appointmentRepo.deleteById(id);
   }
 
+  @Override
+  public List<Appointment> getByShift(long id) {
+    return this.appointmentRepo.findByShift_Id(id);
+  }
+
   private void verifyAppointmentExist(long id) {
     boolean exist = this.appointmentRepo.existsById(id);
     if (!exist) throw new EntityNotFoundException("Cita no encontrado, id: " + id);
@@ -150,9 +174,10 @@ public class AppointmentServiceImp implements IAppointmentService {
   }
 
   private void verifyOneAppointmentByDayAndPatient(Appointment appointment) {
-    var appointmentToday = this.appointmentRepo.getAllByDayAndPatient(appointment.getPatient().getIdPatient(),
-            LocalDate.now());
-    if (!appointmentToday.isEmpty()) {
+    var appointmentByDay = this.appointmentRepo.getAllByDayAndPatient(
+            appointment.getPatient().getIdPatient(),
+            appointment.getDate().toLocalDate());
+    if (!(appointmentByDay.isEmpty())) {
       throw new IllegalArgumentException("Solo una cita por día. fecha: " + appointment.getDate());
     }
   }
@@ -168,6 +193,13 @@ public class AppointmentServiceImp implements IAppointmentService {
     if (appointment.getAppointmentStatus() != AppointmentStatus.PENDING) {
       throw new IllegalArgumentException("Solo puedes actualizar citas pendientes. Estado actual: "
               + appointment.getAppointmentStatus());
+    }
+  }
+
+  private void verifyOnlyAuthUserModifyHisOwnAppointment(Appointment appointment) {
+    UserEntity currentUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (!(appointment.getPatient().getUser().getId().equals(currentUser.getId()))) {
+      throw new IllegalArgumentException("Solo puedes cancelar tus citas");
     }
   }
 

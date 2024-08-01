@@ -29,11 +29,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   List<Appointment> getAllByDayAndPatient(long patientId, LocalDate date);
 
 
-  @Query("select a from Appointment a where a.shift = ?1")
-  List<Appointment> findByShift(Shift shift);
-
-  @Query("select a from Appointment a where a.shift.doctor = ?1 and a.date = ?2")
-  List<Appointment> findByShift_Doctor(Doctor doctor, LocalDateTime date);
 
   @Transactional
   @Modifying
@@ -43,6 +38,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   default Page<Appointment> findAllByDoctorOrSpecialty(Pageable pageable,
                                                        Long doctorId,
                                                        Long specialtyId,
+                                                       Long patientId,
                                                        AppointmentStatus status,
                                                        LocalDateTime start,
                                                        LocalDateTime end) {
@@ -51,15 +47,23 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
       if (doctorId != null) {
         predicates.add(builder.equal(root.get("shift").get("doctor").get("id"), doctorId));
       }
+      if (patientId != null) {
+        predicates.add(builder.equal(root.get("patient").get("idPatient"), patientId));
+      }
       if (specialtyId != null) {
         predicates.add(builder.equal(root.get("shift").get("specialty").get("id"), specialtyId));
       }
       if (status != null) {
         predicates.add(builder.equal(root.get("appointmentStatus"), status));
       }
-      predicates.add(builder.between(root.get("date"), start, end));
+      if(start != null && end != null){
+        predicates.add(builder.between(root.get("date"), start, end));
+      }
+//      predicates.add(builder.between(root.get("date"), start, end));
       return builder.and(predicates.toArray(new Predicate[0]));
 
     }, pageable);
   }
+
+  List<Appointment> findByShift_Id(long id);
 }

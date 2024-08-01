@@ -7,6 +7,7 @@ import com.no_country.justina.repository.MedicalHistoryRepository;
 import com.no_country.justina.service.interfaces.IMedicalHistoryService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class MedicalHistoryServiceImp implements IMedicalHistoryService {
   private final MedicalHistoryRepository medicalHistoryRepo;
+  private final ModelMapper mapper;
 
   @Override
   public MedicalHistory create(MedicalHistory medicalHistory) {
@@ -68,13 +70,17 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
 
   @Override
   public MedicalHistory update(MedicalHistory medicalHistory) {
-    this.historyExistById(medicalHistory.getId());
-    this.medicalHistoryRepo.updateAllById(
-            medicalHistory.getBloodType(),
-            medicalHistory.getJob(),
-            medicalHistory.getReligion(),
-            medicalHistory.getId());
-    return getById(medicalHistory.getId());
+    MedicalHistory current = this.getById(medicalHistory.getId());
+    if(medicalHistory.getJob() != null){
+      current.setJob(medicalHistory.getJob());
+    }
+    if(medicalHistory.getReligion() != null){
+      current.setReligion(medicalHistory.getReligion());
+    }
+    if(medicalHistory.getBloodType() != null){
+      current.setBloodType(medicalHistory.getBloodType());
+    }
+    return this.medicalHistoryRepo.save(current);
   }
 
   @Override
@@ -89,8 +95,15 @@ public class MedicalHistoryServiceImp implements IMedicalHistoryService {
             .orElseThrow(()->new EntityNotFoundException("Historia clínica no encontrada, id: "+id));
   }
 
+  @Override
+  public MedicalHistory getByCurrentPatient() {
+    UserEntity currentUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    return this.medicalHistoryRepo.findByPatient_User_Id(currentUser.getId())
+            .orElseThrow(()->new EntityNotFoundException("Historia no encontrada para este user, id: "+currentUser));
+  }
+
   private void historyExistById(long id) {
     boolean existHistory = this.medicalHistoryRepo.existsById(id);
-    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id:" + id);
+    if (!existHistory) throw new EntityNotFoundException("Historia clínica no encontrada, id: " + id);
   }
 }

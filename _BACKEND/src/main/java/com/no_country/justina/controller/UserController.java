@@ -3,9 +3,12 @@ package com.no_country.justina.controller;
 import com.no_country.justina.model.dto.RoleRes;
 import com.no_country.justina.model.dto.UserReq;
 import com.no_country.justina.model.dto.UserRes;
+import com.no_country.justina.model.dto.UserUpdateReq;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.service.interfaces.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/users")
+@Tag(name = "Usuarios")
 public class UserController {
     private final IUserService userService;
     private final ModelMapper modelMapper;
@@ -30,7 +34,8 @@ public class UserController {
     @Operation(
             summary = "Traer informacion de usuario por id",
             description = "Devuelve informacion de usuario, por id pasado por parametro, si no se encuentra en base" +
-                    "de datos un usuario con el id suministrado se devuelve una excepcion de entidad no encontrada"
+                    "de datos un usuario con el id suministrado se devuelve una excepcion de entidad no encontrada",
+            security = {@SecurityRequirement(name = "bearer-key")}
     )
     @GetMapping("/{id}")
     public ResponseEntity<UserRes> getUser(@PathVariable Long id) {
@@ -45,7 +50,8 @@ public class UserController {
 
     @Operation(
             summary = "Traer lista de usuarios paginados",
-            description = "Devuelve la lista de usuarios paginados"
+            description = "Devuelve la lista de usuarios paginados",
+            security = @SecurityRequirement(name = "bearer-key")
     )
     @GetMapping()
     public ResponseEntity<Page<UserRes>> getAllUsers(Pageable pageable) {
@@ -76,10 +82,11 @@ public class UserController {
             summary = "Actualiza el usuario",
             description = "Actualiza el usuario, con los datos pasado por el cuerpo de la solicitud, " +
                     "si el id no se encuentra en base de datos, devuelve una excepcion de entidad no encontrada," +
-                    "sino devuelve los datos de usuario que fueron actualizados"
+                    "sino devuelve los datos de usuario que fueron actualizados",
+            security = @SecurityRequirement(name = "bearer-key")
     )
     @PutMapping()
-    public ResponseEntity<UserRes> update(@RequestBody @Valid UserReq userReq) {
+    public ResponseEntity<UserRes> update(@RequestBody @Valid UserUpdateReq userReq) {
         var user = userService.update(modelMapper.map(userReq, UserEntity.class));
         return new ResponseEntity<>(modelMapper.map(user, UserRes.class), HttpStatus.OK);
     }
@@ -87,7 +94,8 @@ public class UserController {
     @Operation(
             summary = "Eliminar usuario",
             description = "Realiza un borrado logico del usuario, si no se encuentra en BD por id devuelve una excepcion" +
-                    "de usuario no encontrado en base de datos"
+                    "de usuario no encontrado en base de datos",
+            security = @SecurityRequirement(name = "bearer-key")
     )
     @DeleteMapping()
     public ResponseEntity<HttpStatus> deleteUser() {

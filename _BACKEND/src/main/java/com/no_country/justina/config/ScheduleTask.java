@@ -20,7 +20,7 @@ public class ScheduleTask {
     LocalDateTime end = LocalDate.now().atTime(22, 0);
     var page = Pageable.unpaged();
     var pendingAppointmentsToday = this.appointmentService
-            .getAllByDoctorOrSpecialty(page, null, null, 1, start, end);
+            .getAllByDoctorOrSpecialty(page, null, null, null,1, start, end);
     pendingAppointmentsToday.forEach(this.appointmentService::missingAppointment);
   }
 }

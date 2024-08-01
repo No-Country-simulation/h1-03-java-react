@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -19,7 +20,7 @@ public class IndicationRes {
   private int frequency;
   private int duration;
   private DrugStatus drugStatus;
-  private LocalDate startDate;
+  private LocalDateTime startDate;
   private String description;
   private DrugRes drug;
 }

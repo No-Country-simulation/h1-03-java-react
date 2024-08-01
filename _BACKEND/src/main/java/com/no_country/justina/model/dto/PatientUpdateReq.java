@@ -1,9 +1,5 @@
 package com.no_country.justina.model.dto;
 
-import com.no_country.justina.model.enums.Genre;
-import com.no_country.justina.model.enums.MaritalStatus;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +13,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PatientUpdateReq {
   private Long idPatient;
-  @NotBlank
   private String docIdentity;
-  @NotBlank private String phone;
-  @NotBlank private String address;
-  @NotNull
+  private String phone;
+  private String address;
   private LocalDate birthdate;
-  @NotNull private MaritalStatus maritalStatus;
-  @NotNull private Genre genre;
+  private Integer maritalStatus;
+  private Integer genre;
 }

@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -20,7 +21,7 @@ public class IndicationReq{
         @NotNull private DrugRouteReq route;
         @NotNull @Min(0) private Integer frequency;
         @NotNull @Min(0) private Integer duration;
-        @NotNull private LocalDate startDate;
+        @NotNull private LocalDateTime startDate;
         private String description;
         @NotNull private DrugReq drug;
         @NotNull private PrescriptionReq prescription;
