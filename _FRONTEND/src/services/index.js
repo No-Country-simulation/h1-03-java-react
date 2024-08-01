@@ -1,4 +1,5 @@
 export const fetchData = async (url, options) => {
+    console.log(options)
     if (url && options) {
         try{
             const res = await fetch(url, options)
@@ -17,11 +18,14 @@ export const postFetch = async (url, data, token=null) => {
     const options = {
         method: "POST",
         headers: {
-            ...(token ? {"Authorization": `Bearer ${token}`} : {}),
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
     };
+
+    if(token){
+        options.headers["Authorization"] = `Bearer ${token}`
+    }
 
     return fetchData(url, options)
 }
@@ -44,6 +48,7 @@ export const getFetch = async (url, token) => {
 }
 
 export const putFetch = async (url, data, token) => {
+    console.log(url, data, token)
     const options = {
         method: "PUT",
         headers: {

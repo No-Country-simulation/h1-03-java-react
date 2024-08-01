@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SeeMoreButton from "./SeeMoreButton";
 import { useSelector } from "react-redux";
 import i18n from "../../../../../i18n/appointments/index.json";
@@ -8,6 +8,7 @@ import endpoints from "../../../../../helpers/endpoints.js";
 
 export default function ProfessionalsList() {
     const language = useSelector((state) => state.i18nReducer.language);
+    const [professionalsList, setProfessionalsList] = useState([]);
 
     const url = endpoints.getAllDoctors
 	const token = sessionStorage.getItem('token')
@@ -18,9 +19,17 @@ export default function ProfessionalsList() {
 	}) 
 
 	useEffect(()=>{
-//		refetch()
+		refetch()
 	},[])
-//console.log(data)
+
+    useEffect(()=>{
+		if (data) {
+            console.log(...data.content)
+            setProfessionalsList((prev)=>[...prev, ...data.content])
+        }
+
+	},[data])
+    console.log(professionalsList)
 	return (
 		<div
 			className="w-full lg:flex-1 border rounded-3xl h-full"
@@ -35,36 +44,6 @@ export default function ProfessionalsList() {
 
             <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-3 p-10 pb-0">
-                    <div className="rounded-3xl p-4 bg-[#fef7ff] cursor-pointer hover:scale-[101%] transition duration-300">
-                        <p>
-                            <small>Juan Pepe</small>
-                        </p>
-                        <p>
-                            <small className="text-[#49454f]">
-                                Médico Cardiólogo
-                            </small>
-                        </p>
-                    </div>
-                    <div className="rounded-3xl p-4 bg-[#fef7ff] cursor-pointer hover:scale-[101%] transition duration-300">
-                        <p>
-                            <small>Juan Pepe</small>
-                        </p>
-                        <p>
-                            <small className="text-[#49454f]">
-                                Médico Cardiólogo
-                            </small>
-                        </p>
-                    </div>
-                    <div className="rounded-3xl p-4 bg-[#fef7ff] cursor-pointer hover:scale-[101%] transition duration-300">
-                        <p>
-                            <small>Juan Pepe</small>
-                        </p>
-                        <p>
-                            <small className="text-[#49454f]">
-                                Médico Cardiólogo
-                            </small>
-                        </p>
-                    </div>
                     <div className="rounded-3xl p-4 bg-[#fef7ff] cursor-pointer hover:scale-[101%] transition duration-300">
                         <p>
                             <small>Juan Pepe</small>

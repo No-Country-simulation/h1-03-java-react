@@ -23,7 +23,8 @@ const handleRepeatPassword = (e, setRepeatPassword) => {
 const getFormEntries = (e, userDataState) => {
 	const formData = new FormData(e.target);
 	const entries = Object.fromEntries(formData.entries());
-	entries.id = userDataState.user.id
+	
+	if (userDataState) entries.id = userDataState.user.id
 	delete entries.repeatpassword;
 	
 	//console.log(entries)
@@ -32,7 +33,7 @@ const getFormEntries = (e, userDataState) => {
 
 export default function FormSignup( { 
 	roleSelection, 
-	userData, 
+	userData="", 
 	showAlreadyHaveAccount=false, 
 	showFormTitle=false, 
 } ) {
@@ -56,19 +57,19 @@ export default function FormSignup( {
 	}, [password, repeatPassword]);
 
 	const urlSignup = endpoints.signup
-	const { refetch: refetchSignupPost } = useQuery({
+	const {data, error: errorSignupPost,refetch: refetchSignupPost } = useQuery({
 		queryKey: ["key-signup-post"],
 		queryFn: ()=> postFetch(urlSignup, entriesData),
 		enabled: false,
 	})
 
-	const { error, refetch: refetchSignupPut } = useQuery({
+	const { error: errorSignupPut, refetch: refetchSignupPut } = useQuery({
 		queryKey: ["key-signup-put"],
 		queryFn: ()=> putFetch(urlSignup, entriesData, token),
 		enabled: false,
 	})
 
-	if(error) console.log(error)
+
 	const handleSignupSubmit = (e) => {
 		e.preventDefault();
 		
@@ -81,10 +82,18 @@ export default function FormSignup( {
 	useEffect(()=>{
 		
 		if(entriesData){
-			refetchSignupPut()
+			if(userData === ""){
+				refetchSignupPost()
 				.then((e)=>{
-					alert(error ? error : "Actualizado!");
-				})
+					alert(errorSignupPost ? errorSignupPost : "Creado!");
+					navigate('/');
+				})	
+			}else {
+				refetchSignupPut()
+					.then((e)=>{
+						alert(errorSignupPut ? errorSignupPut : "Actualizado!");
+					})	
+			}
 		}
 
 	},[entriesData])
@@ -103,9 +112,9 @@ export default function FormSignup( {
 				if (input) {
 				  input.value = value;
 				}
-			  }
+			}
 			  
-			  form.dispatchEvent(new Event('input', { bubbles: true }));
+			form.dispatchEvent(new Event('input', { bubbles: true }));
 		}
 	},[userDataState])
 
@@ -160,7 +169,7 @@ export default function FormSignup( {
 							pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 						/>
 						
-						{userData="" &&
+						{userData==="" &&
 						<>
 							<input
 								className="p-3 sm:w-[inherit] rounded-full mb-0 w-[inherit]"
@@ -196,17 +205,6 @@ export default function FormSignup( {
 							/>
 						</>
 						}
-						
-						{/* <Select
-							id={"role"}
-							title={i18n[language].roleTitle}
-							arrayOptions={i18n[language].roleList}
-							onChangeHandler={() => {}}
-							value=""
-							displayLabel="block"
-							isRequired={true}
-							hasLabel={false}
-						/> */}
 
 						<Button
 							type="submit"
