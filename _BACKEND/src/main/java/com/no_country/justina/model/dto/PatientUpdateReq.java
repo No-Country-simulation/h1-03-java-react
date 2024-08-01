@@ -1,7 +1,5 @@
 package com.no_country.justina.model.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,11 +13,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class PatientUpdateReq {
   private Long idPatient;
-  @NotBlank
   private String docIdentity;
-  @NotBlank private String phone;
-  @NotBlank private String address;
-  @NotNull private LocalDate birthdate;
-  @NotNull private Integer maritalStatus;
-  @NotNull private Integer genre;
+  private String phone;
+  private String address;
+  private LocalDate birthdate;
+  private Integer maritalStatus;
+  private Integer genre;
 }
