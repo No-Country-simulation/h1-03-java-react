@@ -51,7 +51,10 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
       if (specialtyId != null) {
         predicates.add(builder.equal(root.get("specialty").get("id"), specialtyId));
       }
-      predicates.add(builder.between(root.get("startDate"), start, end));
+      if(start != null && end != null){
+        predicates.add(builder.between(root.get("startDate"), start, end));
+      }
+//      predicates.add(builder.between(root.get("startDate"), start, end));
       return builder.and(predicates.toArray(new Predicate[0]));
 
     }, pageable);

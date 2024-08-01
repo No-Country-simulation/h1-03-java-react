@@ -1,6 +1,5 @@
 package com.no_country.justina.controller;
 
-import com.no_country.justina.model.dto.DateRange;
 import com.no_country.justina.model.dto.ShiftReq;
 import com.no_country.justina.model.dto.ShiftRes;
 import com.no_country.justina.model.entities.Shift;
@@ -13,10 +12,12 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -75,17 +76,18 @@ public class ShiftController {
 
   @Operation(summary = "Trae los turnos con filtros y paginado.",
           description = "Usa filtros por doctor, especialidad y periodo de tiempo")
-  @PostMapping("/filter")
+  @GetMapping("/filter")
   public ResponseEntity<?> getAllByDoctorOrSpecialty(@RequestParam(defaultValue = "0") int page,
                                                      @RequestParam(defaultValue = "20") int size,
                                                      @RequestParam(defaultValue = "id") String sort,
                                                      @RequestParam(defaultValue = "asc") String direction,
                                                      @RequestParam(required = false) Long doctorId,
                                                      @RequestParam(required = false) Long specialty,
-                                                     @RequestBody @Valid DateRange range,
+                                                     @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+                                                     @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
                                                      Pageable pageable){
     Page<Shift> result = this.shiftService.getAllByDoctorOrSpecialtyBetweenDates(
-            pageable, doctorId, specialty, range.getStart(), range.getEnd());
+            pageable, doctorId, specialty, start, end);
     Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
     return ResponseEntity.ok(resultDto);
   }

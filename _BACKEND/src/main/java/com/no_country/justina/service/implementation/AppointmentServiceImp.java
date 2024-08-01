@@ -2,6 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.AppointmentException;
 import com.no_country.justina.model.entities.Appointment;
+import com.no_country.justina.model.entities.Patient;
 import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.model.entities.UserEntity;
 import com.no_country.justina.model.enums.AppointmentStatus;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -58,22 +60,37 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Page<Appointment> getAllByDoctorOrSpecialty(Pageable pageable,
                                                      Long doctorId,
-                                                     Long specialty,
+                                                     Long specialtyId,
+                                                     Long patientId,
                                                      Integer status,
                                                      LocalDateTime start,
                                                      LocalDateTime end) {
     AppointmentStatus statusFormat = null;
-    if (start.isAfter(end)) {
-      throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
-    }
-    if (start.getYear() != end.getYear()) {
-      throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+    if (start != null && end != null) {
+      if (start.isAfter(end)) {
+        throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
+      }
+      if (start.getYear() != end.getYear()) {
+        throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
+      }
     }
     if (status != null) {
       statusFormat = AppointmentStatus.fromId(status);
     }
     return this.appointmentRepo.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialty, statusFormat, start, end);
+            pageable, doctorId, specialtyId, patientId, statusFormat, start, end);
+  }
+
+  @Override
+  public Page<Appointment> getAllByFiltersForAuthUser(Pageable pageable,
+                                                      Long doctorId,
+                                                      Long specialty,
+                                                      Integer status,
+                                                      LocalDateTime start,
+                                                      LocalDateTime end) {
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Patient patientAuth = this.patientService.getByUserId(user.getId());
+    return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, start, end);
   }
 
   @Override
@@ -137,6 +154,11 @@ public class AppointmentServiceImp implements IAppointmentService {
   public void deleteById(Long id) {
     this.verifyAppointmentExist(id);
     this.appointmentRepo.deleteById(id);
+  }
+
+  @Override
+  public List<Appointment> getByShift(long id) {
+    return this.appointmentRepo.findByShift_Id(id);
   }
 
   private void verifyAppointmentExist(long id) {
