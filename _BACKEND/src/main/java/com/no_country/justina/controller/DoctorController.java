@@ -35,10 +35,9 @@ public class DoctorController {
     @Operation(summary = "Trae todos los doctores paginados.")
     @GetMapping()
     public ResponseEntity<Page<DoctorRes>> getAllDoctors(Pageable pageable) {
-        var doctors = doctorService.getAllDoctors(pageable).stream()
-                .map(doctor -> modelMapper.map(doctor, DoctorRes.class)).toList();
-        var page= new PageImpl<>(doctors, pageable, doctors.size());
-        return new ResponseEntity<>(page, HttpStatus.OK);
+        var doctors = doctorService.getAllDoctors(pageable)
+                .map(item->modelMapper.map(item, DoctorRes.class));
+        return new ResponseEntity<>(doctors, HttpStatus.OK);
     }
     @Operation(summary = "Crea un doctor.", description = "Disponible solo para el rol DOCTOR",
     security = @SecurityRequirement(name = "bearer-key"))

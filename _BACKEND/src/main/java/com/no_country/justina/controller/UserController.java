@@ -55,15 +55,9 @@ public class UserController {
     )
     @GetMapping()
     public ResponseEntity<Page<UserRes>> getAllUsers(Pageable pageable) {
-        List<UserRes> userList = userService.getAllUsers(pageable).stream()
-                .map(user -> modelMapper.map(user, UserRes.class)).toList();
-        for (UserRes user : userList) {
-            Set<RoleRes> rolesRes = user.getRoles().stream()
-                    .map(role -> modelMapper.map(role, RoleRes.class)).collect(Collectors.toSet());
-            user.setRoles(rolesRes);
-        }
-        var page = new PageImpl<>(userList, pageable, userList.size());
-        return new ResponseEntity<>(page, HttpStatus.OK);
+        Page<UserEntity> usersFound = userService.getAllUsers(pageable);
+        Page<UserRes> usersRes = usersFound.map(item->modelMapper.map(item, UserRes.class));
+        return new ResponseEntity<>(usersRes, HttpStatus.OK);
     }
 
     @Operation(
