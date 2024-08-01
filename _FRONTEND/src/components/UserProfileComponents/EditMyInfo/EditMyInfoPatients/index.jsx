@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../../Resources/Others/Container";
 import Form from "../../../Resources/FormElements/Form";
 import Select from "../../../Resources/FormElements/Select";
@@ -6,30 +6,124 @@ import Button from "../../../Resources/FormElements/Button";
 import { useSelector } from "react-redux";
 import i18n from "../../../../i18n/patients/index.json";
 import { useQuery } from "@tanstack/react-query";
-import { getFetch } from "../../../../services";
+import { getFetch, postFetch, putFetch } from "../../../../services";
 import endpoints from "../../../../helpers/endpoints.js";
 import FormSignup from "../../../SessionComponents/Signup/FormSignup";
 import Input from "../../../Resources/FormElements/InputLabel/Input";
 
+const getFormEntries = (e, data) => {
+	const formData = new FormData(e.target);
+	const entries = Object.fromEntries(formData.entries());
+	entries.maritalStatus = Number(entries.maritalStatus)
+	entries.genre = Number(entries.genre)
+	//entries.bloodType = Number(entries.bloodType)
+	entries.idPatient = data.patient.idPatient
+	
+	return entries
+}
+
 export default function EditMyInfoPatients() {
+	const [entriesData, setEntriesData] = useState(null);
+	const [isPostInsteadOfPut, setIsPostInsteadOfPut] = useState(null);
 	const language = useSelector((state) => state.i18nReducer.language);
 
-	const url = endpoints.getUserAndPatientInfo;
+	const urlGetUserAndPatientInfo = endpoints.getUserAndPatientInfo;
+	const urlPatientInfo = endpoints.patients
 	const token = sessionStorage.getItem("token");
-	const { data, error, isLoading, isFetching, isSuccess, refetch } = useQuery({
-			queryKey: ["key-getUserAndPatientInfo"],
-			queryFn: () => getFetch(url, token),
-			enabled: false,
+	const { data, error: errorGetUserAndPatient, refetch: refetchGetUserAndPatientInfo } = useQuery({
+		queryKey: ["key-getUserAndPatientInfo"],
+		queryFn: () => getFetch(urlGetUserAndPatientInfo, token),
+		enabled: false,
 	});
+	if (errorGetUserAndPatient) console.log(errorGetUserAndPatient)
 
+	const { data: data1, error: errorPostPatient, refetch: refetchPostPatientInfo } = useQuery({
+		queryKey: ["key-postPatientInfo"],
+		queryFn: () => postFetch(urlPatientInfo, entriesData, token),
+		enabled: false,
+	});
+	if (errorPostPatient) console.log(errorPostPatient)
+
+	const { data:data2, error: errorPutPatient, refetch: refetchPutPatientInfo } = useQuery({
+		queryKey: ["key-putPatientInfo"],
+		queryFn: () => putFetch(urlPatientInfo, entriesData, token),
+		enabled: false,
+	});
+	if (errorPutPatient) console.log(errorPutPatient)
+console.log(data2)
+
+	//Initial form loading
 	useEffect(() => {
-		refetch();
+		refetchGetUserAndPatientInfo();
+
 	}, []);
+
+	useEffect(()=>{
+		if (data) {
+			const d = data.patient
+			const condition = !d.address && !d.birthdate && !d.docIdentity && !d.genre && !d.maritalStatus && !d.phone
+			
+			if (condition) {
+				isPostInsteadOfPut===null && setIsPostInsteadOfPut(true)
+			} else {
+				isPostInsteadOfPut===null && setIsPostInsteadOfPut(false)
+
+				const form = document.querySelector("#patientForm")
+				const formData = new FormData(form)
+				formData.set('address', d.address)
+				formData.set('birthdate', d.birthdate)
+				formData.set('docIdentity', d.docIdentity)
+				formData.set('genre', d.genre)
+				formData.set('maritalStatus', d.maritalStatus)
+				formData.set('phone', d.phone)
+
+				const maritalStatusSelect = document.querySelector("#maritalStatus")
+				maritalStatusSelect.value = d.maritalStatus
+				const genreSelect = document.querySelector("#genre")
+				genreSelect.value = d.genre
+				/* const bloodTypeSelect = document.querySelector("#bloodType")
+				bloodTypeSelect.value = d.bloodType */
+
+				//console.log(Object.fromEntries(formData.entries()))
+
+				for (let [name, value] of formData.entries()) {
+					const input = form.elements.namedItem(name);
+					if (input) {
+					input.value = value;
+					}
+				}
+				
+				form.dispatchEvent(new Event('input', { bubbles: true }));
+			}
+		}
+	},[data])
+
 
 	const handleSubmitPatientForm = (e) => {
 		e.preventDefault();
-		alert("enviado!");
+
+		const entries = getFormEntries(e, data)
+
+		setEntriesData(entries)
 	};
+
+	useEffect(()=>{
+		if(entriesData){
+			if(isPostInsteadOfPut){
+				refetchPostPatientInfo()
+					.then((e)=>{
+						alert(errorPostPatient ? errorPostPatient : "Creado!");
+					})
+			} else {
+				refetchPutPatientInfo()
+					.then((e)=>{
+						alert(errorPutPatient ? errorPutPatient : "Actualizado!");
+					})
+			}
+			console.log(entriesData)
+		}
+
+	},[entriesData])
 
 	return (
 		<>
@@ -45,10 +139,10 @@ export default function EditMyInfoPatients() {
 						</Container>
 
 						<Container>
-							<Form handleSubmit={handleSubmitPatientForm}>
+							<Form handleSubmit={handleSubmitPatientForm} id={'patientForm'} >
 								<Input
 									type="text"
-									id="doc_identity"
+									id="docIdentity"
 									placeholder={i18n[language].dni.placeholder}
 									title={i18n[language].dni.title}
 									isRequired={true}
@@ -88,13 +182,11 @@ export default function EditMyInfoPatients() {
 									pattern="\d{2}-\d{2}-\d{4}"
 								/>
 								<Select
-									id="marital_status"
+									id="maritalStatus"
 									title={i18n[language].maritalStatus.title}
 									arrayOptions={
-										i18n[language].maritalStatus.list
+										i18n[language].maritalStatus.arrayOptions
 									}
-									onChangeHandler={() => {}}
-									value=""
 									displayLabel="block"
 									isRequired={true}
 									hasLabel={false}
@@ -102,13 +194,40 @@ export default function EditMyInfoPatients() {
 								<Select
 									id="genre"
 									title={i18n[language].genre.title}
-									arrayOptions={i18n[language].genre.list}
-									onChangeHandler={() => {}}
-									value=""
+									arrayOptions={i18n[language].genre.arrayOptions}
 									displayLabel="block"
 									isRequired={true}
 									hasLabel={false}
 								/>
+								{/* <Select
+									id="bloodType"
+									title={i18n[language].bloodType.title}
+									arrayOptions={i18n[language].bloodType.arrayOptions}
+									displayLabel="block"
+									isRequired={true}
+									hasLabel={false}
+								/>
+
+								<Input
+									type="text"
+									id="job"
+									placeholder={
+										i18n[language].job.placeholder
+									}
+									title={i18n[language].job.title}
+									isRequired={true}
+									pattern="[A-Za-z]{1,50}"
+								/>
+								<Input
+									type="text"
+									id="religion"
+									placeholder={
+										i18n[language].religion.placeholder
+									}
+									title={i18n[language].religion.title}
+									isRequired={true}
+									pattern="[A-Za-z]{1,50}"
+								/> */}
 
 								<Button
 									type="submit"
