@@ -1,6 +1,5 @@
 package com.no_country.justina.controller;
 
-import com.no_country.justina.model.dto.DrugReq;
 import com.no_country.justina.model.dto.DrugRes;
 import com.no_country.justina.model.entities.Drug;
 import com.no_country.justina.service.interfaces.IDrugService;
@@ -10,7 +9,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

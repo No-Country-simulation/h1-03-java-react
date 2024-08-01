@@ -67,7 +67,7 @@ public class ShiftServiceImp implements IShiftService {
   @Override
   public Shift getById(Long id) {
     return this.shiftRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("Turno no encontrado, id: " + id));
+            .orElseThrow(() -> new EntityNotFoundException("Turno Medico no encontrado, id: " + id));
   }
 
   @Override

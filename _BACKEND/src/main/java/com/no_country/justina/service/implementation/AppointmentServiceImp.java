@@ -29,7 +29,7 @@ public class AppointmentServiceImp implements IAppointmentService {
 
   @Override
   public Appointment create(Appointment appointment) {
-    var userAuth = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    var userAuth = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     var patientTarget = patientService.getByUserId(userAuth.getId());
     var shiftTarget = shiftService.getById(appointment.getShift().getId());
 
@@ -69,7 +69,7 @@ public class AppointmentServiceImp implements IAppointmentService {
     if (start.getYear() != end.getYear()) {
       throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
     }
-    if(status != null) {
+    if (status != null) {
       statusFormat = AppointmentStatus.fromId(status);
     }
     return this.appointmentRepo.findAllByDoctorOrSpecialty(
@@ -86,6 +86,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Appointment reschedule(Appointment appointment) {
     var oldAppointment = this.getById(appointment.getId());
+    this.verifyOnlyAuthUserModifyHisOwnAppointment(oldAppointment);
     this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.RESCHEDULE, appointment.getId());
@@ -99,6 +100,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Appointment cancelAppointment(Long id) {
     var oldAppointment = this.getById(id);
+    this.verifyOnlyAuthUserModifyHisOwnAppointment(oldAppointment);
     this.verifyAppointmentIsPending(oldAppointment);
     int updateResult = this.appointmentRepo.updateAppointmentStatus(
             AppointmentStatus.CANCELLED, id);
@@ -150,9 +152,10 @@ public class AppointmentServiceImp implements IAppointmentService {
   }
 
   private void verifyOneAppointmentByDayAndPatient(Appointment appointment) {
-    var appointmentToday = this.appointmentRepo.getAllByDayAndPatient(appointment.getPatient().getIdPatient(),
-            LocalDate.now());
-    if (!appointmentToday.isEmpty()) {
+    var appointmentByDay = this.appointmentRepo.getAllByDayAndPatient(
+            appointment.getPatient().getIdPatient(),
+            appointment.getDate().toLocalDate());
+    if (!(appointmentByDay.isEmpty())) {
       throw new IllegalArgumentException("Solo una cita por día. fecha: " + appointment.getDate());
     }
   }
@@ -168,6 +171,13 @@ public class AppointmentServiceImp implements IAppointmentService {
     if (appointment.getAppointmentStatus() != AppointmentStatus.PENDING) {
       throw new IllegalArgumentException("Solo puedes actualizar citas pendientes. Estado actual: "
               + appointment.getAppointmentStatus());
+    }
+  }
+
+  private void verifyOnlyAuthUserModifyHisOwnAppointment(Appointment appointment) {
+    UserEntity currentUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (!(appointment.getPatient().getUser().getId().equals(currentUser.getId()))) {
+      throw new IllegalArgumentException("Solo puedes cancelar tus citas");
     }
   }
 

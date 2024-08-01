@@ -57,7 +57,7 @@ public class ShiftController {
   @Operation(summary = "Trae un turno por su id")
   @GetMapping("/{id}")
   public ResponseEntity<?> getById(@PathVariable long id) {
-    var shiftFound = mapper.map(this.shiftService.getById(id), Shift.class);
+    var shiftFound = mapper.map(this.shiftService.getById(id), ShiftRes.class);
     return ResponseEntity.ok(shiftFound);
   }
 

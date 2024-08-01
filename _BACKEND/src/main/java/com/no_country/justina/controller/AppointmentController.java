@@ -74,14 +74,14 @@ public class AppointmentController {
     return ResponseEntity.ok(resultDto);
   }
 
-  @Operation(summary = "Actualiza una cita",
-  description = "Actualiza la cita, aquí es necesario pasar el id en el json.")
-  @PutMapping
-  public ResponseEntity<?> updateById(@RequestBody AppointmentReq appointmentReq) {
-    var newAppointment = mapper.map(appointmentReq, Appointment.class);
-    var appointmentUpdated = this.appointmentService.update(newAppointment);
-    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
-  }
+//  @Operation(summary = "Actualiza una cita",
+//  description = "Actualiza la cita, aquí es necesario pasar el id en el json.")
+//  @PutMapping
+//  public ResponseEntity<?> updateById(@RequestBody AppointmentReq appointmentReq) {
+//    var newAppointment = mapper.map(appointmentReq, Appointment.class);
+//    var appointmentUpdated = this.appointmentService.update(newAppointment);
+//    return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
+//  }
   @Operation(summary = "Reprograma una cita.",
   description = "Reprograma una cita, el id es de la cita a reprogramar, los demás datos de la nueva cita.")
   @PutMapping("/reschedule")
