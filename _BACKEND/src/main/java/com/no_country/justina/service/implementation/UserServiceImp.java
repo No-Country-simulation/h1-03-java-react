@@ -1,7 +1,6 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.EmailExistsException;
-import com.no_country.justina.exception.UserIdNotFoundException;
 import com.no_country.justina.model.entities.*;
 import com.no_country.justina.repository.UserRepository;
 import com.no_country.justina.service.interfaces.IUserService;
@@ -41,13 +40,14 @@ public class UserServiceImp implements IUserService {
 
     @Override
     public UserEntity getUserById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(()->new UserIdNotFoundException(id));
+        return userRepository.findByIdAndIsEnabledTrue(id)
+                .orElseThrow(()->new EntityNotFoundException("El usuario con id: " + id
+                + " no se encuentra registrado o fue dado de baja"));
     }
 
     @Override
     public Page<UserEntity> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
+        return userRepository.findByIsEnabledTrue(pageable);
     }
 
     @Override
@@ -75,7 +75,8 @@ public class UserServiceImp implements IUserService {
     public void delete() {
         UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         var userDb = userRepository.findById(user.getId())
-                .orElseThrow(() -> new UserIdNotFoundException(user.getId()));
+                .orElseThrow(() -> new EntityNotFoundException("El usuario con id: " + user.getId() +
+                        " no se encuentra registrado"));
         userDb.setEnabled(false);
         userRepository.save(userDb);
     }
