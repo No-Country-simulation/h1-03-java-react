@@ -34,9 +34,12 @@ public class LoginService implements ILoginService {
                         loginReq.getPassword()
                 )
         );
-        UserEntity user = userRepository.findByEmail(loginReq.getEmail()).orElseThrow(() -> new EntityNotFoundException("El correo ingresado no es valido"));
+        UserEntity user = userRepository.findByEmail(loginReq.getEmail())
+                .orElseThrow(() -> new EntityNotFoundException("El correo ingresado no es valido " +
+                        "o el usuario fue dado de baja"));
         var token = jwtUtils.generateToken(user);
-        Set<RoleRes> rolesRes = user.getRoles().stream().map(role -> modelMapper.map(role, RoleRes.class)).collect(Collectors.toSet());
+        Set<RoleRes> rolesRes = user.getRoles().stream()
+                .map(role -> modelMapper.map(role, RoleRes.class)).collect(Collectors.toSet());
         return new LoginRes(token, rolesRes);
     }
 }

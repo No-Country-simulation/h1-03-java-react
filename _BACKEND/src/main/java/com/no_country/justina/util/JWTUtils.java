@@ -35,7 +35,7 @@ public class JWTUtils {
 
     /**
      * Generar token de acceso
-     * @param claims informacion del usuario
+     * @param claims información del usuario
      * @param subject email
      * @return token
      */
@@ -56,8 +56,8 @@ public class JWTUtils {
 
     /**
      * Validar el token de acceso
-     * @param token
-     * @param user
+     * @param token el token
+     * @param user información del usuario
      * @return boolean
      */
     public boolean isTokenValid(String token, UserDetails user) {
@@ -67,7 +67,7 @@ public class JWTUtils {
 
     /**
      * Obtener el username del token
-     * @param token
+     * @param token el token
      * @return username
      */
     public String getUsernameFromToken(String token){
@@ -76,7 +76,7 @@ public class JWTUtils {
 
     /**
      * Obtener la fecha de expiracion del token
-     * @param token
+     * @param token el token
      * @return date
      */
     public Date getExpirationDate(String token){
@@ -85,7 +85,7 @@ public class JWTUtils {
 
     /**
      * Devuelve true si la fecha del token expiro, sino devuelve false
-     * @param token
+     * @param token el token
      * @return boolean
      */
     public boolean isTokenExpired(String token) {

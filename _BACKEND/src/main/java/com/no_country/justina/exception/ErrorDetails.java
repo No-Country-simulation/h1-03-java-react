@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ErrorDetails {
   private LocalDateTime createdAt;
+  private int status;
+  private String error;
   private String message;
   private String details;
 }
