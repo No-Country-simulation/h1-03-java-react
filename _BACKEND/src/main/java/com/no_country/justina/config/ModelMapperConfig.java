@@ -74,9 +74,6 @@ public class ModelMapperConfig {
     modelMapper.createTypeMap(MedicalHistoryReq.class, MedicalHistory.class)
             .addMappings(mapper->mapper.using(bloodMap)
                     .map(MedicalHistoryReq::getBloodType, MedicalHistory::setBloodType));
-    modelMapper.createTypeMap(PatientReq.class, MedicalHistory.class)
-            .addMappings(mapper->mapper.using(bloodMap)
-                    .map(PatientReq::getBloodType, MedicalHistory::setBloodType));
 
     Converter<BloodType, Integer> bloodMapInvert = ctx-> {
       if(ctx.getSource() == null) return null;

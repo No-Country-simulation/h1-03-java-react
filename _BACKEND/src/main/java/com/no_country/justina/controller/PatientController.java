@@ -30,11 +30,12 @@ public class PatientController {
   private final ModelMapper mapper;
 
   @PostMapping
-  @Operation(summary = "crea un paciente y una historia clínica")
+  @Operation(summary = "Crea un paciente y una Historia vacía.")
   public ResponseEntity<?> create(@RequestBody @Valid PatientReq patientReq) {
     Patient newPatient = mapper.map(patientReq, Patient.class);
     Patient savedPatient = this.patientServ.create(newPatient);
-    MedicalHistory newHistory = mapper.map(patientReq, MedicalHistory.class);
+
+    MedicalHistory newHistory = new MedicalHistory();
     newHistory.setPatient(savedPatient);
     this.historyService.create(newHistory);
     return ResponseEntity
