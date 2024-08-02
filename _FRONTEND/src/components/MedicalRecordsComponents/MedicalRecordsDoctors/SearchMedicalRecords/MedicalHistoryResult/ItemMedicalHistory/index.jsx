@@ -1,6 +1,6 @@
 import React from "react";
-import clinicHistory from "../../../../../assets/svg/others/searchClinicHistory.svg";
-import search from "../../../../../assets/svg/others/search.svg";
+import clinicHistory from "../../../../../../assets/svg/others/searchClinicHistory.svg";
+import search from "../../../../../../assets/svg/others/search.svg";
 
 export default function index({ id, name }) {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import search from "../../../../assets/svg/others/magnifyingGlass.svg";
-import orangeSearch from "../../../../assets/svg/others/orangeSearch.svg";
-import orangeCalendar from "../../../../assets/svg/others/orangeCalendar.svg";
+import search from "../../../../../assets/svg/others/magnifyingGlass.svg";
+import orangeSearch from "../../../../../assets/svg/others/orangeSearch.svg";
+import orangeCalendar from "../../../../../assets/svg/others/orangeCalendar.svg";
 
 export default function index() {
   const [formData, setFormData] = useState({
