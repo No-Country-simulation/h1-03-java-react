@@ -9,14 +9,15 @@ import i18n from "../../../../i18n/doctors/index.json";
 import { useQuery } from "@tanstack/react-query";
 import endpoints from "../../../../helpers/endpoints.js";
 import { getFetch, postFetch, putFetch } from "../../../../services";
-
+import Select from "../../../Resources/FormElements/Select";
 
 const getFormEntries = (e, data) => {
 	const formData = new FormData(e.target);
 	const entries = Object.fromEntries(formData.entries());
-	entries.id = data.user.id
+	entries.id = data.doctor.id
+	const specialty = entries.specialty
+	entries.specialty = {id: Number(specialty)}
 	
-	//console.log(entries)
 	return entries
 }
 
@@ -41,15 +42,13 @@ const EditMyInfoDoctors = () => {
 			enabled: false,
 	});
 	if (errorPostDoctor) console.log(errorPostDoctor)
-	console.log(data1)
 
-	const { error: errorPutDoctor, refetch: refetchPutDoctorInfo } = useQuery({
+	const { data:data2, error: errorPutDoctor, refetch: refetchPutDoctorInfo } = useQuery({
 		queryKey: ["key-putDoctorInfo"],
 		queryFn: () => putFetch(urlDoctorInfo, entriesData, token),
 		enabled: false,
 	});
 	if (errorPutDoctor) console.log(errorPutDoctor)
-
 
 	//Initial form loading
 	useEffect(() => {
@@ -60,6 +59,7 @@ const EditMyInfoDoctors = () => {
 	useEffect(()=>{
 		if (data) {
 			const condition = !data.doctor.phone && !data.doctor.address && !data.doctor.license
+			
 			if (condition) {
 				isPostInsteadOfPut===null && setIsPostInsteadOfPut(true)
 			} else {
@@ -67,9 +67,12 @@ const EditMyInfoDoctors = () => {
 
 				const form = document.querySelector("#doctorForm")
 				const formData = new FormData(form)
-				formData.set('phone', data.user.phone)
-				formData.set('address', data.user.address)
-				formData.set('license', data.user.license)
+				formData.set('phone', data.doctor.phone)
+				formData.set('address', data.doctor.address)
+				formData.set('license', data.doctor.license)
+
+				const specialtySelect = document.querySelector("#specialty")
+				specialtySelect.value = data.doctor.specialty.id
 				//console.log(Object.fromEntries(formData.entries()))
 
 				for (let [name, value] of formData.entries()) {
@@ -158,6 +161,13 @@ const EditMyInfoDoctors = () => {
 									title={i18n[language].license.title}
 									isRequired={true}
 									maxLength="10"
+								/>
+								<Select
+									id={"specialty"}
+									title={i18n[language].specialty.title}
+									arrayOptions={i18n[language].specialty.arrayOptions}
+									isRequired={true}
+									hasLabel={false}
 								/>
 
 								<Button

@@ -33,11 +33,11 @@ export default function Select({
 				}
 			>
 				<option value="" disabled>
-					{arrayOptions[0]}
+					{Object.values(arrayOptions[0])}
 				</option>
 				{arrayOptions.slice(1).map((e, i) => (
-					<option value={i} key={`${e}${i}`}>
-						{e}
+					<option value={Object.keys(e)} key={`${Object.values(e)}${i}`}>
+						{Object.values(e)}
 					</option>
 				))}
 			</select>

@@ -8,6 +8,8 @@ const endpoints = {
 
     getUserAndDoctorInfo: `${urlBase}/users-doctors`,
     getUserAndPatientInfo: `${urlBase}/users-patients`,
+
+    getAllDoctors: `${urlBase}/doctors`
 }
 
 export default endpoints
