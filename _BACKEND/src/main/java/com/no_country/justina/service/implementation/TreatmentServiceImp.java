@@ -2,9 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.model.entities.*;
 import com.no_country.justina.repository.TreatmentRepository;
-import com.no_country.justina.service.interfaces.IDoctorService;
-import com.no_country.justina.service.interfaces.IMedicalHistoryService;
-import com.no_country.justina.service.interfaces.ITreatmentService;
+import com.no_country.justina.service.interfaces.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +20,7 @@ public class TreatmentServiceImp implements ITreatmentService {
   private final TreatmentRepository treatmentRepo;
   private final IDoctorService doctorService;
   private final IMedicalHistoryService historyService;
+  private final IAppointmentService appointmentService;
 
   @Override
   public Treatment create(Treatment treatment) {
@@ -29,7 +28,12 @@ public class TreatmentServiceImp implements ITreatmentService {
     Doctor currentDoctor = doctorService.getByUserId(userTarget.getId());
     Specialty currentSpecialty = currentDoctor.getSpecialty();
 
+    var patientIntoAppointment = this.appointmentService.getById(treatment.getAppointment().getId())
+            .getPatient();
+    MedicalHistory history = this.historyService.getByPatientId(patientIntoAppointment.getIdPatient());
+
     treatment.setDoctor(currentDoctor);
+    treatment.setMedicalHistory(history);
     treatment.setSpecialty(currentSpecialty);
     return this.treatmentRepo.save(treatment);
   }

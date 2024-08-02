@@ -17,6 +17,5 @@ public class TreatmentReq {
   @NotBlank private String plan;
   @NotBlank private String diagnosis;
   @NotBlank private String description;
-  @NotNull private MedicalHistoryReq medicalHistory;
   @NotNull private AppointmentReq appointment;
 }
