@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import search from "../../../../assets/svg/others/magnifyingGlass.svg";
 import downArrow from "../../../../assets/svg/others/downArrowOrange.svg";
 import orangeCalendar from "../../../../assets/svg/others/orangeCalendar.svg";
+import Button from "../../../Resources/FormElements/Button";
 
 export default function index() {
   const [formData, setFormData] = useState({
@@ -121,12 +122,7 @@ export default function index() {
         </div>
 
         <div className="flex items-center justify-between w-full lg:w-auto">
-          <button
-            type="submit"
-            className="bg-[#5666BE] border hover:border-[#5666BE] text-xl text-white font-bold py-3 md:px-20 border-white rounded-full focus:outline-none focus:shadow-outline"
-          >
-            Buscar
-          </button>
+          <Button type="submit" text="Buscar" bgColor="#5666BE" title="Buscar" textColor="white" classNames="border text-xl font-bold py-3 md:px-20 border-white rounded-full" />
         </div>
       </form>
     </div>
