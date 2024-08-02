@@ -9,6 +9,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ import java.util.Map;
 /**
  * Clase global para manejar excepciones en la aplicación.
  */
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
   /**
@@ -134,6 +135,6 @@ public class GlobalExceptionHandler {
   public ResponseEntity<ErrorDetails> badRequestExceptions(Exception e, WebRequest request){
     var errorDetails = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
             request.getDescription(false));
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorDetails);
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
   }
 }

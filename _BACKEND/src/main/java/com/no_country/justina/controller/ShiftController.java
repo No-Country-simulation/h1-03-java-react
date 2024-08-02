@@ -75,7 +75,7 @@ public class ShiftController {
   }
 
   @Operation(summary = "Trae los turnos con filtros y paginado.",
-          description = "Usa filtros por doctor, especialidad y periodo de tiempo")
+          description = "Usa filtros por doctor, especialidad, franja horaria y periodo de tiempo")
   @GetMapping("/filter")
   public ResponseEntity<?> getAllByDoctorOrSpecialty(@RequestParam(defaultValue = "0") int page,
                                                      @RequestParam(defaultValue = "20") int size,
@@ -83,11 +83,12 @@ public class ShiftController {
                                                      @RequestParam(defaultValue = "asc") String direction,
                                                      @RequestParam(required = false) Long doctorId,
                                                      @RequestParam(required = false) Long specialty,
+                                                     @RequestParam(required = false) Integer shiftTime,
                                                      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
                                                      Pageable pageable){
     Page<Shift> result = this.shiftService.getAllByDoctorOrSpecialtyBetweenDates(
-            pageable, doctorId, specialty, start, end);
+            pageable, doctorId, specialty, shiftTime, start, end);
     Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
     return ResponseEntity.ok(resultDto);
   }

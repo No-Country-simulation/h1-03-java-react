@@ -103,6 +103,7 @@ public class ShiftServiceImp implements IShiftService {
   public Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
                                                            Long doctorId,
                                                            Long specialtyId,
+                                                           Integer shiftTime,
                                                            LocalDateTime start,
                                                            LocalDateTime end) {
     if (start != null && end != null) {
@@ -113,8 +114,13 @@ public class ShiftServiceImp implements IShiftService {
         throw new IllegalArgumentException("Los rangos de horario deben ser del mismo año.");
       }
     }
+
+    if(shiftTime != 0 && shiftTime != 1){
+      throw new IllegalArgumentException("Código invalido para la franja horaria:"+ shiftTime);
+    }
+
     return this.shiftRepository.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, start, end);
+            pageable, doctorId, specialtyId, shiftTime, start, end);
   }
 
 

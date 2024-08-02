@@ -24,6 +24,7 @@ public interface IShiftService {
   Page<Shift> getAllByDoctorOrSpecialtyBetweenDates(Pageable pageable,
                                                     Long doctorId,
                                                     Long specialty,
+                                                    Integer shiftTime,
                                                     LocalDateTime start,
                                                     LocalDateTime end);
   void updateAppointmentAvailable(long idShift, int quantity);

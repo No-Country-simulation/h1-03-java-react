@@ -32,7 +32,7 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
   @Query("SELECT s FROM Shift s WHERE s.specialty.name = :specialty AND YEAR(s.startDate) = :year AND MONTH(s.startDate) = :month")
   List<Shift> findBySpecialtyAndMonth(String specialty, int year, int month);
 
-  @Query(value="select * from Shift s where " +
+  @Query(value = "select * from Shift s where " +
           "s.end_date > :time and " +
           "s.doctor_id = :doctorId " +
           "order by s.end_date ASC limit 1",
@@ -47,6 +47,7 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
   default Page<Shift> findAllByDoctorOrSpecialty(Pageable pageable,
                                                  Long doctorId,
                                                  Long specialtyId,
+                                                 Integer shiftTime,
                                                  LocalDateTime start,
                                                  LocalDateTime end) {
     return findAll((Root<Shift> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
@@ -57,10 +58,17 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
       if (specialtyId != null) {
         predicates.add(builder.equal(root.get("specialty").get("id"), specialtyId));
       }
-      if(start != null && end != null){
+      if (start != null && end != null) {
         predicates.add(builder.between(root.get("startDate"), start, end));
       }
-//      predicates.add(builder.between(root.get("startDate"), start, end));
+      if (shiftTime != null) {
+        if (shiftTime == 0) {
+          predicates.add(builder.equal(builder.function("HOUR", Integer.class, root.get("startDate")), 7));
+        }
+        else {
+          predicates.add(builder.equal(builder.function("HOUR", Integer.class, root.get("startDate")), 13));
+        }
+      }
       return builder.and(predicates.toArray(new Predicate[0]));
 
     }, pageable);
