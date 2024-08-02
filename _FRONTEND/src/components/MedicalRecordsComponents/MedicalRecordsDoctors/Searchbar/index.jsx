@@ -24,7 +24,7 @@ export default function index() {
 
   return (
     <div
-      className="box-border flex flex-col justify-start w-full h-auto rounded-3xl py-8 px-16 gap-6"
+      className="box-border flex flex-col justify-start w-full h-auto rounded-3xl py-8 px-8 lg:px-16 gap-6"
       style={{
         background:
           "linear-gradient(180deg, rgba(86, 102, 190, 0.8) 58.4%, rgba(217, 130, 53, 0.56) 100%)",
@@ -32,21 +32,23 @@ export default function index() {
     >
       <div className="flex items-center gap-4 py-4 px-2">
         <img src={search} alt="" width="44px" height="44px" />
-        <p className="text-white font-bold text-xl">Buscar Historia Clínica</p>
+        <p className="text-white font-bold text-lg lg:text-xl">
+          Buscar Historia Clínica
+        </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="box-border flex flex-col-reverse md:flex-row justify-between items-start text-center"
+        className="box-border flex flex-col gap-4 lg:flex-row justify-between items-start text-center"
       >
-        <div className="gap-2.5 relative">
+        <div className="gap-2.5 relative w-full lg:w-auto">
           <input
             type="text"
             name="name"
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="border-[#B7B7B7] border rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6 "
+            className="border-[#B7B7B7] border rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             placeholder="POR APELLIDO"
             required
           />
@@ -55,7 +57,7 @@ export default function index() {
           </div>
         </div>
 
-        <div className="gap-2.5 relative">
+        <div className="gap-2.5 relative w-full lg:w-auto">
           <input
             type="text"
             name="id"
@@ -71,12 +73,12 @@ export default function index() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full lg:w-auto">
           <p className="text-white font-semibold text-base mb-2">
             POR PERIODO:
           </p>
-          <div className="flex gap-3 items-center">
-            <div className="gap-2.5 relative">
+          <div className="flex flex-col xl:flex-row gap-3 items-center">
+            <div className="gap-2.5 relative w-full lg:w-auto">
               <input
                 type="date"
                 name="startDate"
@@ -91,7 +93,7 @@ export default function index() {
               </div>
             </div>
             <p className="text-white text-base font-semibold">HASTA</p>
-            <div className="gap-2.5 relative">
+            <div className="gap-2.5 relative w-full lg:w-auto">
               <input
                 type="date"
                 name="endDate"
@@ -108,10 +110,10 @@ export default function index() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between w-full lg:w-auto">
           <button
             type="submit"
-            className="bg-{#5666BE} border hover:border-[#5666BE] text-xl text-white font-bold py-3 px-20 border-white rounded-full focus:outline-none focus:shadow-outline"
+            className="bg-[#5666BE] border hover:border-[#5666BE] text-xl text-white font-bold py-3 md:px-20  border-white rounded-full focus:outline-none focus:shadow-outline"
           >
             Buscar
           </button>

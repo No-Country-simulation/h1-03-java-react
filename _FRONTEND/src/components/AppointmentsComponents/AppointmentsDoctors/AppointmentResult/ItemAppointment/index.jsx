@@ -4,8 +4,8 @@ import search from "../../../../../assets/svg/others/search.svg";
 
 export default function index({ date, name, profession, timeSlot }) {
   return (
-    <div className="flex justify-between items-stretch py-2 px-8 w-full h-auto rounded-3xl border border-black divide-x divide-black">
-      <div className="flex flex-row flex-1 gap-4 items-center">
+    <div className="flex flex-col md:flex-row justify-between items-stretch py-2 px-4 md:px-8 w-full h-auto rounded-3xl border border-black divide-y md:divide-y-0 md:divide-x divide-black">
+      <div className="flex flex-row flex-1 gap-4 p-4 items-center justify-center md:justify-start">
         <div className="flex justify-center items-center">
           <img
             src={calendar}
@@ -25,7 +25,7 @@ export default function index({ date, name, profession, timeSlot }) {
         <p className="text-2xl font-medium">{name}</p>
         <p className="text-2xl">{profession}</p>
       </div>
-      <div className="flex flex-col flex-1 items-center gap-4">
+      <div className="flex flex-col flex-1 items-center gap-4 p-4">
         <p className="text-xl">Franja horaria</p>
         <div className="flex justify-center border-2 border-[#5666BE] rounded-full">
           <div
@@ -45,7 +45,7 @@ export default function index({ date, name, profession, timeSlot }) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col flex-1 items-center gap-4">
+      <div className="flex flex-col flex-1 items-center gap-4 p-4">
         <p className="text-xl">Revisar turnos</p>
         <div className="flex justify-center">
           <img

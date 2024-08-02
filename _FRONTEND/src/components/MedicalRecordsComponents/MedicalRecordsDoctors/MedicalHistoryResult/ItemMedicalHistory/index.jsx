@@ -4,8 +4,8 @@ import search from "../../../../../assets/svg/others/search.svg";
 
 export default function index({ id, name }) {
   return (
-    <div className="flex justify-between items-stretch py-2 px-8 w-full h-auto rounded-3xl border border-black divide-x divide-black">
-      <div className="flex flex-row flex-1 gap-4 items-center">
+    <div className="flex flex-col md:flex-row  justify-between items-stretch py-2 px-8 w-full h-auto rounded-3xl border border-black divide-y md:divide-y-0 md:divide-x divide-black">
+      <div className="flex flex-row flex-1 gap-4 p-4 items-center justify-center md:justify-start">
         <div className="flex justify-center items-center">
           <img
             src={clinicHistory}
@@ -24,7 +24,7 @@ export default function index({ id, name }) {
       <div className="flex flex-col flex-1 gap-2 p-4 justify-center items-center">
         <p className="text-2xl font-medium">{name}</p>
       </div>
-      <div className="flex flex-col flex-1 items-center gap-4">
+      <div className="flex flex-col flex-1 items-center gap-4 p-4">
         <p className="text-xl">Ver detalles</p>
         <div className="flex justify-center">
           <img
