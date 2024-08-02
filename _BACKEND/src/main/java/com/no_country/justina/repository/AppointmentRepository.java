@@ -46,6 +46,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
                                                        Long specialtyId,
                                                        Long patientId,
                                                        AppointmentStatus status,
+                                                       Integer shiftTime,
                                                        LocalDateTime start,
                                                        LocalDateTime end) {
     return findAll((Root<Appointment> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
@@ -64,6 +65,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
       }
       if(start != null && end != null){
         predicates.add(builder.between(root.get("date"), start, end));
+      }
+      if (shiftTime != null) {
+        if (shiftTime == 0) {
+          predicates.add(builder.equal(builder.function("HOUR", Integer.class, root.get("date")), 7));
+        }
+        else {
+          predicates.add(builder.equal(builder.function("HOUR", Integer.class, root.get("date")), 13));
+        }
       }
       return builder.and(predicates.toArray(new Predicate[0]));
 

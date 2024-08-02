@@ -81,11 +81,12 @@ public class AppointmentController {
           @RequestParam(required = false) Long doctorId,
           @RequestParam(required = false) Integer status,
           @RequestParam(required = false) Long specialtyId,
+          @RequestParam(required = false) Integer shiftTime,
           @RequestParam(required = false) Long patientId,
           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
     Page<Appointment> result = this.appointmentService.getAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, patientId,status, start, end);
+            pageable, doctorId, specialtyId,patientId,status,shiftTime, start, end);
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
@@ -101,12 +102,13 @@ public class AppointmentController {
           Pageable pageable,
           @RequestParam(required = false) Long doctorId,
           @RequestParam(required = false) Integer status,
+          @RequestParam(required = false) Integer shiftTime,
           @RequestParam(required = false) Long specialtyId,
           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
           @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end
           ) {
     Page<Appointment> result = this.appointmentService.getAllByFiltersForAuthUser(
-            pageable, doctorId, specialtyId,status, start, end);
+            pageable, doctorId, specialtyId,status, shiftTime, start, end);
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }

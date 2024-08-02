@@ -18,6 +18,7 @@ public interface IAppointmentService {
                                               Long specialtyId,
                                               Long patientId,
                                               Integer status,
+                                              Integer shiftTime,
                                               LocalDateTime start,
                                               LocalDateTime end);
 
@@ -25,6 +26,7 @@ public interface IAppointmentService {
                                                Long doctorId,
                                                Long specialty,
                                                Integer status,
+                                               Integer shiftTime,
                                                LocalDateTime start,
                                                LocalDateTime end);
 

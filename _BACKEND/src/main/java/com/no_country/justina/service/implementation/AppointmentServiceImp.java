@@ -63,6 +63,7 @@ public class AppointmentServiceImp implements IAppointmentService {
                                                      Long specialtyId,
                                                      Long patientId,
                                                      Integer status,
+                                                     Integer shiftTime,
                                                      LocalDateTime start,
                                                      LocalDateTime end) {
     AppointmentStatus statusFormat = null;
@@ -77,8 +78,11 @@ public class AppointmentServiceImp implements IAppointmentService {
     if (status != null) {
       statusFormat = AppointmentStatus.fromId(status);
     }
+    if(shiftTime != null && (shiftTime != 0 && shiftTime != 1)){
+      throw new AppointmentException("Código invalido para el shiftTime: "+ shiftTime);
+    }
     return this.appointmentRepo.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, patientId, statusFormat, start, end);
+            pageable, doctorId, specialtyId, patientId, statusFormat, shiftTime,start, end);
   }
 
   @Override
@@ -86,10 +90,11 @@ public class AppointmentServiceImp implements IAppointmentService {
                                                       Long doctorId,
                                                       Long specialty,
                                                       Integer status,
+                                                      Integer shiftTime,
                                                       LocalDateTime start,
                                                       LocalDateTime end) {
     Patient patientAuth = this.getAuthPatient();
-    return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, start, end);
+    return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, shiftTime,start, end);
   }
 
   @Override
