@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -70,5 +71,10 @@ public class DoctorServiceImp implements IDoctorService {
     @Override
     public Doctor getByUserId(Long id) {
         return doctorRepository.findByUserId(id).orElseThrow(() -> new EntityNotFoundException("Datos de doctor no cargados"));
+    }
+
+    @Override
+    public List<Doctor> getAllBySpecialty(long id) {
+        return this.doctorRepository.findBySpecialty_Id(id);
     }
 }

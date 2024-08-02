@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("${api.base-url}/doctors")
@@ -45,6 +47,15 @@ public class DoctorController {
     public ResponseEntity<DoctorRes> create(@RequestBody DoctorReq doctorReq) {
         Doctor doctor = doctorService.create(modelMapper.map(doctorReq, Doctor.class));
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/specialty/{id}")
+    public ResponseEntity<?> getAllBySpecialty(@PathVariable Long id){
+        List<DoctorRes> doctorResFound = this.doctorService.getAllBySpecialty(id)
+                .stream()
+                .map(item->modelMapper.map(item, DoctorRes.class))
+                .toList();
+        return ResponseEntity.ok(doctorResFound);
     }
 
     @Operation(summary = "Actualiza un doctor", description = "Disponible solo para el rol DOCTOR",
