@@ -29,6 +29,7 @@ public class PrescriptionServiceImp implements IPrescriptionService {
     Appointment appointment = treatment.getAppointment();
     prescription.setDoctor(appointment.getShift().getDoctor());
     prescription.setPatient(appointment.getPatient());
+    prescription.setSpecialty(appointment.getShift().getSpecialty());
     return this.prescriptionRepository.save(prescription);
   }
 

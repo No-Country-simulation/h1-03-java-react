@@ -15,7 +15,7 @@ public class TreatmentRes {
   private String description;
   private String reason_consult;
   private String plan;
-  private MedicalHistoryRes medicalHistory;
-  private DoctorRes doctor;
+  private MedicalHistoryShort medicalHistory;
+  private DoctorShortRes doctor;
   private SpecialtyRes specialty;
 }

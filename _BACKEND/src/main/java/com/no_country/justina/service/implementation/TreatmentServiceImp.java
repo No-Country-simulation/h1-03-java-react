@@ -44,9 +44,13 @@ public class TreatmentServiceImp implements ITreatmentService {
             .orElseThrow(()->new EntityNotFoundException("Tratamiento no encontrado, id:"+id));
   }
   @Override
-  public Page<Treatment> getByHistorieForPatient(Pageable pageable){
-    var currentHistoryPatient = this.historyService.getByCurrentPatient();
-    return this.treatmentRepo.findByMedicalHistory_Id(currentHistoryPatient.getId(), pageable);
+  public Page<Treatment> getByHistorieForPatient(Pageable pageable,
+                                                 Long doctorId,
+                                                 Long specialtyId,
+                                                 LocalDateTime start,
+                                                 LocalDateTime end){
+    MedicalHistory currentHistoryPatient = this.historyService.getByCurrentPatient();
+    return this.getAllByFilters(pageable, doctorId, currentHistoryPatient.getId(), specialtyId,start, end);
   }
   @Override
   public Page<Treatment> getByHistorieForDoctor(Long  id, Pageable pageable){

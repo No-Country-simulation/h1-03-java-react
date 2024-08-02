@@ -7,15 +7,11 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PrescriptionRes {
+public class MedicalHistoryShort {
   private Long id;
-  private LocalDateTime createdAt;
-  private TreatmentRes treatment;
   private PatientShortRes patient;
-  private DoctorShortRes doctor;
-  private SpecialtyRes specialty;
 }

@@ -10,7 +10,11 @@ public interface ITreatmentService {
   Treatment create(Treatment treatment);
   Treatment getById(Long id);
 
-  Page<Treatment> getByHistorieForPatient(Pageable pageable);
+  Page<Treatment> getByHistorieForPatient(Pageable pageable,
+                                          Long doctorId,
+                                          Long specialtyId,
+                                          LocalDateTime start,
+                                          LocalDateTime end);
 
   Page<Treatment> getByHistorieForDoctor(Long id, Pageable pageable);
 
