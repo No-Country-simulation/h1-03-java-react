@@ -115,7 +115,7 @@ public class ShiftServiceImp implements IShiftService {
       }
     }
 
-    if(shiftTime != 0 && shiftTime != 1){
+    if(shiftTime != null && shiftTime != 0 && shiftTime != 1){
       throw new IllegalArgumentException("Código invalido para la franja horaria:"+ shiftTime);
     }
 
