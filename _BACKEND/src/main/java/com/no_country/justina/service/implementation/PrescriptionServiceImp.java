@@ -26,10 +26,9 @@ public class PrescriptionServiceImp implements IPrescriptionService {
   @Override
   public Prescription create(Prescription prescription) {
     Treatment treatment = treatmentService.getById(prescription.getTreatment().getId());
-    Appointment appointment = treatment.getAppointment();
-    prescription.setDoctor(appointment.getShift().getDoctor());
-    prescription.setPatient(appointment.getPatient());
-    prescription.setSpecialty(appointment.getShift().getSpecialty());
+    prescription.setDoctor(treatment.getDoctor());
+    prescription.setPatient(treatment.getMedicalHistory().getPatient());
+    prescription.setSpecialty(treatment.getSpecialty());
     return this.prescriptionRepository.save(prescription);
   }
 

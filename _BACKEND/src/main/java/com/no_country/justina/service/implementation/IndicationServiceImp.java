@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -45,6 +46,10 @@ public class IndicationServiceImp implements IIndicationService {
     return this.indicationRepo.findAll(pageable);
   }
 
+  @Override
+  public List<Indication> getByPrescription(Long id){
+    return this.indicationRepo.findByPrescription_Id(id);
+  }
   @Override
   public Indication update(Indication indication) {
     this.verifyIndicationExist(indication.getId());

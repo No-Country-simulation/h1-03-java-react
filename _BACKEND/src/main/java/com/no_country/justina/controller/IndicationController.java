@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -74,6 +75,15 @@ public class IndicationController {
                                   Pageable pageable) {
     Page<Indication> result = this.indicationService.getAll(pageable);
     Page<IndicationRes> resultDto = result.map(item -> mapper.map(item, IndicationRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+  @Operation(summary = "Trae todas las indicaciones por receta")
+  @GetMapping("prescription/{id}")
+  public ResponseEntity<?> getAllByPrescription(@PathVariable Long id) {
+    List<Indication> result = this.indicationService.getByPrescription(id);
+    List<IndicationRes> resultDto = result.stream()
+            .map(item->mapper.map(item, IndicationRes.class))
+            .toList();
     return ResponseEntity.ok(resultDto);
   }
 

@@ -16,7 +16,7 @@ public class IndicationRes {
   private int quantity;
   private int quantityByFrequency;
   private DrugFormRes form;
-  private DrugRouteRes routeAdministration;
+  private DrugRouteRes route;
   private int frequency;
   private int duration;
   private DrugStatus drugStatus;

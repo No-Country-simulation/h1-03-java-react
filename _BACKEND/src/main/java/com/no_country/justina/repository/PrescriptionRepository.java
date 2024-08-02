@@ -35,7 +35,7 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Long
         predicates.add(builder.equal(root.get("patient").get("idPatient"), patientId));
       }
       if (specialtyId != null) {
-        predicates.add(builder.equal(root.get("doctor").get("specialty").get("id"), specialtyId));
+        predicates.add(builder.equal(root.get("specialty").get("id"), specialtyId));
       }
       if(start != null && end != null){
         predicates.add(builder.between(root.get("createdAt"), start, end));

@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IndicationRepository extends JpaRepository<Indication, Long> {
 
@@ -15,4 +17,7 @@ public interface IndicationRepository extends JpaRepository<Indication, Long> {
   @Modifying
   @Query("UPDATE Indication i SET i.drugStatus = :status WHERE i.id = :id")
   void stopIndication(long id, DrugStatus status);
+
+  List<Indication> findByPrescription_Id(Long id);
+
 }
