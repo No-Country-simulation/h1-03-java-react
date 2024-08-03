@@ -1,9 +1,7 @@
 package com.no_country.justina.config;
 
 import com.no_country.justina.model.dto.*;
-import com.no_country.justina.model.entities.Appointment;
-import com.no_country.justina.model.entities.MedicalHistory;
-import com.no_country.justina.model.entities.Patient;
+import com.no_country.justina.model.entities.*;
 import com.no_country.justina.model.enums.AppointmentStatus;
 import com.no_country.justina.model.enums.BloodType;
 import com.no_country.justina.model.enums.Genre;
@@ -11,7 +9,6 @@ import com.no_country.justina.model.enums.MaritalStatus;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

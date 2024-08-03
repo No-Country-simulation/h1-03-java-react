@@ -1,5 +1,6 @@
 package com.no_country.justina.service.implementation;
 
+import com.no_country.justina.exception.TreatmentException;
 import com.no_country.justina.model.entities.*;
 import com.no_country.justina.repository.TreatmentRepository;
 import com.no_country.justina.service.interfaces.*;
@@ -26,11 +27,11 @@ public class TreatmentServiceImp implements ITreatmentService {
   public Treatment create(Treatment treatment) {
     var userTarget = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Doctor currentDoctor = doctorService.getByUserId(userTarget.getId());
-    Specialty currentSpecialty = currentDoctor.getSpecialty();
 
-    var patientIntoAppointment = this.appointmentService.getById(treatment.getAppointment().getId())
-            .getPatient();
-    MedicalHistory history = this.historyService.getByPatientId(patientIntoAppointment.getIdPatient());
+    Specialty currentSpecialty = currentDoctor.getSpecialty();
+    Appointment targetAppointment = this.appointmentService.getById(treatment.getAppointment().getId());
+    this.verifyDoctorAuthIsSameDoctorAppointment(targetAppointment, currentDoctor);
+    MedicalHistory history = this.historyService.getByPatientId(targetAppointment.getPatient().getIdPatient());
 
     treatment.setDoctor(currentDoctor);
     treatment.setMedicalHistory(history);
@@ -92,5 +93,16 @@ public class TreatmentServiceImp implements ITreatmentService {
   private void verifyTreatmentExist(long id){
     boolean exist = this.treatmentRepo.existsById(id);
     if(!exist) throw new EntityNotFoundException("Tratamiento no encontrado, id: "+id);
+  }
+  private void verifyDoctorAuthIsSameDoctorAppointment(Appointment appointment, Doctor doctorAuth){
+    Doctor shiftDoctor = appointment.getShift().getDoctor();
+    if(shiftDoctor.getId().equals(doctorAuth.getId())){
+      return;
+    }
+    else {
+      throw new TreatmentException("El doctor autenticado es diferente al doctor del turno." +
+              " doctor autenticado id: "+doctorAuth.getId()+
+              " doctor del turno id: "+shiftDoctor.getId());
+    }
   }
 }

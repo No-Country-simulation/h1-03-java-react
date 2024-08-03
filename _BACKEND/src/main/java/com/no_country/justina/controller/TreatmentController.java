@@ -63,13 +63,13 @@ public class TreatmentController {
           description = "Pasar en la ruta el id de la historia.\n La respuesta esta paginada"
   )
 
-  @GetMapping("/historie/{historie}")
+  @GetMapping("/historie/{id}")
   public ResponseEntity<?> getAllForHistorie(@RequestParam(defaultValue = "0") int page,
                                              @RequestParam(defaultValue = "20") int size,
                                              @RequestParam(defaultValue = "id") String sort,
                                              @RequestParam(defaultValue = "asc") String direction,
                                              Pageable pageable,
-                                             @PathVariable Long historieId) {
+                                             @PathVariable("id") Long historieId) {
     Page<Treatment> treatmentsFound = this.treatmentService.getByHistorieForDoctor(historieId, pageable);
     Page<TreatmentRes> treatmentsRes = treatmentsFound.map(item -> mapper.map(item, TreatmentRes.class));
     return ResponseEntity.ok(treatmentsRes);
