@@ -4,7 +4,6 @@ import com.no_country.justina.model.dto.DoctorReq;
 import com.no_country.justina.model.dto.DoctorRes;
 import com.no_country.justina.model.entities.Doctor;
 import com.no_country.justina.service.interfaces.IDoctorService;
-import com.no_country.justina.service.interfaces.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +47,8 @@ public class DoctorController {
         return new ResponseEntity<>(modelMapper.map(doctor, DoctorRes.class), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Trae todos lo doctores por especialidad",
+            description = "Usa el id de la especialidad para la búsqueda.")
     @GetMapping("/specialty/{id}")
     public ResponseEntity<?> getAllBySpecialty(@PathVariable Long id){
         List<DoctorRes> doctorResFound = this.doctorService.getAllBySpecialty(id)
