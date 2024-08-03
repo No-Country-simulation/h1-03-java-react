@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDateTime;
+
 @Configuration
 @RequiredArgsConstructor
 public class ModelMapperConfig {
@@ -59,9 +61,19 @@ public class ModelMapperConfig {
       if(ctx.getSource() == null) return null;
       return ctx.getSource().getId();
     };
+    /*conversion de franja horaria*/
+    Converter<LocalDateTime, Integer> shiftTimeConvert = ctx-> {
+      if(ctx.getSource() == null) return null;
+      int hour = ctx.getSource().getHour();
+      int minute = ctx.getSource().getMinute();
+      return (hour == 7 && minute == 30) ? 0 : 1;
+    };
+
     modelMapper.createTypeMap(Appointment.class, AppointmentRes.class)
             .addMappings(mapper->mapper.using(appointmentStatusMapInvert)
-                    .map(Appointment::getAppointmentStatus, AppointmentRes::setAppointmentStatus));
+                    .map(Appointment::getAppointmentStatus, AppointmentRes::setAppointmentStatus))
+            .addMappings(mapper->mapper.using(shiftTimeConvert)
+                    .map(Appointment::getDate, AppointmentRes::setShiftTime));
 
     /*convertir bloodType en Medical History*/
     Converter<Integer, BloodType> bloodMap = ctx-> {
@@ -81,6 +93,11 @@ public class ModelMapperConfig {
                     .map(MedicalHistory::getBloodType, MedicalHistoryRes::setBloodType));
 
     /*convertir drug status en Drug*/
+
+    /*añadir conversion de franja horaria en shift*/
+    modelMapper.createTypeMap(Shift.class, ShiftRes.class)
+            .addMappings(mapper->mapper.using(shiftTimeConvert)
+              .map(Shift::getStartDate, ShiftRes::setShiftTime));
 
     return modelMapper;
   }

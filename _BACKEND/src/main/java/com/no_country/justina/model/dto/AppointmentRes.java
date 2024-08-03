@@ -18,4 +18,5 @@ public class AppointmentRes {
   private int appointmentStatus;
   private PatientShortRes patient;
   private ShiftRes shift;
+  private Integer shiftTime;
 }

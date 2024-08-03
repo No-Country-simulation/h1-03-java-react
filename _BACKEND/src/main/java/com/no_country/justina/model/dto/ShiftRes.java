@@ -18,4 +18,5 @@ public class ShiftRes {
   private int appointment;
   private DoctorShortRes doctor;
   private SpecialtyRes specialty;
+  private Integer shiftTime;
 }
