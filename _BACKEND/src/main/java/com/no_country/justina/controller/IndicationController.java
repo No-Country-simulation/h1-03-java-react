@@ -7,6 +7,7 @@ import com.no_country.justina.service.interfaces.IIndicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.persistence.EntityManager;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,15 +32,20 @@ import java.util.stream.Collectors;
 public class IndicationController {
   private final IIndicationService indicationService;
   private final ModelMapper mapper;
+  private final EntityManager entityManager;
 
   @Operation(summary = "Crea una indicación", description = "Disponible solo para DOCTOR")
   @PostMapping
+  @Transactional
   public ResponseEntity<?> create(@RequestBody @Valid IndicationReq indicationReq) {
     Indication newIndication = mapper.map(indicationReq, Indication.class);
     Indication savedIndication = this.indicationService.create(newIndication);
+    entityManager.clear();
+    IndicationRes indicationDto = mapper.map(
+            this.indicationService.getById(savedIndication.getId()), IndicationRes.class);
     return ResponseEntity
             .status(HttpStatus.CREATED)
-            .body(mapper.map(savedIndication, IndicationRes.class));
+            .body(indicationDto);
   }
 
   @Operation(summary = "Puedes crear un conjunto de indicaciones.",
