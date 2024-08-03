@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class PrescriptionRes {
   private Long id;
   private LocalDateTime createdAt;
-  private TreatmentRes treatment;
+  private TreatmentShortRes treatment;
   private PatientShortRes patient;
   private DoctorShortRes doctor;
   private SpecialtyRes specialty;
