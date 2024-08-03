@@ -6,7 +6,7 @@ import recipe from "../../../../../assets/svg/others/recipe.svg";
 export default function index() {
   return (
     <div className="flex flex-col py-4 px-8 text-center border-2 border-[#5666BE80] w-full h-auto rounded-3xl gap-4">
-        <div className="flex justify-between">
+        <div className="flex flex-col sm:flex-row justify-between">
           <p>Fecha: 16-02-2024</p>
           <p>Hora: 12:30pm</p>
           <p>Edad: 45 a</p>
@@ -72,7 +72,7 @@ export default function index() {
         </div>
         <div className="text-start">
           <p className="">Tratante:</p>
-          <div className="flex justify-between text-xs">
+          <div className="flex flex-col sm:flex-row justify-between text-xs">
             <p>Nombre y apellido: Juanito Alimaña</p>
             <p>Especialidad: Medicina General</p>
             <p>Licencia: 2456454</p>
