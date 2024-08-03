@@ -16,6 +16,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,9 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
                                                  Long specialtyId,
                                                  Integer shiftTime,
                                                  LocalDateTime start,
-                                                 LocalDateTime end) {
+                                                 LocalDateTime end,
+                                                 List<LocalDateTime> excludedDates,
+                                                 Integer minAppointmentAvailable) {
     return findAll((Root<Shift> root, CriteriaQuery<?> query, CriteriaBuilder builder) -> {
       List<Predicate> predicates = new ArrayList<>();
       if (doctorId != null) {
@@ -69,8 +72,17 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
           predicates.add(builder.equal(builder.function("HOUR", Integer.class, root.get("startDate")), 13));
         }
       }
-      return builder.and(predicates.toArray(new Predicate[0]));
+      if (excludedDates != null && !excludedDates.isEmpty()) {
+        Predicate[] exclusionPredicates = excludedDates.stream()
+                .map(date -> builder.notEqual(root.get("startDate"), date))
+                .toArray(Predicate[]::new);
+        predicates.add(builder.and(exclusionPredicates));
+      }
+      if(minAppointmentAvailable != null){
+        predicates.add(builder.greaterThanOrEqualTo(root.get("appointment"), minAppointmentAvailable));
+      }
 
+      return builder.and(predicates.toArray(new Predicate[0]));
     }, pageable);
   }
 }

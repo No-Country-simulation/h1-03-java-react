@@ -26,7 +26,15 @@ public interface IShiftService {
                                                     Long specialty,
                                                     Integer shiftTime,
                                                     LocalDateTime start,
-                                                    LocalDateTime end);
+                                                    LocalDateTime end,
+                                                    List<LocalDateTime> excludeDates,
+                                                    Integer minAppointmentAvailable);
+
+  Page<Shift> getAvailableByFilter(Pageable pageable,
+                                   Long doctorId,
+                                   Long specialtyId,
+                                   Integer shiftTime);
+
   void updateAppointmentAvailable(long idShift, int quantity);
 
   Shift getCloserByDoctor();

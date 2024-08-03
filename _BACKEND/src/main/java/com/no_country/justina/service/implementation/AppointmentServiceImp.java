@@ -183,6 +183,10 @@ public class AppointmentServiceImp implements IAppointmentService {
     return closeAppointment.orElseThrow(
             ()-> new AppointmentException("No hay citas futuras para el paciente con id:"+currentPatient.getIdPatient()));
   }
+  @Override
+  public List<Appointment> getByPatientBetweenDates(Long id, LocalDateTime start, LocalDateTime end){
+    return this.appointmentRepo.findByPatient_IdPatientAndDateBetween(id, start, end);
+  }
 
   private void verifyAppointmentExist(long id) {
     boolean exist = this.appointmentRepo.existsById(id);

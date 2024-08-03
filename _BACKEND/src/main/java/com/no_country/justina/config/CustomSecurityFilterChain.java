@@ -65,7 +65,9 @@ public class CustomSecurityFilterChain {
                                     "/api/v1/users/**").hasAnyRole("DOCTOR", "PATIENT")
                             .requestMatchers(
                                     HttpMethod.GET,
-                                    "/api/v1/treatments/current-user").hasRole("PATIENT")
+                                    "/api/v1/treatments/current-user",
+                                    "/api/v1/shifts/available/filter"
+                                    ).hasRole("PATIENT")
                             .requestMatchers(
                                     HttpMethod.GET,
                                     "/api/v1/appointments",

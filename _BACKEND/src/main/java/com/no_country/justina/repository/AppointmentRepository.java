@@ -1,8 +1,6 @@
 package com.no_country.justina.repository;
 
 import com.no_country.justina.model.entities.Appointment;
-import com.no_country.justina.model.entities.Doctor;
-import com.no_country.justina.model.entities.Shift;
 import com.no_country.justina.model.enums.AppointmentStatus;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -80,4 +78,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   }
 
   List<Appointment> findByShift_Id(long id);
+
+  List<Appointment> findByPatient_IdPatientAndDateBetween(Long idPatient, LocalDateTime dateStart, LocalDateTime dateEnd);
 }

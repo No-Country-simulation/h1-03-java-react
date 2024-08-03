@@ -1,11 +1,12 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.ShiftException;
-import com.no_country.justina.model.entities.Doctor;
-import com.no_country.justina.model.entities.Shift;
-import com.no_country.justina.model.entities.UserEntity;
+import com.no_country.justina.model.entities.*;
+import com.no_country.justina.repository.AppointmentRepository;
 import com.no_country.justina.repository.ShiftRepository;
+import com.no_country.justina.service.interfaces.IAppointmentService;
 import com.no_country.justina.service.interfaces.IDoctorService;
+import com.no_country.justina.service.interfaces.IPatientService;
 import com.no_country.justina.service.interfaces.IShiftService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,6 +24,8 @@ import java.util.stream.Collectors;
 public class ShiftServiceImp implements IShiftService {
   private final ShiftRepository shiftRepository;
   private final IDoctorService doctorService;
+  private final IPatientService patientService;
+  private final AppointmentRepository appointmentRepo;
 
   @Override
   public Shift create(Shift shift) {
@@ -105,7 +106,9 @@ public class ShiftServiceImp implements IShiftService {
                                                            Long specialtyId,
                                                            Integer shiftTime,
                                                            LocalDateTime start,
-                                                           LocalDateTime end) {
+                                                           LocalDateTime end,
+                                                           List<LocalDateTime> excludeDates,
+                                                           Integer minAppointmentAvailable) {
     if (start != null && end != null) {
       if (start.isAfter(end)) {
         throw new IllegalArgumentException("La fecha de inicio debe ser anterior a la fecha de término.");
@@ -120,9 +123,30 @@ public class ShiftServiceImp implements IShiftService {
     }
 
     return this.shiftRepository.findAllByDoctorOrSpecialty(
-            pageable, doctorId, specialtyId, shiftTime, start, end);
+            pageable, doctorId, specialtyId, shiftTime, start, end, excludeDates, minAppointmentAvailable);
   }
 
+  @Override
+  public Page<Shift> getAvailableByFilter(Pageable pageable,
+                                          Long doctorId,
+                                          Long specialtyId,
+                                          Integer shiftTime){
+    LocalDateTime now =  LocalDateTime.now();
+    LocalDateTime tomorrow =now.plusDays(1).with(LocalTime.MIN);
+    LocalDate endOfYearDate = LocalDate.of(now.getYear(), Month.DECEMBER, 31);
+    LocalDateTime endOfYear = endOfYearDate.atTime(LocalTime.MAX);
+
+    UserEntity authUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    Patient patient = this.patientService.getByUserId(authUser.getId());
+
+    List<Appointment> appointments = this.appointmentRepo.findByPatient_IdPatientAndDateBetween(
+            patient.getIdPatient(), tomorrow, endOfYear);
+    List<LocalDateTime> datesAppointment = appointments.stream()
+            .map(Appointment::getDate)
+            .toList();
+    return this.getAllByDoctorOrSpecialtyBetweenDates(
+            pageable, doctorId, specialtyId, shiftTime,tomorrow, endOfYear, datesAppointment, 1);
+  }
 
   @Override
   public void updateAppointmentAvailable(long idShift, int quantity) {

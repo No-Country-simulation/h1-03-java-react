@@ -56,4 +56,6 @@ public interface IAppointmentService {
   List<Appointment> getByShift(long id);
 
   Appointment getCloseByCurrentUser();
+
+  List<Appointment> getByPatientBetweenDates(Long id, LocalDateTime start, LocalDateTime end);
 }

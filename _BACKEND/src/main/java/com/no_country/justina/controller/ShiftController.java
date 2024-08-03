@@ -84,11 +84,28 @@ public class ShiftController {
                                                      @RequestParam(required = false) Long doctorId,
                                                      @RequestParam(required = false) Long specialty,
                                                      @RequestParam(required = false) Integer shiftTime,
+                                                     @RequestParam(required = false) Integer minAppointment,
                                                      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
                                                      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
                                                      Pageable pageable){
     Page<Shift> result = this.shiftService.getAllByDoctorOrSpecialtyBetweenDates(
-            pageable, doctorId, specialty, shiftTime, start, end);
+            pageable, doctorId, specialty, shiftTime, start, end, null, minAppointment);
+    Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+
+  @Operation(summary = "Trae los turnos medicos con turno disponibles.",
+          description = "Usa filtros por doctor, especialidad y franja horaria, y los retorna paginado. Disponible solo para el rol PATIENT")
+  @GetMapping("/available/filter")
+  public ResponseEntity<?> getAllByAvailableAppointment(@RequestParam(defaultValue = "0") int page,
+                                                     @RequestParam(defaultValue = "20") int size,
+                                                     @RequestParam(defaultValue = "id") String sort,
+                                                     @RequestParam(defaultValue = "asc") String direction,
+                                                     @RequestParam(required = false) Long doctorId,
+                                                     @RequestParam(required = false) Long specialty,
+                                                     @RequestParam(required = false) Integer shiftTime,
+                                                     Pageable pageable){
+    Page<Shift> result = this.shiftService.getAvailableByFilter(pageable, doctorId, specialty, shiftTime);
     Page<ShiftRes> resultDto = result.map(item -> mapper.map(item, ShiftRes.class));
     return ResponseEntity.ok(resultDto);
   }
