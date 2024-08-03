@@ -69,6 +69,7 @@ public class AppointmentController {
     Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
     return ResponseEntity.ok(resultDto);
   }
+
   @Operation(summary = "Trae todos los turnos con determinados filtros.",
   description = "Obtiene las turnos en un determinado intervalo de fechas y aplicándole filtros por id de doctor, id de especialidad, o estado de turno. Solo disponible para el rol DOCTOR")
   @GetMapping("/filter")
@@ -113,6 +114,28 @@ public class AppointmentController {
     return ResponseEntity.ok(resultDto);
   }
 
+  @Operation(summary = "Trae todos los turnos usando filtros para el doctor autenticado.",
+          description = "Obtiene los turnos en un determinado intervalo de fechas y aplicándole filtros por id de paciente, id de especialidad, o estado de turno. Solo disponible para el rol DOCTOR")
+  @GetMapping("/current-doctor/filter")
+  public ResponseEntity<?> getAllByFilterForCurrentDoctor(
+          @RequestParam(defaultValue = "0") int page,
+          @RequestParam(defaultValue = "20") int size,
+          @RequestParam(defaultValue = "id") String sort,
+          @RequestParam(defaultValue = "asc") String direction,
+          Pageable pageable,
+          @RequestParam(required = false) Long patientId,
+          @RequestParam(required = false) Integer status,
+          @RequestParam(required = false) Integer shiftTime,
+          @RequestParam(required = false) Long specialtyId,
+          @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
+          @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end
+  ) {
+    Page<Appointment> result = this.appointmentService.getAllByFiltersForAuthDoctor(
+            pageable, patientId,specialtyId,status, shiftTime, start, end);
+    Page<AppointmentRes> resultDto = result.map(item -> mapper.map(item, AppointmentRes.class));
+    return ResponseEntity.ok(resultDto);
+  }
+
   @Operation(summary = "Trae el turno mas próximo a la fecha actual",
           description = "Solo disponible para el rol PATIENT")
   @GetMapping("/current-user/close")
@@ -137,6 +160,7 @@ public class AppointmentController {
     var appointmentUpdated = this.appointmentService.reschedule(newAppointment);
     return ResponseEntity.ok(mapper.map(appointmentUpdated, AppointmentRes.class));
   }
+
   @Operation(summary = "Cancela un turno por id.", description = " Disponible solo para el rol PATIENT")
   @PutMapping("/cancel/{id}")
   public ResponseEntity<?> cancelById(@PathVariable long id) {

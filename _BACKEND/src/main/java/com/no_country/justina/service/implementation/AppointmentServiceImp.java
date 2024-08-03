@@ -1,13 +1,11 @@
 package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.AppointmentException;
-import com.no_country.justina.model.entities.Appointment;
-import com.no_country.justina.model.entities.Patient;
-import com.no_country.justina.model.entities.Shift;
-import com.no_country.justina.model.entities.UserEntity;
+import com.no_country.justina.model.entities.*;
 import com.no_country.justina.model.enums.AppointmentStatus;
 import com.no_country.justina.repository.AppointmentRepository;
 import com.no_country.justina.service.interfaces.IAppointmentService;
+import com.no_country.justina.service.interfaces.IDoctorService;
 import com.no_country.justina.service.interfaces.IPatientService;
 import com.no_country.justina.service.interfaces.IShiftService;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,6 +26,7 @@ public class AppointmentServiceImp implements IAppointmentService {
   private final AppointmentRepository appointmentRepo;
   private final IShiftService shiftService;
   private final IPatientService patientService;
+  private final IDoctorService doctorService;
 
   @Override
   public Appointment create(Appointment appointment) {
@@ -95,6 +94,18 @@ public class AppointmentServiceImp implements IAppointmentService {
                                                       LocalDateTime end) {
     Patient patientAuth = this.getAuthPatient();
     return this.getAllByDoctorOrSpecialty(pageable, doctorId, specialty, patientAuth.getIdPatient(), status, shiftTime,start, end);
+  }
+
+  @Override
+  public Page<Appointment> getAllByFiltersForAuthDoctor(Pageable pageable,
+                                                      Long patientId,
+                                                      Long specialty,
+                                                      Integer status,
+                                                      Integer shiftTime,
+                                                      LocalDateTime start,
+                                                      LocalDateTime end) {
+    Doctor doctorAuth = this.getAuthDoctor();
+    return this.getAllByDoctorOrSpecialty(pageable, doctorAuth.getId(), specialty, patientId, status, shiftTime,start, end);
   }
 
   @Override
@@ -224,5 +235,10 @@ public class AppointmentServiceImp implements IAppointmentService {
   private Patient getAuthPatient(){
     UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     return this.patientService.getByUserId(user.getId());
+  }
+
+  private Doctor getAuthDoctor(){
+    UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    return this.doctorService.getByUserId(user.getId());
   }
 }

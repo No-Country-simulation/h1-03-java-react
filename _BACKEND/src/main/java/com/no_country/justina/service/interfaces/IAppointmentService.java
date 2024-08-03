@@ -30,6 +30,14 @@ public interface IAppointmentService {
                                                LocalDateTime start,
                                                LocalDateTime end);
 
+  Page<Appointment> getAllByFiltersForAuthDoctor(Pageable pageable,
+                                                 Long patientId,
+                                                 Long specialty,
+                                                 Integer status,
+                                                 Integer shiftTime,
+                                                 LocalDateTime start,
+                                                 LocalDateTime end);
+
   Appointment update(Appointment appointment);
 
   Appointment reschedule(Appointment appointment);
