@@ -51,7 +51,7 @@ export default function index() {
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="" disabled selected>
+            <option value="professional" disabled selected>
               PROFESIONAL
             </option>
             <option value="opcion1">Opción 1</option>
@@ -72,7 +72,7 @@ export default function index() {
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="" disabled selected>
+            <option value="specialty" disabled selected>
               ESPECIALIDAD
             </option>
             <option value="opcion1">Opción 1</option>
