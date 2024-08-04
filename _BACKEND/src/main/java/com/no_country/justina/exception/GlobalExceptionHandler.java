@@ -82,6 +82,56 @@ public class GlobalExceptionHandler {
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 
+  @ExceptionHandler(AppointmentException.class)
+  public ResponseEntity<ErrorDetails> handleAppointmentException(AppointmentException e, WebRequest request) {
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+            request.getDescription(false));
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(ShiftException.class)
+  public ResponseEntity<ErrorDetails> handleShiftException(ShiftException e, WebRequest request) {
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+            request.getDescription(false));
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(TreatmentException.class)
+  public ResponseEntity<ErrorDetails> handleTreatmentException(TreatmentException e, WebRequest request) {
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+            request.getDescription(false));
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+  }
+
+//  /**
+//   * Maneja la excepción HttpMessageNotReadableException.
+//   *
+//   * @param e       la excepción lanzada
+//   * @param request la solicitud web que causó la excepción
+//   * @return una respuesta HTTP con detalles del error y el estado BAD_REQUEST (400)
+//   */
+//  @ExceptionHandler(HttpMessageNotReadableException.class)
+//  public ResponseEntity<ErrorDetails> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
+//                                                                   WebRequest request) {
+//    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST",
+//            "El tipo de formato ingresado es incorrecto", request.getDescription(false));
+//    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+//  }
+
+//  /**
+//   * Maneja la excepción HttpRequestMethodNotSupportedException.
+//   *
+//   * @param e       la excepción lanzada
+//   * @param request la solicitud web que causó la excepción
+//   * @return una respuesta HTTP con detalles del error y el estado METHOD_NOT_ALLOWED (405)
+//   */
+//  @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+//  public ResponseEntity<ErrorDetails> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e, WebRequest request) {
+//    var error = new ErrorDetails(LocalDateTime.now(), 405, "METHOD_NOT_ALLOWED", e.getMessage(),
+//            request.getDescription(false));
+//    return new ResponseEntity<>(error, HttpStatus.METHOD_NOT_ALLOWED);
+//  }
+
   /**
    * Maneja la excepción IllegalArgumentException.
    *
@@ -94,35 +144,6 @@ public class GlobalExceptionHandler {
     var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
             request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-  }
-
-  /**
-   * Maneja la excepción HttpMessageNotReadableException.
-   *
-   * @param e       la excepción lanzada
-   * @param request la solicitud web que causó la excepción
-   * @return una respuesta HTTP con detalles del error y el estado BAD_REQUEST (400)
-   */
-  @ExceptionHandler(HttpMessageNotReadableException.class)
-  public ResponseEntity<ErrorDetails> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
-                                                                   WebRequest request) {
-    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST",
-            "El tipo de formato ingresado es incorrecto", request.getDescription(false));
-    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-  }
-
-  /**
-   * Maneja la excepción HttpRequestMethodNotSupportedException.
-   *
-   * @param e       la excepción lanzada
-   * @param request la solicitud web que causó la excepción
-   * @return una respuesta HTTP con detalles del error y el estado METHOD_NOT_ALLOWED (405)
-   */
-  @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-  public ResponseEntity<ErrorDetails> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e, WebRequest request) {
-    var error = new ErrorDetails(LocalDateTime.now(), 405, "METHOD_NOT_ALLOWED", e.getMessage(),
-            request.getDescription(false));
-    return new ResponseEntity<>(error, HttpStatus.METHOD_NOT_ALLOWED);
   }
 
   /**
