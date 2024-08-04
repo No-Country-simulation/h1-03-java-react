@@ -81,7 +81,7 @@ export default function index() {
                 className="border-[#B7B7B7] rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
                 required
               />
-              <div className="absolute inset-y-0 right-2 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 right-3 pl-3 flex items-center pointer-events-none">
                 <img src={orangeCalendar} alt="icono de calendario" />
               </div>
             </div>
@@ -96,14 +96,14 @@ export default function index() {
                 className="border-[#B7B7B7] rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
                 required
               />
-              <div className="absolute inset-y-0 right-2 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 right-3 pl-3 flex items-center pointer-events-none">
                 <img src={orangeCalendar} alt="icono de calendario" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-between w-auto">
+        <div className="flex items-center justify-center w-auto">
           <Button
             type="submit"
             text="Buscar"
