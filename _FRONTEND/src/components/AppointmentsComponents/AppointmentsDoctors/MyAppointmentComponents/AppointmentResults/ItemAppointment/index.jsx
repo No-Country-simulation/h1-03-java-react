@@ -4,7 +4,7 @@ import search from "../../../../../../assets/svg/others/search.svg";
 
 export default function index({ date, name, state, timeSlot }) {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-stretch py-2 px-4 md:px-8 w-full h-auto rounded-3xl border border-black divide-y md:divide-y-0 md:divide-x divide-black">
+    <div className="flex flex-col lg:flex-row justify-between items-stretch py-2 px-4 md:px-8 w-full h-auto rounded-3xl border border-black divide-y lg:divide-y-0 lg:divide-x divide-black">
       <div className="flex flex-row flex-1 gap-4 p-4 items-center justify-center md:justify-start">
         <div className="flex justify-center items-center">
           <img
