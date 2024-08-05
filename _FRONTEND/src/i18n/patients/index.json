@@ -19,9 +19,10 @@
             {"8": "AB-"}
         ]},
         "maritalStatus": {"title": "Estado civil", "arrayOptions": [
-            {"0": "Seleccionar estado civil"}, 
-            {"1": "Soltero"}, 
-            {"2": "Casado"}, 
+            {"5": "Seleccionar estado civil"}, 
+            {"0": "Soltero"}, 
+            {"1": "Casado"}, 
+            {"2": "Concubinato"},
             {"3": "Divorciado"}, 
             {"4": "Viudo"}
         ]},
@@ -56,9 +57,10 @@
             {"8": "AB-"}
         ]},
         "maritalStatus": {"title": "Marital status", "arrayOptions": [
-            {"0": "Select marital status"}, 
-            {"1": "Single"}, 
-            {"2": "Married"}, 
+            {"5": "Select marital status"}, 
+            {"0": "Single"}, 
+            {"1": "Married"}, 
+            {"2": "Concubinage"},
             {"3": "Divorced"}, 
             {"4": "Widower"}
         ]},

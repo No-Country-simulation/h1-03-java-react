@@ -9,7 +9,14 @@ const endpoints = {
     getUserAndDoctorInfo: `${urlBase}/users-doctors`,
     getUserAndPatientInfo: `${urlBase}/users-patients`,
 
-    getAllDoctors: `${urlBase}/doctors`
+    getAllDoctors: `${urlBase}/doctors`,
+    getAllDoctorsBySpecialty: `${urlBase}/doctors/specialty`,
+
+    getAppointmentsCurrentUser: `${urlBase}/appointments/current-user`,
+    getAppointmentsCurrentUserRecentOne: `${urlBase}/appointments/current-user/close`,
+
+    getFilteredAvailableAppointments: `${urlBase}/shifts/filter`,
+    postScheduleAppointment: `${urlBase}/appointments`
 }
 
 export default endpoints
