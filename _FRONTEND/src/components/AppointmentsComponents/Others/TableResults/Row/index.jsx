@@ -69,8 +69,12 @@ const Row = ({ isButtonSchedule, isModificate=false, data }) => {
     useEffect(()=>{
         if (entriesData) {
             refetchPostScheduleAppointment()
-                .then(()=>{
-                    alert('Turno agendado!')
+                .then((res)=>{
+                    if(res.data.message){
+                        alert(res.data.message)
+                    } else {
+                        alert('Turno agendado!')
+                    }
                 })
                 .catch((err)=> alert('Hubo un error al agendar tu turno: '+ err))
         }
