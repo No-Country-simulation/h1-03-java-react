@@ -79,4 +79,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long>,
   List<Appointment> findByShift_Id(long id);
 
   List<Appointment> findByPatient_IdPatientAndDateBetween(Long idPatient, LocalDateTime dateStart, LocalDateTime dateEnd);
+
+  List<Appointment> findByPatient_IdPatientAndAppointmentStatusAndDateBetween(
+          Long idPatient,
+          AppointmentStatus appointmentStatus,
+          LocalDateTime dateStart, LocalDateTime dateEnd);
 }

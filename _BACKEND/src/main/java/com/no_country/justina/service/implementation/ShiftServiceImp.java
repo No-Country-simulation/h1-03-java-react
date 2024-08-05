@@ -2,6 +2,7 @@ package com.no_country.justina.service.implementation;
 
 import com.no_country.justina.exception.ShiftException;
 import com.no_country.justina.model.entities.*;
+import com.no_country.justina.model.enums.AppointmentStatus;
 import com.no_country.justina.repository.AppointmentRepository;
 import com.no_country.justina.repository.ShiftRepository;
 import com.no_country.justina.service.interfaces.IAppointmentService;
@@ -139,8 +140,8 @@ public class ShiftServiceImp implements IShiftService {
     UserEntity authUser = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Patient patient = this.patientService.getByUserId(authUser.getId());
 
-    List<Appointment> appointments = this.appointmentRepo.findByPatient_IdPatientAndDateBetween(
-            patient.getIdPatient(), tomorrow, endOfYear);
+    List<Appointment> appointments = this.appointmentRepo.findByPatient_IdPatientAndAppointmentStatusAndDateBetween(
+            patient.getIdPatient(), AppointmentStatus.PENDING, tomorrow, endOfYear);
     List<LocalDateTime> datesAppointment = appointments.stream()
             .map(Appointment::getDate)
             .toList();
