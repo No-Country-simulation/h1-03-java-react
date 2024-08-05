@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import calendar from "../../../../../assets/svg/others/calendarReserveAppointment.svg";
-import search from "../../../../../assets/svg/others/search.svg";
+import calendar from "../../../../../../assets/svg/others/calendarReserveAppointment.svg";
+import search from "../../../../../../assets/svg/others/search.svg";
 import AppointmentReviewPopUp from "./AppointmentReviewPopUp";
 
 export default function index({ date, name, profession, timeSlot }) {
