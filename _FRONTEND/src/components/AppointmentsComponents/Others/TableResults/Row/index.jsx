@@ -142,7 +142,7 @@ const Row = ({ isButtonSchedule, isModificate=false, data }) => {
                                 type="button"
                                 text={i18n[language].reserveAppointment.tableResults.scheduleButton.toUpperCase()}
                                 textColor="#FFF"
-                                bgColor="auto" 
+                                bgColor="#5666BE" 
                                 title={i18n[language].reserveAppointment.tableResults.scheduleButton}
                                 aria-label={i18n[language].reserveAppointment.tableResults.scheduleButton}
                                 isDisabled={false}

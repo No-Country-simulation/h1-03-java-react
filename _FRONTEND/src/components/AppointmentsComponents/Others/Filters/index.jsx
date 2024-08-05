@@ -151,7 +151,7 @@ export default function Index({title, isWide, setData}) {
 						type="button"
 						text={i18n[language].reserveAppointment.filters.searchButton.toUpperCase()}
 						textColor="#FFF"
-						bgColor="auto"
+						bgColor="#5666BE"
                         title={i18n[language].reserveAppointment.filters.searchButton}
                         aria-label={i18n[language].reserveAppointment.filters.searchButton}
 						isDisabled={isDisbledSelects}
