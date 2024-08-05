@@ -10,6 +10,7 @@ export default function Select({
 	displayLabel = "block",
 	isRequired = false,
 	hasLabel = true,
+	isDisabled= false
 }) {
 	const getNumericValueFromSelectOption = (e) => {
 		return Number(e.target.value.split(" ")[0]);
@@ -31,6 +32,7 @@ export default function Select({
 				onChange={(e) =>
 					onChangeHandler(getNumericValueFromSelectOption(e))
 				}
+				disabled={isDisabled}
 			>
 				<option value="" disabled>
 					{Object.values(arrayOptions[0])}

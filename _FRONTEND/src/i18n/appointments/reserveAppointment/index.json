@@ -6,7 +6,19 @@
                 "selectProfessional": "Seleccione un profesional",
                 "selectSpecialty": "Seleccione una especialidad",
                 "selectTimeSlot": "Seleccione una franja horaria",
-                "searchButton": "Buscar"
+                "searchButton": "Buscar",
+                "timeSolt": {
+                    "arrayOptions": [
+                        {"3": "Franja horaria"},
+                        {"0": "Mañana"},
+                        {"1": "Tarde"}
+                    ]
+                },
+                "profesionals": {
+                    "arrayOptions": [
+                        {"-1": "Profesionales"}
+                    ]
+                }
             },            
             "tableResults": {
                 "componentTitle": "Resultados de tu búsqueda - Turnos disponibles",
@@ -15,7 +27,7 @@
                 "pencilButtonTitle": "Modificar turno",
                 "chooseTimeSlotTitle": "Elegir franja horaria",
                 "chooseTimeSlotTitleModify": "Franja horaria",
-                "timeSlotMorning": "Manana",
+                "timeSlotMorning": "Mañana",
                 "timeSlotAfternoon": "Tarde"
             }
         }
@@ -27,7 +39,20 @@
                 "selectProfessional": "Select a professional",
                 "selectSpecialty": "Select a speciality",
                 "selectTimeSlot": "Select time slot",
-                "searchButton": "Search"
+                "searchButton": "Search",
+
+                "timeSolt": {
+                    "arrayOptions": [
+                        {"3": "Time slot"},
+                        {"0": "Morning"},
+                        {"1": "Afternoon"}
+                    ]
+                },
+                "profesionals": {
+                    "arrayOptions": [
+                        {"-1": "Profesionals"}
+                    ]
+                }
             },
             "tableResults": {
                 "componentTitle": "Your search results - Available Appointments",

@@ -29,6 +29,7 @@ export default function EditMyInfoPatients() {
 
 	const urlGetUserAndPatientInfo = endpoints.getUserAndPatientInfo;
 	const urlPatientInfo = endpoints.patients
+
 	const token = sessionStorage.getItem("token");
 	const { data, error: errorGetUserAndPatient, refetch: refetchGetUserAndPatientInfo } = useQuery({
 		queryKey: ["key-getUserAndPatientInfo"],
@@ -37,24 +38,23 @@ export default function EditMyInfoPatients() {
 	});
 	if (errorGetUserAndPatient) console.log(errorGetUserAndPatient)
 
-	const { data: data1, error: errorPostPatient, refetch: refetchPostPatientInfo } = useQuery({
+	const { error: errorPostPatient, refetch: refetchPostPatientInfo } = useQuery({
 		queryKey: ["key-postPatientInfo"],
 		queryFn: () => postFetch(urlPatientInfo, entriesData, token),
 		enabled: false,
 	});
 	if (errorPostPatient) console.log(errorPostPatient)
 
-	const { data:data2, error: errorPutPatient, refetch: refetchPutPatientInfo } = useQuery({
+	const { error: errorPutPatient, refetch: refetchPutPatientInfo } = useQuery({
 		queryKey: ["key-putPatientInfo"],
 		queryFn: () => putFetch(urlPatientInfo, entriesData, token),
 		enabled: false,
 	});
 	if (errorPutPatient) console.log(errorPutPatient)
-console.log(data2)
 
 	//Initial form loading
 	useEffect(() => {
-		refetchGetUserAndPatientInfo();
+		refetchGetUserAndPatientInfo();		
 
 	}, []);
 
@@ -97,7 +97,6 @@ console.log(data2)
 			}
 		}
 	},[data])
-
 
 	const handleSubmitPatientForm = (e) => {
 		e.preventDefault();

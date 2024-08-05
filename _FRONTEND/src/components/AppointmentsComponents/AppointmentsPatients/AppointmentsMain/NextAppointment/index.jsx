@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clock from "../../../../../assets/svg/others/clock.svg";
 import bell from "../../../../../assets/svg/others/bell.svg";
 import { useSelector } from "react-redux";
 import i18n from "../../../../../i18n/appointments/index.json";
+import { useQuery } from "@tanstack/react-query";
+import { getFetch } from "../../../../../services";
+import endpoints from "../../../../../helpers/endpoints";
 
 export default function NextAppointment() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
+	const urlGetAppointmentsCurrentUserRecentOne = endpoints.getAppointmentsCurrentUserRecentOne
+	const token = sessionStorage.getItem("token");
+	const { data: dataGetAppointmentsCurrentUserRecentOne, error: errorGetAppointmentsCurrentUserRecentOne, refetch: refetchGetAppointmentsCurrentUserRecentOne } = useQuery({
+		queryKey: ["key-getAppointmentsCurrentUserRecentOne"],
+		queryFn: () => getFetch(urlGetAppointmentsCurrentUserRecentOne, token),
+		enabled: false,
+	});
+	if (errorGetAppointmentsCurrentUserRecentOne) console.log(errorGetAppointmentsCurrentUserRecentOne)
+
+	useEffect(() => {
+		refetchGetAppointmentsCurrentUserRecentOne();
+
+		/* const options = {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			},
+		};
+	
+		
+		fetch(urlGetAppointmentsCurrentUserRecentOne, options)
+			.then((res) => res.json())
+			.then((data) => console.log(data))
+			.catch((err) => console.log(err)) */
+
+	}, [])
+	//console.log(dataGetAppointmentsCurrentUserRecentOne.error) //ver si existe error, no mostrar el componente, o ver una alternativa
+console.log(dataGetAppointmentsCurrentUserRecentOne)
 	return (
 		<div className="flex flex-col-reverse md:flex-row justify-center items-center p-4 text-center border border-[#D98236] w-full h-auto md:h-[125px] rounded-3xl ">
 			<div className="flex flex-row flex-1">

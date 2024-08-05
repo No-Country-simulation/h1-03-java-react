@@ -1,16 +1,81 @@
-import React, { useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import Button from "../../../../Resources/FormElements/Button";
 import calendarReserveAppointment from "../../../../../assets/svg/others/calendarReserveAppointment.svg";
 import { useSelector } from 'react-redux';
 import i18n from "../../../../../i18n/appointments/reserveAppointment/index.json";
 import pencilButton from "../../../../../assets/svg/others/pencilButton.svg";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import getPathRoutes from '../../../../../helpers/pathroutes';
+import i18nDoctors from '../../../../../i18n/doctors/index.json';
+import checkMark from '../../../../../assets/svg/others/checkMark.svg';
+import { useQuery } from '@tanstack/react-query';
+import { postFetch } from '../../../../../services';
+import endpoints from '../../../../../helpers/endpoints';
 
-export default function Row({ isButtonSchedule, isModificate=false }) {
+const toCapitalized = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+}
+
+const getFormatterDate = (data) => {
+    const newDate = new Date(data.startDate);
+    
+    const options = { weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric' };
+    const formattedDate = newDate.toLocaleDateString('es-ES', options).split(',');
+    
+    const day = toCapitalized(formattedDate[0])
+    const splittedDate = formattedDate[1].split(' ')
+    const date = `${splittedDate[0]} ${splittedDate[1]} ${splittedDate[2]} ${toCapitalized(splittedDate[3])}`
+    const startingHourShift = formattedDate[2]
+
+    return {
+        day: day,
+        date: date,
+        timeSlot: startingHourShift
+    }
+}
+
+/* const isMorning = (data) => {
+    if(Number(getFormatterDate(data.startDate).timeSlot) < 14) {
+        return true
+    } 
+    return false
+} */
+
+const Row = ({ isButtonSchedule, isModificate=false, data }) => {
     const language = useSelector((state) => state.i18nReducer.language);
     const navigate = useNavigate()
     const [modificate, setModificate] = useState(isModificate)
+    const [entriesData, setEntriesData] = useState(null);
+
+    //const params= `?page=${pageNumber}`
+    const url = endpoints.postScheduleAppointment //+ params
+	const token = sessionStorage.getItem('token')
+    const { data:dataPostScheduleAppointment, refetch: refetchPostScheduleAppointment } = useQuery({
+		queryKey: ["key-postScheduleAppointment"],
+		queryFn: ()=> postFetch(url, entriesData, token),
+		enabled: false,
+	}) 
+
+    const onClickHandlerSchedule = () => {
+        const objToSend = {
+            shift: {id: data.id}
+        }
+        setEntriesData({...objToSend})
+
+    }
+    //console.log(entriesData)
+    //console.log(dataPostScheduleAppointment)
+
+    useEffect(()=>{
+        if (entriesData) {
+            refetchPostScheduleAppointment()
+                .then(()=>{
+                    alert('Turno agendado!')
+                })
+                .catch((err)=> alert('Hubo un error al agendar tu turno: '+ err))
+        }
+
+    },[entriesData])
 
     return (
         <div>
@@ -28,8 +93,8 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
                         {modificate
                             ? <input type="date" className="py-2" />
                             : <div className="flex flex-col justify-center items-center gap-5">
-                                <p>Jueves</p>
-                                <p>27 de Julio</p>
+                                <p>{getFormatterDate(data).day}</p>
+                                <p>{getFormatterDate(data).date}</p>
                             </div>
                         }
                     </div>
@@ -37,8 +102,14 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
                 </div>
 
                 <div className={`flex flex-col gap-3 justify-center items-center border-x border-[#5666BF] text-center p-6 text-xs sm:text-sm  transition-colors duration-300 ${isButtonSchedule ? '' : modificate ? '' : 'bg-[#f0efef]'}`}>
-                    <p className="font-medium">Jorge Esquivel</p>
-                    <p className="">Cardiólogo</p>
+                    <p className="font-medium">{data.doctor.user.name} {data.doctor.user.lastname}</p>
+                    <p className="">
+                        {Object.values(
+                            i18nDoctors[language].specialty.arrayOptions.filter((element, i)=>{
+                                return Number(Object.keys(element)) === data.specialty.id
+                            })[0]
+                        )[0]}
+                    </p>
                 </div>
 
                 <div className={`flex flex-col gap-3 justify-center items-center border-e border-[#5666BF] text-center  transition-colors duration-300 ${isButtonSchedule ? '' : modificate ? '' : 'bg-[#f0efef]'}`}>
@@ -49,10 +120,12 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
 }
                     </p>
                     <div className="mb-2 sm:mb-0 grid grid-rows-2 sm:grid-rows-none sm:grid-cols-2 gap-1 sm:gap-0 text-center font-medium">
-                        <div className={`border border-[#5666BF] rounded-full sm:rounded-none sm:border-e-0 sm:rounded-s-3xl p-1 sm:p-2 ${modificate ? 'cursor-pointer' : ''}`}>
+                        <div className={`flex flex-row gap-1 justify-center items-center border border-[#5666BF] rounded-full sm:rounded-none sm:border-e-0 sm:rounded-s-3xl p-1 sm:p-2 ${modificate ? 'cursor-pointer' : ''} ${data.shiftTime===0 ? 'bg-[#e8def8] text-[#5666be]' : ''} `}>
+                            {data.shiftTime===0 ? <img src={checkMark} alt="" className="w-[1rem]" /> : ''}
                             {i18n[language].reserveAppointment.tableResults.timeSlotMorning}
                         </div>
-                        <div className={`border border-[#5666BF] rounded-full sm:rounded-none sm:rounded-e-3xl p-1 sm:p-2 ${modificate ? 'cursor-pointer' : ''}`}>
+                        <div className={`flex flex-row gap-1 justify-center items-center border border-[#5666BF] rounded-full sm:rounded-none sm:rounded-e-3xl p-1 sm:p-2 ${modificate ? 'cursor-pointer' : ''} ${data.shiftTime===1 ? 'bg-[#e8def8] text-[#5666be]' : ''} `}>
+                            {data.shiftTime===1 ? <img src={checkMark} alt="" className="w-[1rem]" /> : ''}
                             {i18n[language].reserveAppointment.tableResults.timeSlotAfternoon}
                         </div>
                     </div>
@@ -65,11 +138,11 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
                                 type="button"
                                 text={i18n[language].reserveAppointment.tableResults.scheduleButton.toUpperCase()}
                                 textColor="#FFF"
-                                bgColor="auto"
+                                bgColor="auto" 
                                 title={i18n[language].reserveAppointment.tableResults.scheduleButton}
                                 aria-label={i18n[language].reserveAppointment.tableResults.scheduleButton}
                                 isDisabled={false}
-                                onClickHandler={() => {}}
+                                onClickHandler={() => onClickHandlerSchedule()}
                                 classNames="text-[7px] sm:text-xs"
                             />)
                             : (<img
@@ -99,3 +172,5 @@ export default function Row({ isButtonSchedule, isModificate=false }) {
         </div>
     )
 }
+
+export default memo(Row)
