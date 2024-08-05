@@ -1,10 +1,8 @@
-import { SETHEADERHEIGHT, SETISACTIVEHAMBURGERBUTTON, SETITEMSNAV } from "../types";
-import pathroutes from "../../helpers/pathroutes";
+import { SETHEADERHEIGHT, SETISACTIVEHAMBURGERBUTTON } from "../types";
 
 const initialState = {
     headerHeight: '100',
     isActiveHamburgerButton: false,
-    itemsNav: [ ...pathroutes.itemsNav],
 }
 
 export default function headerReducer(state=initialState, action ){
@@ -14,9 +12,6 @@ export default function headerReducer(state=initialState, action ){
 
         case SETISACTIVEHAMBURGERBUTTON:
             return {...state, isActiveHamburgerButton: action.payload}
-
-        case SETITEMSNAV:
-            return {...state, itemsNav: action.payload}
 
         default:
             return state

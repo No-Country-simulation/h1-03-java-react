@@ -1,0 +1,69 @@
+{
+    "sp":{
+        "reserveAppointment": {
+            "filters": {
+                "componentTitle": "Buscar turno",
+                "selectProfessional": "Seleccione un profesional",
+                "selectSpecialty": "Seleccione una especialidad",
+                "selectTimeSlot": "Seleccione una franja horaria",
+                "searchButton": "Buscar",
+                "timeSolt": {
+                    "arrayOptions": [
+                        {"3": "Franja horaria"},
+                        {"0": "Mañana"},
+                        {"1": "Tarde"}
+                    ]
+                },
+                "profesionals": {
+                    "arrayOptions": [
+                        {"-1": "Profesionales"}
+                    ]
+                }
+            },            
+            "tableResults": {
+                "componentTitle": "Resultados de tu búsqueda - Turnos disponibles",
+                "calendarReserveAppointmentImage": "Fecha del turno",
+                "scheduleButton": "Agendar",
+                "pencilButtonTitle": "Modificar turno",
+                "chooseTimeSlotTitle": "Elegir franja horaria",
+                "chooseTimeSlotTitleModify": "Franja horaria",
+                "timeSlotMorning": "Mañana",
+                "timeSlotAfternoon": "Tarde"
+            }
+        }
+    },
+    "en":{
+        "reserveAppointment": {
+            "filters": {
+                "componentTitle": "Search Appointment",
+                "selectProfessional": "Select a professional",
+                "selectSpecialty": "Select a speciality",
+                "selectTimeSlot": "Select time slot",
+                "searchButton": "Search",
+
+                "timeSolt": {
+                    "arrayOptions": [
+                        {"3": "Time slot"},
+                        {"0": "Morning"},
+                        {"1": "Afternoon"}
+                    ]
+                },
+                "profesionals": {
+                    "arrayOptions": [
+                        {"-1": "Profesionals"}
+                    ]
+                }
+            },
+            "tableResults": {
+                "componentTitle": "Your search results - Available Appointments",
+                "calendarReserveAppointmentImage": "Appointment date",
+                "scheduleButton": "Schedule",
+                "pencilButtonTitle": "Modify appointment",
+                "chooseTimeSlotTitle": "Choose time slot",
+                "chooseTimeSlotTitleModify": "Time slot",
+                "timeSlotMorning": "Morning",
+                "timeSlotAfternoon": "Afternoon"
+            }
+        }
+    }
+}

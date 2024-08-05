@@ -1,3 +1,5 @@
+@use '../../../../../../src/styles/variables' as *;
+
 .hamburger-button{
     cursor:pointer;
     display:grid;
@@ -8,10 +10,11 @@
     height:50px;
     top: 50%;
     transform:translateY(-50%);
-    right: 0;
+    left: 13px;
+    scale: 0.7;
 
     @mixin lines {
-        background-color: #FFF;
+        background-color: $dark-color;
         border-radius: 10px;
         position: absolute;
         height: 10%;
@@ -54,11 +57,9 @@
     }
 }
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width:640px){
     .hamburger-button{
-        cursor:pointer;
-        display:none;
+        scale: 1;
     }
 }
-
 

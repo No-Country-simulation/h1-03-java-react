@@ -1,0 +1,40 @@
+{
+    "sp": {
+        "deleteUser": {
+            "title": "Eliminar mi cuenta",
+            "text": "Eliminar mi cuenta."
+        },
+        "confirmDelete": {
+            "mainTitle": "ESTAS A PUNTO DE ELIMINAR TU CUENTA.",
+            "mainSubtitle": "PUEDES CONTARNOS EL MOTIVO POR EL QUE DESEAS ELIMINAR TU CUENTA?",
+            "form": [
+                {"title": "YA NO UTILIZO LA PLATAFORMA", "id": "checkbox1"},
+                {"title": "NO ENTIENDO COMO SE UTILIZA", "id": "checkbox2"},
+                {"title": "YA NO RESIDO EN EL PAÍS", "id": "checkbox3"}
+            ],
+            "buttons": {
+                "confirm": {"text": "CONFIRMAR", "title": "Confirmar"},
+                "cancel": {"text": "CANCELAR", "title": "Cancelar"}
+            }
+        }
+    },
+    "en": {
+        "deleteUser": {
+            "title": "Delete my account",
+            "text": "Delete my account."
+        },
+        "confirmDelete": {
+            "mainTitle": "YOU ARE ABOUT TO DELETE YOUR ACCOUNT.",
+            "mainSubtitle": "CAN YOU TELL US THE REASON WHY YOU WANT TO DELETE YOUR ACCOUNT?",
+            "form": [
+                {"title": "I NO LONGER USE THE PLATFORM", "id": "checkbox1"},
+                {"title": "I DON'T UNDERSTAND HOW TO USE IT", "id": "checkbox2"},
+                {"title": "I NO LONGER RESIDE IN THE COUNTRY", "id": "checkbox3"}
+            ],
+            "buttons": {
+                "confirm": {"text": "CONFIRM", "title": "Confirm"},
+                "cancel": {"text": "CANCEL", "title": "Cancel"}
+            }
+        }
+    }
+}

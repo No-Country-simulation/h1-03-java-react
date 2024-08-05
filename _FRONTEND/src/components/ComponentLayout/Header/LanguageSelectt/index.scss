@@ -1,0 +1,35 @@
+.language-select {
+	& .language-select__container {
+		display: flex;
+
+		& select {
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			margin-right: 0.25rem;
+			outline: none;
+			position: relative;
+			text-align: end;
+            width: 80px;
+			left: -30px;
+		}
+	}
+}
+
+@mixin mediaquery($minWidth, $width, $left) {
+	@media only screen and (min-width: $minWidth) {
+		.language-select {
+			& .language-select__container {
+				& select {
+					width: $width;
+					left: $left;
+				}
+			}
+		}
+	}
+}
+
+@include mediaquery(2000px, 120px, -40px);
+@include mediaquery(3000px, 160px, -70px);
+@include mediaquery(4000px, 190px, -90px);
+

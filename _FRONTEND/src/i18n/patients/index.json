@@ -1,28 +1,78 @@
 {
     "sp":{
-        "firstName": {"title": "Nombre" , "placeholder": "Juan"},
-        "lastName": {"title": "Apellido" , "placeholder": "Perez"},
-        "dni": {"title": "DNI" , "placeholder": "27893716, 34912353, 12564034, ..."},
-        "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
-        "telephone": {"title": "Teléfono" , "placeholder": "543492999999"},
-        "address": {"title": "Domicilio" , "placeholder": "Av. Corrientes 123"},
-        "bornDate": {"title": "Fecha de Nacimiento" , "placeholder": "01/01/1950"},
-        "bloodType": {"title": "Tipo sanguíneo" , "list": ["0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
-        "maritalStatus": {"title": "Estado civil" , "placeholder": ""},
-        "sex": {"title": "Sexo" , "placeholder": ""},
-        "medicalRecord": {"title": "Historia clínica" , "placeholder": ""}
+        "firstName": {"title": "Nombre" , "placeholder": "NOMBRE"},
+        "lastName": {"title": "Apellido" , "placeholder": "APELLIDO"},
+        "dni": {"title": "DNI" , "placeholder": "DNI"},
+        "email": {"title": "Correo Electrónico", "placeholder": "CORREO ELECTRÓNICO"},
+        "telephone": {"title": "Teléfono", "placeholder": "TELÉFONO"},
+        "address": {"title": "Domicilio", "placeholder": "DOMICILIO"},
+        "birthDate": {"title": "Fecha de Nacimiento", "placeholder": "FECHA DE NACIMIENTO"},
+        "bloodType": {"title": "Tipo sanguíneo", "arrayOptions": [
+            {"0": "Seleccionar tipo sanguíneo"},
+            {"1": "0+"},
+            {"2": "0-"},
+            {"3": "A+"},
+            {"4": "A-"},
+            {"5": "B+"},
+            {"6": "B-"},
+            {"7": "AB+"}, 
+            {"8": "AB-"}
+        ]},
+        "maritalStatus": {"title": "Estado civil", "arrayOptions": [
+            {"5": "Seleccionar estado civil"}, 
+            {"0": "Soltero"}, 
+            {"1": "Casado"}, 
+            {"2": "Concubinato"},
+            {"3": "Divorciado"}, 
+            {"4": "Viudo"}
+        ]},
+        "genre": {"title": "Género", "arrayOptions": [
+            {"3": "Seleccione su género"}, 
+            {"0": "Masculino"},  
+            {"1": "Femenino"}
+        ]},
+        "medicalRecord": {"title": "Historia clínica", "placeholder": ""},
+        "religion": {"title": "Religión", "placeholder": "RELIGIÓN"},
+        "job": {"title": "Trabajo", "placeholder": "TRABAJO"},
+        "buttonSubmit": {"title": "Enviar", "text": "ENVIAR"},
+        "pageTitle": {"title": "Editar mis datos", "text": "EDITAR MIS DATOS"}
     },
     "en":{
-        "firstName": {"title": "First name" , "placeholder": "John"},
-        "lastName": {"title": "Last name" , "placeholder": "Doe"},
-        "dni": {"title": "DNI" , "placeholder": "27893716, 34912353, 12564034, ..."},
-        "email": {"title": "Email" , "placeholder": "abcd@egmail.com"},
-        "telephone": {"title": "Telephone" , "placeholder": "(555) 555-1234"},
-        "address": {"title": "Address" , "placeholder": "John Smith. 999"},
-        "bornDate": {"title": "Born date" , "placeholder": "01/01/1950"},
-        "bloodType": {"title": "Blood type" , "list": ["0+", "0-", "A+", "A-", "B+", "B-", "AB+", "AB-"]},
-        "maritalStatus": {"title": "Marital status" , "placeholder": ""},
-        "sex": {"title": "Sex" , "placeholder": ""},
-        "medicalRecord": {"title": "Clinical history" , "placeholder": ""}
+        "firstName": {"title": "First name", "placeholder": "FIRST NAME"},
+        "lastName": {"title": "Last name", "placeholder": "LAST NAME"},
+        "dni": {"title": "DNI", "placeholder": "DNI"},
+        "email": {"title": "Email", "placeholder": "E-MAIL"},
+        "telephone": {"title": "Telephone", "placeholder": "TELEPHONE"},
+        "address": {"title": "Address", "placeholder": "ADDRESS"},
+        "birthDate": {"title": "Born date", "placeholder": "BORN DATE"},
+        "bloodType": {"title": "Blood type", "arrayOptions": [
+            {"0": "Select blood type"},
+            {"1": "0+"},
+            {"2": "0-"},
+            {"3": "A+"},
+            {"4": "A-"},
+            {"5": "B+"},
+            {"6": "B-"},
+            {"7": "AB+"}, 
+            {"8": "AB-"}
+        ]},
+        "maritalStatus": {"title": "Marital status", "arrayOptions": [
+            {"5": "Select marital status"}, 
+            {"0": "Single"}, 
+            {"1": "Married"}, 
+            {"2": "Concubinage"},
+            {"3": "Divorced"}, 
+            {"4": "Widower"}
+        ]},
+        "genre": {"title": "Genre", "arrayOptions": [
+            {"3": "Select your genre"}, 
+            {"0": "Male"},  
+            {"1": "Female"}
+        ]},
+        "medicalRecord": {"title": "Clinical history", "placeholder": ""},
+        "religion": {"title": "Religion", "placeholder": "RELIGION"},
+        "job": {"title": "Job", "placeholder": "JOB"},
+        "buttonSubmit": {"title": "Send", "text": "SEND"},
+        "pageTitle": {"title": "Edit my info", "text": "EDIT MY INFO"}
     }
 }

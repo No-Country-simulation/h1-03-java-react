@@ -1,5 +1,6 @@
 .nav-list-container{
     backdrop-filter:blur(10px) saturate(50%);
+    color: #FFF;
     bottom: 0;
     left:0;
     position:fixed;
@@ -13,12 +14,13 @@
     & .nav-list{
         background-color: rgba(0,0,0,0.5);
         border:1px solid rgba(0,0,0,0.6);
+        border-radius: 0 120px 0 0;
         display: block;
         position: absolute;
-        right:0;
+        left:0;
         top:0;
-        transition: 500ms width;
-        width: 50%;
+        transition: 1500ms cubic-bezier(0.165, 0.84, 0.44, 1) left;
+        width: 60%;
         height: 100vh;
         white-space: nowrap;
 
@@ -27,9 +29,10 @@
             display: grid;
             grid-template-rows: repeat(auto-fit, 2rem);
             gap: 10px;
-            width: 100%;
+            width: auto;
             height: 100%;
             margin:0;
+            margin-left: 20px;
             padding: 10px 0 0 10px;
             overflow: hidden;
             position: relative;
@@ -66,8 +69,21 @@
         }
     }
 }
+
+@media only screen and (min-width:640px){
+    .nav-list-container{
+        
+        & .nav-list{
+            width: 35%;
+        }
+    }
+}
+
 @media only screen and (min-width:768px){
     .nav-list-container{
-        display:none;
+        
+        & .nav-list{
+            width: 40%;
+        }
     }
 }

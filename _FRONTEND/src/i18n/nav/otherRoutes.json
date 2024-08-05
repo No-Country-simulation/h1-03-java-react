@@ -1,0 +1,18 @@
+{
+    "sp": [
+        {"logout" :{ "name": "Cerrar sesión", "route": "/cerrar-sesion" }},
+        {"signup" :{ "name": "Registrarse", "route": "/registrarse" }},
+        {"reserve_appointment" :{ "name": "Reservar turno", "route": "/turnos/reservar-turno" }},
+        {"scheduled_appointments" :{ "name": "Turnos agendados", "route": "/turnos/turnos-agendados" }},
+        {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }},
+        {"create_treatment" :{ "name": "Crear tratamiento", "route": "/tratamientos/crear-tratamiento" }}
+    ],
+    "en":[
+        {"logout" :{ "name": "Logout", "route": "/logout" }},
+        {"signup" :{ "name": "Signup", "route": "/signup" }},
+        {"reserve_appointment" :{ "name": "Reserve appointment", "route": "/appointments/reserve-appointment" }},
+        {"scheduled_appointments" :{ "name": "Scheduled appointments", "route": "/appointments/scheduled-appointments" }},
+        {"modify_appointments" :{ "name": "Modify appointments", "route": "/appointments/modify-appointments" }},
+        {"create_treatment" :{ "name": "Create treatment", "route": "/treatments/create-treatment" }}
+    ]
+}
