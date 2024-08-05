@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar"
 import AppointmentResults from "./AppointmentResult"
-import Pagination from "./../../MedicalRecordsComponents/MedicalRecordsDoctors/Pagination";
+import Pagination from "./../../MedicalRecordsComponents/MedicalRecordsDoctors/SearchMedicalRecords/Pagination";
 
 export default function index() {
   return (
