@@ -25,7 +25,7 @@ export default function index({ closeModal }) {
         </div>
         <div className="flex flex-col gap-4">
           <p className="font-medium text-2xl text-center">Crear Receta</p>
-          <div className="flex flex-col sm:flex-row justify-between text-[#5666BE] font-semibold gap-3">
+          <div className="flex flex-col sm:flex-row items-start justify-between text-[#5666BE] font-semibold gap-3">
             <p>
               Nombres y Apellido:{" "}
               <span className="text-black font-normal">
@@ -57,7 +57,7 @@ export default function index({ closeModal }) {
           <div className="flex flex-col justify-between gap-4">
             <div className="flex flex-col justify-center items-center flex-1 gap-4">
               <p className="text-[#5666BE] font-semibold">Medicamentos</p>
-              <div className="flex gap-2">
+              <div className="flex flex-col lg:flex-row gap-2">
                 <div clasName="flex flex-col gap-4">
                   <p className="text-[#5666BE] font-semibold">Medicamentos</p>
                   <p>Amoxicilina</p>
@@ -92,7 +92,7 @@ export default function index({ closeModal }) {
             </div>
             <div className="flex flex-col justify-center items-center flex-1 gap-4">
               <p className="text-[#5666BE] font-semibold">Indicaciones</p>
-              <div className="flex gap-2">
+              <div className="flex flex-col lg:flex-row gap-2">
                 <div clasName="flex flex-col gap-4">
                   <p className="text-[#5666BE] font-semibold">
                     Fecha de inicio
@@ -127,8 +127,10 @@ export default function index({ closeModal }) {
                 </div>
                 <div clasName="flex flex-col gap-4">
                   <p className="text-[#C60000] font-semibold">Acción</p>
-                  <img src={trashCan} alt="icono de tacho de basura" />
-                  <div className="flex">
+                  <div className="flex items-center justify-center">
+                    <img src={trashCan} alt="icono de tacho de basura" />
+                  </div>
+                  <div className="flex items-center justify-center">
                     <img src={trashCan} alt="icono de tacho de basura" />
                     <img src={ready} alt="icono de listo" />
                   </div>
@@ -152,7 +154,7 @@ export default function index({ closeModal }) {
           </div>
           <div className="flex flex-col">
             <p className="flex items-start">Doctor:</p>
-            <div className="flex flex-col sm:flex-row justify-between">
+            <div className="flex flex-col sm:flex-row justify-between items-start">
               <p>Nombre y apellido: Juanito Alimaña</p>
               <p>Especialidad: Medicina General</p>
               <p>Licencia: 2456454</p>
