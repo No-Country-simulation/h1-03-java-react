@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from "react";
-import calendar from "../../../../../assets/svg/others/calendarReserveAppointment.svg";
-import search from "../../../../../assets/svg/others/search.svg";
-import AppointmentReviewPopUp from "./AppointmentReviewPopUp";
+import React from "react";
+import calendar from "../../../../../../assets/svg/others/calendarReserveAppointment.svg";
+import search from "../../../../../../assets/svg/others/search.svg";
 
-export default function index({ date, name, profession, timeSlot }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    setIsModalOpen(false);
-  }, []);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
+export default function index({ date, name, state, timeSlot }) {
   return (
     <div className="flex flex-col md:flex-row justify-between items-stretch py-2 px-4 md:px-8 w-full h-auto rounded-3xl border border-black divide-y md:divide-y-0 md:divide-x divide-black">
       <div className="flex flex-row flex-1 gap-4 p-4 items-center justify-center md:justify-start">
@@ -35,10 +20,6 @@ export default function index({ date, name, profession, timeSlot }) {
         <div className="flex flex-col gap-2 p-4">
           <p className="text-xl">{date}</p>
         </div>
-      </div>
-      <div className="flex flex-col flex-1 gap-2 p-4 justify-center items-center">
-        <p className="text-2xl font-medium">{name}</p>
-        <p className="text-2xl">{profession}</p>
       </div>
       <div className="flex flex-col flex-1 items-center gap-4 p-4">
         <p className="text-xl">Franja horaria</p>
@@ -60,11 +41,18 @@ export default function index({ date, name, profession, timeSlot }) {
           </div>
         </div>
       </div>
+      <div className="flex flex-col flex-1 gap-2 p-4 justify-center items-center">
+        <p className="text-2xl font-medium">Paciente</p>
+        <p className="text-2xl text-center">{name}</p>
+      </div>
+      <div className="flex flex-col flex-1 gap-2 p-4 justify-center items-center">
+        <p className="text-2xl font-medium">Estado</p>
+        <p className="text-2xl text-center">{state}</p>
+      </div>
       <div
         className="flex flex-col flex-1 items-center gap-4 p-4 cursor-pointer"
-        onClick={openModal}
       >
-        <p className="text-xl">Revisar turnos</p>
+        <p className="text-xl">Revisar Historia</p>
         <div className="flex justify-center">
           <img
             src={search}
@@ -77,7 +65,6 @@ export default function index({ date, name, profession, timeSlot }) {
           />
         </div>
       </div>
-      {isModalOpen && <AppointmentReviewPopUp closeModal={closeModal} />}
     </div>
   );
 }

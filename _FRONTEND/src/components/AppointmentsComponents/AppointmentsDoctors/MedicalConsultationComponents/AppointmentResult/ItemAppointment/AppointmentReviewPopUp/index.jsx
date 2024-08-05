@@ -1,7 +1,7 @@
 import React from "react";
-import PatientList from "../../../../../DashboardComponents/DashboardDoctor/PatientsList";
-import NextAppointment from "../../../../../DashboardComponents/DashboardDoctor/NextAppointment";
-import closePopUp from "../../../../../../assets/svg/others/closePopup.svg";
+import PatientList from "../../../../../../DashboardComponents/DashboardDoctor/PatientsList";
+import NextAppointment from "../../../../../../DashboardComponents/DashboardDoctor/NextAppointment";
+import closePopUp from "../../../../../../../assets/svg/others/closePopup.svg";
 
 export default function index({ closeModal }) {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import search from "../../../../assets/svg/others/magnifyingGlass.svg";
-import downArrow from "../../../../assets/svg/others/downArrowOrange.svg";
-import orangeCalendar from "../../../../assets/svg/others/orangeCalendar.svg";
-import Button from "../../../Resources/FormElements/Button";
+import search from "../../../../../assets/svg/others/magnifyingGlass.svg";
+import downArrow from "../../../../../assets/svg/others/downArrowOrange.svg";
+import orangeCalendar from "../../../../../assets/svg/others/orangeCalendar.svg";
+import Button from "../../../../Resources/FormElements/Button";
 
 export default function index() {
   const [formData, setFormData] = useState({
@@ -51,29 +51,8 @@ export default function index() {
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="professional" disabled selected>
-              PROFESIONAL
-            </option>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
-          </select>
-          <div className="absolute inset-y-0 right-1 pl-3 flex items-center pointer-events-none">
-            <img src={downArrow} alt="flecha hacia abajo" />
-          </div>
-        </div>
-
-        <div className="gap-2.5 relative w-full lg:w-auto">
-          <select
-            name="specialty"
-            id="specialty"
-            value={formData.specialty}
-            onChange={handleChange}
-            className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
-            required
-          >
-            <option value="specialty" disabled selected>
-              ESPECIALIDAD
+            <option value="professional" selected>
+              ESTADO DEL TURNO
             </option>
             <option value="opcion1">Opción 1</option>
             <option value="opcion2">Opción 2</option>
@@ -128,3 +107,4 @@ export default function index() {
     </div>
   );
 }
+
