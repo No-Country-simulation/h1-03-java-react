@@ -90,7 +90,7 @@ export default function Index({title, isWide, setData}) {
 
 	return (
 		<div
-			className={`flex flex-col gap-5 ${isWide ? "w-full" : "w-full"} rounded-3xl py-5 px-14 mt-0 mb-auto`}
+			className={`flex flex-col gap-5 ${isWide ? "w-full" : "w-fit"} rounded-3xl py-5 px-14 mt-0 mb-auto`}
 			style={{
 				background:
 					"linear-gradient(180deg, rgba(86, 102, 190, 0.8) 57.95%, rgba(217, 130, 53, 0.56) 100%)",
@@ -110,7 +110,7 @@ export default function Index({title, isWide, setData}) {
 			</div>
 
 			
-			<div className={`${isWide 
+			<div className={`m-auto ${isWide 
 								? "flex flex-col sm:grid sm:grid-cols-4 gap-3 text-xs"
 								: "grid grid-rows-4 gap-3 text-xs w-[inherit]"
 			}`}>
