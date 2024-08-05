@@ -7,7 +7,7 @@ import i18n from "../../../../i18n/appointments/reserveAppointment/index.json";
 export default function ReserveAppointmentComponent() {
 	const language = useSelector((state) => state.i18nReducer.language);
 	const [data, setData] = useState(null)
-console.log(data)
+
 	return (
 		<section className="min-h-screen flex flex-col justify-center items-start gap-5 p-10 pt-0">
 			<Filters 

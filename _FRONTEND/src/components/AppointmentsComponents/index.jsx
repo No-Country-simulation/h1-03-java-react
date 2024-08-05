@@ -1,10 +1,18 @@
 import React from 'react'
 import AppointmentsMain from './AppointmentsPatients/AppointmentsMain'
+import AppointmentsDoctorss from './AppointmentsDoctors/'
+import { useSelector } from 'react-redux';
 
 export default function AppointmentsComponents() {
-    //aqui en base al rol se elige el componente para doctor o paciente       
+    const role = useSelector((state) => state.roleReducer.role);
 
     return (
-        <AppointmentsMain />
+        <>
+            {
+                role !== "PATIENT" 
+                    ? <AppointmentsDoctorss />
+                    : <AppointmentsMain /> 
+            }
+        </>
     )
 }
