@@ -160,8 +160,10 @@ public class ShiftServiceImp implements IShiftService {
   public Shift getCloserByDoctor(){
     UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     Doctor doctorAuth = this.doctorService.getByUserId(user.getId());
-    var closeShift = this.shiftRepository.getCloseByDoctorAndDate(doctorAuth.getId(), LocalDateTime.now());
-    return closeShift.orElseThrow(()->new ShiftException("No hay turnos próximos."));
+    List<Shift> closeShift = this.shiftRepository.getCloseByDoctorAndDate(doctorAuth.getId(), LocalDateTime.now());
+    return closeShift.stream()
+            .findFirst()
+            .orElseThrow(()->new ShiftException("No hay turnos próximos."));
   }
 
   private void verifyShiftExist(long id) {

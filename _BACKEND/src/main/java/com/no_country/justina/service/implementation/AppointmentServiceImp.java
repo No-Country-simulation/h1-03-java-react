@@ -179,9 +179,12 @@ public class AppointmentServiceImp implements IAppointmentService {
   @Override
   public Appointment getCloseByCurrentUser() {
     Patient currentPatient = this.getAuthPatient();
-    var closeAppointment = this.appointmentRepo.getCloseByPatientAndDate(currentPatient.getIdPatient(), LocalDateTime.now());
-    return closeAppointment.orElseThrow(
-            ()-> new AppointmentException("No hay citas futuras para el paciente con id:"+currentPatient.getIdPatient()));
+    List<Appointment> closeAppointment = this.appointmentRepo.getCloseByPatientAndDate(
+            currentPatient.getIdPatient(), LocalDateTime.now(), AppointmentStatus.PENDING);
+    if(closeAppointment.isEmpty()){
+      throw new AppointmentException("No hay citas futuras para el paciente con id:"+currentPatient.getIdPatient());
+    }
+    return closeAppointment.get(0);
   }
   @Override
   public List<Appointment> getByPatientBetweenDates(Long id, LocalDateTime start, LocalDateTime end){

@@ -84,39 +84,39 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(AppointmentException.class)
   public ResponseEntity<ErrorDetails> handleAppointmentException(AppointmentException e, WebRequest request) {
-    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", "Appointment error: "+e.getMessage(),
             request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(ShiftException.class)
   public ResponseEntity<ErrorDetails> handleShiftException(ShiftException e, WebRequest request) {
-    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", "Shift error: "+e.getMessage(),
             request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(TreatmentException.class)
   public ResponseEntity<ErrorDetails> handleTreatmentException(TreatmentException e, WebRequest request) {
-    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", "Treatment error: "+e.getMessage(),
             request.getDescription(false));
     return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
   }
 
-//  /**
-//   * Maneja la excepción HttpMessageNotReadableException.
-//   *
-//   * @param e       la excepción lanzada
-//   * @param request la solicitud web que causó la excepción
-//   * @return una respuesta HTTP con detalles del error y el estado BAD_REQUEST (400)
-//   */
-//  @ExceptionHandler(HttpMessageNotReadableException.class)
-//  public ResponseEntity<ErrorDetails> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
-//                                                                   WebRequest request) {
-//    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST",
-//            "El tipo de formato ingresado es incorrecto", request.getDescription(false));
-//    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-//  }
+  /**
+   * Maneja la excepción HttpMessageNotReadableException.
+   *
+   * @param e       la excepción lanzada
+   * @param request la solicitud web que causó la excepción
+   * @return una respuesta HTTP con detalles del error y el estado BAD_REQUEST (400)
+   */
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public ResponseEntity<ErrorDetails> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
+                                                                   WebRequest request) {
+    var error = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST",
+            e.getMessage(), request.getDescription(false));
+    return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+  }
 
 //  /**
 //   * Maneja la excepción HttpRequestMethodNotSupportedException.
@@ -152,10 +152,10 @@ public class GlobalExceptionHandler {
    * @param e mensaje de excepcion
    * @return respuesta http con mensaje
    */
-  @ExceptionHandler(Exception.class)
-  public ResponseEntity<ErrorDetails> badRequestExceptions(Exception e, WebRequest request){
-    var errorDetails = new ErrorDetails(LocalDateTime.now(), 400, "BAD_REQUEST", e.getMessage(),
-            request.getDescription(false));
-    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
-  }
+//  @ExceptionHandler(Exception.class)
+//  public ResponseEntity<ErrorDetails> badRequestExceptions(Exception e, WebRequest request){
+//    var errorDetails = new ErrorDetails(LocalDateTime.now(), 500, "INTERNAL_SERVER_ERROR", e.getMessage(),
+//            request.getDescription(false));
+//    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDetails);
+//  }
 }

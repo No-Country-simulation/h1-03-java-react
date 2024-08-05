@@ -33,12 +33,9 @@ public interface ShiftRepository extends JpaRepository<Shift, Long>, JpaSpecific
   @Query("SELECT s FROM Shift s WHERE s.specialty.name = :specialty AND YEAR(s.startDate) = :year AND MONTH(s.startDate) = :month")
   List<Shift> findBySpecialtyAndMonth(String specialty, int year, int month);
 
-  @Query(value = "select * from Shift s where " +
-          "s.end_date > :time and " +
-          "s.doctor_id = :doctorId " +
-          "order by s.end_date ASC limit 1",
-          nativeQuery = true)
-  Optional<Shift> getCloseByDoctorAndDate(long doctorId, LocalDateTime time);
+  @Query("SELECT s FROM Shift s WHERE s.endDate > :time AND s.doctor.id = :doctorId " +
+          "ORDER BY s.endDate ASC")
+  List<Shift> getCloseByDoctorAndDate(long doctorId, LocalDateTime time);
 
   @Transactional
   @Modifying
