@@ -1,5 +1,5 @@
 export const fetchData = async (url, options) => {
-    //console.log(url)
+    //console.log(url, options)
     if (url && options) {
         try{
             const res = await fetch(url, options)
@@ -14,7 +14,7 @@ export const fetchData = async (url, options) => {
 }
 
 export const postFetch = async (url, data, token=null) => {
-    console.log(data)
+    
     const options = {
         method: "POST",
         headers: {
