@@ -25,7 +25,7 @@ const getLastDayOfCurrentYear = () => {
 	return lastDayOfYear.toISOString().split('.')[0]
 }
 
-export default function Index({title, isWide, setData}) {
+export default function Filters({title, isWide, setData}) {
 	const language = useSelector((state) => state.i18nReducer.language);
 	const [isDisbledSelects, setIsDisabledSelects] = useState(true)
 	const [idSpecialty, setIdSpecialty] = useState('')
