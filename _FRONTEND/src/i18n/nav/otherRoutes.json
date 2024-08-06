@@ -5,7 +5,9 @@
         {"reserve_appointment" :{ "name": "Reservar turno", "route": "/turnos/reservar-turno" }},
         {"scheduled_appointments" :{ "name": "Turnos agendados", "route": "/turnos/turnos-agendados" }},
         {"modify_appointments" :{ "name": "Modificar turnos", "route": "/turnos/modificar-turnos" }},
+        {"my_appointments" :{ "name": "Mis turnos", "route": "/turnos/mis-turnos" }},
         {"create_treatment" :{ "name": "Crear tratamiento", "route": "/tratamientos/crear-tratamiento" }}
+        
     ],
     "en":[
         {"logout" :{ "name": "Logout", "route": "/logout" }},
@@ -13,6 +15,8 @@
         {"reserve_appointment" :{ "name": "Reserve appointment", "route": "/appointments/reserve-appointment" }},
         {"scheduled_appointments" :{ "name": "Scheduled appointments", "route": "/appointments/scheduled-appointments" }},
         {"modify_appointments" :{ "name": "Modify appointments", "route": "/appointments/modify-appointments" }},
+        {"my_appointments" :{ "name": "My appointments", "route": "/appointments/my-appointments" }},
         {"create_treatment" :{ "name": "Create treatment", "route": "/treatments/create-treatment" }}
+        
     ]
 }
