@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "../../Resources/FormElements/Select";
 import Button from "../../Resources/FormElements/Button";
+//COMPONENT NOT USED
 
 export default function FilterAppointment() {
 	return (

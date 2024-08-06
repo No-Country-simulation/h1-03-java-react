@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import i18n from "../../../../../i18n/appointments/reserveAppointment/index.json";
 import pencilButton from "../../../../../assets/svg/others/pencilButton.svg";
 import { useNavigate } from 'react-router-dom';
-import getPathRoutes from '../../../../../helpers/pathroutes';
 import i18nDoctors from '../../../../../i18n/doctors/index.json';
 import checkMark from '../../../../../assets/svg/others/checkMark.svg';
 import { useQuery } from '@tanstack/react-query';
@@ -63,8 +62,6 @@ const Row = ({ isButtonSchedule, isModificate=false, data }) => {
         setEntriesData({...objToSend})
 
     }
-    //console.log(entriesData)
-    //console.log(dataPostScheduleAppointment)
 
     useEffect(()=>{
         if (entriesData) {

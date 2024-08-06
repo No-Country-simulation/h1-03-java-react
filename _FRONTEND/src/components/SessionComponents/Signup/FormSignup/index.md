@@ -1,19 +1,47 @@
-Code Explanation:
-This code snippet is a React functional component named FormSignup that is used to render a user signup form.
+**Overview**
 
-Import Statements:
-The component uses two custom hooks, useNavigate and useSelector, to access navigation functionality and state management provided by react-router-dom and react-redux libraries.
+This is a React functional component named `FormSignup`. It is a form for user signup. The component takes several props and uses various React hooks to manage state and side effects.
 
-Component Functionality:
-The handleSubmit function is triggered when the form is submitted. It prevents the default form submission behavior.
-The form structure includes multiple Input components for capturing user information such as name, last name, email, password, and repeat password.
-There is a commented out Select component that allows users to select a role, which is not currently active in the form.
-A Button component is used for form submission with signup text and styling.
-A link is provided for users who already have an account to navigate to the sign-in page using the navigate function.
+**Props**
 
-Internationalization (i18n):
-The form content is dynamically rendered based on the selected language stored in the Redux state. Text and placeholders are retrieved from the i18n object according to the chosen language.
+The component accepts the following props:
 
-Note:
-The onChangeHandler functions for the Input components are currently empty and need to be implemented to handle user input changes.
-This component provides a structured layout for user signup with language-dependent content and navigation options within a React application.
+* `roleSelection`
+* `userData`
+* `showAlreadyHaveAccount`
+* `showFormTitle`
+
+**State Management**
+
+The component uses the `useState` hook to manage several state variables, including:
+
+* `password`
+* `repeatPassword`
+* `passwordsMatch`
+* `entriesData`
+* `userDataState`
+
+**Server Communication**
+
+The component uses the `useQuery` hook from the `react-query` library to make asynchronous requests to the server. It defines two queries:
+
+* `querySignupPost`
+* `querySignupPut`
+
+These queries use the `postFetch` and `putFetch` functions to send HTTP requests to the server.
+
+**Event Handling**
+
+The component defines several event handlers, including:
+
+* `handleSignupSubmit`: handles form submission
+* `handlePassword`: handles password input
+* `handleRepeatPassword`: handles repeat password input
+
+**Rendering**
+
+The component renders a form with various input fields and a submit button. It also conditionally renders a message if the passwords do not match.
+
+**Functionality**
+
+The component handles user signup functionality, including form submission, password validation, and server communication.
