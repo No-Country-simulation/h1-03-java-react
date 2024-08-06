@@ -18,7 +18,11 @@ export default function index() {
           title="Historias clínicas"
           path="/historia-clinica"
         />
-        <ItemLink icon={appointments} title="Turnos" path="/" />
+        <ItemLink
+          icon={appointments}
+          title="Turnos"
+          path="/turnos/mis-turnos"
+        />
       </div>
     </div>
   );
