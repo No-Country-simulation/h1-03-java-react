@@ -1,1 +1,5 @@
-This code defines a function getPathRoutes (pathroutes.js:4-14:2) that retrieves a specific route based on the language and routeName parameters. It checks if the route is for the navigation bar or not using the isForNavBar parameter and then filters the routes accordingly from either i18nNav or i18nOtherRoutes object based on the language. If no routes are found, it returns false, otherwise, it returns the route.
+This is a JavaScript function called `getPathRoutes` that takes in four parameters: `language`, `routeName`, `isForNavBar`, and `returnNameInstead`. 
+
+The function filters either `i18nNav` or `i18nOtherRoutes` based on the value of `isForNavBar`. If `isForNavBar` is truthy, it filters `i18nNav`, otherwise it filters `i18nOtherRoutes`. 
+
+The function then checks if the filtered result has any elements. If it does, it returns either the `route` property or the `name` property of the first element, depending on the value of `returnNameInstead`. If the filtered result is empty, it returns `false`.

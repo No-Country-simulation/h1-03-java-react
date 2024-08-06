@@ -1,58 +1,33 @@
+Sure! Here's a detailed breakdown of the code snippet in a structured and organized manner:
+
 ## Overview
+The code snippet defines a React functional component called `NavList`. This component is responsible for rendering a navigation list with language selection options.
 
-The `NavList` component is a React functional component that renders a navigation list. It uses Redux to manage the state of the navigation and language.
+## Import Statements
+The code imports the necessary dependencies and components:
+- `useDispatch` and `useSelector` from the `react-redux` library, used for accessing and updating state in a Redux store.
+- `useRef` from the React library, used for creating a mutable reference.
+- The `getItemsNav` function, which is used to generate the navigation items based on the selected language and role.
+- The `LanguageSelect` component, which renders a language selection dropdown.
 
-## Props
-
-None.
-
-## State
-
-None.
-
-## Hooks
-
-- `useDispatch`: A hook from Redux that returns a reference to the dispatch function.
-- `useSelector`: A hook from Redux that returns the current state of the store.
-- `useRef`: A hook that returns a mutable ref object.
-- `useEffect`: A hook that performs side effects.
-
-## Functions
-
-- `getItemsNav`: A function that returns an array of navigation items based on the current language.
-
-## Return Value
-
-The component returns a JSX fragment.
+## State and Props
+The component uses the `useSelector` hook to extract the following state values from the Redux store:
+- `headerHeight`: the height of the header.
+- `isActiveHamburgerButton`: a boolean indicating whether the hamburger button is active.
+- `language`: the selected language.
+- `role`: the user's role.
 
 ## Event Handlers
+The component defines a `handleSelectLanguage` function that dispatches an action to set the selected language using the `setI18n` function.
 
-- `onClick`: An event handler that dispatches an action to set `isActiveHamburgerButton` to false.
+## Effect Hook
+The component uses the `useEffect` hook to add or remove the scroll event listener based on the value of `isActiveHamburgerButton`.
 
-## Styling
+## Rendering
+The component renders a section with a class name of "nav-list-container" and a style that depends on the value of `isActiveHamburgerButton`. It also adds an event listener to the document's scroll event if `isActiveHamburgerButton` is true, and removes the event listener if `isActiveHamburgerButton` is false.
 
-The component applies styles to the section and navigation element based on the value of `isActiveHamburgerButton`.
+Inside the section, it renders a navigation list with a class name of "nav-list" and a style that depends on the value of `isActiveHamburgerButton`. It also renders the `ItemsNav` component and the `LanguageSelect` component.
 
-## Lifecycle
+The component also defines a `handleSelectLanguage` function that dispatches an action to set the selected language using the `setI18n` function.
 
-The component sets up a scroll event handler using `useRef` and `useEffect`.
-
-## Dependencies
-
-- `dispatch`: A function returned by `useDispatch`.
-- `headerHeight`: A value returned by `useSelector`.
-- `isActiveHamburgerButton`: A value returned by `useSelector`.
-- `language`: A value returned by `useSelector`.
-- `scrollHandler.current`: A function returned by `useRef`.
-
-## Usage
-
-The component can be used to render a navigation list.
-
-## Example
-
-```jsx
-<NavList />
-```
-
-This will render the `NavList` component and display the navigation list based on the current language and the state of `isActiveHamburgerButton`.
+Overall, this component is responsible for rendering a navigation list with language selection options, and handling the logic for showing and hiding the list based on the value of `isActiveHamburgerButton`.

@@ -1,5 +1,4 @@
 import React, { useEffect, memo, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setIsActiveHamburgerButton, setRole } from "../../../../../redux/actions";
@@ -17,7 +16,7 @@ const ItemsNav = () => {
 	const language = useSelector((state) => state.i18nReducer.language);
 	const role = useSelector((state) => state.roleReducer.role);
 	const itemsNav = getItemsNav(language, role);
-//console.log(itemsNav)	
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
