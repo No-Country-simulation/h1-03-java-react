@@ -9,6 +9,7 @@ import Patients from "../../pages/Patients";
 import Appointments from "../../pages/Appointments";
 import ReserveAppointment from "../../pages/Appointments/ReserveAppointment";
 import ScheduledAppointments from "../../pages/Appointments/ScheduledAppointments";
+import MyAppointments from "../../pages/Appointments/MyAppointments";
 import MedicalRecords from "../../pages/MedicalRecords";
 import Prescriptions from "../../pages/Prescriptions";
 import Treatments from "../../pages/Treatments";
@@ -34,6 +35,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('en', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 		<Route path={`${getPathRoutes('en', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
 		<Route path={`${getPathRoutes('en', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />
+		<Route path={`${getPathRoutes('en', 'my_appointments', {isForNavBar: false})}`} element={<MyAppointments />} />
 
 		<Route path={`/error401`} element={<Error401 />} />
 
@@ -50,6 +52,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'user_profile', {isForNavBar: true})}`} element={<UserProfile />} />
 		<Route path={`${getPathRoutes('sp', 'reserve_appointment', {isForNavBar: false})}`} element={<ReserveAppointment />} />
 		<Route path={`${getPathRoutes('sp', 'scheduled_appointments', {isForNavBar: false})}`} element={<ScheduledAppointments />} />
+		<Route path={`${getPathRoutes('sp', 'my_appointments', {isForNavBar: false})}`} element={<MyAppointments />} />
 
 		<Route path="*" element={<Error404 />} />
 	</Routes>
