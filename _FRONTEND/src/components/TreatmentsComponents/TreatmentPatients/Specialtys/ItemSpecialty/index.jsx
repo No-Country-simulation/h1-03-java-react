@@ -1,7 +1,11 @@
 import React from "react";
 import buttonPlus from "../../../../../assets/svg/others/buttonPlus.svg";
+import { useSelector } from "react-redux";
+import i18n from "../../../../../i18n/treatments/index.json";
 
-export default function index({ icon, specialty, date }) {
+export default function index({ icon, specialty, date, alt, aria, title }) {
+  const language = useSelector((state) => state.i18nReducer.language);
+
   return (
     <div>
       <div
@@ -15,16 +19,16 @@ export default function index({ icon, specialty, date }) {
           <div className="flex justify-center">
             <img
               src={icon}
-              alt="icono de paciente"
-              aria-label=""
-              title=""
+              alt={alt}
+					    aria-label={aria}
+					    title={title}
               width={50}
               height={50}
               loading="lazy"
             />
           </div>
           <div className="flex flex-col gap-2 flex-1 items-start p-4">
-            <p className="text-xl font-medium text-[#434343]">Especialidad:</p>
+            <p className="text-xl font-medium text-[#434343]">{i18n[language].specialties.componentTitle}</p>
             <p className="text-xl font-medium text-[#434343]">{specialty}</p>
           </div>
         </div>
