@@ -1,7 +1,7 @@
 import React from "react";
 import doctor from "../../../../assets/svg/icons/doctorDashboardDoctor.svg";
 import { useSelector } from "react-redux";
-import i18n from "../../../..//i18n/dashboards/dashboardDoctor/index.json";
+import i18n from "../../../../i18n/dashboards/dashboardDoctor/index.json";
 
 export default function index() {
   const language = useSelector((state) => state.i18nReducer.language);

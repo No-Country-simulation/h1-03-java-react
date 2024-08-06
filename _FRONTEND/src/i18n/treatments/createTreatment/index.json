@@ -1,0 +1,58 @@
+{
+  "sp":{
+    "componentTitle": "Crear Tratamiento",
+    "infoPatient": {
+      "name": "Nombre y apellido:",
+      "age": "Edad:",
+      "date": "Fecha:"
+    },
+    "form": {
+      "consultation": "Motivo de consulta:",
+      "description": "Descripción:",
+      "diagnosis": "Diagnostico:",
+      "treatment": "Plan de tratamiento:",
+      "placeholder": "Escriba aquí ...",
+      "attachments": "Adjuntos:",
+      "recipe": "Receta",
+      "imaging": "Imagenología",
+      "laboratory": "Laboratorio"
+    },
+    "infoDoctor": {
+      "name": "Nombre y apellido:",
+      "specialty": "Especialidad:",
+      "license": "Licencia"
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    }
+  },
+  "en":{
+    "componentTitle": "Create treatment",
+    "infoPatient": {
+      "name": "Name and lastname:",
+      "age": "Age:",
+      "date": "Date:"
+    },
+    "form": {
+      "consultation": "Reason for consultation:",
+      "description": "Description:",
+      "diagnosis": "Diagnosis:",
+      "treatment": "Treatment plan:",
+      "placeholder": "Type here ...",
+      "attachments": "Attachments:",
+      "recipe": "Recipe",
+      "imaging": "Imaging",
+      "laboratory": "Laboratory"
+    },
+    "infoDoctor": {
+      "name": "Name and lastname:",
+      "specialty": "Specialty:",
+      "license": "License:"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
+  }
+}
