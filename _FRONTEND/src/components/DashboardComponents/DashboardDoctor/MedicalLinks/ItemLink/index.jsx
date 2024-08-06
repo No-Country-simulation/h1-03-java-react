@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function index({ icon, title, path }) {
+export default function index({ icon, alt, title, path }) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -15,9 +15,9 @@ export default function index({ icon, title, path }) {
     >
       <img
         src={icon}
-        alt=""
-        aria-label=""
-        title=""
+        alt={alt}
+        aria-label={alt}
+        title={alt}
         width={100}
         height={100}
         loading="lazy"
