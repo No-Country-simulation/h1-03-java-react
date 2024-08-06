@@ -22,7 +22,7 @@ export default function Select({
 				<Label id={id} title={title} />
 			)}
 			<select
-				className="p-3 w-[-webkit-fill-available] m-0 rounded-full border-[rgb(174, 174, 174)]"
+				className="p-3 w-full sm:w-[-webkit-fill-available] m-0 rounded-full border-[rgb(174, 174, 174)]"
 				id={id}
 				name={id}
 				required={isRequired}
