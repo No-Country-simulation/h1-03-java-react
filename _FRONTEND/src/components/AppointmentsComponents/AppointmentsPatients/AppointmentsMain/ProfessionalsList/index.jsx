@@ -33,10 +33,7 @@ export default function ProfessionalsList() {
             setProfessionalsList((prev)=>[...prev, ...data.content])
         }
 
-	},[data])
-    
-    //console.log(professionalsList)
-    //console.log(i18nDoctors[language].specialty.arrayOptions) 
+	},[data])    
 
     const setSeeMore = () => {
         setPageNumber((prevPage)=>prevPage+1)

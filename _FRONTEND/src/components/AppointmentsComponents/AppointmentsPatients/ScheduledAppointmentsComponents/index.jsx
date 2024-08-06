@@ -11,7 +11,7 @@ export default function ScheduledAppointmentsComponent() {
 
     return (
         <section className="min-h-full flex flex-col lg:flex-row justify-center items-start gap-8 p-10 pt-0">
-            <div className="lg:min-w-[250px] lg:w-[20%] m-auto lg:m-0">
+            <div className="lg:min-w-[33%] lg:w-[20%] m-auto lg:m-0">
                 <Filters    
                     title={i18n[language].scheduledAppointments.filters.componentTitle} 
                     isWide={false}

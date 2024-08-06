@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
+//Component not used
 
 export default function BottomMenu() {
 	const navigate = useNavigate();
@@ -36,6 +37,10 @@ export default function BottomMenu() {
 	return (
 		<nav className="bottomMenu" style={{bottom:bottomValue}}>
 			<div>
+				<div>OPT1</div>
+				<div>OPT2</div>
+				<div>OPT3</div>
+				<div>OPT4</div>
 				<div>OPT5</div>
 			</div>
 		</nav>

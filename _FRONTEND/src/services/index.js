@@ -1,5 +1,5 @@
 export const fetchData = async (url, options) => {
-    //console.log(url, options)
+    
     if (url && options) {
         try{
             const res = await fetch(url, options)
