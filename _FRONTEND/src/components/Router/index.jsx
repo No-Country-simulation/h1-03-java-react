@@ -11,6 +11,7 @@ import ReserveAppointment from "../../pages/Appointments/ReserveAppointment";
 import ScheduledAppointments from "../../pages/Appointments/ScheduledAppointments";
 import MyAppointments from "../../pages/Appointments/MyAppointments";
 import MedicalRecords from "../../pages/MedicalRecords";
+import SearchMedicalRecords from "../../pages/MedicalRecords/SearchMedicalRecords";
 import Prescriptions from "../../pages/Prescriptions";
 import Treatments from "../../pages/Treatments";
 import CreateTreatment from "../../pages/Treatments/CreateTreatment";
@@ -27,6 +28,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('en', 'doctors', {isForNavBar: true})}`} element={<Doctors />} />
 		<Route path={`${getPathRoutes('en', 'appointments', {isForNavBar: true})}`} element={<Appointments />} />
 		<Route path={`${getPathRoutes('en', 'medical_records', {isForNavBar: true})}`} element={<MedicalRecords />} />
+		<Route path={`${getPathRoutes('en', 'search_medical_records', {isForNavBar: false})}`} element={<SearchMedicalRecords />} />
 		<Route path={`${getPathRoutes('en', 'prescriptions', {isForNavBar: true})}`} element={<Prescriptions />} />
 		<Route path={`${getPathRoutes('en', 'treatments', {isForNavBar: true})}`} element={<Treatments />} />
 		<Route path={`${getPathRoutes('en', 'create_treatment', {isForNavBar: false})}`} element={<CreateTreatment />} />
@@ -44,6 +46,7 @@ export default function Router() {
 		<Route path={`${getPathRoutes('sp', 'doctors', {isForNavBar: true})}`} element={<Doctors />} />
 		<Route path={`${getPathRoutes('sp', 'appointments', {isForNavBar: true})}`} element={<Appointments />} />
 		<Route path={`${getPathRoutes('sp', 'medical_records', {isForNavBar: true})}`} element={<MedicalRecords />} />
+		<Route path={`${getPathRoutes('sp', 'search_medical_records', {isForNavBar: false})}`} element={<SearchMedicalRecords />} />
 		<Route path={`${getPathRoutes('sp', 'prescriptions', {isForNavBar: true})}`} element={<Prescriptions />} />
 		<Route path={`${getPathRoutes('sp', 'treatments', {isForNavBar: true})}`} element={<Treatments />} />
 		<Route path={`${getPathRoutes('sp', 'create_treatment', {isForNavBar: false})}`} element={<CreateTreatment />} />
