@@ -16,19 +16,19 @@ export default function index() {
           icon={medicalAppointment}
           alt={i18n[language].itemsLinks.appointmentMedical.alt}
           title={i18n[language].itemsLinks.appointmentMedical.title}
-          path="/turnos"
+          path="/appointments"
         />
         <ItemLink
           icon={clinicalHistories}
           alt={i18n[language].itemsLinks.medicalRecords.alt}
           title={i18n[language].itemsLinks.medicalRecords.title}
-          path="/historia-clinica"
+          path="/medical-records/search-medical-records"
         />
         <ItemLink
           icon={appointments}
           alt={i18n[language].itemsLinks.appointments.alt}
           title={i18n[language].itemsLinks.appointments.title}
-          path="/turnos/mis-turnos"
+          path="/appointments/my-appointments"
         />
       </div>
     </div>

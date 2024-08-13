@@ -10,22 +10,27 @@ export default function index() {
       <ItemMedicalHistory
         id="15457896"
         name="Isabel de Castilla Condorcanqui"
+        path="/medical-records"
       />
       <ItemMedicalHistory
         id="15457896"
         name="Isabel de Castilla Condorcanqui"
+        path="/medical-records"
       />
       <ItemMedicalHistory
         id="15457896"
         name="Isabel de Castilla Condorcanqui"
+        path="/medical-records"
       />
       <ItemMedicalHistory
         id="15457896"
         name="Isabel de Castilla Condorcanqui"
+        path="/medical-records"
       />
       <ItemMedicalHistory
         id="15457896"
         name="Isabel de Castilla Condorcanqui"
+        path="/medical-records"
       />
     </div>
   );
