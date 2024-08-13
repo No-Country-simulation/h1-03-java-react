@@ -34,7 +34,7 @@ export default function index() {
       <div className="flex items-center gap-4 py-4 px-2">
         <img src={search} alt="" width="44px" height="44px" />
         <p className="text-white font-bold text-lg lg:text-xl">
-          Buscar Turnos médicos
+          Buscar Turnos
         </p>
       </div>
 
@@ -44,19 +44,19 @@ export default function index() {
       >
         <div className="gap-2.5 relative w-full lg:w-auto">
           <select
-            name="professional"
-            id="professional"
-            value={formData.professional}
+            name="state"
+            id="state"
+            value={formData.state}
             onChange={handleChange}
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="professional" selected>
+            <option value="state">
               ESTADO DEL TURNO
             </option>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
+            <option value="option1">Opción 1</option>
+            <option value="option2">Opción 2</option>
+            <option value="option3">Opción 3</option>
           </select>
           <div className="absolute inset-y-0 right-1 pl-3 flex items-center pointer-events-none">
             <img src={downArrow} alt="flecha hacia abajo" />
