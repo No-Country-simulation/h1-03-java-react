@@ -13,7 +13,7 @@ export default function index({porcentage, icon, title}) {
               height={100}
               loading="lazy"
             />
-            <p className="text-center text-sm">{title}</p>
+            <p className="text-center text-sm whitespace-nowrap">{title}</p>
           </div>
   )
 }

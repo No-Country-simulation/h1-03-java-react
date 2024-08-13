@@ -40,7 +40,7 @@ export default function Index() {
         <img src={arrowLeft} alt="flecha izquierda" />
       </button>
 
-      <div className="flex flex-1 mx-4 overflow-x-auto">
+      <div className="flex flex-1 mx-4 overflow-x-hidden">
         <div className="flex flex-nowrap space-x-4 sm:space-x-8">
           {days.map((day) => {
             const isTodayDay = isToday(day);

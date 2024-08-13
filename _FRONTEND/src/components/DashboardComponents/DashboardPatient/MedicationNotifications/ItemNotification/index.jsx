@@ -24,8 +24,8 @@ export default function index({date, medicine, hour, bell}) {
             />
           </div>
           <div className="flex flex-col gap-2 flex-1 text-center items-start p-4">
-            <p className="text-xl font-medium text-[#434343]">{date}</p>
-            <p className="text-xl font-medium text-[#434343]">{medicine}</p>
+            <p className="text-xl font-medium text-[#434343] whitespace-nowrap">{date}</p>
+            <p className="text-xl font-medium text-[#434343] whitespace-nowrap">{medicine}</p>
           </div>
         </div>
         <div className="flex flex-row gap-4">

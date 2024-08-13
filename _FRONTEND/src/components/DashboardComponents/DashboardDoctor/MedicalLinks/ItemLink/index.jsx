@@ -22,7 +22,7 @@ export default function index({ icon, alt, title, path }) {
         height={100}
         loading="lazy"
       />
-      <p className="text-center">{title}</p>
+      <p className="text-center whitespace-nowrap">{title}</p>
     </div>
   );
 }
