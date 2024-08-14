@@ -21,7 +21,8 @@
         "gastroenterology": "GASTROENTEROLOGÍA",
         "dermatology": "DERMATOLOGÍA",
         "hematology": "HEMATOLOGÍA"
-      }
+      },
+      "buttonPlus": "Botón con icono de más"
     }
   },
   "en": {
@@ -46,7 +47,8 @@
         "gastroenterology": "GASTROENTEROLOGY",
         "dermatology": "DERMATOLOGY",
         "hematology": "HEMATOLOGY"
-      }
+      },
+      "buttonPlus": "Button with plus icon"
     }
   }
 }
