@@ -4,7 +4,7 @@ import clinicalHistories from "../../../../assets/svg/icons/clinicalHistoriesDas
 import appointments from "../../../../assets/svg/icons/appointmentsDashboardDoctor.svg";
 import ItemLink from "./ItemLink";
 import { useSelector } from "react-redux";
-import i18n from "../../../../i18n/dashboards/dashboardDoctor/index.json";
+import i18n from "../../../../i18n/dashboardComponents/dashboardDoctor/index.json";
 
 export default function index() {
   const language = useSelector((state) => state.i18nReducer.language);
