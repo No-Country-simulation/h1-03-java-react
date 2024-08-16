@@ -4,15 +4,18 @@
     "itemsLinks": {
       "appointmentMedical": {
         "title": "Turnos Médicos",
-        "alt": "Calendario"
+        "icon": "Icono de calendario",
+        "path": "/turnos"
       },
       "medicalRecords": {
         "title": "Historias clínicas",
-        "alt": "Persona genérica"
+        "icon": "Icono de persona genérica",
+        "path": "/historia-clinica/buscar-historia-clinica"
       },
       "appointments": {
         "title": "Turnos",
-        "alt": "Calendario con un más"
+        "icon": "Icono de calendario con un más",
+        "path": "/turnos/mis-turnos"
       }
     },
     "nextAppointment": {
@@ -33,15 +36,18 @@
     "itemsLinks": {
       "appointmentMedical": {
         "title": "Medical appointments",
-        "alt": "Calendar"
+        "icon": "Calendar icon",
+        "path": "/appointments"
       },
       "medicalRecords": {
         "title": "Medical records",
-        "alt": "Generic person"
+        "icon": "Generic person icon",
+        "path": "/medical-records/search-medical-records"
       },
       "appointments": {
         "title": "Appointments",
-        "alt": "Calendar with plus"
+        "icon": "Calendar with plus icon",
+        "path": "/appointments/my-appointments"
       }
     },
     "nextAppointment": {
