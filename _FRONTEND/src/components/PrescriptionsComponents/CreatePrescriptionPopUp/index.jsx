@@ -3,8 +3,12 @@ import closePopUp from "../../../assets/svg/others/closePopup.svg";
 import Button from "../../Resources/FormElements/Button";
 import trashCan from "../../../assets/svg/others/trashCan.svg";
 import ready from "../../../assets/svg/others/ready.svg";
+import { useSelector } from "react-redux";
+import i18n from "../../../i18n/createPrescriptions/index.json";
 
 export default function index({ closeModal }) {
+  const language = useSelector((state) => state.i18nReducer.language);
+
   return (
     <section
       onClick={closeModal}
@@ -21,118 +25,168 @@ export default function index({ closeModal }) {
           className="absolute right-2 top-1 cursor-pointer"
           onClick={closeModal}
         >
-          <img src={closePopUp} alt="cerrar pop up" />
+          <img
+            src={closePopUp}
+            alt={i18n[language].icons.closePopUp}
+            aria-label={i18n[language].icons.closePopUp}
+            title={i18n[language].icons.closePopUp}
+          />
         </div>
         <div className="flex flex-col gap-4">
-          <p className="font-medium text-2xl text-center">Crear Receta</p>
+          <p className="font-medium text-2xl text-center">
+            {i18n[language].title}
+          </p>
           <div className="flex flex-col sm:flex-row items-start justify-between text-[#5666BE] font-semibold gap-3">
             <p>
-              Nombres y Apellido:{" "}
+              {i18n[language].personInfo.name}{" "}
               <span className="text-black font-normal">
-                James Lucho Bond Gonzales
+                {i18n[language].personData.name}
               </span>
             </p>
             <p>
-              Edad: <span className="text-black font-normal">28a</span>
+              {i18n[language].personInfo.age}{" "}
+              <span className="text-black font-normal">
+                {i18n[language].personData.age}
+              </span>
             </p>
             <p>
-              Fecha:{" "}
-              <span className="text-black font-normal">16-03-2024 13:30</span>
+              {i18n[language].personInfo.date}{" "}
+              <span className="text-black font-normal">
+                {i18n[language].personData.date}
+              </span>
             </p>
           </div>
           <div className="flex flex-col items-start gap-4">
             <p className="text-[#5666BE] font-semibold">
-              Diagnóstico:{" "}
+              {i18n[language].personInfo.diagnosis}{" "}
               <span className="text-black font-normal">
-                Colitis seudomembranosa
+                {i18n[language].personData.diagnosis}
               </span>
             </p>
             <p className="text-[#5666BE] font-semibold">
-              Añadir Medicamento:{" "}
+              {i18n[language].personInfo.addMedicine}{" "}
               <span className="text-[#1D1D1D80] font-normal border border-[#1D1D1D80] rounded-2xl p-1">
-                Medicamento
+                {i18n[language].medication.title}
               </span>
             </p>
           </div>
           <div className="flex flex-col justify-between gap-4">
             <div className="flex flex-col justify-center items-center flex-1 gap-4">
-              <p className="text-[#5666BE] font-semibold">Medicamentos</p>
+              <p className="text-[#5666BE] font-semibold">
+                {i18n[language].medication.title}
+              </p>
               <div className="flex flex-col lg:flex-row gap-2">
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Medicamentos</p>
-                  <p>Amoxicilina</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].medication.medicine.title}
+                  </p>
+                  <p>{i18n[language].medication.medicine.result}</p>
                   <input type="text" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Concentración</p>
-                  <p>500mg</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].medication.concentration.title}
+                  </p>
+                  <p>{i18n[language].medication.concentration.result}</p>
                   <input type="text" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Presentación</p>
-                  <p>tableta</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].medication.presentation.title}
+                  </p>
+                  <p>{i18n[language].medication.presentation.result}</p>
                   <select name="" id="">
                     <option value="opciones" selected disabled>
-                      Opciones
+                      {i18n[language].medication.presentation.options}
                     </option>
-                    <option value="tableta">Tableta</option>
+                    <option value="tableta">
+                      {i18n[language].medication.presentation.result}
+                    </option>
                   </select>
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Descripción</p>
-                  <p>Marca genérica</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].medication.description.title}
+                  </p>
+                  <p>{i18n[language].medication.description.result}</p>
                   <input type="text" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Cantidad</p>
-                  <p>15</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].medication.amount.title}
+                  </p>
+                  <p>{i18n[language].medication.amount.result}</p>
                   <input type="number" />
                 </div>
               </div>
             </div>
             <div className="flex flex-col justify-center items-center flex-1 gap-4">
-              <p className="text-[#5666BE] font-semibold">Indicaciones</p>
+              <p className="text-[#5666BE] font-semibold">
+                {i18n[language].indications.title}
+              </p>
               <div className="flex flex-col lg:flex-row gap-2">
                 <div clasName="flex flex-col gap-4">
                   <p className="text-[#5666BE] font-semibold">
-                    Fecha de inicio
+                    {i18n[language].indications.date.title}
                   </p>
-                  <p>16-03-24</p>
+                  <p>{i18n[language].indications.date.result}</p>
                   <input type="date" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Frecuencia</p>
-                  <p>c/8h</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].indications.frequency.title}
+                  </p>
+                  <p>{i18n[language].indications.frequency.result}</p>
                   <input type="number" name="" id="" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Cantidad</p>
-                  <p>1</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].indications.amount.title}
+                  </p>
+                  <p>{i18n[language].indications.amount.result}</p>
                   <input type="number" name="" id="" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Duración</p>
-                  <p>5 días</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].indications.duration.title}
+                  </p>
+                  <p>{i18n[language].indications.duration.result}</p>
                   <input type="number" name="" id="" />
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#5666BE] font-semibold">Vía</p>
-                  <p>oral</p>
+                  <p className="text-[#5666BE] font-semibold">
+                    {i18n[language].indications.route.title}
+                  </p>
+                  <p>{i18n[language].indications.route.result}</p>
                   <select name="" id="">
                     <option value="opciones" selected disabled>
-                      Opciones
+                      {i18n[language].indications.route.options}
                     </option>
-                    <option value="oral">Oral</option>
+                    <option value="oral">
+                      {i18n[language].indications.route.result}
+                    </option>
                   </select>
                 </div>
                 <div clasName="flex flex-col gap-4">
-                  <p className="text-[#C60000] font-semibold">Acción</p>
+                  <p className="text-[#C60000] font-semibold">
+                    {i18n[language].indications.action}
+                  </p>
                   <div className="flex items-center justify-center">
                     <img src={trashCan} alt="icono de tacho de basura" />
                   </div>
                   <div className="flex items-center justify-center">
-                    <img src={trashCan} alt="icono de tacho de basura" />
-                    <img src={ready} alt="icono de listo" />
+                    <img
+                      src={trashCan}
+                      alt={i18n[language].icons.trash}
+                      aria-label={i18n[language].icons.trash}
+                      title={i18n[language].icons.trash}
+                    />
+                    <img
+                      src={ready}
+                      alt={i18n[language].icons.ready}
+                      aria-label={i18n[language].icons.ready}
+                      title={i18n[language].icons.ready}
+                    />
                   </div>
                 </div>
               </div>
@@ -140,24 +194,26 @@ export default function index({ closeModal }) {
           </div>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button
-              text="Cancelar"
+              text={i18n[language].buttons.cancel}
               bgColor="#D98235"
               textColor="white"
               classNames="px-10"
             />
             <Button
-              text="Confirmar"
+              text={i18n[language].buttons.confirm}
               bgColor="#5666BE"
               textColor="white"
               classNames="px-10"
             />
           </div>
           <div className="flex flex-col">
-            <p className="flex items-start">Doctor:</p>
+            <p className="flex items-start">
+              {i18n[language].doctorData.title}
+            </p>
             <div className="flex flex-col sm:flex-row justify-between items-start">
-              <p>Nombre y apellido: Juanito Alimaña</p>
-              <p>Especialidad: Medicina General</p>
-              <p>Licencia: 2456454</p>
+              <p>{i18n[language].doctorData.name}</p>
+              <p>{i18n[language].doctorData.specialty}</p>
+              <p>{i18n[language].doctorData.license}</p>
             </div>
           </div>
         </div>
