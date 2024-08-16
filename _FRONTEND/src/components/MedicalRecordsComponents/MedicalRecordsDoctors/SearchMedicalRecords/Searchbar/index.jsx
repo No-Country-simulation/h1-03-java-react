@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import search from "../../../../../assets/svg/others/magnifyingGlass.svg";
 import orangeSearch from "../../../../../assets/svg/others/orangeSearch.svg";
 import orangeCalendar from "../../../../../assets/svg/others/orangeCalendar.svg";
+import { useSelector } from "react-redux";
+import i18n from "../../../../../i18n/medicalRecords/searchMedicalRecord/index.json";
 
 export default function index() {
+  const language = useSelector((state) => state.i18nReducer.language);
   const [formData, setFormData] = useState({
     name: "",
     id: "",
@@ -31,9 +34,16 @@ export default function index() {
       }}
     >
       <div className="flex items-center gap-4 py-4 px-2">
-        <img src={search} alt="" width="44px" height="44px" />
+        <img
+          src={search}
+          alt={i18n[language].icons.search}
+          aria-label={i18n[language].icons.search}
+          title={i18n[language].icons.search}
+          width="44px"
+          height="44px"
+        />
         <p className="text-white font-bold text-lg lg:text-xl">
-          Buscar Historia Clínica
+          {i18n[language].filters.title}
         </p>
       </div>
 
@@ -44,16 +54,21 @@ export default function index() {
         <div className="gap-2.5 relative w-full lg:w-auto">
           <input
             type="text"
-            name="name"
-            id="name"
+            name="lastName"
+            id="lastName"
             value={formData.name}
             onChange={handleChange}
             className="border-[#B7B7B7] border rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
-            placeholder="POR APELLIDO"
+            placeholder={i18n[language].filters.form.inputs.lastName}
             required
           />
           <div className="absolute inset-y-0 right-4 pl-3 flex items-center pointer-events-none">
-            <img src={orangeSearch} alt="icono de lupa" />
+            <img
+              src={orangeSearch}
+              alt={i18n[language].icons.search}
+              aria-label={i18n[language].icons.search}
+              title={i18n[language].icons.search}
+            />
           </div>
         </div>
 
@@ -65,17 +80,22 @@ export default function index() {
             value={formData.id}
             onChange={handleChange}
             className="border-[#B7B7B7] border rounded-full w-full text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
-            placeholder="POR N° IDENTIFICACIÓN"
+            placeholder={i18n[language].filters.form.inputs.id}
             required
           />
           <div className="absolute inset-y-0 right-4 pl-3 flex items-center pointer-events-none">
-            <img src={orangeSearch} alt="icono de lupa" />
+            <img
+              src={orangeSearch}
+              alt={i18n[language].icons.search}
+              aria-label={i18n[language].icons.search}
+              title={i18n[language].icons.search}
+            />
           </div>
         </div>
 
         <div className="flex flex-col w-full lg:w-auto">
           <p className="text-white font-semibold text-base mb-2">
-            POR PERIODO:
+            {i18n[language].filters.form.period}
           </p>
           <div className="flex flex-col xl:flex-row gap-3 items-center">
             <div className="gap-2.5 relative w-full lg:w-auto">
@@ -89,10 +109,15 @@ export default function index() {
                 required
               />
               <div className="absolute inset-y-0 right-2 pl-3 flex items-center pointer-events-none">
-                <img src={orangeCalendar} alt="icono de calendario" />
+                <img
+                  src={orangeCalendar}
+                  alt={i18n[language].icons.calendar}
+                  aria-label={i18n[language].icons.calendar}
+                  title={i18n[language].icons.calendar}
+                />
               </div>
             </div>
-            <p className="text-white text-base font-semibold">HASTA</p>
+            <p className="text-white text-base font-semibold">{i18n[language].filters.form.inputs.until}</p>
             <div className="gap-2.5 relative w-full lg:w-auto">
               <input
                 type="date"
@@ -104,7 +129,12 @@ export default function index() {
                 required
               />
               <div className="absolute inset-y-0 right-2 pl-3 flex items-center pointer-events-none">
-                <img src={orangeCalendar} alt="icono de calendario" />
+                <img
+                  src={orangeCalendar}
+                  alt={i18n[language].icons.calendar}
+                  aria-label={i18n[language].icons.calendar}
+                  title={i18n[language].icons.calendar}
+                />
               </div>
             </div>
           </div>
@@ -115,7 +145,7 @@ export default function index() {
             type="submit"
             className="bg-[#5666BE] border hover:border-[#5666BE] text-xl text-white font-bold py-3 md:px-20  border-white rounded-full focus:outline-none focus:shadow-outline"
           >
-            Buscar
+            {i18n[language].filters.form.button}
           </button>
         </div>
       </form>
