@@ -1,8 +1,136 @@
 {
-    "sp": {
-
+  "sp": {
+    "icons": {
+      "downArrow": "Icono de Flecha hacia abajo",
+      "calendar": "Icono de Calendario",
+      "search": "Icono de búsqueda",
+      "medicalRecords": "Icono de historia clinica"
     },
-    "en":{
-
-    }
+    "patient": {
+      "title": "Historia clínica N° 0007",
+      "names": "Nombres:",
+      "lastNames": "Apellidos:",
+      "birthdate": "Fecha de nacimiento:",
+      "phoneNumber": "Celular:",
+      "adress": "Domicilio:",
+      "sex": "Sexo:",
+      "occupation": "Ocupación:",
+      "maritalStatus": "Estado civil:",
+      "id": "Doc. Identidad:",
+      "bloodType": "Tipo de sangre:",
+      "religion": "Religión:",
+      "data": {
+        "names": "James Lucho",
+        "lastNames": "Bond Gonzales",
+        "birthdate": "12-06-1995",
+        "phoneNumber": "56934842747",
+        "Address": "Lima-Perú, Asoc. viv. Villa Magisterial Lt12 Mz 12 Int. 200",
+        "sex": "Masculino",
+        "occupation": "Empleado",
+        "maritalStatus": "Conviviente",
+        "id": "72162793",
+        "bloodType": "O+",
+        "religion": "Catolico"
+      }
+    },
+    "filters": {
+      "title": "Filtros",
+      "form": {
+        "selects": {
+          "professional": {
+            "option0": "PROFESIONAL",
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          },
+          "specialty": {
+            "option0": "ESPECIALIDAD",
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          }
+        },
+        "period": "POR PERIODO:",
+        "until": "HASTA",
+        "button": "Buscar"
+      }
+    },
+    "register": {
+      "navigate": "/tratamientos/crear-tratamiento",
+      "icon": "Icono de calendario con lapiz",
+      "title": "Registrar tratamiento"
+    },
+    "download": {
+      "icon": "Icono de descarga",
+      "title": "Descargar H.C."
+    },
+    "treatmentSheet": "Hoja de tratamientos"
+  },
+  "en": {
+    "icons": {
+      "downArrow": "Down arrow icon",
+      "calendar": "Calendar icon",
+      "search": "Search icon",
+      "medicalRecords": "Medical record icon"
+    },
+    "patient": {
+      "title": "Medical Record No. 0007",
+      "names": "Names:",
+      "lastNames": "LastNames:",
+      "birthdate": "Date of birth:",
+      "phoneNumber": "Cellphone:",
+      "address": "Address:",
+      "sex": "Sex:",
+      "occupation": "Occupation:",
+      "maritalStatus": "Marital Status:",
+      "id": "Doc. Identity:",
+      "bloodType": "Blood type:",
+      "religion": "Religion:",
+      "data": {
+        "names": "James Lucho",
+        "lastNames": "Bond Gonzales",
+        "birthdate": "12-06-1995",
+        "phoneNumber": "56934842747",
+        "Address": "Lima-Perú, Asoc. viv. Villa Magisterial Lt12 Mz 12 Int. 200",
+        "sex": "Male",
+        "occupation": "Employee",
+        "maritalStatus": "Cohabitant",
+        "id": "72162793",
+        "bloodType": "O+",
+        "religion": "Catholic"
+      }
+    },
+    "filters": {
+      "title": "Filters",
+      "form": {
+        "selects": {
+          "professional": {
+            "option0": "PROFESSIONAL",
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          },
+          "specialty": {
+            "option0": "SPECIALTY",
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          }
+        },
+        "period": "PER PERIOD:",
+        "until": "UNTIL",
+        "button": "Search"
+      }
+    },
+    "register": {
+      "navigate": "/treatments/create-treatment",
+      "icon": "Calendar with pencil icon",
+      "title": "Register treatment"
+    },
+    "download": {
+      "icon": "Download icon",
+      "title": "Download M.R."
+    },
+    "treatmentSheet": "Treatment sheet"
+  }
 }

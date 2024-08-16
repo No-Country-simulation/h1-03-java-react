@@ -54,7 +54,6 @@
     },
     "filters": {
       "title": "Search Medical appointments",
-
       "form": {
         "selects": {
           "professional": {

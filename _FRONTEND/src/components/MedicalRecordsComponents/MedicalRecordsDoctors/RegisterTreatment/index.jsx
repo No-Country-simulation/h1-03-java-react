@@ -1,13 +1,16 @@
 import React from "react";
 import modifyAppointment from "../../../../assets/svg/others/modifyAppointmentCalendar.svg";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import i18n from "../../../../i18n/medicalRecords/index.json";
 
 export default function index() {
+  const language = useSelector((state) => state.i18nReducer.language);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     window.scrollTo(0, 0);
-    navigate("/tratamientos/crear-tratamiento");
+    navigate(`${i18n[language].register.navigate}`);
   };
 
   return (
@@ -17,11 +20,13 @@ export default function index() {
     >
       <img
         src={modifyAppointment}
-        alt="icono de calendario con lapiz"
+        alt={i18n[language].register.icon}
+        aria-label={i18n[language].register.icon}
+        title={i18n[language].register.icon}
         width={100}
         height={100}
       />
-      <p className="text-white text-center">Registrar tratamiento</p>
+      <p className="text-white text-center">{i18n[language].register.title}</p>
     </div>
   );
 }
