@@ -1,0 +1,50 @@
+{ 
+  "sp": {
+    "myClinicHistory": {
+      "title": "Mi Historia Clínica",
+      "icon": "icono de historia clínica"
+    },
+    "search": {
+      "title": "Buscar historia clínica",
+      "icon": "icono de lupa"
+    },
+    "buttons": {
+      "download": {
+        "title": "DESCARGAR HISTORIA CLÍNICA",
+        "icon": "icono de descarga"
+      },
+      "share": {
+        "title": "COMPARTIR HISTORIA CLÍNICA",
+        "icon": "icono de compartir"
+      },
+      "print": {
+        "title": "IMPRIMIR HISTORIA CLÍNICA",
+        "icon": "icono de imprimir"
+      }
+    }
+  },
+  "en": {
+    "myClinicHistory": {
+      "title": "My Medical History",      
+      "icon": "medical history icon"
+    },
+    "search": {
+      "title": "Search medical history",
+      "icon": "magnifying glass icon"
+    },
+    "buttons": {
+      "download": {
+        "title": "DOWNLOAD CLINICAL RECORD",
+        "icon": "download icon"
+      },
+      "share": {
+        "title": "SHARE CLINICAL HISTORY",
+        "icon": "share icon"
+      },
+      "print": {
+        "title": "PRINT CLINICAL RECORD",
+        "icon": "print icon"
+      }
+    }
+  } 
+}
