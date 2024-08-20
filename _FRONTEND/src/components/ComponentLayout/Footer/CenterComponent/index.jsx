@@ -12,7 +12,7 @@ export default function RightComponent() {
 	const language = useSelector((state) => state.i18nReducer.language);
 
 	return (
-		<div className="flex flex-row gap-12">
+		<div className="flex md:flex-row gap-2 md:gap-12">
 				<SocialNetworkLink
 					href={"mailto:nombre@gmail.com"}
 					src={Gmail}

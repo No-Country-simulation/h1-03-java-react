@@ -6,7 +6,7 @@ export default function () {
   const language = useSelector((state) => state.i18nReducer.language);
 
   return (
-    <div className="flex flex-col justify-end items-end gap-1">
+    <div className="flex flex-col justify-center items-center md:justify-end md:items-end gap-1">
 			<h1 className="text-white text-base">{i18n[language].right.login}</h1>
 			<h2 className="text-white">{i18n[language].right.register}</h2>
 			<h2 className="text-white">{i18n[language].right.booklet}</h2>
