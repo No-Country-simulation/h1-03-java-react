@@ -1,0 +1,66 @@
+{
+  "sp": {
+    "icons": {
+      "downArrow": "Icono de Flecha hacia abajo",
+      "calendar": "Icono de Calendario",
+      "search": "Icono de búsqueda",
+      "medicalRecords": "Icono de historia clinica"
+    },
+    "filters": {
+      "title": "Buscar Historia Clínica",
+      "form": {
+        "inputs": {
+          "lastName": "POR APELLIDO",
+          "id": "POR N° IDENTIFICACIÓN"
+        },
+        "period": "POR PERIODO:",
+        "until": "HASTA",
+        "button": "Buscar"
+      }
+    },
+    "result": {
+      "title": "Resultados de tu búsqueda - Historias Clínicas",
+      "item": {
+        "id": "15457896",
+        "name": "Isabel de Castilla Condorcanqui",
+        "path": "/historia-clinica"
+      }
+    },
+    "itemResult": {
+      "id": "DNI:",
+      "details": "Ver detalles"
+    }
+  },
+  "en": {
+    "icons": {
+      "downArrow": "Down arrow icon",
+      "calendar": "Calendar icon",
+      "search": "Search icon",
+      "medicalRecords": "Medical record icon"
+    },
+    "filters": {
+      "title": "Search Medical Records",
+      "form": {
+        "inputs": {
+          "lastName": "BY LAST NAME",
+          "id": "BY IDENTIFICATION NUMBER"
+        },
+        "period": "PER PERIOD:",
+        "until": "UNTIL",
+        "button": "Search"
+      }
+    },
+    "result": {
+      "title": "Your search results - Medical Records",
+      "item": {
+        "id": "15457896",
+        "name": "Isabel de Castilla Condorcanqui",
+        "path": "/medical-records"
+      }
+    },
+    "itemResult": {
+      "id": "ID:",
+      "details": "View details"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "sp": {
+    "dataMedic": {"specialty": "Oncología"},
+    "itemsLinks": {
+      "appointmentMedical": {
+        "title": "Turnos Médicos",
+        "icon": "Icono de calendario",
+        "path": "/turnos"
+      },
+      "medicalRecords": {
+        "title": "Historias clínicas",
+        "icon": "Icono de persona genérica",
+        "path": "/historia-clinica/buscar-historia-clinica"
+      },
+      "appointments": {
+        "title": "Turnos",
+        "icon": "Icono de calendario con un más",
+        "path": "/turnos/mis-turnos"
+      }
+    },
+    "nextAppointment": {
+      "title": "Turno médico mas próximo",
+      "date": "Lunes 24 de mayo",
+      "time": "7:30h a 13:30h",
+      "consultingRoom": "Consultorio 12",
+      "specialty": "Oncología",
+      "image": {
+        "calendar": { "title": "calendar" },
+        "bell": { "title": "bell" }
+      }
+    },
+    "patients": "Pacientes:"
+  },
+  "en": {
+    "dataMedic": {"specialty": "Oncology"},
+    "itemsLinks": {
+      "appointmentMedical": {
+        "title": "Medical appointments",
+        "icon": "Calendar icon",
+        "path": "/appointments"
+      },
+      "medicalRecords": {
+        "title": "Medical records",
+        "icon": "Generic person icon",
+        "path": "/medical-records/search-medical-records"
+      },
+      "appointments": {
+        "title": "Appointments",
+        "icon": "Calendar with plus icon",
+        "path": "/appointments/my-appointments"
+      }
+    },
+    "nextAppointment": {
+      "title": "Nearest medical appointment",
+      "date": "Monday 24, May",
+      "time": "7:30am to 13:30pm",
+      "consultingRoom": "Consulting room 12",
+      "specialty": "Oncology",
+      "image": {
+        "calendar": { "title": "" },
+        "bell": { "title": "bell" }
+      }
+    },
+    "patients": "Patients:"
+  }
+}

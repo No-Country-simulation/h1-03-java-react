@@ -1,0 +1,66 @@
+{
+  "sp": {
+    "images": {
+      "pills": "Icono de pildoras",
+      "bell": "Icono de campana"
+    },
+    "medication": "IBUPROFENO",
+    "grams": "400mg",
+    "nextMedicine": "12:30 HS",
+    "iteration": "cada 8 horas",
+    "items": {
+      "item1": {
+        "date": "Lunes 14 de Julio",
+        "medicine": "IBUPROFENO 400 MG",
+        "hour": "20:30 HS"
+      },
+      "item2": {
+        "date": "Lunes 14 de Julio",
+        "medicine": "ANTIBIÓTICO 250 MG",
+        "hour": "16:00 HS"
+      },
+      "item3": {
+        "date": "Domingo 13 de Julio",
+        "medicine": "IBUPROFENO 400 MG",
+        "hour": "12:30 HS"
+      },
+      "item4": {
+        "date": "Domingo 13 de Julio",
+        "medicine": "ANTIBIÓTICO 250 MG",
+        "hour": "16:00 HS"
+      }
+    }
+  },
+  "en": {
+    "images": {
+      "pills": "Pills icon",
+      "bell": "Bell icon"
+    },
+    "medication": "IBUPROFEN",
+    "grams": "400mg",
+    "nextMedicine": "12:30 PM",
+    "iteration": "every 8 hours",
+    "items": {
+      "item1": {
+        "date": "Monday, July 14",
+        "medicine": "IBUPROFEN 400 MG",
+        "hour": "20:30 PM"
+      },
+      "item2": {
+        "date": "Monday, July 14",
+        "medicine": "ANTIBIOTIC 250 MG",
+        "hour": "16:00 PM"
+      },
+      "item3": {
+        "date": "Sunday, July 13",
+        "medicine": "IBUPROFEN 400 MG",
+        "hour": "12:30 PM"
+      },
+      "item4": {
+        "date": "Sunday, July 13",
+        "medicine": "ANTIBIOTIC 250 MG",
+        "hour": "16:00 PM"
+      }
+    }
+  }
+}

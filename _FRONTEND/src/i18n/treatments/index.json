@@ -1,8 +1,54 @@
 {
-    "sp": {
-
-    },
-    "en":{
-
+  "sp": {
+    "specialties": {
+      "componentTitle": "Especialidades",
+      "image": {
+        "healthCheckup": { "title": "Revisión de salud" },
+        "toothCracked": { "title": "Diente" },
+        "lungs": { "title": "Pulmones" },
+        "heartWithPulse": { "title": "Corazón con pulso" },
+        "ophthalmology": { "title": "Ojo con lupa" },
+        "stomach": { "title": "Estomago" },
+        "dermatology": { "title": "Cara con granitos" },
+        "rh": { "title": "Gota de sangre" }
+      },
+      "specialtyName": {
+        "medicine": "MEDICINA GENERAL",
+        "odontology": "ODONTOLOGÍA",
+        "pulmonology": "NEUMONOLOGÍA",
+        "cardiology": "CARDIOLOGÍA",
+        "ophthalmology": "OFTALMOLOGÍA",
+        "gastroenterology": "GASTROENTEROLOGÍA",
+        "dermatology": "DERMATOLOGÍA",
+        "hematology": "HEMATOLOGÍA"
+      },
+      "buttonPlus": "Botón con icono de más"
     }
+  },
+  "en": {
+    "specialties": {
+      "componentTitle": "Specialties",
+      "image": {
+        "healthCheckup": { "title": "Health checkup" },
+        "toothCracked": { "title": "Tooth" },
+        "lungs": { "title": "Lungs" },
+        "heartWithPulse": { "title": "Heart with pulse" },
+        "ophthalmology": { "title": "Eye with magnifying glass" },
+        "stomach": { "title": "Stomach" },
+        "dermatology": { "title": "Face with pimples" },
+        "rh": { "title": "Blood drop" }
+      },
+      "specialtyName": {
+        "medicine": "GENERAL MEDICINE",
+        "odontology": "ODONTOLOGY",
+        "pulmonology": "PULMONOLOGY",
+        "cardiology": "CARDIOLOGY",
+        "ophthalmology": "OPHTHALMOLOGY",
+        "gastroenterology": "GASTROENTEROLOGY",
+        "dermatology": "DERMATOLOGY",
+        "hematology": "HEMATOLOGY"
+      },
+      "buttonPlus": "Button with plus icon"
+    }
+  }
 }

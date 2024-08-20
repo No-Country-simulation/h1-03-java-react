@@ -1,0 +1,94 @@
+{
+  "sp": {
+    "icons": {
+      "downArrow": "Icono de Flecha hacia abajo",
+      "calendar": "Icono de Calendario",
+      "search": "Icono de búsqueda",
+      "closePopUp": "Icono de cerrar"
+    },
+    "filters": {
+      "title": "Buscar Turnos médicos",
+      "form": {
+        "selects": {
+          "professional": {
+            "option0": "PROFESIONAL",
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          },
+          "specialty": {
+            "option0": "ESPECIALIDAD",
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          }
+        },
+        "period": "POR PERIODO:",
+        "until": "HASTA",
+        "button": "Buscar"
+      }
+    },
+    "result": {
+      "title": "Resultados de tu búsqueda - Turnos Medicos",
+      "item": {
+        "date": "Jueves 27 de Julio",
+        "name": "José Esquivel",
+        "profession": "Cardiológo",
+        "timeSlot1": "morning",
+        "timeSlot2": "afternoon"
+      }
+    },
+    "itemResult": {
+      "timeSlot": "Franja horaria",
+      "morning": "Mañana",
+      "afternoon": "Tarde",
+      "reviewAppointments": "Revisar turnos"
+    }
+  },
+  "en": {
+    "icons": {
+      "downArrow": "Down arrow icon",
+      "calendar": "Calendar icon",
+      "search": "Search icon",
+      "closePopUp": "Close icon"
+    },
+    "filters": {
+      "title": "Search Medical appointments",
+      "form": {
+        "selects": {
+          "professional": {
+            "option0": "PROFESSIONAL",
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          },
+          "specialty": {
+            "option0": "SPECIALTY",
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          }
+        },
+        "period": "PER PERIOD:",
+        "until": "UNTIL",
+        "button": "Search"
+      }
+    },
+    "result": {
+      "title": "Your search results - Medical Appointments",
+      "item": {
+        "date": "Thursday, July 27",
+        "name": "José Esquivel",
+        "profession": "Cardiologist",
+        "timeSlot1": "morning",
+        "timeSlot2": "afternoon"
+      }
+    },
+    "itemResult": {
+      "timeSlot": "Time Slot",
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "reviewAppointments": "Review appointments"
+    }
+  }
+}

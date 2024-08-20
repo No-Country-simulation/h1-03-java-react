@@ -1,0 +1,84 @@
+{
+    "sp": {
+        "date": "Fecha: 16-02-2024",
+        "hour": "Hora: 12:30pm",
+        "age": "Edad: 45 años",
+        "images": {
+            "stethoscope": "Icono de estetoscopio",
+            "description": "Icono de descripción"
+        },
+        "reason": {
+            "title": "Motivo de consulta:",
+            "description": "Paciente varon de 45 años refiere sentir dolor en la region abdominal tras ingerir macarrones con queso hace 2 horas."
+        },
+        "description": {
+            "title": "Descripción:",
+            "description": "Paciente presenta diarrea acuosa y frecuente (más de 3 deposiciones líquidas al día) acompañada de dolor abdominal y calambres. Se observa fiebre de 38.5°C y signos de deshidratación moderada. Antecedente de uso reciente de antibióticos (clindamicina)."
+        },
+        "diagnosis": {
+            "title": "Diagnostico",
+            "description": "Colitis seudomembranosa secundaria a infección por Clostridioides difficile."
+        },
+        "treatment": {
+            "title": "Tratamiento:",
+            "list1": "Suspender el uso de clindamicina.",
+            "list2": "Iniciar tratamiento con vancomicina.",
+            "list3": "Rehidratación oral/IV según necesidad.",
+            "list4": "Control en 1 semana."
+        },
+        "attachments": {
+            "title": "Adjuntos:",
+            "image": {
+                "recipe": "Icono de medicación recetada"
+            },
+            "recipe": "Receta"
+        },
+        "trafficker": {
+            "title": "Tratante:",
+            "name": "Nombre y apellido: Juanito Alimaña",
+            "specialty": "Especialidad: Medicina General",
+            "license": "Licencia: 2456454"
+        }
+    },
+    "en":
+        {"date": "Date: 16-02-2024",
+        "hour": "Hour: 12:30pm",
+        "age": "Age: 45 años",
+        "images": {
+            "stethoscope": "Stethoscope icon",
+            "description": "Description icon"
+        },
+        "reason": {
+            "title": "Reason for consultation:",
+            "description": "A 45-year-old male patient reports feeling pain in the abdominal region after eating macaroni and cheese 2 hours ago."
+        },
+        "description": {
+            "title": "Description:",
+            "description": "Patient presents with frequent, watery diarrhea (more than 3 liquid stools per day) accompanied by abdominal pain and cramps. Fever of 38.5°C and signs of moderate dehydration are observed. History of recent use of antibiotics (clindamycin)."
+        },
+        "diagnosis": {
+            "title": "Diagnosis",
+            "description": "Pseudomembranous colitis secondary to Clostridioides difficile infection."
+        },
+        "treatment": {
+            "title": "Treatment:",
+            "list1": "Discontinue use of clindamycin.",
+            "list2": "Start treatment with vancomycin.",
+            "list3": "Oral/IV rehydration as needed.",
+            "list4": "Control in 1 week."
+        },
+        "attachments": {
+            "title": "Attachments:",
+            "image": {
+                "recipe": "Prescription medication icon"
+            },
+            "recipe": "Recipe"
+        },
+        "trafficker": {
+            "title": "Trafficker:",
+            "name": "First and last name: Juanito Alimaña",
+            "specialty": "Specialty: General Medicine",
+            "license": "License: 2456454"
+        }
+    }
+}

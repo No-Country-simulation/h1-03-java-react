@@ -1,12 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import i18n from "../../../../i18n/footer/index.json";
 
 export default function LeftComponent() {
+  const language = useSelector((state) => state.i18nReducer.language);
+
 	return (
-		<div className="leftSection">
-			<h1 className="leftSectionTitle">Justina.io</h1>
-			<h2 className="leftSectionContent">Nombre de calle 1234</h2>
-			<h2 className="leftSectionContent">S2300 Rafaela, Santa Fe</h2>
-			<h2 className="leftSectionContent">3492 999999</h2>
+		<div className="flex flex-col justify-center items-center md:justify-start md:items-start gap-1">
+			<h1 className="text-white font-medium text-2xl">JUSTINA.IO</h1>
+			<h2 className="text-white">{i18n[language].left.address}</h2>
+			<h2 className="text-white">{i18n[language].left.city}</h2>
+			<h2 className="text-white">{i18n[language].left.phone}</h2>
 		</div>
 	);
 }

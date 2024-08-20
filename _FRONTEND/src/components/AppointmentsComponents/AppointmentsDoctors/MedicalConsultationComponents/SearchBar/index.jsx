@@ -3,8 +3,11 @@ import search from "../../../../../assets/svg/others/magnifyingGlass.svg";
 import downArrow from "../../../../../assets/svg/others/downArrowOrange.svg";
 import orangeCalendar from "../../../../../assets/svg/others/orangeCalendar.svg";
 import Button from "../../../../Resources/FormElements/Button";
+import { useSelector } from "react-redux";
+import i18n from "../../../../../i18n/appointmentsDoctor/medicalConsultation/index.json";
 
 export default function index() {
+  const language = useSelector((state) => state.i18nReducer.language);
   const [formData, setFormData] = useState({
     professional: "",
     specialty: "",
@@ -32,9 +35,16 @@ export default function index() {
       }}
     >
       <div className="flex items-center gap-4 py-4 px-2">
-        <img src={search} alt="" width="44px" height="44px" />
+        <img
+          src={search}
+          alt={i18n[language].icons.search}
+          aria-label={i18n[language].icons.search}
+          title={i18n[language].icons.search}
+          width="44px"
+          height="44px"
+        />
         <p className="text-white font-bold text-lg lg:text-xl">
-          Buscar Turnos médicos
+          {i18n[language].filters.title}
         </p>
       </div>
 
@@ -51,15 +61,26 @@ export default function index() {
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="professional" selected>
-              PROFESIONAL
+            <option value="professional">
+              {i18n[language].filters.form.selects.professional.option0}
             </option>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
+            <option value="option1">
+              {i18n[language].filters.form.selects.professional.option1}
+            </option>
+            <option value="option2">
+              {i18n[language].filters.form.selects.professional.option2}
+            </option>
+            <option value="option3">
+              {i18n[language].filters.form.selects.professional.option3}
+            </option>
           </select>
           <div className="absolute inset-y-0 right-1 pl-3 flex items-center pointer-events-none">
-            <img src={downArrow} alt="flecha hacia abajo" />
+            <img
+              src={downArrow}
+              alt={i18n[language].icons.downArrow}
+              aria-label={i18n[language].icons.downArrow}
+              title={i18n[language].icons.downArrow}
+            />
           </div>
         </div>
 
@@ -72,21 +93,32 @@ export default function index() {
             className="border-[#B7B7B7] border rounded-full w-full lg:w-[230px] text-[#1D1D1D] placeholder-[#1D1D1D] placeholder:text-sm py-4 px-6"
             required
           >
-            <option value="specialty" selected>
-              ESPECIALIDAD
+            <option value="specialty">
+              {i18n[language].filters.form.selects.specialty.option0}
             </option>
-            <option value="opcion1">Opción 1</option>
-            <option value="opcion2">Opción 2</option>
-            <option value="opcion3">Opción 3</option>
+            <option value="option1">
+              {i18n[language].filters.form.selects.specialty.option1}
+            </option>
+            <option value="option2">
+              {i18n[language].filters.form.selects.specialty.option2}
+            </option>
+            <option value="option3">
+              {i18n[language].filters.form.selects.specialty.option3}
+            </option>
           </select>
           <div className="absolute inset-y-0 right-1 pl-3 flex items-center pointer-events-none">
-            <img src={downArrow} alt="flecha hacia abajo" />
+            <img
+              src={downArrow}
+              alt={i18n[language].icons.downArrow}
+              aria-label={i18n[language].icons.downArrow}
+              title={i18n[language].icons.downArrow}
+            />
           </div>
         </div>
 
         <div className="flex flex-col w-full lg:w-auto">
           <p className="text-white font-semibold text-base mb-2">
-            POR PERIODO:
+            {i18n[language].filters.form.period}
           </p>
           <div className="flex flex-col xl:flex-row gap-3 items-center">
             <div className="gap-2.5 relative w-full lg:w-auto">
@@ -103,7 +135,7 @@ export default function index() {
                 <img src={orangeCalendar} alt="icono de calendario" />
               </div>
             </div>
-            <p className="text-white text-base font-semibold">HASTA</p>
+            <p className="text-white text-base font-semibold">{i18n[language].filters.form.until}</p>
             <div className="gap-2.5 relative w-full lg:w-auto">
               <input
                 type="date"
@@ -115,14 +147,21 @@ export default function index() {
                 required
               />
               <div className="absolute inset-y-0 right-2 pl-3 flex items-center pointer-events-none">
-                <img src={orangeCalendar} alt="icono de calendario" />
+                <img src={orangeCalendar} alt={i18n[language].icons.calendar} aria-label={i18n[language].icons.calendar} title={i18n[language].icons.calendar} />
               </div>
             </div>
           </div>
         </div>
 
         <div className="flex items-center justify-between w-full lg:w-auto">
-          <Button type="submit" text="Buscar" bgColor="#5666BE" title="Buscar" textColor="white" classNames="border text-xl font-bold py-3 md:px-20 border-white rounded-full" />
+          <Button
+            type="submit"
+            text={i18n[language].filters.form.button}
+            bgColor="#5666BE"
+            title={i18n[language].filters.form.button}
+            textColor="white"
+            classNames="border text-xl font-bold py-3 md:px-20 border-white rounded-full"
+          />
         </div>
       </form>
     </div>

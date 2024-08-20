@@ -1,0 +1,90 @@
+{
+  "sp": {
+    "icons": {
+      "downArrow": "Icono de Flecha hacia abajo",
+      "calendar": "Icono de Calendario",
+      "search": "Icono de búsqueda"
+    },
+    "filters": {
+      "title": "Buscar Turnos",
+      "form": {
+        "select": {
+          "state": {
+            "option0": "ESTADO DEL TURNO",
+            "option1": "Opción 1",
+            "option2": "Opción 2",
+            "option3": "Opción 3"
+          }
+        },
+        "period": "POR PERIODO:",
+        "until": "HASTA",
+        "button": "Buscar"
+      }
+    },
+    "result": {
+      "title": "Resultados de tu búsqueda - Mis Turnos",
+      "item": {
+        "date": "Jueves 27 de Julio",
+        "name": "Juan Carlos Aquino Zapana",
+        "state1": "Pendiente",
+        "state2": "Atendido",
+        "state3": "Ausente",
+        "timeSlot1": "morning",
+        "timeSlot2": "afternoon",
+        "path": "/historia-clinica"
+      }
+    },
+    "itemResult": {
+      "timeSlot": "Franja horaria",
+      "morning": "Mañana",
+      "afternoon": "Tarde",
+      "patient": "Paciente",
+      "state": "Estado",
+      "reviewHistory": "Revisar Historia"
+    }
+  },
+  "en": {
+    "icons": {
+      "downArrow": "Down arrow icon",
+      "calendar": "Calendar icon",
+      "search": "Search icon"
+    },
+    "filters": {
+      "title": "Search Appointments",
+      "form": {
+        "select": {
+          "state": {
+            "option0": "SHIFT STATUS",
+            "option1": "Option 1",
+            "option2": "Option 2",
+            "option3": "Option 3"
+          }
+        },
+        "period": "PER PERIOD:",
+        "until": "UNTIL",
+        "button": "Search"
+      }
+    },
+    "result": {
+      "title": "Your search results - Medical Appointments",
+      "item": {
+        "date": "Thursday, July 27",
+        "name": "Juan Carlos Aquino Zapana",
+        "state1": "Pending",
+        "state2": "Attended",
+        "state3": "Absent",
+        "timeSlot1": "morning",
+        "timeSlot2": "afternoon",
+        "path": "/medical-records"
+      }
+    },
+    "itemResult": {
+      "timeSlot": "Time Slot",
+      "morning": "Morning",
+      "afternoon": "Afternoon",
+      "patient": "Patient",
+      "state": "State",
+      "reviewHistory": "Review History"
+    }
+  }
+}

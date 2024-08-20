@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: justina
+  datasource:
+    url: ${DATASOURCE}?createDatabaseIfNotExist=true
+    username: ${USER}
+    password: ${PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  time:
+    expiration: ${JWT_EXPIRATION}
+  secret:
+    key: ${JWT_SECRETKEY}
+logging:
+  level:
+    root: INFO
+    com.no_country.justina: DEBUG
+api:
+  base-url: api/v1
