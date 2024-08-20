@@ -3,8 +3,8 @@ import React from 'react'
 export default function Error404Component() {
 
     return (
-        <>
-            error 404
-        </>
+        <div className='flex justify-center items-center text-2xl'>
+            Error 404
+        </div>
     )
 }
