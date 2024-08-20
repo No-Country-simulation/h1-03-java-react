@@ -7,15 +7,18 @@ import {
   subWeeks,
   addWeeks,
 } from "date-fns";
-import { es } from "date-fns/locale";
+import { enIN, es } from "date-fns/locale";
 import arrowLeft from "../../../../assets/svg/others/arrowLeft.svg";
 import arrowRight from "../../../../assets/svg/others/arrowRight.svg";
+import { useSelector } from "react-redux";
+import i18n from "../../../../i18n/dashboardComponents/dashboardPatient/calendar/index.json";
 
 export default function Index() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [startOfWeekDate, setStartOfWeekDate] = useState(
     startOfWeek(currentDate, { weekStartsOn: 1 })
   );
+  const language = useSelector((state) => state.i18nReducer.language);
 
   const days = Array.from({ length: 7 }, (_, i) => addDays(startOfWeekDate, i));
 
@@ -30,6 +33,15 @@ export default function Index() {
     setStartOfWeekDate(newStartOfWeek);
     setCurrentDate(newStartOfWeek);
   };
+  const getLocale = () => {
+    if (i18n[language].locale === "es") {
+      return es;
+    } else if (language === "en") {
+      return enIN;
+    } else {
+      return enIN;
+    }
+  };
 
   return (
     <div className="flex items-center justify-between p-4 bg-[#E3E2E2] rounded-full flex-wrap sm:flex-nowrap">
@@ -40,7 +52,7 @@ export default function Index() {
         <img src={arrowLeft} alt="flecha izquierda" />
       </button>
 
-      <div className="flex flex-1 mx-4 overflow-x-auto">
+      <div className="flex flex-1 mx-4 overflow-x-hidden">
         <div className="flex flex-nowrap space-x-4 sm:space-x-8">
           {days.map((day) => {
             const isTodayDay = isToday(day);
@@ -61,7 +73,7 @@ export default function Index() {
                       : "text-[#2C2C2C] font-normal"
                   }`}
                 >
-                  {format(day, "eee", { locale: es })}
+                  {format(day, "eee", { locale: getLocale() })}
                 </span>
                 <span
                   className={`text-xs sm:text-sm ${

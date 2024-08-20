@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useSelector } from "react-redux";
+import i18n from "../../../../../i18n/pagination/index.json";
 
 export default function index({ totalPages }) {
+  const language = useSelector((state) => state.i18nReducer.language);
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageClick = (event) => {
@@ -11,8 +14,8 @@ export default function index({ totalPages }) {
   return (
     <div className="flex items-center justify-center mt-4">
       <ReactPaginate
-        previousLabel={"< Previous"}
-        nextLabel={"Next >"}
+        previousLabel={i18n[language].previous}
+        nextLabel={i18n[language].next}
         breakLabel="..."
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}

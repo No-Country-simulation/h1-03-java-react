@@ -2,8 +2,12 @@ import React from "react";
 import PatientList from "../../../../../../DashboardComponents/DashboardDoctor/PatientsList";
 import NextAppointment from "../../../../../../DashboardComponents/DashboardDoctor/NextAppointment";
 import closePopUp from "../../../../../../../assets/svg/others/closePopup.svg";
+import { useSelector } from "react-redux";
+import i18n from "../../../../../../../i18n/appointmentsDoctor/medicalConsultation/index.json";
 
 export default function index({ closeModal }) {
+  const language = useSelector((state) => state.i18nReducer.language);
+
   return (
     <section
       onClick={closeModal}
@@ -21,7 +25,12 @@ export default function index({ closeModal }) {
             className="absolute right-2 top-1 cursor-pointer"
             onClick={closeModal}
           >
-            <img src={closePopUp} alt="cerrar pop up" />
+            <img
+              src={closePopUp}
+              alt={i18n[language].icons.closePopUp}
+              aria-label={i18n[language].icons.closePopUp}
+              title={i18n[language].icons.closePopUp}
+            />
           </div>
           <NextAppointment />
           <PatientList />

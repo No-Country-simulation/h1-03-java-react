@@ -1,0 +1,42 @@
+{
+  "sp":{
+    "title": "Seguimiento de mi tratamiento",
+    "items": {
+      "item1": {
+        "porcentage": "70%",
+        "title": "Medicación",
+        "iconAlt": "Icono de pildora"
+      },
+      "item2": {
+        "porcentage": "50%",
+        "title": "Tratamientos completos",
+        "iconAlt": "icono de estetoscopio"
+      },
+      "item3": {
+        "porcentage": "100%",
+        "title": "Historia Clínica",
+        "iconAlt": "icono de historia clínica"
+      }
+    }
+  },
+  "en": {
+    "title": "Monitoring of my treatment",
+    "items": {
+      "item1": {
+        "porcentage": "70%",
+        "title": "Medication",
+        "iconAlt": "Pill icon"
+      },
+      "item2": {
+        "porcentage": "50%",
+        "title": "Complete treatments",
+        "iconAlt": "stethoscope icon"
+      },
+      "item3": {
+        "porcentage": "100%",
+        "title": "Medical record",
+        "iconAlt": "Medical record icon"
+      }
+    }
+  }
+}

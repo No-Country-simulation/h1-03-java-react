@@ -3,8 +3,12 @@ import NextAppointment from "../../AppointmentsComponents/AppointmentsPatients/A
 import TreatamentMonitoring from "./TreatmentMonitoring";
 import MedicationNotifications from "./MedicationNotifications";
 import Calendar from "./Calendar"
+import { useSelector } from "react-redux";
+import i18n from "../../../i18n/dashboardComponents/dashboardPatient/index.json";
 
 export default function DashboardPatient() {
+  const language = useSelector((state) => state.i18nReducer.language);
+
   return (
     <>
       <section className="min-h-screen flex flex-col lg:flex-row justify-center items-start gap-20 p-10 pt-10">
@@ -14,7 +18,7 @@ export default function DashboardPatient() {
             <TreatamentMonitoring />
             <div className="container">
               <p className="text-[#1D1D1D] text-sm px-4 py-2">
-                Mis próximas citas agendadas
+                {i18n[language].nextAppointments}
               </p>
               <NextAppointment />
             </div>

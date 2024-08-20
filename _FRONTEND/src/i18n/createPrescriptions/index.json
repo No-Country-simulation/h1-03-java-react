@@ -1,0 +1,156 @@
+{
+  "sp": {
+    "icons": {
+      "closePopUp": "Icono de cerrar",
+      "trash": "Icono de tacho de basura",
+      "ready": "Icono de tilde"
+    },
+    "title": "Crear reseta",
+    "personInfo": {
+      "name": "Nombres y Apellido:",
+      "age": "Edad:",
+      "date": "Fecha:",
+      "diagnosis": "Diagnóstico:",
+      "addMedicine": "Añadir Medicamento:"
+    },
+    "personData": {
+      "name": "James Lucho Bond Gonzales",
+      "age": "28 años",
+      "date": "16-03-2024 13:30",
+      "diagnosis": "Colitis seudomembranosa"
+    },
+    "medication": {
+      "title": "Medicamentos",
+      "medicine": {
+        "title": "Medicamentos",
+        "result": "Amoxicilina"
+      },
+      "concentration": {
+        "title": "Concentración",
+        "result": "500mg"
+      },
+      "presentation": {
+        "title": "Presentación",
+        "options": "Opciones",
+        "result": "tableta"
+      },
+      "description": {
+        "title": "Descrpción",
+        "result": "Marca genérica"
+      },
+      "amount": { "title": "Cantidad", "result": "15" }
+    },
+    "indications": {
+      "title": "Indicaciones",
+      "date": {
+        "title": "Fecha de inicio",
+        "result": "16-03-24"
+      },
+      "frequency": {
+        "title": "Frecuencia",
+        "result": "c/8h"
+      },
+      "amount": {
+        "title": "Cantidad",
+        "result": "1"
+      },
+      "duration": {
+        "title": "Duración",
+        "result": "5 días"
+      },
+      "route": {
+        "title": "Vía",
+        "options": "Opciones",
+        "result": "oral"
+      },
+      "action": "Acción"
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
+    },
+    "doctorData": {
+      "title": "Doctor:",
+      "name": "Nombre y apellido: Juanito Alimaña",
+      "specialty": "Especialidad: Medicina General",
+      "license": "Licencia: 2456454"
+    }
+  },
+  "en": {
+    "icons": {
+      "closePopUp": "Close pop up icon",
+      "trash": "Garbage can icon",
+      "ready": "Ready icon"
+    },
+    "title": "Create Prescription",
+    "personInfo": {
+      "name": "First and Last name:",
+      "age": "Age:",
+      "date": "Date:",
+      "diagnosis": "Diagnosis:",
+      "addMedicine": "Add medication:"
+    },
+    "personData": {
+      "name": "James Lucho Bond Gonzales",
+      "age": "28 years old",
+      "date": "16-03-2024 13:30",
+      "diagnosis": "Pseudomembranous colitis"
+    },
+    "medication": {
+      "title": "Medications",
+      "medicine": {
+        "title": "Medications",
+        "result": "Amoxicillin"
+      },
+      "concentration": {
+        "title": "Concentration",
+        "result": "500mg"
+      },
+      "presentation": {
+        "title": "Presentation",
+        "options": "Options",
+        "result": "tablet"
+      },
+      "description": {
+        "title": "Description",
+        "result": "Generic brand"
+      },
+      "amount": { "title": "Amount", "result": "15" }
+    },
+    "indications": {
+      "title": "Indications",
+      "date": {
+        "title": "Start date",
+        "result": "16-03-24"
+      },
+      "frequency": {
+        "title": "Frequency",
+        "result": "every 8h"
+      },
+      "amount": {
+        "title": "Acount",
+        "result": "1"
+      },
+      "duration": {
+        "title": "Duration",
+        "result": "5 days"
+      },
+      "route": {
+        "title": "Route",
+        "options": "Options",
+        "result": "oral"
+      },
+      "action": "Action"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "doctorData": {
+      "title": "Doctor:",
+      "name": "First and Last name: Juanito Alimaña",
+      "specialty": "Specialty: General Medicine",
+      "license": "License: 2456454"
+    }
+  }
+}
