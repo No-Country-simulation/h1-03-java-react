@@ -1,0 +1,42 @@
+{
+  "sp": {
+    "left":{
+      "address": "Dirección",
+      "city": "Ciudad",
+      "phone": "Teléfono"
+    },
+    "center": {
+      "email": "icono de email",
+      "instagram": "icono de instagram", 
+      "linkedin": "icono de linkedin",
+      "facebook": "icono de facebook",
+      "whatsapp": "icono de whatsapp"
+    },
+    "right": {
+      "login": "Iniciar sesión",
+      "register": "Registrarse",
+      "booklet": "Cartilla de profesionales",
+      "contact": "Contáctenos"
+    }
+  },
+  "en": {
+    "left":{
+      "address": "Address",
+      "city": "City",
+      "phone": "Phone"
+    },
+    "center": {
+      "email": "email icon",
+      "instagram": "instagram icon", 
+      "linkedin": "linkedin icon",
+      "facebook": "facebook icon",
+      "whatsapp": "whatsapp icon"
+    },
+    "right": {
+      "login": "Login",
+      "register": "Register",
+      "booklet": "Professional booklet",
+      "contact": "Contact us"
+    }
+  }
+}
